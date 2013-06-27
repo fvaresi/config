@@ -115,3 +115,4 @@ fi
 
 export SVN_EDITOR=vim
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
+export PATH=$PATH:$HOME/bin

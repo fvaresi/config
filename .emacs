@@ -10,5 +10,7 @@
 (column-number-mode t)
 (global-visual-line-mode t)
 (setq x-select-enable-clipboard t)
+(tool-bar-mode nil)
 
 (setq org-log-done 'time)
+(server-start)
