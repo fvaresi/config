@@ -116,3 +116,4 @@ fi
 export SVN_EDITOR=vim
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
 export PATH=$PATH:$HOME/bin
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=lcd'
