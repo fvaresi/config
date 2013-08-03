@@ -128,7 +128,7 @@ mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ntilde resize grow width 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -150,6 +150,7 @@ bar {
 	
 	# bar only in laptop and on top
 	position top
+	output LVDS-0
 }
 
 focus_follows_mouse no
@@ -166,9 +167,9 @@ bindsym Control+Shift+Mod1+Right move window to workspace next_on_output; worksp
 bindsym Control+Mod1+l exec "gnome-screensaver-command -l"
 
 # pulse audio volume control
-bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
-bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
-bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 0 0
+bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 1 -- '-5%'
+bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 1 -- '+5%'
+bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 1 0
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -180,8 +181,6 @@ bindsym $mod+minus scratchpad show
 for_window [class="Pidgin|Skype"] floating enable
 for_window [class="Pidgin" window_role="conversation"] move scratchpad; scratchpad show
 for_window [class="Skype" window_role="ConversationsWindow|CallWindow"] move scratchpad; scratchpad show
-for_window [class="Google-chrome|Firefox"] move workspace number 1
-for_window [class="Netbeans*"] move workspace number 4
 
 # Key bindings for favorite apps
 bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
@@ -192,7 +191,6 @@ bindsym $mod+n [class="NetBeans*"] focus
 bindsym $mod+z [class="Firefox"] focus
 
 # Automatically start programs
-exec --no-startup-id "nm-applet"
 exec --no-startup-id "dropboxd"
 
 #bindsym $mod+r exec i3-input -F 'rename workspace to %s' -P 'New name: '
