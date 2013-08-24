@@ -187,6 +187,7 @@ for_window [class="Netbeans*"] move workspace number 4
 bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
 bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scratchpad show
 bindsym $mod+i [class="Emacs*"] scratchpad show
+bindsym $mod+m [class="Vlc"] scratchpad show
 bindsym $mod+c [class="Google-chrome"] focus
 bindsym $mod+n [class="NetBeans*"] focus
 bindsym $mod+z [class="Firefox"] focus
