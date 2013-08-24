@@ -168,7 +168,7 @@ bindsym Control+Mod1+l exec "gnome-screensaver-command -l"
 # pulse audio volume control
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
-bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 0 0
+bindsym XF86AudioMute exec ~/bin/toggle-mute 
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -188,7 +188,7 @@ bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
 bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scratchpad show
 bindsym $mod+i [class="Emacs*"] scratchpad show
 bindsym $mod+m [class="Vlc"] scratchpad show
-bindsym $mod+c [class="Google-chrome"] focus
+bindsym $mod+c [class="Google-chrome|Chromium-browser"] focus
 bindsym $mod+n [class="NetBeans*"] focus
 bindsym $mod+z [class="Firefox"] focus
 
