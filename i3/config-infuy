@@ -169,6 +169,9 @@ bindsym Control+Mod1+l exec "gnome-screensaver-command -l"
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
 bindsym XF86AudioMute exec ~/bin/toggle-mute 
+bindsym $mod+F10 exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
+bindsym $mod+F11 exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
+bindsym $mod+F12 exec ~/bin/toggle-mute 
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
