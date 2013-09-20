@@ -1,3 +1,5 @@
+;# -*- mode: lisp-interaction -*-
+
 ;; Lisp (SLIME) interaction 
 (setq inferior-lisp-program "sbcl") 
 (add-to-list 'load-path "~/.slime") 
@@ -7,7 +9,7 @@
 ; esto lo agregue yo
 (ido-mode t)
 (global-linum-mode t)
-(column-number-mode t)
+;(column-number-mode t)
 ;(global-visual-line-mode t)
 (setq x-select-enable-clipboard t)
 (tool-bar-mode nil)
@@ -30,6 +32,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(custom-safe-themes (quote ("06f5145c01ec774a0abb49eeffa3980743ce2f997112b537effeb188b7c51caf" default)))
  '(inhibit-startup-screen t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -38,3 +41,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 98 :width normal)))))
+
+(require 'php-mode)
+(setq php-mode-force-pear t)
+(add-hook 'php-mode-hook
+      '(lambda ()
+         (setq indent-tabs-mode t)
+         (setq tab-width 4)
+         (setq c-basic-offset 4)))
