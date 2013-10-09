@@ -49,3 +49,16 @@
          (setq indent-tabs-mode t)
          (setq tab-width 4)
          (setq c-basic-offset 4)))
+
+;; this is for autoinstalling packages
+(defvar my-packages '(starter-kit
+                      starter-kit-lisp
+                      starter-kit-bindings
+                      starter-kit-eshell
+                      clojure-mode
+                      clojure-test-mode
+                      nrepl))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
