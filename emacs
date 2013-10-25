@@ -1,10 +1,13 @@
 ;# -*- mode: lisp-interaction -*-
 
 ;; Lisp (SLIME) interaction 
-(setq inferior-lisp-program "sbcl") 
-(add-to-list 'load-path "~/.slime") 
-(require 'slime) 
-(slime-setup) 
+;(setq inferior-lisp-program "sbcl") 
+;(add-to-list 'load-path "~/.slime") 
+;(require 'slime) 
+;(slime-setup) 
+
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
 
 ; esto lo agregue yo
 (ido-mode t)
@@ -32,7 +35,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-safe-themes (quote ("06f5145c01ec774a0abb49eeffa3980743ce2f997112b537effeb188b7c51caf" default)))
+ '(custom-safe-themes (quote ("450b29ed22abeeac279b7eeea592f4eea810105737716fc29807e1684e729c55" "06f5145c01ec774a0abb49eeffa3980743ce2f997112b537effeb188b7c51caf" default)))
  '(inhibit-startup-screen t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -42,6 +45,17 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 98 :width normal)))))
 
+;; this is for autoinstalling packages
+(defvar my-packages '(subatomic-theme
+	php-mode
+	clojure-mode
+	clojure-test-mode
+	nrepl))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
 (require 'php-mode)
 (setq php-mode-force-pear t)
 (add-hook 'php-mode-hook
@@ -49,16 +63,3 @@
          (setq indent-tabs-mode t)
          (setq tab-width 4)
          (setq c-basic-offset 4)))
-
-;; this is for autoinstalling packages
-(defvar my-packages '(starter-kit
-                      starter-kit-lisp
-                      starter-kit-bindings
-                      starter-kit-eshell
-                      clojure-mode
-                      clojure-test-mode
-                      nrepl))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
