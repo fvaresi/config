@@ -16,6 +16,7 @@
 ;(global-visual-line-mode t)
 (setq x-select-enable-clipboard t)
 (tool-bar-mode nil)
+(substitute-key-definition 'kill-buffer 'kill-buffer-and-its-windows global-map)
 
 (setq org-log-done 'time)
 (server-start)
@@ -47,6 +48,8 @@
 
 ;; this is for autoinstalling packages
 (defvar my-packages '(subatomic-theme
+	expand-region
+	helm
 	php-mode
 	clojure-mode
 	clojure-test-mode
@@ -63,3 +66,7 @@
          (setq indent-tabs-mode t)
          (setq tab-width 4)
          (setq c-basic-offset 4)))
+
+(require 'expand-region)
+(global-set-key (kbd "C-+") 'er/expand-region)
+(global-set-key (kbd "C--") 'er/contract-region)
