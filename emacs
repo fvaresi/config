@@ -37,6 +37,7 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(custom-safe-themes (quote ("450b29ed22abeeac279b7eeea592f4eea810105737716fc29807e1684e729c55" "06f5145c01ec774a0abb49eeffa3980743ce2f997112b537effeb188b7c51caf" default)))
+ '(helm-ff-auto-update-initial-value nil)
  '(inhibit-startup-screen t)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -61,6 +62,7 @@
 
 (require 'php-mode)
 (setq php-mode-force-pear t)
+(setq php-manual-path "/media/datos/php/php-chunked-xhtml")
 (add-hook 'php-mode-hook
       '(lambda ()
          (setq indent-tabs-mode t)
@@ -70,3 +72,10 @@
 (require 'expand-region)
 (global-set-key (kbd "C-+") 'er/expand-region)
 (global-set-key (kbd "C--") 'er/contract-region)
+
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-S-l") 'helm-locate)
+(helm-mode 1)
+
+(load-theme 'subatomic t)
