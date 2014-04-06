@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
 fi
 
 export SVN_EDITOR=vim
+export SUDO_EDITOR="emacsclient -nw"
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
 export PATH=$PATH:$HOME/bin
+export CDPATH=.:~:/media/datos/Trabajo/autocomm:/media/datos/Trabajo/vbulletin
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=lcd'
