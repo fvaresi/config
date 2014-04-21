@@ -152,7 +152,7 @@ bar {
 
 	# bar only in laptop and on top
 	position top
-	output LVDS-0
+	output LVDS-1
 }
 
 focus_follows_mouse no
@@ -200,5 +200,6 @@ bindsym $mod+u exec ~/bin/passmenu
 #exec --no-startup-id "dropboxd"
 exec --no-startup-id "alarm-clock-applet"
 exec --no-startup-id "gnome-terminal --role=floating-terminal"
-exec_always	--no-startup-id "xrandr --output VGA-0 --auto --left-of LVDS-0"
-exec_always --no-startup-id "xrandr --output HDMI-0 --auto --left-of LVDS-0"
+exec --no-startup-id "setxkbmap us -variant intl -option 'ctrl:nocaps'"
+exec_always	--no-startup-id "xrandr --output VGA-1 --auto --left-of LVDS-1"
+exec_always --no-startup-id "xrandr --output HDMI-1 --auto --left-of LVDS-1"
