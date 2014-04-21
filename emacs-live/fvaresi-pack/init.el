@@ -17,7 +17,7 @@
 (package-initialize)
 
 (defun my-grep () (interactive)
-       (helm-do-grep-1 '("/media/datos/Trabajo/autocomm/vBulletinPlugins") t nil '("*.php" "*.xml")))
+       (helm-do-grep-1 '("/media/datos/autocomm/vBulletinPlugins") t nil '("*.php" "*.xml")))
 
 (live-set-default-font "DejaVu Sans Mono-9")
 
@@ -64,3 +64,5 @@
 (defun go-to-vb-host (selected-host)
   (interactive (list (helm :sources 'helm-source-vb-hosts)))
   (find-file (format "/ssh:%s:/" selected-host)))
+
+(load-theme 'solarized-dark t)
