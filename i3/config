@@ -152,18 +152,14 @@ bar {
 
 	# bar only in laptop and on top
 	position top
-	output LVDS-1
+	output LVDS-0
 }
 
 focus_follows_mouse no
 
-# Navigate workspaces as in Unity
-bindsym Control+Mod1+Left workspace prev_on_output
-bindsym Control+Mod1+Right workspace next_on_output
-
-# Move window to workspace as in Unity
-bindsym Control+Shift+Mod1+Left move workspace to output left
-bindsym Control+Shift+Mod1+Right move workspace to output right
+# Move workspaces to different output
+bindsym Control+Mod1+Left move workspace to output left
+bindsym Control+Mod1+Right move workspace to output right
 
 # Lock screen as in Unity
 bindsym Control+Mod1+l exec "gnome-screensaver-command -l"
@@ -181,9 +177,10 @@ bindsym $mod+minus scratchpad show
 
 # Default commands for windows
 for_window [class="Pidgin|Skype"] floating enable
+for_window [window_role="pop-up"] floating enable
 for_window [class="Pidgin" window_role="conversation"] move scratchpad; scratchpad show
 for_window [class="Skype" window_role="ConversationsWindow|CallWindow"] move scratchpad; scratchpad show
-for_window [class="Gnome-terminal" window_role="floating-terminal"] move scratchpad
+for_window [title="floating-emacs"] move scratchpad
 
 # Key bindings for favorite apps
 bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
@@ -198,8 +195,10 @@ bindsym $mod+u exec ~/bin/passmenu
 
 # Automatically start programs
 #exec --no-startup-id "dropboxd"
+exec --no-startup-id "feh --bg-center /media/datos/images/wallpapers/325141.jpg"
+exec --no-startup-id "nm-applet"
 exec --no-startup-id "alarm-clock-applet"
-exec --no-startup-id "gnome-terminal --role=floating-terminal"
+exec --no-startup-id "emacs --name=floating-emacs"
 exec --no-startup-id "setxkbmap us -variant intl -option 'ctrl:nocaps'"
-exec_always	--no-startup-id "xrandr --output VGA-1 --auto --left-of LVDS-1"
-exec_always --no-startup-id "xrandr --output HDMI-1 --auto --left-of LVDS-1"
+exec_always	--no-startup-id "xrandr --output VGA-0 --auto --left-of LVDS-0"
+exec_always --no-startup-id "xrandr --output HDMI-0 --auto --left-of LVDS-0"
