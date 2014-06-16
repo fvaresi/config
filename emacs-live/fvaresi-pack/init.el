@@ -73,13 +73,18 @@
 ;; fix dead keys
 (require 'iso-transl)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; projectile settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-file-exists-remote-cache-expire nil)
 (setq projectile-switch-project-action 'helm-projectile)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; multi-term settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'multi-term)
 
 (defun term-send-tab ()
@@ -90,3 +95,9 @@
 (add-to-list 'term-bind-key-alist '("<tab>" . term-send-tab))
 (add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
 (add-to-list 'term-bind-key-alist '("C-c C-k" . term-char))
+
+;; fix for bug when hitting enter in the middle of the line
+(defadvice term-send-input (before dirty-hack activate)
+  (end-of-line)
+  (set-marker (process-mark (get-buffer-process (current-buffer)))
+			  (point)))
