@@ -12,6 +12,7 @@
  '(haskell-process-type (quote ghci))
  '(haskell-stylish-on-save t)
  '(haskell-tags-on-save t)
+ '(helm-boring-buffer-regexp-list (quote ("\\` " "\\*helm" "\\*helm-mode" "\\*Echo Area" "\\*Minibuf" "\\*")))
  '(indent-tabs-mode t)
  '(initial-scratch-message nil)
  '(org-use-sub-superscripts (quote {}))
