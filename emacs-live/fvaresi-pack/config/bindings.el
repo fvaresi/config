@@ -6,6 +6,8 @@
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
+(global-set-key (kbd "C-x t") 'multi-term)
+
 (global-set-key (kbd "C-i") 'indent-region)
 
 (global-set-key (kbd "C-.") 'er/expand-region)
