@@ -5,7 +5,7 @@ alias gitdiff='git diff --ext-diff'
 alias memcache_stat='watch "echo stats | nc 127.0.0.1 11211"'
 
 alias kb_us='setxkbmap us -variant intl -option "ctrl:nocaps"'
-alias kb_es='setxkbmap es -option "ctrl:nocaps"'
+alias kb_es='setxkbmap es -variant deadtilde -option "ctrl:nocaps"'
 
 alias disable_webcam='sudo modprobe -r uvcvideo'
 alias enable_webcam='sudo modprobe uvcvideo'

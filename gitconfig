@@ -1,5 +1,3 @@
 [include]
 	path = ~/.gitconfig.local
 
-[diff]
-	external = git-diff-meld

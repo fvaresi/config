@@ -81,6 +81,7 @@ export PATH="/home/fvaresi/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export EDITOR=vim
 export SVN_EDITOR=vim
 export SUDO_EDITOR="emacsclient -nw"
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"

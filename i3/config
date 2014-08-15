@@ -190,20 +190,18 @@ for_window [window_role="pop-up"] floating enable
 # Key bindings for favorite apps
 bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
 bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scratchpad show
-bindsym $mod+i [class="Emacs*"] scratchpad show
+bindsym $mod+i [class="Emacs*"] focus
 bindsym $mod+m [class="Vlc"] scratchpad show
-bindsym $mod+c [class="Google-chrome|Chromium-browser"] focus
+bindsym $mod+c [class="Google-chrome|Chromium-browser"] scratchpad show
 bindsym $mod+n [class="com-sonicwall-NetExtender"] scratchpad show
-bindsym $mod+z [class="Firefox"] focus
-bindsym $mod+t [window_role="floating-terminal"] scratchpad show
+bindsym $mod+z [class="Iceweasel"] scratchpad show
 bindsym $mod+u exec ~/bin/passmenu
 
 # Automatically start programs
 #exec --no-startup-id "dropboxd"
-exec --no-startup-id "feh --bg-center /media/datos/images/wallpapers/325141.jpg"
+#exec --no-startup-id "feh --bg-center /media/datos/images/wallpapers/325141.jpg"
 exec --no-startup-id "nm-applet"
 #exec --no-startup-id "alarm-clock-applet"
-exec --no-startup-id "emacs --name=floating-emacs"
 exec --no-startup-id "setxkbmap us -variant intl -option 'ctrl:nocaps'"
 exec_always --no-startup-id "unclutter -idle 3 -root"
 exec_always --no-startup-id "xrandr --output LVDS-1 --auto; xrandr --output VGA-1 --auto --left-of LVDS-1; xrandr --output HDMI-1 --auto --left-of LVDS-1"
