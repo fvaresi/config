@@ -32,6 +32,9 @@
 (add-hook 'php-mode-hook
  (lambda ()
    (define-key php-mode-map (kbd "C-.") 'er/expand-region)
+   (define-key php-mode-map (kbd "C-t") 'mc/mark-next-like-this)
+   (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
+
    (c-set-style "bsd")
    (setq c-basic-offset 4)
    (setq indent-tabs-mode t)
@@ -83,6 +86,27 @@
 (setq projectile-switch-project-action 'helm-projectile)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; perspective
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'perspective)
+(persp-mode)
+(require 'persp-projectile)
+(projectile-persp-bridge helm-projectile)
+
+
+;; (defvar helm-source-projectile-dot-patch
+;;   `((name . "Projectile Dot patch")
+;;     (candidates . ("./"))
+;;     (keymap . ,helm-generic-files-map)
+;;     (help-message . helm-find-file-help-message)
+;;     (mode-line . helm-ff-mode-line-string)
+;;     (type . file)
+;;     (action . (("Find file" . (lambda (file) (find-file file)))
+;;                ("Open dired in file's directory" . helm-open-dired))))
+;;   "Helm source definition.")
+;; (setq helm-projectile-sources-list (quote (helm-source-projectile-dot-patch helm-source-projectile-files-list helm-source-projectile-buffers-list helm-source-projectile-recentf-list)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; multi-term settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'multi-term)
@@ -101,3 +125,30 @@
   (end-of-line)
   (set-marker (process-mark (get-buffer-process (current-buffer)))
 			  (point)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; php-auto-yasnippets
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'php-auto-yasnippets)
+(setq php-auto-yasnippet-php-program "/home/fvaresi/.emacs.d/elpa/php-auto-yasnippets-20140515.2052/Create-PHP-YASnippet.php")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; easy-kill
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key [remap kill-ring-save] 'easy-kill)
+(global-set-key [remap mark-sexp] 'easy-mark)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; helm-swoop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq helm-swoop-split-direction 'split-window-horizontally)
+(setq helm-swoop-speed-or-color nil)
+
+
+(global-set-key (kbd "C-6") 'yas-expand)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; twittering-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'twittering-mode)
+(setq twittering-use-master-password t)
