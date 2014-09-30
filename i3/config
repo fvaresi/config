@@ -176,7 +176,7 @@ bindsym Control+Mod1+Right move workspace to output right
 
 # Lock screen as in Unity
 #bindsym Control+Mod1+l exec "gnome-screensaver-command -l"
-bindsym Control+Mod1+l exec "i3lock -i /home/fvaresi/Pictures/wallpapers/325141.jpg"
+bindsym Control+Mod1+l exec "i3lock -i /home/fvaresi/Pictures/wallpapers/325141.png -t"
 
 # pulse audio volume control
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
