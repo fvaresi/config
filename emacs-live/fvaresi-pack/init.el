@@ -130,7 +130,7 @@
 ;;; php-auto-yasnippets
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'php-auto-yasnippets)
-(setq php-auto-yasnippet-php-program "/home/fvaresi/.emacs.d/elpa/php-auto-yasnippets-20140515.2052/Create-PHP-YASnippet.php")
+(setq php-auto-yasnippet-php-program "/home/fvaresi/.emacs.d/elpa/php-auto-yasnippets-20140704.1242/Create-PHP-YASnippet.php")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; easy-kill
