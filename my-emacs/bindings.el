@@ -1,7 +1,4 @@
-(global-set-key (kbd "M-j")
-		(lambda ()
-		  (interactive)
-		  (join-line -1)))
+(global-set-key (kbd "M-j") 'jp-join-lines)
 
 ;; (define-key global-map (kbd "M-n") 'forward-sexp)
 ;; (define-key global-map (kbd "M-p") 'backward-sexp)
@@ -27,8 +24,8 @@
 
 (define-key isearch-mode-map (kbd "C-q") 'helm-swoop-from-isearch)
 
-;; (global-set-key [remap kill-ring-save] 'easy-kill)
-;; (global-set-key [remap mark-sexp] 'easy-mark)
+(global-set-key [remap kill-ring-save] 'easy-kill)
+(global-set-key [remap mark-sexp] 'easy-mark)
 
 (global-set-key (kbd "C-|") 'mc/mark-next-like-this)
 

@@ -20,8 +20,6 @@
 
 			      ack-and-a-half
 
-			      
-
 			      browse-kill-ring
 
 			      clojure-mode
@@ -105,6 +103,8 @@
 ;; export org files to confluence
 ;;(require 'ox-confluence)
 
+(setq magit-use-overlays nil)
+
 (require 'perspective)
 (persp-mode)
 (require 'persp-projectile)
@@ -120,11 +120,19 @@
 (push '("*helm M-x*" :height 0.5) popwin:special-display-config)
 (push '("*helm projectile*" :height 0.5) popwin:special-display-config)
 (push '("*helm etags*" :height 0.5) popwin:special-display-config)
+(push '("*Ack-and-a-half*" :height 0.25 :stick t) popwin:special-display-config)
 
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-file-exists-remote-cache-expire nil)
 (setq projectile-switch-project-action 'helm-projectile)
+
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)		
+
+(require 'smart-mode-line)
+(sml/setup)
+(sml/apply-theme 'respectful)	      
 
 (require 'smartparens-config)
 (smartparens-global-strict-mode t)
@@ -136,6 +144,13 @@
 (require 'window-number)
 (window-number-mode 1)
 (window-number-meta-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Custom functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun jp-join-lines ()
+  (interactive)
+  (join-line -1))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Clojure
@@ -159,6 +174,15 @@
 (require 'cider)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; HTML
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'html-mode-hook 'emmet-mode)
+(setq emmet-move-cursor-between-quotes t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PHP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq php-manual-path "/home/fvaresi/php-chunked-xhtml")
@@ -167,6 +191,7 @@
    (define-key php-mode-map (kbd "C-.") 'er/expand-region)
    (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
    (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
+   (define-key php-mode-map (kbd "M-j") 'jp-join-lines)
 
    (c-set-style "bsd")
    (setq c-basic-offset 4)
