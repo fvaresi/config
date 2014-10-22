@@ -27,12 +27,9 @@
 			      clojurescript-mode
 			      clj-refactor
 			      cider
-			      ac-cider
-			      ac-cider-compliment
-			      ac-nrepl
-			      ;; cider-browse-ns
 			      cider-decompile
 			      cider-spy
+			      company
 			      slamhound
 
 			      easy-kill
@@ -41,6 +38,8 @@
 			      emmet-mode
 
 			      expand-region
+
+			      geben
 
 			      helm
 			      helm-swoop
@@ -155,23 +154,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Clojure
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'ac-cider)
-(add-hook 'cider-mode-hook 'ac-cider-setup)
-(add-hook 'cider-repl-mode-hook 'ac-cider-setup)
 
-(eval-after-load "auto-complete"
-'(add-to-list 'ac-modes 'cider-mode))
-
-(require 'ac-cider-compliment)
-(add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-(add-hook 'cider-mode-hook 'ac-cider-compliment-setup)
-;;(add-hook 'cider-repl-mode-hook 'ac-cider-compliment-repl-setup)
-
-(require 'ac-nrepl)
-(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
-(add-hook 'cider-mode-hook 'ac-nrepl-setup)
+(global-company-mode)
 
 (require 'cider)
+
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(setq cider-repl-history-file "/home/fvaresi/.emacs.d/cider-repl-history")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; HTML
