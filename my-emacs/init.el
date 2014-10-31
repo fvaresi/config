@@ -1,5 +1,5 @@
 ;; Loading custom configuration
-(setq custom-file "/home/fvaresi/.emacs.d/custom-configuration.el")
+(setq custom-file "~/.emacs.d/custom-configuration.el")
 (load custom-file)
 
 (set-face-attribute 'default nil :font "DejaVu Sans Mono-9")
@@ -53,6 +53,7 @@
 
 			      php-mode
 			      php-auto-yasnippets
+			      php-refactor-mode
 
 			      popwin
 
@@ -87,8 +88,14 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+;; backup customizations
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+(setq tramp-backup-directory-alist backup-directory-alist)
+
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
+
+(setq delete-selection-mode t)
 
 (require 'helm)
 (helm-mode t)
@@ -119,7 +126,7 @@
 (push '("*helm M-x*" :height 0.5) popwin:special-display-config)
 (push '("*helm projectile*" :height 0.5) popwin:special-display-config)
 (push '("*helm etags*" :height 0.5) popwin:special-display-config)
-(push '("*Ack-and-a-half*" :height 0.25 :stick t) popwin:special-display-config)
+(push '("*Ack-and-a-half*" :height 0.5 :stick t) popwin:special-display-config)
 
 (projectile-global-mode)
 (setq projectile-enable-caching t)
@@ -128,6 +135,8 @@
 
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)		
+
+(setq initial-scratch-message nil)
 
 (require 'smart-mode-line)
 (sml/setup)
@@ -160,7 +169,7 @@
 (require 'cider)
 
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(setq cider-repl-history-file "/home/fvaresi/.emacs.d/cider-repl-history")
+(setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; HTML
@@ -174,7 +183,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PHP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq php-manual-path "/home/fvaresi/php-chunked-xhtml")
+(setq php-manual-path "~/php-chunked-xhtml")
 (add-hook 'php-mode-hook
  (lambda ()
    (define-key php-mode-map (kbd "C-.") 'er/expand-region)
@@ -195,10 +204,18 @@
  )
 )
 
+(setq geben-pause-at-entry-line nil)
+
 (require 'php-auto-yasnippets)
-(setq php-auto-yasnippet-php-program "/home/fvaresi/.emacs.d/elpa/php-auto-yasnippets-20140704.1242/Create-PHP-YASnippet.php")
+(setq php-auto-yasnippet-php-program "~/.emacs.d/elpa/php-auto-yasnippets-20140704.1242/Create-PHP-YASnippet.php")
 
+;; (require 'php-refactor-mode)
+;; (add-hook 'php-mode-hook 'php-refactor-mode)
+;; (setq php-refactor-command "refactor.phar")
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load custom bindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (load "~/.emacs.d/bindings")
+(put 'downcase-region 'disabled nil)
