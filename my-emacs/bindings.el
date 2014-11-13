@@ -19,7 +19,6 @@
 (global-unset-key (kbd "M-<down-mouse-1>"))
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
-(global-set-key (kbd "C-q") 'helm-swoop)
 (global-set-key (kbd "C-o") 'ace-jump-word-mode)
 
 (define-key isearch-mode-map (kbd "C-q") 'helm-swoop-from-isearch)

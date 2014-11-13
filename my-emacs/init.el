@@ -1,3 +1,11 @@
+;; Turn off mouse interface early in startup to avoid momentary display
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; No splash screen
+(setq inhibit-startup-screen t)
+
 ;; Loading custom configuration
 (setq custom-file "~/.emacs.d/custom-configuration.el")
 (load custom-file)
@@ -21,6 +29,8 @@
 			      ack-and-a-half
 
 			      browse-kill-ring
+			      
+			      conkeror-minor-mode
 
 			      clojure-mode
 			      clojure-snippets
@@ -31,6 +41,7 @@
 			      cider-spy
 			      company
 			      slamhound
+			      4clojure
 
 			      easy-kill
 			      easy-kill-extras
@@ -68,8 +79,12 @@
 			      smartparens
 
 			      solarized-theme
+
+			      twittering-mode
 			      
 			      undo-tree
+
+			      web-beautify
 
 			      window-number
 			      )))
@@ -77,7 +92,7 @@
       (when (not (package-installed-p p))
 	(package-install p)))))
 
-(gimme-my-packages)
+;;(gimme-my-packages)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations of installed packages
@@ -92,10 +107,14 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq tramp-backup-directory-alist backup-directory-alist)
 
+(setq browse-url-generic-program (executable-find "conkeror"))
+(setq browse-url-browser-function 'browse-url-generic)
+
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
 
 (setq delete-selection-mode t)
+(setq desktop-save-mode t)
 
 (require 'helm)
 (helm-mode t)
@@ -186,6 +205,8 @@
 (setq php-manual-path "~/php-chunked-xhtml")
 (add-hook 'php-mode-hook
  (lambda ()
+   (yas-minor-mode 1)
+   
    (define-key php-mode-map (kbd "C-.") 'er/expand-region)
    (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
    (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
@@ -214,8 +235,16 @@
 ;; (setq php-refactor-command "refactor.phar")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Twitter
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq twittering-user-master-password t)
+(setq twittering-icon-mode t)
+(setq twittering-edit-skeleton 'inherit-any)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load custom bindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (load "~/.emacs.d/bindings")
 (put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
