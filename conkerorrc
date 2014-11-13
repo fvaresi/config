@@ -1,0 +1,22 @@
+// *** BASE CONFIG ***
+require("favicon");
+require("gmail"); // enable shortcuts
+require("twitter");
+
+hint_digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+url_completion_use_history = true;
+
+// *** WEBJUMPS ***
+
+// jira
+define_webjump("jira", "http://jira.internetbrands.com/browse/ACOMM-%s")
+
+// mail
+define_webjump("gmail", "https://mail.google.com/mail/u/0/"); //primary account
+define_webjump("ib_mail", "https://gapps-sso.internetbrands.com/"); //secondary account
+
+// php
+define_webjump("php", "http://www.php.net/%s");
+
+// youtube
+define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
