@@ -19,6 +19,8 @@
 (global-unset-key (kbd "M-<down-mouse-1>"))
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
+(define-key global-map "\C-cc" 'org-capture)
+
 (global-set-key (kbd "C-o") 'ace-jump-word-mode)
 
 (define-key isearch-mode-map (kbd "C-q") 'helm-swoop-from-isearch)
@@ -41,3 +43,5 @@
 ;; (define-key emacs-lisp-mode-map (kbd "M-n") 'sp-next-sexp)
 ;; (define-key emacs-lisp-mode-map (kbd "M-p") 'sp-backward-sexp)
 ;; (define-key emacs-lisp-mode-map (kbd "M-u") 'sp-backward-up-sexp)
+
+;;(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)

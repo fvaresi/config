@@ -130,6 +130,10 @@
 
 (setq magit-use-overlays nil)
 
+;; org capture
+(setq org-directory "~/org/")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+
 (require 'perspective)
 (persp-mode)
 (require 'persp-projectile)
@@ -237,7 +241,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Twitter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq twittering-user-master-password t)
+(setq twittering-use-master-password t)
 (setq twittering-icon-mode t)
 (setq twittering-edit-skeleton 'inherit-any)
 
