@@ -1,3 +1,5 @@
+(global-set-key (kbd "C-j") 'emmet-expand-line)
+
 (global-set-key (kbd "M-j") 'jp-join-lines)
 
 ;; (define-key global-map (kbd "M-n") 'forward-sexp)
@@ -45,3 +47,5 @@
 ;; (define-key emacs-lisp-mode-map (kbd "M-u") 'sp-backward-up-sexp)
 
 ;;(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+
+(global-set-key (kbd "C-M-g") 'webjump)
