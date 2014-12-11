@@ -204,9 +204,10 @@ bindsym $mod+z [class="Conkeror"] scratchpad show
 bindsym $mod+u exec ~/bin/passmenu
 
 # Automatically start programs
+exec --no-startup-id "redshift-gtk"
 exec --no-startup-id "btsync"
 #exec --no-startup-id "feh --bg-center /media/datos/images/wallpapers/325141.jpg"
 exec --no-startup-id "nm-applet"
 #exec_always --no-startup-id "alarm-clock-applet"
-exec --no-startup-id "setxkbmap us -variant intl -option 'ctrl:nocaps'"
+exec --no-startup-id "setxkbmap us -variant intl -option 'ctrl:swapcaps'"
 exec_always --no-startup-id "unclutter -idle 3 -root"
