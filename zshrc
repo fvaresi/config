@@ -53,7 +53,7 @@ source /home/fvaresi/.bash_aliases
 
 # User configuration
 
-export PATH="/home/fvaresi/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/fvaresi/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/fvaresi/bin:/home/fvaresi/opt/android-sdk-linux/tools"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

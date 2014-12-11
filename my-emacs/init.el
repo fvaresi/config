@@ -28,6 +28,8 @@
 
 			      ack-and-a-half
 
+			      android-mode
+
 			      browse-kill-ring
 			      
 			      conkeror-minor-mode
@@ -49,6 +51,8 @@
 			      emmet-mode
 
 			      expand-region
+
+			      flycheck
 
 			      geben
 
@@ -77,6 +81,8 @@
 			      smart-mode-line
 
 			      smartparens
+
+			      smooth-scrolling
 
 			      solarized-theme
 
@@ -113,7 +119,7 @@
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
 
-(setq delete-selection-mode t)
+(delete-selection-mode t)
 (setq desktop-save-mode t)
 
 (require 'helm)
@@ -170,6 +176,8 @@
 (show-smartparens-global-mode t)
 (sp-use-paredit-bindings)
 
+(require 'smooth-scrolling)
+
 (global-undo-tree-mode t)
 
 (require 'window-number)
@@ -182,6 +190,12 @@
 (defun jp-join-lines ()
   (interactive)
   (join-line -1))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Android
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'android-mode)
+(custom-set-variables '(android-mode-sdk-dir "~/opt/android-sdk-linux"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Clojure
@@ -232,7 +246,7 @@
 (setq geben-pause-at-entry-line nil)
 
 (require 'php-auto-yasnippets)
-(setq php-auto-yasnippet-php-program "~/.emacs.d/elpa/php-auto-yasnippets-20140704.1242/Create-PHP-YASnippet.php")
+(setq php-auto-yasnippet-php-program "~/.emacs.d/elpa/php-auto-yasnippets-20141128.1411/Create-PHP-YASnippet.php")
 
 ;; (require 'php-refactor-mode)
 ;; (add-hook 'php-mode-hook 'php-refactor-mode)
