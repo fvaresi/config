@@ -1,6 +1,24 @@
 (global-set-key (kbd "C-j") 'emmet-expand-line)
 
-(global-set-key (kbd "M-j") 'jp-join-lines)
+(global-set-key (kbd "<C-return>")
+		(lambda ()
+		  (interactive)
+		  (end-of-line)
+		  (newline)
+		  (indent-for-tab-command)))
+
+(global-set-key (kbd "<C-S-return>")
+		(lambda ()
+		  (interactive)
+		  (beginning-of-line)
+		  (newline)
+		  (forward-line -1)
+		  (indent-for-tab-command)))
+
+(global-set-key (kbd "M-j")
+		(lambda ()
+		  (interactive)
+		  (join-line -1)))
 
 ;; (define-key global-map (kbd "M-n") 'forward-sexp)
 ;; (define-key global-map (kbd "M-p") 'backward-sexp)
