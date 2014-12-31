@@ -64,6 +64,21 @@
 ;; (define-key emacs-lisp-mode-map (kbd "M-p") 'sp-backward-sexp)
 ;; (define-key emacs-lisp-mode-map (kbd "M-u") 'sp-backward-up-sexp)
 
-;;(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 
 (global-set-key (kbd "C-M-g") 'webjump)
+
+
+(define-key notmuch-search-mode-map (kbd "g") 'notmuch-refresh-this-buffer)
+(define-key notmuch-hello-mode-map (kbd "g") 'notmuch-refresh-this-buffer)
+(define-key notmuch-search-mode-map "d" 'search-toggle-message-delete)
+(define-key notmuch-show-mode-map "d" 'show-toggle-message-delete)
+(define-key notmuch-search-mode-map "u" 'search-toggle-message-unread)
+(define-key notmuch-show-mode-map "u" 'show-toggle-message-unread)
+(define-key notmuch-show-mode-map "h" 'show-email-externally)
+(define-key notmuch-show-mode-map "H" 'show-email-externally-full-thread)
+(define-key notmuch-search-mode-map "r" 'reply-to-thread-sender-search)
+(define-key notmuch-show-mode-map "r" 'reply-to-thread-sender-show)
+(define-key notmuch-search-mode-map "R" 'reply-to-thread-search)
+(define-key notmuch-show-mode-map "R" 'reply-to-thread-show)
+(define-key notmuch-search-mode-map "T" 'notmuch-jump-to-tag)

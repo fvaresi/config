@@ -1,0 +1,64 @@
+[general]
+accounts = Gmail,Infuy,Internetbrands
+maxsyncaccounts = 4
+
+################################################## Gmail ##################################################
+[Account Gmail]
+autorefresh = 1
+postsynchook = ~/bin/offlineimap-postsync-gmail
+localrepository = GmailLocal
+remoterepository = GmailRemote
+
+[Repository GmailLocal]
+type = Maildir
+localfolders = ~/Mail/Gmail
+
+[Repository GmailRemote]
+type = Gmail
+remoteuser = fvaresi@gmail.com
+
+folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Sent Mail']
+
+nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
+			       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
+
+realdelete = no
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+################################################## Infuy ##################################################
+[Account Infuy]
+autorefresh = 1
+postsynchook = ~/bin/offlineimap-postsync-infuy
+localrepository = InfuyLocal
+remoterepository = InfuyRemote
+
+[Repository InfuyLocal]
+type = Maildir
+localfolders = ~/Mail/Infuy
+
+[Repository InfuyRemote]
+type = IMAP
+remoteuser = fernando@infuy.com
+remotehost = secure.emailsrvr.com
+
+################################################## Internet Brands ##################################################
+[Account Internetbrands]
+autorefresh = 1
+postsynchook = ~/bin/offlineimap-postsync-ib
+localrepository = IBLocal
+remoterepository = IBRemote
+
+[Repository IBLocal]
+type = Maildir
+localfolders = ~/Mail/Internetbrands
+
+[Repository IBRemote]
+type = Gmail
+remoteuser = fernando.varesi@vbulletin.com
+
+folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Sent Mail']
+
+nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
+	    	   	       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
+
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

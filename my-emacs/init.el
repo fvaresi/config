@@ -66,6 +66,8 @@
 
 			      multiple-cursors
 
+			      notmuch
+
 			      php-mode
 			      php-auto-yasnippets
 			      php-refactor-mode
@@ -77,6 +79,8 @@
 			      persp-projectile
 
 			      rainbow-delimiters
+
+			      restclient
 
 			      smart-mode-line
 
@@ -138,6 +142,7 @@
 
 ;; org capture
 (setq org-directory "~/org/")
+(setq org-mobile-directory "~/Dropbox/org-mobile")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (require 'perspective)
@@ -185,6 +190,65 @@
 (window-number-meta-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Window juggling
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun split-window-right-and-move-there-dammit ()
+  (interactive)
+  (split-window-right)
+  (windmove-right))
+
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
+
+(defun rotate-windows ()
+  "Rotate your windows"
+  (interactive)
+  (cond ((not (> (count-windows)1))
+         (message "You can't rotate a single window!"))
+        (t
+         (setq i 1)
+         (setq numWindows (count-windows))
+         (while  (< i numWindows)
+           (let* (
+                  (w1 (elt (window-list) i))
+                  (w2 (elt (window-list) (+ (% i numWindows) 1)))
+
+                  (b1 (window-buffer w1))
+                  (b2 (window-buffer w2))
+
+                  (s1 (window-start w1))
+                  (s2 (window-start w2))
+                  )
+             (set-window-buffer w1  b2)
+             (set-window-buffer w2 b1)
+             (set-window-start w1 s2)
+             (set-window-start w2 s1)
+             (setq i (1+ i)))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Android
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'android-mode)
@@ -200,6 +264,101 @@
 
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Email
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Use msmtp for sending mails
+(setq sendmail-program "/usr/bin/msmtp")
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq mail-specify-envelope-from t
+      ;; needed for debians message.el cf. README.Debian.gz
+      message-sendmail-f-is-evil nil
+      mail-envelope-from 'header
+      message-sendmail-envelope-from 'header)
+
+;; Address completion
+;; (require 'notmuch-address)
+;; (setq notmuch-address-command "/home/jmonetta/non-rep-software/notmuch-addrlookup/addrlookup")
+;; (notmuch-address-message-insinuate)
+
+(require 'notmuch)
+
+(defun search-toggle-message-delete ()
+  "toggle deleted tag for message"
+  (interactive)
+  (notmuch-search-tag
+   (list
+    (if (member "deleted" (notmuch-search-get-tags))
+	"-deleted" "+deleted"))))
+
+(defun show-toggle-message-delete ()
+  "toggle deleted tag for message"
+  (interactive)
+  (notmuch-show-tag
+   (list
+    (if (member "deleted" (notmuch-show-get-tags))
+	"-deleted" "+deleted"))))
+
+(defun show-toggle-message-unread ()
+  "toggle unread tag for message"
+  (interactive)
+  (notmuch-show-tag
+   (list
+    (if (member "unread" (notmuch-show-get-tags))
+	"-unread" "+unread"))))
+
+(defun search-toggle-message-unread ()
+  "toggle unread tag for message"
+  (interactive)
+  (notmuch-search-tag
+   (list
+    (if (member "unread" (notmuch-search-get-tags))
+	"-unread" "+unread"))))
+
+(defun reply-to-thread-show ()
+  (interactive)
+  (notmuch-show-reply 't))
+
+(defun reply-to-thread-sender-show ()
+  (interactive)
+  (notmuch-show-reply-sender 't))
+
+(defun reply-to-thread-search ()
+  (interactive)
+  (notmuch-search-reply-to-thread 't))
+
+(defun reply-to-thread-sender-search ()
+  (interactive)
+  (notmuch-search-reply-to-thread-sender 't))
+
+(defun switch-to-mail-persp ()
+  (interactive)
+  (persp-switch "mail")
+  (notmuch-search-unread))
+
+(defun notmuch-search-unread ()
+  (interactive)
+  (notmuch-search "tag:unread"))
+
+(defun notmuch-jump-to-tag ()
+  (interactive)
+  (let ((selected-tag (helm :sources `((name . "Tags")
+				       (candidates . ,(notmuch-tag-completions))
+				       (pattern-transformer . (lambda (pattern) (regexp-quote pattern)))
+				       (action . identity))
+			    :buffer "*email tags*"
+			    :keymap helm-buffer-map)))
+    (notmuch-search (concat "tag:" selected-tag))))
+
+(defun show-email-externally ()
+  (interactive)
+  (notmuch-show-pipe-message nil "view-html.sh"))
+
+(defun show-email-externally-full-thread ()
+  (interactive)
+  (notmuch-show-pipe-message 't "view-html.sh"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; HTML
@@ -221,7 +380,9 @@
    (define-key php-mode-map (kbd "C-.") 'er/expand-region)
    (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
    (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
-   (define-key php-mode-map (kbd "M-j") 'jp-join-lines)
+   (define-key php-mode-map (kbd "M-j") (lambda ()
+					  (interactive)
+					  (join-line -1)))
 
    (c-set-style "bsd")
    (setq c-basic-offset 4)
