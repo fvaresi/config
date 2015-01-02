@@ -279,9 +279,9 @@
       message-sendmail-envelope-from 'header)
 
 ;; Address completion
-;; (require 'notmuch-address)
-;; (setq notmuch-address-command "/home/jmonetta/non-rep-software/notmuch-addrlookup/addrlookup")
-;; (notmuch-address-message-insinuate)
+(require 'notmuch-address)
+(setq notmuch-address-command "/home/fvaresi/bin/goobook-notmuch")
+(notmuch-address-message-insinuate)
 
 (require 'notmuch)
 
