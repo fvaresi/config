@@ -284,6 +284,8 @@
 (notmuch-address-message-insinuate)
 
 (require 'notmuch)
+(setq notmuch-search-oldest-first nil)
+(setq message-kill-buffer-on-exit t)
 
 (defun search-toggle-message-delete ()
   "toggle deleted tag for message"
@@ -340,7 +342,7 @@
 
 (defun notmuch-search-unread ()
   (interactive)
-  (notmuch-search "tag:unread"))
+  (notmuch-search "tag:inbox"))
 
 (defun notmuch-jump-to-tag ()
   (interactive)

@@ -69,6 +69,7 @@
 (global-set-key (kbd "C-M-g") 'webjump)
 
 
+(define-key global-map (kbd "C-x x m") 'switch-to-mail-persp)
 (define-key notmuch-search-mode-map (kbd "g") 'notmuch-refresh-this-buffer)
 (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-refresh-this-buffer)
 (define-key notmuch-search-mode-map "d" 'search-toggle-message-delete)
