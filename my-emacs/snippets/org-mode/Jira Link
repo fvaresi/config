@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Jira Link
+# key: jira
+# type: snippet
+# --
+[[http://jira.internetbrands.com/browse/ACOMM-$1][$2]]
