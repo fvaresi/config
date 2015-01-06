@@ -415,6 +415,11 @@
 (setq twittering-icon-mode t)
 (setq twittering-edit-skeleton 'inherit-any)
 
+(defun switch-to-twitter-persp ()
+  (interactive)
+  (persp-switch "twitter")
+  (twit))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load custom bindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

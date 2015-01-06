@@ -83,3 +83,7 @@
 (define-key notmuch-search-mode-map "R" 'reply-to-thread-search)
 (define-key notmuch-show-mode-map "R" 'reply-to-thread-show)
 (define-key notmuch-search-mode-map "T" 'notmuch-jump-to-tag)
+
+(define-key global-map (kbd "C-x x t") 'switch-to-twitter-persp)
+
+(define-key global-map (kbd "<C-tab>") 'yas-expand-from-trigger-key)
