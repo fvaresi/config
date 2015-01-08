@@ -303,6 +303,22 @@
     (if (member "deleted" (notmuch-show-get-tags))
 	"-deleted" "+deleted"))))
 
+(defun search-toggle-message-inbox ()
+  "toggle inbox tag for message"
+  (interactive)
+  (notmuch-search-tag
+   (list
+    (if (member "inbox" (notmuch-search-get-tags))
+	"-inbox" "+inbox"))))
+
+(defun show-toggle-message-inbox ()
+  "toggle inbox tag for message"
+  (interactive)
+  (notmuch-show-tag
+   (list
+    (if (member "inbox" (notmuch-show-get-tags))
+	"-inbox" "+inbox"))))
+
 (defun show-toggle-message-unread ()
   "toggle unread tag for message"
   (interactive)
@@ -411,6 +427,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Twitter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'twittering-mode)
 (setq twittering-use-master-password t)
 (setq twittering-icon-mode t)
 (setq twittering-edit-skeleton 'inherit-any)

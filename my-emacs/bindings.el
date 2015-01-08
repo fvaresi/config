@@ -76,6 +76,8 @@
 (define-key notmuch-show-mode-map "d" 'show-toggle-message-delete)
 (define-key notmuch-search-mode-map "u" 'search-toggle-message-unread)
 (define-key notmuch-show-mode-map "u" 'show-toggle-message-unread)
+(define-key notmuch-search-mode-map "y" 'search-toggle-message-inbox)
+(define-key notmuch-show-mode-map "y" 'show-toggle-message-inbox)
 (define-key notmuch-show-mode-map "h" 'show-email-externally)
 (define-key notmuch-show-mode-map "H" 'show-email-externally-full-thread)
 (define-key notmuch-search-mode-map "r" 'reply-to-thread-sender-search)
@@ -85,5 +87,7 @@
 (define-key notmuch-search-mode-map "T" 'notmuch-jump-to-tag)
 
 (define-key global-map (kbd "C-x x t") 'switch-to-twitter-persp)
+(define-key twittering-mode-map (kbd "C-S-f") 'twittering-favorite)
+(define-key twittering-mode-map (kbd "C-S-r") 'twittering-native-retweet)
 
 (define-key global-map (kbd "<C-tab>") 'yas-expand-from-trigger-key)
