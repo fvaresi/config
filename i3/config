@@ -200,7 +200,7 @@ bindsym $mod+i [class="Emacs*"] focus
 bindsym $mod+m [class="Vlc"] scratchpad show
 bindsym $mod+c [class="Google-chrome|Chromium-browser"] scratchpad show
 bindsym $mod+n [class="com-sonicwall-NetExtender"] scratchpad show
-bindsym $mod+z [class="Conkeror"] scratchpad show
+bindsym $mod+z [class="Conkeror|Iceweasel"] scratchpad show
 bindsym $mod+u exec ~/bin/passmenu
 
 # Automatically start programs
