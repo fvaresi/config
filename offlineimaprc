@@ -61,4 +61,5 @@ folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Se
 nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
 	    	   	       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
 
+realdelete = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt

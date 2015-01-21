@@ -272,6 +272,7 @@
 ;; Use msmtp for sending mails
 (setq sendmail-program "/usr/bin/msmtp")
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq message-fill-column nil)
 (setq mail-specify-envelope-from t
       ;; needed for debians message.el cf. README.Debian.gz
       message-sendmail-f-is-evil nil
@@ -284,6 +285,7 @@
 (notmuch-address-message-insinuate)
 
 (require 'notmuch)
+(setq notmuch-always-prompt-for-sender t)
 (setq notmuch-search-oldest-first nil)
 (setq message-kill-buffer-on-exit t)
 
@@ -301,6 +303,14 @@
   (notmuch-show-tag
    (list
     (if (member "deleted" (notmuch-show-get-tags))
+	"-deleted" "+deleted"))))
+
+(defun tree-toggle-message-delete ()
+  "toggle deleted tag for message"
+  (interactive)
+  (notmuch-tree-tag
+   (list
+    (if (member "deleted" (notmuch-tree-get-tags))
 	"-deleted" "+deleted"))))
 
 (defun search-toggle-message-inbox ()
