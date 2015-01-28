@@ -313,6 +313,14 @@
     (if (member "deleted" (notmuch-tree-get-tags))
 	"-deleted" "+deleted"))))
 
+(defun tree-toggle-thread-delete ()
+  "toggle deleted tag for thread"
+  (interactive)
+  (notmuch-tree-tag-thread
+   (list
+    (if (member "deleted" (notmuch-tree-get-tags))
+	"-deleted" "+deleted"))))
+
 (defun search-toggle-message-inbox ()
   "toggle inbox tag for message"
   (interactive)
@@ -329,8 +337,8 @@
     (if (member "inbox" (notmuch-show-get-tags))
 	"-inbox" "+inbox"))))
 
-(defun tree-toggle-message-inbox ()
-  "toggle inbox tag for message"
+(defun tree-toggle-thread-inbox ()
+  "toggle inbox tag for thread"
   (interactive)
   (notmuch-tree-tag-thread
    (list
