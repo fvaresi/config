@@ -329,6 +329,14 @@
     (if (member "inbox" (notmuch-show-get-tags))
 	"-inbox" "+inbox"))))
 
+(defun tree-toggle-message-inbox ()
+  "toggle inbox tag for message"
+  (interactive)
+  (notmuch-tree-tag-thread
+   (list
+    (if (member "inbox" (notmuch-tree-get-tags))
+	"-inbox" "+inbox"))))
+
 (defun show-toggle-message-unread ()
   "toggle unread tag for message"
   (interactive)
