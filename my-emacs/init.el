@@ -24,6 +24,7 @@
 (defun gimme-my-packages ()
   (interactive)
   (let (( required-packages '(
+			      ace-isearch
 			      ace-jump-mode
 
 			      ack-and-a-half
@@ -114,6 +115,8 @@
 
 (require 'auto-complete-config)
 (ac-config-default)
+
+(global-ace-isearch-mode +1)
 
 ;; backup customizations
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
@@ -254,7 +257,7 @@
 ;;; Android
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'android-mode)
-(custom-set-variables '(android-mode-sdk-dir "~/opt/android-sdk-linux"))
+(setq android-mode-sdk-dir "~/opt/android-sdk-linux")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Clojure
