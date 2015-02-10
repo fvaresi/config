@@ -68,6 +68,8 @@
 
 			      notmuch
 
+			      paradox
+
 			      php-mode
 			      php-auto-yasnippets
 			      php-refactor-mode
