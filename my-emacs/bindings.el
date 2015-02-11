@@ -74,6 +74,7 @@
 (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-refresh-this-buffer)
 (define-key notmuch-search-mode-map "d" 'search-toggle-message-delete)
 (define-key notmuch-show-mode-map "d" 'show-toggle-message-delete)
+(define-key notmuch-show-mode-map "D" 'show-toggle-thread-delete)
 (define-key notmuch-tree-mode-map "d" 'tree-toggle-message-delete)
 (define-key notmuch-tree-mode-map "D" 'tree-toggle-thread-delete)
 (define-key notmuch-search-mode-map "u" 'search-toggle-message-unread)

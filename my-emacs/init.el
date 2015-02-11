@@ -310,6 +310,14 @@
     (if (member "deleted" (notmuch-show-get-tags))
 	"-deleted" "+deleted"))))
 
+(defun show-toggle-thread-delete ()
+  "toggle deleted tag for message"
+  (interactive)
+  (notmuch-show-tag-all
+   (list
+    (if (member "deleted" (notmuch-show-get-tags))
+	"-deleted" "+deleted"))))
+
 (defun tree-toggle-message-delete ()
   "toggle deleted tag for message"
   (interactive)
