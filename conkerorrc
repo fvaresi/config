@@ -9,7 +9,7 @@ url_completion_use_history = true;
 // *** WEBJUMPS ***
 
 // jira
-define_webjump("jira", "http://jira.internetbrands.com/browse/ACOMM-%s")
+define_webjump("jira", "http://jira.internetbrands.com/browse/ACES-%s")
 
 // mail
 define_webjump("gmail", "https://mail.google.com/mail/u/0/"); //primary account

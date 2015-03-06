@@ -150,6 +150,8 @@
 (setq org-mobile-directory "~/Dropbox/org-mobile")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
+(setq paradox-automatically-star t)
+
 (require 'perspective)
 (persp-mode)
 (require 'persp-projectile)
@@ -302,6 +304,14 @@
     (if (member "deleted" (notmuch-search-get-tags))
 	"-deleted" "+deleted"))))
 
+(defun search-toggle-delete-all()
+  "toggle deleted tag for all message"
+  (interactive)
+  (notmuch-search-tag-all
+   (list
+    (if (member "deleted" (notmuch-search-get-tags))
+	"-deleted" "+deleted"))))
+
 (defun show-toggle-message-delete ()
   "toggle deleted tag for message"
   (interactive)
@@ -333,6 +343,30 @@
    (list
     (if (member "deleted" (notmuch-tree-get-tags))
 	"-deleted" "+deleted"))))
+
+(defun search-toggle-message-fav ()
+  "toggle deleted tag for message"
+  (interactive)
+  (notmuch-search-tag
+   (list
+    (if (member "flagged" (notmuch-search-get-tags))
+	"-flagged" "+flagged"))))
+
+(defun show-toggle-message-fav ()
+  "toggle deleted tag for message"
+  (interactive)
+  (notmuch-show-tag
+   (list
+    (if (member "flagged" (notmuch-show-get-tags))
+	"-flagged" "+flagged"))))
+
+(defun tree-toggle-message-fav ()
+  "toggle deleted tag for message"
+  (interactive)
+  (notmuch-tree-tag
+   (list
+    (if (member "flagged" (notmuch-tree-get-tags))
+	"-flagged" "+flagged"))))
 
 (defun search-toggle-message-inbox ()
   "toggle inbox tag for message"
@@ -483,3 +517,4 @@
 (load "~/.emacs.d/bindings")
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
