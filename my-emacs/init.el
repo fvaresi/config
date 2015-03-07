@@ -113,8 +113,8 @@
 
 (load-theme 'solarized-dark t)
 
-(require 'auto-complete-config)
-(ac-config-default)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 
 (global-ace-isearch-mode +1)
 
