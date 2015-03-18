@@ -172,6 +172,7 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-file-exists-remote-cache-expire nil)
+(setq projectile-svn-command "find . -type f -print0")
 (setq projectile-switch-project-action 'helm-projectile)
 
 (require 'rainbow-delimiters)
