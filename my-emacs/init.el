@@ -296,6 +296,7 @@
 (setq notmuch-always-prompt-for-sender t)
 (setq notmuch-search-oldest-first nil)
 (setq message-kill-buffer-on-exit t)
+(setq notmuch-multipart/alternative-discouraged '("text/plain" "text/html"))
 
 (defun search-toggle-message-delete ()
   "toggle deleted tag for message"
