@@ -16,3 +16,8 @@ alias egrep='egrep --color=auto --exclude-dir=.svn --exclude="*.sql"'
 
 alias e='emacsclient -nw'
 alias E='sudo -e'
+
+alias t="tree -L 1"
+alias tt="tree -L 2"
+alias ttt="tree -L 3"
+alias tttt="tree -L 4"

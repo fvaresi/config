@@ -171,7 +171,9 @@ bar {
 focus_follows_mouse no
 
 # Move workspaces to different output
+bindsym Control+Mod1+Down move workspace to output down
 bindsym Control+Mod1+Left move workspace to output left
+bindsym Control+Mod1+Up move workspace to output up
 bindsym Control+Mod1+Right move workspace to output right
 
 # Lock screen as in Unity
@@ -196,7 +198,7 @@ for_window [window_role="pop-up"] floating enable
 # Key bindings for favorite apps
 bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
 bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scratchpad show
-bindsym $mod+i [class="Emacs*"] focus
+bindsym $mod+i [class="Emacs*"] scratchpad show
 bindsym $mod+m [class="Vlc"] scratchpad show
 bindsym $mod+c [class="Google-chrome|Chromium-browser"] scratchpad show
 bindsym $mod+n [class="com-sonicwall-NetExtender"] scratchpad show

@@ -57,6 +57,8 @@
 
 			      geben
 
+			      gh-md
+			      
 			      helm
 			      helm-swoop
 			      helm-projectile
@@ -173,7 +175,8 @@
 (setq projectile-enable-caching t)
 (setq projectile-file-exists-remote-cache-expire nil)
 (setq projectile-svn-command "find . -type f -print0")
-(setq projectile-switch-project-action 'helm-projectile)
+;;(setq projectile-switch-project-action 'helm-projectile)
+(setq projectile-switch-project-action 'projectile-dired)
 
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)		
@@ -490,7 +493,7 @@
  )
 )
 
-(setq geben-pause-at-entry-line nil)
+(setq geben-pause-at-entry-line t)
 
 (require 'php-auto-yasnippets)
 (setq php-auto-yasnippet-php-program "~/.emacs.d/elpa/php-auto-yasnippets-20141128.1411/Create-PHP-YASnippet.php")
