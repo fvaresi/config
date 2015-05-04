@@ -164,8 +164,8 @@ bar {
 
 	# bar only in laptop and on top
 	position top
-	output LVDS-1
-	tray_output LVDS-1
+	# output LVDS-1
+	tray_output primary
 }
 
 focus_follows_mouse no
