@@ -99,3 +99,8 @@
 (define-key twittering-mode-map (kbd "C-S-r") 'twittering-native-retweet)
 
 (define-key global-map (kbd "<C-tab>") 'yas-expand-from-trigger-key)
+
+(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
+(global-set-key (kbd "M-t l") 'transpose-lines)
+(global-set-key (kbd "M-t s") 'transpose-sexps)
+(global-set-key (kbd "M-t w") 'transpose-words)
