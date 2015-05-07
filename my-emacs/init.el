@@ -118,7 +118,7 @@
 ;; (require 'auto-complete-config)
 ;; (ac-config-default)
 
-(global-ace-isearch-mode +1)
+;;(global-ace-isearch-mode +1)
 
 ;; backup customizations
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
