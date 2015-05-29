@@ -23,6 +23,8 @@
 ;; (define-key global-map (kbd "M-n") 'forward-sexp)
 ;; (define-key global-map (kbd "M-p") 'backward-sexp)
 
+(global-set-key (kbd "C-2") 'duplicate-current-line-or-region)
+
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
@@ -104,3 +106,7 @@
 (global-set-key (kbd "M-t l") 'transpose-lines)
 (global-set-key (kbd "M-t s") 'transpose-sexps)
 (global-set-key (kbd "M-t w") 'transpose-words)
+
+
+(global-set-key (kbd "M-(") 'paredit-wrap-sexp)
+(global-set-key (kbd "M-U") 'paredit-splice-sexp-killing-backward)
