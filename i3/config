@@ -170,11 +170,19 @@ bar {
 
 focus_follows_mouse no
 
+bindsym Mod1+Tab workspace back_and_forth
+
 # Move workspaces to different output
 bindsym Control+Mod1+Down move workspace to output down
 bindsym Control+Mod1+Left move workspace to output left
 bindsym Control+Mod1+Up move workspace to output up
 bindsym Control+Mod1+Right move workspace to output right
+
+# Move to different output
+bindsym $mod+Control+j focus output down
+bindsym $mod+Control+h focus output left
+bindsym $mod+Control+k focus output up
+bindsym $mod+Control+l focus output right
 
 # Lock screen as in Unity
 #bindsym Control+Mod1+l exec "gnome-screensaver-command -l"
