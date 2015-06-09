@@ -33,6 +33,9 @@ workspace_layout stacking
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start an emacs
+bindsym $mod+Shift+Return exec emacs
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -162,9 +165,7 @@ bindsym $mod+r mode "resize"
 bar {
 	status_command py3status -c ~/.i3/i3status.conf -i ~/.i3/py3status/
 
-	# bar only in laptop and on top
 	position top
-	# output LVDS-1
 	tray_output primary
 }
 
