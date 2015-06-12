@@ -46,6 +46,8 @@
 			      slamhound
 			      4clojure
 
+			      diff-hl
+			      
 			      easy-kill
 			      easy-kill-extras
 
@@ -58,6 +60,8 @@
 			      geben
 
 			      gh-md
+			      
+			      hydra
 			      
 			      helm
 			      helm-swoop
@@ -96,6 +100,8 @@
 			      smooth-scrolling
 
 			      solarized-theme
+			      
+			      swiper
 
 			      twittering-mode
 			      
@@ -144,6 +150,9 @@
 (setq helm-swoop-split-direction 'split-window-horizontally)
 (setq helm-swoop-speed-or-color nil)
 
+(require 'hydra)
+
+(require 'ivy)
 ;; fix dead keys
 ;;(require 'iso-transl)
 
@@ -204,6 +213,8 @@
 (require 'window-number)
 (window-number-mode 1)
 (window-number-meta-mode 1)
+
+(winner-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Magic editing
@@ -308,6 +319,7 @@ If there's no region, the current line will be duplicated."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'android-mode)
 (setq android-mode-sdk-dir "~/opt/android-sdk-linux")
+(setq android-mode-builder 'gradle)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Clojure
@@ -341,8 +353,14 @@ If there's no region, the current line will be duplicated."
 
 (require 'notmuch)
 (setq notmuch-always-prompt-for-sender t)
+(setq notmuch-crypto-process-mime t)
 (setq notmuch-search-oldest-first nil)
 (setq message-kill-buffer-on-exit t)
+
+;; Sign messages by default.
+;; (add-hook 'message-setup-hook 'mml-secure-message-sign)
+
+;; this gives preference to text/html over text/plain
 ;;(setq notmuch-multipart/alternative-discouraged '("text/plain" "text/html"))
 
 (defun search-toggle-message-delete ()
@@ -537,7 +555,10 @@ If there's no region, the current line will be duplicated."
  )
 )
 
-(setq geben-pause-at-entry-line t)
+(setq geben-display-window-function 'switch-to-buffer)
+(setq geben-pause-at-entry-line nil)
+(setq geben-show-breakpoints-debugging-only nil)
+(setq geben-source-coding-system 'iso-8859-1)
 
 (require 'php-auto-yasnippets)
 (setq php-auto-yasnippet-php-program "~/.emacs.d/elpa/php-auto-yasnippets-20141128.1411/Create-PHP-YASnippet.php")
@@ -552,6 +573,7 @@ If there's no region, the current line will be duplicated."
 (setq sql-mysql-login-params
       '((user :default "forum")
 	(password)
+	(database)
 	(server :default "localhost")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
