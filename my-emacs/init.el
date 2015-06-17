@@ -6,10 +6,19 @@
 ;; No splash screen
 (setq inhibit-startup-screen t)
 
+;; Set path to dependencies
+(setq settings-dir
+      (expand-file-name "settings" user-emacs-directory))
+
+;; Set up load path
+(add-to-list 'load-path settings-dir)
+
 ;; Loading custom configuration
-(setq custom-file "~/.emacs.d/custom-configuration.el")
+(setq custom-file (expand-file-name "custom-configuration.el" user-emacs-directory))
 (load custom-file)
 
+;; ;; Set up appearance early
+;; (require 'appearance)
 (set-face-attribute 'default nil :font "DejaVu Sans Mono-9")
 
 ;; Package managing
@@ -153,6 +162,9 @@
 (require 'hydra)
 
 (require 'ivy)
+
+(setq-default ispell-program-name "aspell")
+
 ;; fix dead keys
 ;;(require 'iso-transl)
 
@@ -160,6 +172,7 @@
 ;;(require 'ox-confluence)
 
 (setq magit-use-overlays nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; org capture
 (setq org-directory "~/org/")
