@@ -17,125 +17,15 @@
 (setq custom-file (expand-file-name "custom-configuration.el" user-emacs-directory))
 (load custom-file)
 
-;; ;; Set up appearance early
-;; (require 'appearance)
-(set-face-attribute 'default nil :font "DejaVu Sans Mono-9")
-
 ;; Package managing
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
+(require 'setup-package)
 
-(package-initialize)
-
-(defun gimme-my-packages ()
-  (interactive)
-  (let (( required-packages '(
-			      ace-isearch
-			      ace-jump-mode
-
-			      ack-and-a-half
-
-			      android-mode
-
-			      browse-kill-ring
-			      
-			      conkeror-minor-mode
-
-			      clojure-mode
-			      clojure-snippets
-			      clojurescript-mode
-			      clj-refactor
-			      cider
-			      cider-decompile
-			      cider-spy
-			      company
-			      slamhound
-			      4clojure
-
-			      diff-hl
-			      
-			      easy-kill
-			      easy-kill-extras
-
-			      emmet-mode
-
-			      expand-region
-
-			      flycheck
-
-			      geben
-
-			      gh-md
-			      
-			      hydra
-			      
-			      helm
-			      helm-swoop
-			      helm-projectile
-
-			      json-mode
-
-			      magit
-
-			      multiple-cursors
-
-			      notmuch
-
-			      paradox
-
-			      paredit
-
-			      php-mode
-			      php-auto-yasnippets
-			      php-refactor-mode
-
-			      popwin
-
-			      perspective
-			      projectile
-			      persp-projectile
-
-			      rainbow-delimiters
-
-			      restclient
-
-			      smart-mode-line
-
-			      smartparens
-
-			      smooth-scrolling
-
-			      solarized-theme
-			      
-			      swiper
-
-			      twittering-mode
-			      
-			      undo-tree
-
-			      web-beautify
-
-			      window-number
-			      )))
-    (dolist (p required-packages)
-      (when (not (package-installed-p p))
-	(package-install p)))))
-
-;;(gimme-my-packages)
+;; Set up appearance early
+(require 'appearance)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations of installed packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(load-theme 'solarized-dark t)
-
-;; (require 'auto-complete-config)
-;; (ac-config-default)
-
-;;(global-ace-isearch-mode +1)
 
 ;; backup & autosave customizations
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -161,6 +51,8 @@
 
 (require 'hydra)
 
+(setq initial-scratch-message nil)
+
 (require 'ivy)
 
 (setq-default ispell-program-name "aspell")
@@ -168,16 +60,10 @@
 ;; fix dead keys
 ;;(require 'iso-transl)
 
-;; export org files to confluence
-;;(require 'ox-confluence)
-
 (setq magit-use-overlays nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
 
-;; org capture
-(setq org-directory "~/org/")
-(setq org-mobile-directory "~/Dropbox/org-mobile")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(require 'setup-org)
 
 (setq paradox-automatically-star t)
 
@@ -208,7 +94,10 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)		
 
-(setq initial-scratch-message nil)
+;; Save point position between sessions
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
 (require 'smart-mode-line)
 (sml/setup)
