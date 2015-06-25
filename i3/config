@@ -201,6 +201,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Default commands for windows
+for_window [class="Meld"] fullscreen enable
 for_window [class="Pidgin|Skype"] floating enable
 for_window [window_role="pop-up"] floating enable
 
