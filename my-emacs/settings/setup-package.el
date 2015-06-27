@@ -47,6 +47,8 @@
 			      geben
 
 			      gh-md
+
+			      gnus-alias
 			      
 			      hydra
 			      

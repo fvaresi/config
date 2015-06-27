@@ -1,4 +1,7 @@
-;; Use msmtp for sending mails
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Use msmtp for sending mails ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (setq sendmail-program "/usr/bin/msmtp")
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
 (setq message-fill-column nil)
@@ -8,7 +11,48 @@
       mail-envelope-from 'header
       message-sendmail-envelope-from 'header)
 
-;; Address completion
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Multiple identities using gnus-alias ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'gnus-alias)
+(setq gnus-alias-identity-alist
+      '(("personal"
+	 nil
+	 "Fernando Varesi <fvaresi@gmail.com>"
+	 nil
+	 nil
+	 nil
+	 "~/.signature")
+	("infuy"
+	 nil
+	 "Fernando Varesi <fernando@infuy.com>"
+	 "Infuy"
+	 nil
+	 nil
+	 nil)
+	("internetbrands"
+	 nil
+	 "Fernando Varesi <fernando.varesi@vbulletin.com"
+	 "Internet Brands (Autocomm)"
+	 nil
+	 nil
+	 nil)))
+(setq gnus-alias-default-identity "personal")
+(setq gnus-alias-identity-rules
+      '(("internetbrands" ("any" "(internetbrands\.com|vbulletin\.com)" both) "internetbrands")
+	("infuy" ("any" "infuy\.com" both) "infuy")))
+
+(defun my-message-load-hook ()
+  (gnus-alias-init))
+
+(add-hook 'message-load-hook 'my-message-load-hook)
+(add-hook 'message-setup-hook 'gnus-alias-determine-identity)
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; Address completion ;;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
 (require 'notmuch-address)
 (setq notmuch-address-command "/home/fvaresi/bin/goobook-notmuch")
 (notmuch-address-message-insinuate)
