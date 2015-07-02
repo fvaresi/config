@@ -111,11 +111,6 @@
 (global-set-key (kbd "M-(") 'paredit-wrap-sexp)
 (global-set-key (kbd "M-U") 'paredit-splice-sexp-killing-backward)
 
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "C-r") 'swiper)
-(global-set-key [f6] 'ivy-resume)
-(define-key ivy-minibuffer-map (kbd "C-w") 'ivy-yank-word)
-
 (defhydra hydra-diff-hl (global-map "<f12>")
   "diff-hl"
   ("n" diff-hl-next-hunk)

@@ -53,8 +53,6 @@
 
 (setq initial-scratch-message nil)
 
-(require 'ivy)
-
 (setq-default ispell-program-name "aspell")
 
 ;; fix dead keys

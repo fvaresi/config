@@ -90,8 +90,6 @@
 
 			      solarized-theme
 			      
-			      swiper
-
 			      twittering-mode
 			      
 			      undo-tree
