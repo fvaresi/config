@@ -11,6 +11,11 @@
       mail-envelope-from 'header
       message-sendmail-envelope-from 'header)
 
+;;;;;;;;;;;;;;
+;; Flyspell ;;
+;;;;;;;;;;;;;;
+(add-hook 'message-mode-hook (lambda () (flyspell-mode t)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Multiple identities using gnus-alias ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -215,13 +220,5 @@
 			    :buffer "*email tags*"
 			    :keymap helm-buffer-map)))
     (notmuch-search (concat "tag:" selected-tag))))
-
-;; (defun show-email-externally ()
-;;   (interactive)
-;;   (notmuch-show-pipe-message nil "view-html.sh"))
-
-;; (defun show-email-externally-full-thread ()
-;;   (interactive)
-;;   (notmuch-show-pipe-message 't "view-html.sh"))
 
 (provide 'setup-email)
