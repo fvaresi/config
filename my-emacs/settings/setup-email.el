@@ -45,7 +45,8 @@
 	 nil)))
 (setq gnus-alias-default-identity "personal")
 (setq gnus-alias-identity-rules
-      '(("internetbrands" ("any" "(internetbrands\.com|vbulletin\.com)" both) "internetbrands")
+      '(("internetbrands" ("any" "internetbrands\.com" both) "internetbrands")
+	("vbulletin" ("any" "vbulletin\.com" both) "internetbrands")
 	("infuy" ("any" "infuy\.com" both) "infuy")))
 
 (defun my-message-load-hook ()
