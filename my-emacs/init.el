@@ -46,6 +46,7 @@
 (require 'helm)
 (helm-mode t)
 
+(setq helm-mode-fuzzy-match t)
 (setq helm-swoop-split-direction 'split-window-horizontally)
 (setq helm-swoop-speed-or-color nil)
 
@@ -57,6 +58,10 @@
 
 ;; fix dead keys
 ;;(require 'iso-transl)
+
+(require 'guide-key)
+(setq guide-key/guide-key-sequence '("C-x r"))
+(guide-key-mode 1)
 
 (setq magit-use-overlays nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
@@ -229,7 +234,7 @@ If there's no region, the current line will be duplicated."
 
 (require 'cider)
 
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook #'eldoc-mode)
 (setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

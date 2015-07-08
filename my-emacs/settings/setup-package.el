@@ -50,6 +50,8 @@
 
 			      gnus-alias
 			      
+			      guide-key
+			      
 			      hydra
 			      
 			      helm
