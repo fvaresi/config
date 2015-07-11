@@ -1,5 +1,8 @@
-(global-set-key (kbd "C-j") 'emmet-expand-line)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; some editing bindings ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Adding empty lines
 (global-set-key (kbd "<C-return>")
 		(lambda ()
 		  (interactive)
@@ -15,6 +18,9 @@
 		  (forward-line -1)
 		  (indent-for-tab-command)))
 
+;; joining and splitting lines
+(global-set-key (kbd "C-j") 'emmet-expand-line)
+
 (global-set-key (kbd "M-j")
 		(lambda ()
 		  (interactive)
@@ -25,38 +31,38 @@
 
 (global-set-key (kbd "C-2") 'duplicate-current-line-or-region)
 
+;; transposing functions
+(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
+(global-set-key (kbd "M-t l") 'transpose-lines)
+(global-set-key (kbd "M-t s") 'transpose-sexps)
+(global-set-key (kbd "M-t w") 'transpose-words)
+
+(define-key global-map (kbd "<C-tab>") 'yas-expand-from-trigger-key)
+
+(global-set-key [remap kill-ring-save] 'easy-kill)
+(global-set-key [remap mark-sexp] 'easy-mark)
+
+(global-set-key (kbd "M-/") 'comment-or-uncomment-region)
+
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
-(global-set-key (kbd "C-.") 'er/expand-region)
-(global-set-key (kbd "C-,") 'er/contract-region)
-
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-S-l") 'helm-locate)
-(global-set-key (kbd "C-S-g") 'helm-projectile-grep)
-(global-set-key (kbd "C-S-h") 'helm-projectile)
-
-(global-unset-key (kbd "M-<down-mouse-1>"))
-(global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
-
-(define-key global-map "\C-cc" 'org-capture)
+;;;;;;;;;;;;;;;;;;;;;;;
+;; navigation sanity ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "M-o") 'mode-line-other-buffer)
+;;(global-set-key (kbd "C-S-w") 'toggle-window-split)
+(global-set-key (kbd "C-S-r") 'rotate-windows)
 
 (global-set-key (kbd "C-o") 'ace-jump-word-mode)
 
 (define-key isearch-mode-map (kbd "C-q") 'helm-swoop-from-isearch)
 
-(global-set-key [remap kill-ring-save] 'easy-kill)
-(global-set-key [remap mark-sexp] 'easy-mark)
+(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 
-(global-set-key (kbd "C-|") 'mc/mark-next-like-this)
-
-;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-;; (define-key dired-mode-map (kbd "h") 'dired-dotfiles-toggle)
+(global-set-key (kbd "C-M-g") 'webjump)
 
 ;; (global-set-key (kbd "C-x C-0") 'kill-buffer-and-window)
-(global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
 ;; (define-key clojure-mode-map (kbd "M-n") 'sp-next-sexp)
 ;; (define-key clojure-mode-map (kbd "M-p") 'sp-backward-sexp)
@@ -66,12 +72,53 @@
 ;; (define-key emacs-lisp-mode-map (kbd "M-p") 'sp-backward-sexp)
 ;; (define-key emacs-lisp-mode-map (kbd "M-u") 'sp-backward-up-sexp)
 
-(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+;;;;;;;;;;;
+;; dired ;;
+;;;;;;;;;;;
 
-(global-set-key (kbd "C-M-g") 'webjump)
+;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+;; (define-key dired-mode-map (kbd "h") 'dired-dotfiles-toggle)
 
+;;;;;;;;;;;;;;;;;;;
+;; expand region ;;
+;;;;;;;;;;;;;;;;;;;
 
-(define-key global-map (kbd "C-x x m") 'switch-to-mail-persp)
+(global-set-key (kbd "C-.") 'er/expand-region)
+(global-set-key (kbd "C-,") 'er/contract-region)
+
+;;;;;;;;;;
+;; helm ;;
+;;;;;;;;;;
+
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-S-l") 'helm-locate)
+(global-set-key (kbd "C-S-g") 'helm-projectile-grep)
+(global-set-key (kbd "C-S-h") 'helm-projectile)
+
+;;;;;;;;;;;
+;; hydra ;;
+;;;;;;;;;;;
+
+(defhydra hydra-diff-hl (global-map "<f12>")
+  "diff-hl"
+  ("n" diff-hl-next-hunk)
+  ("p" diff-hl-previous-hunk)
+  ("v" diff-hl-diff-goto-hunk))
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; multiple cursors ;;
+;;;;;;;;;;;;;;;;;;;;;;
+
+(global-unset-key (kbd "M-<down-mouse-1>"))
+(global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
+(global-set-key (kbd "C-|") 'mc/mark-next-like-this)
+
+;;;;;;;;;;;;;
+;; notmuch ;;
+;;;;;;;;;;;;;
+
 (define-key notmuch-search-mode-map (kbd "g") 'notmuch-refresh-this-buffer)
 (define-key notmuch-hello-mode-map (kbd "g") 'notmuch-refresh-this-buffer)
 (define-key notmuch-search-mode-map "d" 'search-toggle-message-delete)
@@ -96,23 +143,30 @@
 (define-key notmuch-show-mode-map "R" 'reply-to-thread-show)
 (define-key notmuch-search-mode-map "T" 'notmuch-jump-to-tag)
 
-(define-key global-map (kbd "C-x x t") 'switch-to-twitter-persp)
-(define-key twittering-mode-map (kbd "C-S-f") 'twittering-favorite)
-(define-key twittering-mode-map (kbd "C-S-r") 'twittering-native-retweet)
+;;;;;;;;;;;;;;
+;; org mode ;;
+;;;;;;;;;;;;;;
 
-(define-key global-map (kbd "<C-tab>") 'yas-expand-from-trigger-key)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cc" 'org-capture)
 
-(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
-(global-set-key (kbd "M-t l") 'transpose-lines)
-(global-set-key (kbd "M-t s") 'transpose-sexps)
-(global-set-key (kbd "M-t w") 'transpose-words)
-
+;;;;;;;;;;;;;
+;; paredit ;;
+;;;;;;;;;;;;;
 
 (global-set-key (kbd "M-(") 'paredit-wrap-sexp)
 (global-set-key (kbd "M-U") 'paredit-splice-sexp-killing-backward)
 
-(defhydra hydra-diff-hl (global-map "<f12>")
-  "diff-hl"
-  ("n" diff-hl-next-hunk)
-  ("p" diff-hl-previous-hunk)
-  ("v" diff-hl-diff-goto-hunk))
+;;;;;;;;;;;;;;;;;
+;; perspective ;;
+;;;;;;;;;;;;;;;;;
+
+(define-key global-map (kbd "C-x x m") 'switch-to-mail-persp)
+(define-key global-map (kbd "C-x x t") 'switch-to-twitter-persp)
+
+;;;;;;;;;;;;;;;;
+;; twittering ;;
+;;;;;;;;;;;;;;;;
+
+(define-key twittering-mode-map (kbd "C-S-f") 'twittering-favorite)
+(define-key twittering-mode-map (kbd "C-S-r") 'twittering-native-retweet)
