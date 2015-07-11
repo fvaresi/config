@@ -60,7 +60,7 @@
 ;;(require 'iso-transl)
 
 (require 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x r"))
+(setq guide-key/guide-key-sequence '("C-x r" "C-x v"))
 (guide-key-mode 1)
 
 (setq magit-use-overlays nil)
@@ -234,8 +234,19 @@ If there's no region, the current line will be duplicated."
 
 (require 'cider)
 
-(add-hook 'cider-mode-hook #'eldoc-mode)
 (setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
+(setq nrepl-sync-request-timeout 40) ;; Since boot takes some time to load, cider must wait for it...
+
+(require 'clj-refactor)
+
+(defun my-clojure-mode-hook ()
+  (eldoc-mode 1)
+  
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1)
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Email
@@ -261,6 +272,11 @@ If there's no region, the current line will be duplicated."
    (yas-minor-mode 1)
 
    (turn-on-diff-hl-mode)
+
+   ;; (whitespace-mode t)
+   ;; (setq whitespace-style '(face tabs spaces trailing identation))
+
+   (flycheck-mode t)
    
    (define-key php-mode-map (kbd "C-.") 'er/expand-region)
    (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
