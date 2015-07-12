@@ -3,4 +3,4 @@
 # key: jira
 # type: snippet
 # --
-[[http://jira.internetbrands.com/browse/ACOMM-$1][$2]]
+[[http://jira.internetbrands.com/browse/${1:$(concat "ACES-" yas-text)}][ACES-${1:Number}]]
