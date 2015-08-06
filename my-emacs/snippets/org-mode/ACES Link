@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: Jira Link
-# key: jira
+# name: ACES Link
+# key: aces
 # type: snippet
 # --
 [[http://jira.internetbrands.com/browse/${1:$(concat "ACES-" yas-text)}][ACES-${1:Number}]]
