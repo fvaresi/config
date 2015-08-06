@@ -7,4 +7,7 @@
                   [lein-try "0.4.3"]
                   ]}
 
- :android-common {:android {:sdk-path "/home/fvaresi/opt/android-sdk-linux"}}}
+ :android-common {:dependencies [[cider/cider-nrepl "0.10.0-SNAPSHOT"]]
+                  :android {:aot-exclude-ns ["cider.nrepl.middleware.util.java.parser"
+                                             "cider.nrepl" "cider-nrepl.plugin"]
+                            :sdk-path "/home/fvaresi/opt/android-sdk-linux"}}}
