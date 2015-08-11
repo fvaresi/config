@@ -26,6 +26,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations of installed packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq appt-activate t)
 
 ;; backup & autosave customizations
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -42,6 +43,8 @@
 
 (delete-selection-mode t)
 (setq desktop-save-mode t)
+
+(setq diary-comment-start "##")
 
 (require 'helm)
 (helm-mode t)

@@ -4,6 +4,7 @@
 (setq standup-journal "~/autocomm/docs/standup-journal.org")
 
 (setq org-agenda-files `(,standup-journal))
+(setq org-agenda-include-diary t)
 
 ;; org capture
 (setq org-directory "~/org")
