@@ -3,6 +3,7 @@ alias backup_rename="rename -v 's/(IMG|VID)_(\d{8})_(\d{6})\.(jpg|3gp)/$2$3\.$4/
 alias svndiff='svn diff --diff-cmd=svn-diff-meld'
 alias gitdiff='git diff --ext-diff'
 alias memcache_stat='watch "echo stats | nc 127.0.0.1 11211"'
+alias svn-php-lint="svn stat -q | awk '{print $2}' | xargs -i php -l {}"
 
 alias kb_us='setxkbmap us -variant intl -option "ctrl:swapcaps"'
 alias kb_es='setxkbmap es -variant deadtilde -option "ctrl:swapcaps"'
