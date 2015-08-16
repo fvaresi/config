@@ -1,16 +1,16 @@
 ;; export org files to confluence
 ;;(require 'ox-confluence)
 
-(setq standup-journal "~/autocomm/docs/standup-journal.org")
-
-(setq org-agenda-files `(,standup-journal))
-(setq org-agenda-include-diary t)
-
-;; org capture
 (setq org-directory "~/org")
 (setq org-mobile-directory "~/Dropbox/org-mobile")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
+(setq standup-journal "~/autocomm/docs/standup-journal.org")
+
+(setq org-agenda-files `(,standup-journal ,org-default-notes-file))
+(setq org-agenda-include-diary t)
+
+;; org capture
 (setq org-capture-templates
       `(("t" "Todo" entry
 	 (file+headline org-default-notes-file "Tasks")

@@ -343,3 +343,5 @@ If there's no region, the current line will be duplicated."
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
+
+(server-start)
