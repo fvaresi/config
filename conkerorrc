@@ -1,4 +1,7 @@
-// *** BASE CONFIG ***
+/////////////////
+// BASE CONFIG //
+/////////////////
+
 require("favicon");
 require("gmail"); // enable shortcuts
 require("twitter");
@@ -6,17 +9,85 @@ require("twitter");
 hint_digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 url_completion_use_history = true;
 
-// *** WEBJUMPS ***
+//////////////
+// WEBJUMPS //
+//////////////
 
-// jira
-define_webjump("jira", "http://jira.internetbrands.com/browse/ACES-%s")
-
-// mail
-define_webjump("gmail", "https://mail.google.com/mail/u/0/"); //primary account
-define_webjump("ib_mail", "https://gapps-sso.internetbrands.com/"); //secondary account
+// aces
+define_webjump("aces", "http://jira.internetbrands.com/browse/ACES-%s")
 
 // php
 define_webjump("php", "http://www.php.net/%s");
 
 // youtube
 define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
+
+////////////////
+// Instapaper //
+////////////////
+// Based on https://www.ceondo.com/ecte/2010/09/productivity-conkeror-instapaper-kindle/
+// TODO: send password using conkeror keywords for basic auth
+// TODO: refactor common code
+
+interactive("instapaper", "Send the current page to InstaPaper.",
+            function (I) {
+                check_buffer(I.buffer, content_buffer);
+                let username = encodeURIComponent('fvaresi@gmail.com'),
+		    password = encodeURIComponent(
+			yield I.minibuffer.read($prompt = "Password: ")
+		    ),
+		    posturl = 'https://www.instapaper.com/api/add?' +
+		    'username=' + username + '&' +
+		    'password=' + password + '&url=' +
+                    encodeURIComponent(I.window.content.location.href)
+                '&selection=' +
+                    encodeURIComponent(
+                        yield I.minibuffer.read(
+                            $prompt = "Description (optional): "));
+                try {
+		    var content = yield send_http_request(load_spec({uri: posturl}));
+		    if (content.status == "201") {
+			I.window.minibuffer.message("InstaPaper ok!");
+		    } else {
+			I.window.minibuffer.message("Error.");
+		    }
+                } catch (e) { 
+                    I.window.minibuffer.message("Error.");
+		}
+            });
+
+interactive("instapaper-link", "Send the current link to InstaPaper.",
+            function (I) {
+		bo = yield read_browser_object(I) ;
+		mylink = load_spec_uri_string(load_spec(encodeURIComponent(bo)));
+		check_buffer(I.buffer, content_buffer);
+		let username = encodeURIComponent('fvaresi@gmail.com'),
+		    password = encodeURIComponent(
+			yield I.minibuffer.read($prompt = "Password: ")
+		    ),
+		    posturl = 'https://www.instapaper.com/api/add?' +
+                    'username=' + username + '&' +
+                    'password=' + password + '&url=' + mylink +
+                    '&title=' + encodeURIComponent(
+                        yield I.minibuffer.read(
+                            $prompt = "Title (optional): ",
+			    $initial_value = bo.textContent)) +
+                    '&selection=' + encodeURIComponent(
+                        yield I.minibuffer.read(
+                            $prompt = "Description (optional): ",
+			    $initial_value = "From: "+ I.buffer.title +" ("+I.window.content.location.href+")"
+			));
+                try {
+		    var content = yield send_http_request(load_spec({uri: posturl}));
+		    if (content.status == "201") {
+			I.window.minibuffer.message("InstaPaper ok!");
+		    } else {
+			I.window.minibuffer.message("Error.");
+		    }
+                } catch (e) { 
+                    I.window.minibuffer.message("Error.");
+		}
+            }, $browser_object = browser_object_links);
+
+define_key(default_global_keymap, "C-x i", "instapaper");
+define_key(default_global_keymap, "C-x I", "instapaper-link");
