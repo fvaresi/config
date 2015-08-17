@@ -39,5 +39,7 @@
 
 ;; org todo
 (setq org-todo-keywords `((sequence "TODO(t)" "IN_PROGRESS(p)" "|" "DONE(d)")))
+(setq org-enforce-todo-dependencies t)
+(setq org-enforce-todo-checkbox-dependencies t)
 
 (provide 'setup-org)
