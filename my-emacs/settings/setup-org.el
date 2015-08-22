@@ -56,6 +56,9 @@
            (org-mobile-push-with-delay 30)))
    )))
 
+;; org notmuch
+(require 'org-notmuch)
+
 ;; org todo
 (setq org-todo-keywords `((sequence "TODO(t)" "IN_PROGRESS(p)" "|" "DONE(d)")))
 (setq org-enforce-todo-dependencies t)

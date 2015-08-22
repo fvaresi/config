@@ -1,3 +1,5 @@
+(add-to-list 'load-path "~/config/my-emacs/my-libs/")
+
 (require 'package)
 
 ;; Add marmalade and melpa to package repos
