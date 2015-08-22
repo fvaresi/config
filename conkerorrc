@@ -91,3 +91,15 @@ interactive("instapaper-link", "Send the current link to InstaPaper.",
 
 define_key(default_global_keymap, "C-x i", "instapaper");
 define_key(default_global_keymap, "C-x I", "instapaper-link");
+
+/////////////////////
+// Google Calendar //
+/////////////////////
+require("user-agent-policy");
+
+// Tell Google Calendar that we are Firefox not Conkeror:
+user_agent_policy.define_policy(
+    "GCal",
+    user_agent_firefox(),
+    build_url_regexp($domain = /(.*\.)?google/, $path = /calendar/)
+);
