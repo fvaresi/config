@@ -34,8 +34,27 @@
 (setq org-log-into-drawer t)
 
 ;; org mobile
-(setq org-mobile-files `(org-agenda-files ,org-default-notes-file))
+(setq org-mobile-files `(org-agenda-files ,org-default-notes-file "~/autocomm/docs/sprints.org"))
 (setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
+
+(defvar org-mobile-push-timer nil
+  "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
+
+(defun org-mobile-push-with-delay (secs)
+  (when org-mobile-push-timer
+    (cancel-timer org-mobile-push-timer))
+  (setq org-mobile-push-timer
+        (run-with-idle-timer
+         (* 1 secs) nil 'org-mobile-push)))
+
+(add-hook 'after-save-hook 
+ (lambda () 
+   (when (eq major-mode 'org-mode)
+     (dolist (file (org-mobile-files-alist))
+      (if (string= (file-truename (expand-file-name (car file)))
+		   (file-truename (buffer-file-name)))
+           (org-mobile-push-with-delay 30)))
+   )))
 
 ;; org todo
 (setq org-todo-keywords `((sequence "TODO(t)" "IN_PROGRESS(p)" "|" "DONE(d)")))
