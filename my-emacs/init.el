@@ -26,7 +26,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations of installed packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; apt notifications
+(require 'notifications)
+(defun my-appt-window-function (min-to-app new-time msg)
+  (if (atom min-to-app)
+      (notifications-notify :title (format "In %s minutes" min-to-app)
+			    :body msg)
+    (dolist (i (number-sequence 0 (1- (length min-to-app))))
+      (notifications-notify :title (format "In %s minutes" (nth i min-to-app))
+			    :body (nth i msg))
+      )))
+
 (setq appt-activate t)
+(setq appt-disp-window-function 'my-appt-window-function)
 
 ;; backup & autosave customizations
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
