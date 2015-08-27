@@ -40,6 +40,7 @@
 
 (setq appt-activate t)
 (setq appt-disp-window-function 'my-appt-window-function)
+(setq appt-delete-window-function nil)
 
 ;; backup & autosave customizations
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -105,7 +106,6 @@
 
 (projectile-global-mode)
 (setq projectile-enable-caching t)
-(setq projectile-file-exists-remote-cache-expire nil)
 (setq projectile-svn-command "find . -type f -print0")
 ;;(setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-switch-project-action 'projectile-dired)
@@ -260,7 +260,9 @@ If there's no region, the current line will be duplicated."
   
   (clj-refactor-mode 1)
   (yas-minor-mode 1)
-  (cljr-add-keybindings-with-prefix "C-c C-m"))
+  (cljr-add-keybindings-with-prefix "C-c C-m")
+
+  (turn-on-diff-hl-mode))
 
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
@@ -356,5 +358,3 @@ If there's no region, the current line will be duplicated."
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
-
-(server-start)
