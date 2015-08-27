@@ -5,9 +5,7 @@
 (setq org-mobile-directory "~/Dropbox/org-mobile")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
-(setq standup-journal "~/autocomm/docs/standup-journal.org")
-
-(setq org-agenda-files `(,standup-journal ,org-default-notes-file))
+(setq org-agenda-files `(,org-default-notes-file))
 (setq org-agenda-include-diary t)
 
 ;; org capture
@@ -20,12 +18,7 @@
 	("b" "Bookmark" entry
 	 (file+headline org-default-notes-file "Bookmarks")
 	 "* %?\n:CREATED: %U\n:END:\n\n"
-	 :empty-lines 1)
-
-	("s" "Standup" entry
-	 (file+datetree+prompt ,standup-journal)
-	 "* %T - %?"
-	 :kill-buffer t)))
+	 :empty-lines 1)))
 
 ;; org clock
 (setq org-clock-out-remove-zero-time-clocks t)
