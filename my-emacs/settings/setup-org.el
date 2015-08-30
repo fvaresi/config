@@ -22,6 +22,9 @@
 
 ;; org clock
 (setq org-clock-out-remove-zero-time-clocks t)
+(setq org-clock-modeline-total 'today)
+
+(setq org-html-validation-link nil)
 
 ;; org log
 (setq org-log-into-drawer t)
