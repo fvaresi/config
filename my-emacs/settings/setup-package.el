@@ -68,6 +68,9 @@
 
 			      notmuch
 
+			      org
+			      ob-http
+
 			      paradox
 
 			      paredit

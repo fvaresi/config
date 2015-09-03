@@ -1,3 +1,9 @@
+;; org babel
+(require 'ob-http)
+(require 'ob-shell)
+(setq org-babel-load-languages '((emacs-lisp . t)
+				 (http . t)))
+
 ;; export org files to confluence
 ;;(require 'ox-confluence)
 
@@ -30,7 +36,7 @@
 (setq org-log-into-drawer t)
 
 ;; org mobile
-(setq org-mobile-files `(org-agenda-files ,org-default-notes-file "~/autocomm/docs/sprints.org"))
+(setq org-mobile-files `(org-agenda-files ,org-default-notes-file "~/autocomm/docs/sprints.org" "~/life/life.org"))
 (setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
 
 (defvar org-mobile-push-timer nil
@@ -59,5 +65,17 @@
 (setq org-todo-keywords `((sequence "TODO(t)" "IN_PROGRESS(p)" "|" "DONE(d)")))
 (setq org-enforce-todo-dependencies t)
 (setq org-enforce-todo-checkbox-dependencies t)
+
+;; for some reason C-S-down and C-S-up are bound to org-shiftmetadown and org-shiftmetaup
+(add-hook 'org-shiftmetadown-hook
+	  (lambda()
+	    (cond
+	     ((org-at-heading-p) (org-move-subtree-down))
+	     ((org-at-item-bullet-p) (org-move-item-down)))))
+(add-hook 'org-shiftmetaup-hook
+	  (lambda()
+	    (cond
+	     ((org-at-heading-p) (org-move-subtree-up))
+	     ((org-at-item-bullet-p) (org-move-item-up)))))
 
 (provide 'setup-org)
