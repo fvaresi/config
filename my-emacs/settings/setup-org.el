@@ -25,12 +25,12 @@
 
 	("b" "Bookmark" entry
 	 (file+headline org-default-notes-file "Bookmarks")
-	 "* %?\n:CREATED: %U\n:END:\n\n"
+	 "* %c\n:CREATED: %U\n:END:\n\n"
 	 :empty-lines 1)
 
 	("e" "Event" entry
 	 (file+datetree+prompt ,default-journal-file)
-	 "* %T - %?"
+	 "* %^T - %?"
 	 :kill-buffer t)
 	))
 (setq org-refile-targets `((org-agenda-files :maxlevel . 3)))
@@ -77,6 +77,20 @@
 
 ;; org notmuch
 (require 'org-notmuch)
+
+;; org protocol
+(require 'org-protocol)
+(defadvice org-capture
+    (after make-full-window-frame activate)
+  "Advise capture to be the only window when used as a popup"
+  (if (equal "emacs-capture" (frame-parameter nil 'name))
+      (delete-other-windows)))
+
+(defadvice org-capture-finalize
+    (after delete-capture-frame activate)
+  "Advise capture-finalize to close the frame"
+  (if (equal "emacs-capture" (frame-parameter nil 'name))
+      (delete-frame)))
 
 ;; org todo
 (setq org-todo-keywords `((sequence "TODO(t)" "IN_PROGRESS(p)" "|" "DONE(d)")))

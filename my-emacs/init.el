@@ -23,6 +23,10 @@
 ;; Set up appearance early
 (require 'appearance)
 
+;; start server
+(when (not (server-running-p))
+  (server-start))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations of installed packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -38,7 +42,7 @@
 			    :body (nth i msg))
       )))
 
-(setq appt-activate t)
+(appt-activate t)
 (setq appt-disp-window-function 'my-appt-window-function)
 (setq appt-delete-window-function nil)
 
@@ -257,6 +261,8 @@ If there's no region, the current line will be duplicated."
 
 (defun my-clojure-mode-hook ()
   (eldoc-mode 1)
+
+  (setq cider-repl-display-in-current-window t)
   
   (clj-refactor-mode 1)
   (yas-minor-mode 1)
