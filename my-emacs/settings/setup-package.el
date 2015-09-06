@@ -70,6 +70,7 @@
 
 			      org
 			      ob-http
+			      org-jira
 
 			      paradox
 

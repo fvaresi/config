@@ -3,6 +3,7 @@
 (require 'ob-shell)
 (setq org-babel-load-languages '((emacs-lisp . t)
 				 (http . t)))
+(setq org-confirm-babel-evaluate nil)
 
 ;; export org files to confluence
 ;;(require 'ox-confluence)
@@ -10,8 +11,9 @@
 (setq org-directory "~/org")
 (setq org-mobile-directory "~/Dropbox/org-mobile")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq default-journal-file (concat org-directory "/journal.org"))
 
-(setq org-agenda-files `(,org-default-notes-file))
+(setq org-agenda-files `(,org-default-notes-file ,default-journal-file "~/autocomm/docs/sprints.org" "~/life/docs/life.org" "~/infuy/docs/infuy.org"))
 (setq org-agenda-include-diary t)
 
 ;; org capture
@@ -24,7 +26,17 @@
 	("b" "Bookmark" entry
 	 (file+headline org-default-notes-file "Bookmarks")
 	 "* %?\n:CREATED: %U\n:END:\n\n"
-	 :empty-lines 1)))
+	 :empty-lines 1)
+
+	("e" "Event" entry
+	 (file+datetree+prompt ,default-journal-file)
+	 "* %T - %?"
+	 :kill-buffer t)
+	))
+(setq org-refile-targets `((org-agenda-files :maxlevel . 3)))
+(setq org-refile-use-outline-path 'file)
+(setq org-outline-path-complete-in-steps t)
+(setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;; org clock
 (setq org-clock-out-remove-zero-time-clocks t)
@@ -32,11 +44,16 @@
 
 (setq org-html-validation-link nil)
 
+;; org jira
+(require 'org-jira)
+;;(setq org-jira-serv-alist `(("Autocomm" (:url "http://jira.internetbrands.com/rpc/soap/jirasoapservice-v2?wsdl" :user "fvaresi" :host "http://jira.internetbrands.com"))))
+(setq org-jira-use-status-as-todo t)
+
 ;; org log
 (setq org-log-into-drawer t)
 
 ;; org mobile
-(setq org-mobile-files `(org-agenda-files ,org-default-notes-file "~/autocomm/docs/sprints.org" "~/life/life.org"))
+(setq org-mobile-files `(org-agenda-files))
 (setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
 
 (defvar org-mobile-push-timer nil
