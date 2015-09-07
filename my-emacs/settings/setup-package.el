@@ -1,5 +1,3 @@
-(add-to-list 'load-path "~/config/my-emacs/my-libs/")
-
 (require 'package)
 
 ;; Add marmalade and melpa to package repos
@@ -7,6 +5,8 @@
              '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/") t)
 
 (package-initialize)
 
@@ -68,7 +68,7 @@
 
 			      notmuch
 
-			      org
+			      org-plus-contrib
 			      ob-http
 			      org-jira
 
