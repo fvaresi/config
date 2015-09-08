@@ -1,9 +1,21 @@
-;; org babel
+;;;;;;;;;;;;;;;
+;; Org Babel ;;
+;;;;;;;;;;;;;;;
+
 (require 'ob-http)
 (require 'ob-shell)
 (setq org-babel-load-languages '((emacs-lisp . t)
 				 (http . t)))
 (setq org-confirm-babel-evaluate nil)
+(setq org-export-babel-evaluate nil)
+
+;; It's possible to define default headers per-language/buffer if required.
+(setq org-babel-default-header-args
+           (cons '(:exports . "none")
+                 (assq-delete-all :exports org-babel-default-header-args)))
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; export org files to confluence
 ;;(require 'ox-confluence)
@@ -38,13 +50,19 @@
 (setq org-outline-path-complete-in-steps t)
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
-;; org clock
+;;;;;;;;;;;;;;;
+;; Org Clock ;;
+;;;;;;;;;;;;;;;
+
 (setq org-clock-out-remove-zero-time-clocks t)
 (setq org-clock-modeline-total 'today)
 
 (setq org-html-validation-link nil)
 
-;; org jira
+;;;;;;;;;;;;;;
+;; Org Jira ;;
+;;;;;;;;;;;;;;
+
 (require 'org-jira)
 ;;(setq org-jira-serv-alist `(("Autocomm" (:url "http://jira.internetbrands.com/rpc/soap/jirasoapservice-v2?wsdl" :user "fvaresi" :host "http://jira.internetbrands.com"))))
 (setq org-jira-use-status-as-todo t)
@@ -52,7 +70,10 @@
 ;; org log
 (setq org-log-into-drawer t)
 
-;; org mobile
+;;;;;;;;;;;;;;;;
+;; Org Mobile ;;
+;;;;;;;;;;;;;;;;
+
 (setq org-mobile-files `(org-agenda-files))
 (setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
 
@@ -75,10 +96,15 @@
            (org-mobile-push-with-delay 30)))
    )))
 
-;; org notmuch
+;;;;;;;;;;;;;;;;;
+;; Org Notmuch ;;
+;;;;;;;;;;;;;;;;;
 (require 'org-notmuch)
 
-;; org protocol
+;;;;;;;;;;;;;;;;;;;;;
+;; Org Protocol ;;
+;;;;;;;;;;;;;;;;;;;;;
+
 (require 'org-protocol)
 (defadvice org-capture
     (after make-full-window-frame activate)
@@ -92,7 +118,10 @@
   (if (equal "emacs-capture" (frame-parameter nil 'name))
       (delete-frame)))
 
-;; org todo
+;;;;;;;;;;;;;;
+;; Org Todo ;;
+;;;;;;;;;;;;;;
+
 (setq org-todo-keywords `((sequence "TODO(t)" "IN_PROGRESS(p)" "|" "DONE(d)")))
 (setq org-enforce-todo-dependencies t)
 (setq org-enforce-todo-checkbox-dependencies t)
