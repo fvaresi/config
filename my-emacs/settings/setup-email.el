@@ -14,7 +14,9 @@
 ;;;;;;;;;;;;;;
 ;; Flyspell ;;
 ;;;;;;;;;;;;;;
-(add-hook 'message-mode-hook (lambda () (flyspell-mode t)))
+(defun fvaresi/setup-message-mode ()
+  (flyspell-mode t))
+(add-hook 'message-mode-hook 'fvaresi/setup-message-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Multiple identities using gnus-alias ;;

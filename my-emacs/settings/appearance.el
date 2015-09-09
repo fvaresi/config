@@ -2,7 +2,7 @@
 
 (setq frame-title-format "%f")
 
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 
 (provide 'appearance)
 

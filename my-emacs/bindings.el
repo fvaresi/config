@@ -2,34 +2,18 @@
 ;; some editing bindings ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Adding empty lines
-(global-set-key (kbd "<C-return>")
-		(lambda ()
-		  (interactive)
-		  (end-of-line)
-		  (newline)
-		  (indent-for-tab-command)))
-
-(global-set-key (kbd "<C-S-return>")
-		(lambda ()
-		  (interactive)
-		  (beginning-of-line)
-		  (newline)
-		  (forward-line -1)
-		  (indent-for-tab-command)))
+(global-set-key (kbd "<C-return>") 'fvaresi/add-empty-line-after)
+(global-set-key (kbd "<C-S-return>") 'fvaresi/add-empty-line-before)
 
 ;; joining and splitting lines
 (global-set-key (kbd "C-j") 'emmet-expand-line)
 
-(global-set-key (kbd "M-j")
-		(lambda ()
-		  (interactive)
-		  (join-line -1)))
+(global-set-key (kbd "M-j") 'fvaresi/join-line)
 
 ;; (define-key global-map (kbd "M-n") 'forward-sexp)
 ;; (define-key global-map (kbd "M-p") 'backward-sexp)
 
-(global-set-key (kbd "C-2") 'duplicate-current-line-or-region)
+(global-set-key (kbd "C-2") 'fvaresi/duplicate-current-line-or-region)
 
 ;; transposing functions
 (global-unset-key (kbd "M-t")) ;; which used to be transpose-words

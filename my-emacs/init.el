@@ -23,9 +23,11 @@
 ;; Set up appearance early
 (require 'appearance)
 
-;; start server
-(when (not (server-running-p))
-  (server-start))
+;; Functions (load all files in defuns-dir)
+(setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
+(dolist (file (directory-files defuns-dir t "\\w+"))
+  (when (file-regular-p file)
+    (load file)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Customizations of installed packages
@@ -52,6 +54,7 @@
 
 (setq tramp-backup-directory-alist backup-directory-alist)
 (setq tramp-auto-save-directory temporary-file-directory)
+(setq tramp-use-ssh-controlmaster-options nil)
 
 (setq browse-url-generic-program (executable-find "conkeror"))
 (setq browse-url-browser-function 'browse-url-generic)
@@ -112,7 +115,6 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-svn-command "find . -type f -print0")
-;;(setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-switch-project-action 'projectile-dired)
 
 (require 'rainbow-delimiters)
@@ -141,104 +143,6 @@
 (window-number-meta-mode 1)
 
 (winner-mode 1)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Magic editing
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun duplicate-region (&optional num start end)
-  "Duplicates the region bounded by START and END NUM times.
-If no START and END is provided, the current region-beginning and
-region-end is used."
-  (interactive "p")
-  (save-excursion
-    (let* ((start (or start (region-beginning)))
-	   (end (or end (region-end)))
-	   (region (buffer-substring start end)))
-      (goto-char end)
-      (dotimes (i num)
-	(insert region)))))
-
-(defun duplicate-current-line (&optional num)
-  "Duplicate the current line NUM times."
-  (interactive "p")
-  (save-excursion
-    (when (eq (point-at-eol) (point-max))
-      (goto-char (point-max))
-      (newline)
-      (forward-char -1))
-    (duplicate-region num (point-at-bol) (1+ (point-at-eol)))))
-
-(defun duplicate-current-line-or-region (arg)
-  "Duplicates the current line or region ARG times.
-If there's no region, the current line will be duplicated."
-  (interactive "p")
-  (if (region-active-p)
-      (let ((beg (region-beginning))
-	    (end (region-end)))
-	(duplicate-region arg beg end)
-	(one-shot-keybinding "d" (λ (duplicate-region 1 beg end))))
-    (duplicate-current-line arg)
-    (one-shot-keybinding "d" 'duplicate-current-line)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Window juggling
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun split-window-right-and-move-there-dammit ()
-  (interactive)
-  (split-window-right)
-  (windmove-right))
-
-(defun toggle-window-split ()
-  (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-             (next-win-buffer (window-buffer (next-window)))
-             (this-win-edges (window-edges (selected-window)))
-             (next-win-edges (window-edges (next-window)))
-             (this-win-2nd (not (and (<= (car this-win-edges)
-                                         (car next-win-edges))
-                                     (<= (cadr this-win-edges)
-                                         (cadr next-win-edges)))))
-             (splitter
-              (if (= (car this-win-edges)
-                     (car (window-edges (next-window))))
-                  'split-window-horizontally
-                'split-window-vertically)))
-        (delete-other-windows)
-        (let ((first-win (selected-window)))
-          (funcall splitter)
-          (if this-win-2nd (other-window 1))
-          (set-window-buffer (selected-window) this-win-buffer)
-          (set-window-buffer (next-window) next-win-buffer)
-          (select-window first-win)
-          (if this-win-2nd (other-window 1))))))
-
-(defun rotate-windows ()
-  "Rotate your windows"
-  (interactive)
-  (cond ((not (> (count-windows)1))
-         (message "You can't rotate a single window!"))
-        (t
-         (setq i 1)
-         (setq numWindows (count-windows))
-         (while  (< i numWindows)
-           (let* (
-                  (w1 (elt (window-list) i))
-                  (w2 (elt (window-list) (+ (% i numWindows) 1)))
-
-                  (b1 (window-buffer w1))
-                  (b2 (window-buffer w2))
-
-                  (s1 (window-start w1))
-                  (s2 (window-start w2))
-                  )
-             (set-window-buffer w1  b2)
-             (set-window-buffer w2 b1)
-             (set-window-start w1 s2)
-             (set-window-start w2 s1)
-             (setq i (1+ i)))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Android
@@ -292,8 +196,8 @@ If there's no region, the current line will be duplicated."
 ;; PHP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq php-manual-path "~/php-chunked-xhtml")
-(add-hook 'php-mode-hook
- (lambda ()
+
+(defun fvaresi/setup-php ()
    (yas-minor-mode 1)
 
    (turn-on-diff-hl-mode)
@@ -306,9 +210,7 @@ If there's no region, the current line will be duplicated."
    (define-key php-mode-map (kbd "C-.") 'er/expand-region)
    (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
    (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
-   (define-key php-mode-map (kbd "M-j") (lambda ()
-					  (interactive)
-					  (join-line -1)))
+   (define-key php-mode-map (kbd "M-j") 'fvaresi/join-line)
 
    (c-set-style "bsd")
    (setq c-basic-offset 4)
@@ -319,9 +221,8 @@ If there's no region, the current line will be duplicated."
         comment-start "// "
         comment-end ""
         comment-style 'indent
-        comment-use-syntax t)
- )
-)
+        comment-use-syntax t))
+(add-hook 'php-mode-hook 'fvaresi/setup-php)
 
 (setq geben-display-window-function 'switch-to-buffer)
 (setq geben-pause-at-entry-line nil)

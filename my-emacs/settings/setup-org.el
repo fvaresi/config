@@ -15,7 +15,6 @@
                  (assq-delete-all :exports org-babel-default-header-args)))
 
 (require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; export org files to confluence
 ;;(require 'ox-confluence)
@@ -68,7 +67,8 @@
 (setq org-jira-use-status-as-todo t)
 
 ;; org log
-(setq org-log-into-drawer t)
+(setq org-log-into-drawer nil)
+(setq org-log-state-notes-insert-after-drawers t)
 
 ;;;;;;;;;;;;;;;;
 ;; Org Mobile ;;
@@ -77,24 +77,24 @@
 (setq org-mobile-files `(org-agenda-files))
 (setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
 
-(defvar org-mobile-push-timer nil
-  "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
+(defvar fvaresi/org-mobile-push-timer nil
+  "Timer that `fvaresi/org-mobile-push-timer' used to reschedule itself, or nil.")
 
 (defun org-mobile-push-with-delay (secs)
-  (when org-mobile-push-timer
-    (cancel-timer org-mobile-push-timer))
-  (setq org-mobile-push-timer
+  (when fvaresi/org-mobile-push-timer
+    (cancel-timer fvaresi/org-mobile-push-timer))
+  (setq fvaresi/org-mobile-push-timer
         (run-with-idle-timer
          (* 1 secs) nil 'org-mobile-push)))
 
-(add-hook 'after-save-hook 
- (lambda () 
-   (when (eq major-mode 'org-mode)
-     (dolist (file (org-mobile-files-alist))
-      (if (string= (file-truename (expand-file-name (car file)))
-		   (file-truename (buffer-file-name)))
-           (org-mobile-push-with-delay 30)))
-   )))
+(defun fvaresi/org-mobile-autopush ()
+    (when (eq major-mode 'org-mode)
+      (dolist (file (org-mobile-files-alist))
+	(if (string= (file-truename (expand-file-name (car file)))
+		     (file-truename (buffer-file-name)))
+	    (org-mobile-push-with-delay 30)))))
+
+(add-hook 'after-save-hook 'fvaresi/org-mobile-autopush)
 
 ;;;;;;;;;;;;;;;;;
 ;; Org Notmuch ;;
@@ -126,16 +126,21 @@
 (setq org-enforce-todo-dependencies t)
 (setq org-enforce-todo-checkbox-dependencies t)
 
-;; for some reason C-S-down and C-S-up are bound to org-shiftmetadown and org-shiftmetaup
-(add-hook 'org-shiftmetadown-hook
-	  (lambda()
-	    (cond
-	     ((org-at-heading-p) (org-move-subtree-down))
-	     ((org-at-item-bullet-p) (org-move-item-down)))))
-(add-hook 'org-shiftmetaup-hook
-	  (lambda()
-	    (cond
-	     ((org-at-heading-p) (org-move-subtree-up))
-	     ((org-at-item-bullet-p) (org-move-item-up)))))
+;; for some reason M-S-down and M-S-up are bound to org-shiftmetadown and org-shiftmetaup
+(defun fvaresi/org-shiftmetadown-move ()
+  (cond
+   ((org-at-heading-p) (org-move-subtree-down))
+   ((org-at-item-bullet-p) (org-move-item-down))))
+(add-hook 'org-shiftmetadown-hook 'fvaresi/org-shiftmetadown-move)
+
+(defun fvaresi/org-shiftmetaup-move ()
+  (cond
+   ((org-at-heading-p) (org-move-subtree-up))
+   ((org-at-item-bullet-p) (org-move-item-up))))
+(add-hook 'org-shiftmetaup-hook 'fvaresi/org-shiftmetaup-move)
+
+(defun fvaresi/setup-org ()
+  (org-bullets-mode 1))
+(add-hook 'org-mode-hook 'fvaresi/setup-org)
 
 (provide 'setup-org)
