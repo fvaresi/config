@@ -212,7 +212,7 @@
    (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
    (define-key php-mode-map (kbd "M-j") 'fvaresi/join-line)
 
-   (c-set-style "bsd")
+   (c-set-style "bsd" t)
    (setq c-basic-offset 4)
    (setq indent-tabs-mode t)
    (setq tab-width 4)
