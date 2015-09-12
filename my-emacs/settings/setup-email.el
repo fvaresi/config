@@ -1,3 +1,8 @@
+;;;;;;;;;;;;;;;
+;; Signature ;;
+;;;;;;;;;;;;;;;
+(setq message-forward-before-signature nil)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Use msmtp for sending mails ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
