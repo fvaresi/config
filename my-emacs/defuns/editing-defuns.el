@@ -43,7 +43,7 @@ region-end is used."
       (goto-char (point-max))
       (newline)
       (forward-char -1))
-    (duplicate-region num (point-at-bol) (1+ (point-at-eol)))))
+    (fvaresi/duplicate-region num (point-at-bol) (1+ (point-at-eol)))))
 
 (defun fvaresi/duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
@@ -53,6 +53,6 @@ If there's no region, the current line will be duplicated."
       (let ((beg (region-beginning))
 	    (end (region-end)))
 	(duplicate-region arg beg end)
-	(one-shot-keybinding "d" (λ (duplicate-region 1 beg end))))
-    (duplicate-current-line arg)
-    (one-shot-keybinding "d" 'duplicate-current-line)))
+	(one-shot-keybinding "d" (λ (fvaresi/duplicate-region 1 beg end))))
+    (fvaresi/duplicate-current-line arg)
+    (one-shot-keybinding "d" 'fvaresi/duplicate-current-line)))

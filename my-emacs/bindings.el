@@ -29,7 +29,9 @@
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
 (define-key global-map (kbd "C-+") 'text-scale-increase)
-(define-key global-map (kbd "C--") 'text-scale-decrease)
+;; the following keybindings prevent me to different keyboard layots me
+(define-key global-map (kbd "C-*") 'text-scale-decrease)
+(define-key global-map (kbd "C-=") 'text-scale-decrease)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; navigation sanity ;;
