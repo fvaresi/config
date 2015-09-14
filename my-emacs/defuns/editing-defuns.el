@@ -52,7 +52,7 @@ If there's no region, the current line will be duplicated."
   (if (region-active-p)
       (let ((beg (region-beginning))
 	    (end (region-end)))
-	(duplicate-region arg beg end)
+	(fvaresi/duplicate-region arg beg end)
 	(one-shot-keybinding "d" (λ (fvaresi/duplicate-region 1 beg end))))
     (fvaresi/duplicate-current-line arg)
     (one-shot-keybinding "d" 'fvaresi/duplicate-current-line)))
