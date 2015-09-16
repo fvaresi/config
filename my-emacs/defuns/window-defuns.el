@@ -56,3 +56,8 @@
              (set-window-start w1 s2)
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
+
+(defun switch-to-last-persp ()
+  "Switches back to the last perspective"
+  (interactive)
+  (persp-switch (persp-name persp-last)))

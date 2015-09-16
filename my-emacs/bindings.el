@@ -151,6 +151,7 @@
 
 (define-key global-map (kbd "C-x x m") 'switch-to-mail-persp)
 (define-key global-map (kbd "C-x x t") 'switch-to-twitter-persp)
+(define-key global-map (kbd "M-O") 'switch-to-last-persp)
 
 ;;;;;;;;;;;;;;;;
 ;; twittering ;;
