@@ -92,6 +92,7 @@
 			      restclient
 
 			      smart-mode-line
+			      smart-mode-line-powerline-theme
 
 			      smartparens
 

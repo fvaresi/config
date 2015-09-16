@@ -97,6 +97,8 @@
 
 (require 'perspective)
 (persp-mode)
+(setq persp-show-modestring nil)
+
 (require 'persp-projectile)
 (projectile-persp-bridge helm-projectile)
 
@@ -124,10 +126,6 @@
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
-
-(require 'smart-mode-line)
-(sml/setup)
-(sml/apply-theme 'respectful)	      
 
 (require 'smartparens-config)
 (smartparens-global-strict-mode t)
