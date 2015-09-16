@@ -46,6 +46,8 @@
 
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 
+(global-set-key (kbd "C-x k") 'fvaresi/kill-buffer-and-window)
+
 (global-set-key (kbd "C-M-g") 'webjump)
 
 ;; (global-set-key (kbd "C-x C-0") 'kill-buffer-and-window)

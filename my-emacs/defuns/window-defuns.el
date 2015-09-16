@@ -61,3 +61,9 @@
   "Switches back to the last perspective"
   (interactive)
   (persp-switch (persp-name persp-last)))
+
+(defun fvaresi/kill-buffer-and-window ()
+  (interactive)
+  (if (< (count-windows) 2)
+      (kill-buffer)
+    (kill-buffer-and-window)))
