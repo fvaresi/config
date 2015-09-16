@@ -17,7 +17,7 @@
 (require 'org-bullets)
 
 ;; export org files to confluence
-;;(require 'ox-confluence)
+(require 'ox-confluence)
 
 (setq org-directory "~/org")
 (setq org-mobile-directory "~/Dropbox/org-mobile")

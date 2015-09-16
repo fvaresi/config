@@ -71,6 +71,7 @@
 			      org-plus-contrib
 			      ob-http
 			      org-jira
+			      org-beautify-theme
 
 			      paradox
 
@@ -97,6 +98,8 @@
 			      smooth-scrolling
 
 			      solarized-theme
+
+			      string-edit
 			      
 			      twittering-mode
 			      
