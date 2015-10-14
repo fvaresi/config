@@ -1,3 +1,6 @@
+;; Enable collapsing of headings in most parts
+(setq org-cycle-emulate-tab 'whitestart)
+
 ;;;;;;;;;;;;;;;
 ;; Org Babel ;;
 ;;;;;;;;;;;;;;;
@@ -5,7 +8,8 @@
 (require 'ob-http)
 (require 'ob-shell)
 (setq org-babel-load-languages '((emacs-lisp . t)
-				 (http . t)))
+				 (http . t)
+				 (sql . t)))
 (setq org-confirm-babel-evaluate nil)
 (setq org-export-babel-evaluate nil)
 
@@ -24,7 +28,13 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq default-journal-file (concat org-directory "/journal.org"))
 
-(setq org-agenda-files `(,org-default-notes-file ,default-journal-file "~/autocomm/docs/sprints.org" "~/life/docs/life.org" "~/infuy/docs/infuy.org"))
+(setq org-agenda-files `(,org-default-notes-file
+			 ,default-journal-file
+			 "~/autocomm/docs/sprints.org"
+			 "~/life/docs/life.org"
+			 "~/infuy/docs/infuy.org"
+			 "~/org/gcal-eventos.org"
+			 "~/org/gcal-personal.org"))
 (setq org-agenda-include-diary t)
 
 ;; org capture
@@ -45,7 +55,7 @@
 	 :kill-buffer t)
 	))
 (setq org-refile-targets `((org-agenda-files :maxlevel . 3)))
-(setq org-refile-use-outline-path 'file)
+(setq org-refile-use-outline-path t)
 (setq org-outline-path-complete-in-steps t)
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
@@ -66,6 +76,15 @@
 ;;(setq org-jira-serv-alist `(("Autocomm" (:url "http://jira.internetbrands.com/rpc/soap/jirasoapservice-v2?wsdl" :user "fvaresi" :host "http://jira.internetbrands.com"))))
 (setq org-jira-use-status-as-todo t)
 
+(defun org-jira-link-current-issue ()
+  "Create link to JIRA issue and store it"
+  (interactive)
+  (let* ((org-jira-id (org-jira-get-issue-val-from-org "key"))
+	 (summary (org-jira-get-issue-val-from-org 'summary))
+	 (link (format "jira:%s" org-jira-id))
+	 (desc (format "%s: %s" org-jira-id summary)))
+    (setq org-stored-links (cons (list link desc) org-stored-links))))
+
 ;; org log
 (setq org-log-into-drawer nil)
 (setq org-log-state-notes-insert-after-drawers t)
@@ -74,7 +93,11 @@
 ;; Org Mobile ;;
 ;;;;;;;;;;;;;;;;
 
-(setq org-mobile-files `(org-agenda-files))
+(setq org-mobile-files `("~/org/notes.org"
+			 "~/org/journal.org"
+			 "~/autocomm/docs/sprints.org"
+			 "~/life/docs/life.org"
+			 "~/infuy/docs/infuy.org"))
 (setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
 
 (defvar fvaresi/org-mobile-push-timer nil

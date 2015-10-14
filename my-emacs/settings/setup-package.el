@@ -1,8 +1,8 @@
 (require 'package)
 
 ;; Add marmalade and melpa to package repos
-(add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/"))
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives

@@ -22,3 +22,5 @@ alias t="tree -L 1"
 alias tt="tree -L 2"
 alias ttt="tree -L 3"
 alias tttt="tree -L 4"
+
+alias tm="tmux attach"

@@ -1,9 +1,10 @@
 (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
 ;;(set-face-attribute 'default nil :font "Source Code Pro-10")
+;;(set-face-attribute 'default nil :font "M+ 1mn-11")
 
 (setq frame-title-format "%f")
 
-(load-theme 'solarized-light t)
+(load-theme 'sanityinc-tomorrow-eighties t)
 
 (require 'smart-mode-line)
 (sml/setup)

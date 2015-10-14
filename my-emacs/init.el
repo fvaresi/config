@@ -67,8 +67,12 @@
 
 (setq diary-comment-start "##")
 
+(setq ediff-split-window-function 'split-window-horizontally)
+
 (require 'helm)
 (helm-mode t)
+
+(setq helm-split-window-preferred-function 'ignore)
 
 (setq helm-mode-fuzzy-match t)
 (setq helm-swoop-split-direction 'split-window-horizontally)
@@ -97,7 +101,7 @@
 
 (require 'perspective)
 (persp-mode)
-(setq persp-show-modestring nil)
+(setq persp-show-modestring t)
 
 (require 'persp-projectile)
 (projectile-persp-bridge helm-projectile)

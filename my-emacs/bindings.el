@@ -36,6 +36,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; navigation sanity ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
+(define-key global-map (kbd "C-S-n") (lambda () (interactive) (next-line 5)))
+(define-key global-map (kbd "C-S-p") (lambda () (interactive) (previous-line 5)))
+
 (global-set-key (kbd "M-o") 'mode-line-other-buffer)
 ;;(global-set-key (kbd "C-S-w") 'toggle-window-split)
 (global-set-key (kbd "C-S-r") 'rotate-windows)
@@ -139,6 +142,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-cd" 'diary)
+(define-key org-jira-entry-mode-map (kbd "C-c i l") 'org-jira-link-current-issue)
 
 ;;;;;;;;;;;;;
 ;; paredit ;;

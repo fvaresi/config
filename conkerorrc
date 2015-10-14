@@ -1,3 +1,5 @@
+// -*-Javascript-*-
+
 /////////////////
 // BASE CONFIG //
 /////////////////
@@ -19,6 +21,23 @@ add_hook("window_before_close_hook",
                      $options = ["y", "n"]));
              yield co_return(result);
          });
+
+interactive("switch-to-other-buffer",
+            "Switch to the previously open buffer",
+            function (I) {
+                var blist = I.window.buffers.buffer_list
+                if (blist.length > 1)
+                    switch_to_buffer(I.window, blist[1]);
+            });
+define_key(default_global_keymap, "M-o", "switch-to-other-buffer");
+
+interactive("switch-to-other-buffer",
+            "Switch to the previously open buffer",
+            function (I) {
+                var blist = I.window.buffers.buffer_list
+                if (blist.length > 1)
+                    switch_to_buffer(I.window, blist[1]);
+            });
 
 //////////////
 // WEBJUMPS //
