@@ -91,6 +91,8 @@
 
 			      restclient
 
+			      color-theme-sanityinc-tomorrow
+
 			      smart-mode-line
 			      smart-mode-line-powerline-theme
 

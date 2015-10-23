@@ -213,7 +213,7 @@ bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
 bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scratchpad show
 bindsym $mod+i [class="Emacs*"] scratchpad show
 bindsym $mod+m [class="vlc"] scratchpad show
-bindsym $mod+c [class="Google-chrome|Chromium-browser"] scratchpad show
+bindsym $mod+c [class="google-chrome|Chromium-browser"] scratchpad show
 bindsym $mod+n [class="com-sonicwall-NetExtender"] scratchpad show
 bindsym $mod+z [class="Conkeror|Iceweasel"] scratchpad show
 bindsym $mod+u exec ~/bin/passmenu

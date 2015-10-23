@@ -74,6 +74,7 @@
 
 (require 'org-jira)
 ;;(setq org-jira-serv-alist `(("Autocomm" (:url "http://jira.internetbrands.com/rpc/soap/jirasoapservice-v2?wsdl" :user "fvaresi" :host "http://jira.internetbrands.com"))))
+(setq jiralib-url "http://jira.internetbrands.com")
 (setq org-jira-use-status-as-todo t)
 
 (defun org-jira-link-current-issue ()
