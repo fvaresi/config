@@ -33,6 +33,9 @@
 (define-key global-map (kbd "C-*") 'text-scale-decrease)
 (define-key global-map (kbd "C-=") 'text-scale-decrease)
 
+;; Create scratch buffer
+(global-set-key (kbd "C-c b") 'create-scratch-buffer)
+
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; navigation sanity ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
