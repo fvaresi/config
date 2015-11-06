@@ -16,7 +16,7 @@ rofi.yoffset:          0
 rofi.xoffset:          0
 rofi.fixed-num-lines:  false
 rofi.hmode:            false
-rofi.terminal:         st
+rofi.terminal:         i3-sensible-terminal
 rofi.ssh-set-title:    false
 rofi.disable-history:  false
 rofi.levenshtein-sort: false
