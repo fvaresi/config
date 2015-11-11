@@ -101,6 +101,12 @@
   ("p" diff-hl-previous-hunk)
   ("v" diff-hl-diff-goto-hunk))
 
+;;;;;;;;;;;
+;; magit ;;
+;;;;;;;;;;;
+
+(global-set-key (kbd "C-c m") 'magit-status)
+
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; multiple cursors ;;
 ;;;;;;;;;;;;;;;;;;;;;;
