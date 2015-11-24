@@ -1,121 +1,115 @@
 (require 'package)
 
-;; Add marmalade and melpa to package repos
-;; (add-to-list 'package-archives
-;;              '("marmalade" . "https://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives
-             '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
 (package-initialize)
 
 (defun gimme-my-packages ()
   (interactive)
-  (let (( required-packages '(
-			      ace-isearch
-			      ace-jump-mode
 
-			      ack-and-a-half
+  (let ((required-packages '(ace-isearch
+                             ace-jump-mode
 
-			      android-mode
+                             ack-and-a-half
 
-			      browse-kill-ring
-			      
-			      conkeror-minor-mode
+                             android-mode
 
-			      clojure-mode
-			      clojure-snippets
-			      clojurescript-mode
-			      clj-refactor
-			      cider
-			      cider-decompile
-			      cider-spy
-			      company
-			      slamhound
-			      4clojure
+                             browse-kill-ring
 
-			      diff-hl
-			      
-			      easy-kill
-			      easy-kill-extras
+                             conkeror-minor-mode
 
-			      emmet-mode
+                             clojure-mode
+                             clojure-snippets
+                             clojurescript-mode
+                             clj-refactor
+                             cider
+                             cider-decompile
+                             cider-spy
+                             company
+                             slamhound
+                             4clojure
 
-			      expand-region
+                             diff-hl
 
-			      flycheck
+                             easy-kill
+                             easy-kill-extras
 
-			      geben
+                             emmet-mode
 
-			      gh-md
+                             expand-region
 
-			      gnus-alias
-			      
-			      guide-key
-			      
-			      hydra
-			      
-			      helm
-			      helm-swoop
-			      helm-projectile
+                             flycheck
 
-			      json-mode
+                             geben
 
-			      magit
+                             gh-md
 
-			      multiple-cursors
+                             gnus-alias
 
-			      notmuch
+                             guide-key
 
-			      org-plus-contrib
-			      ob-http
-			      org-jira
-			      org-beautify-theme
+                             hydra
+                              
+                             helm
+                             helm-swoop
+                             helm-projectile
 
-			      paradox
+                             json-mode
 
-			      paredit
+                             magit
 
-			      php-mode
-			      php-auto-yasnippets
-			      php-refactor-mode
+                             multiple-cursors
 
-			      popwin
+                             notmuch
 
-			      perspective
-			      projectile
-			      persp-projectile
+                             org-plus-contrib
+                             ob-http
+                             org-jira
+                             org-beautify-theme
 
-			      rainbow-delimiters
+                             paradox
 
-			      restclient
+                             paredit
 
-			      color-theme-sanityinc-tomorrow
+                             php-mode
+                             php-auto-yasnippets
+                             php-refactor-mode
 
-			      smart-mode-line
-			      smart-mode-line-powerline-theme
+                             popwin
 
-			      smartparens
+                             perspective
+                             projectile
+                             persp-projectile
 
-			      smooth-scrolling
+                             rainbow-delimiters
 
-			      solarized-theme
+                             restclient
 
-			      string-edit
-			      
-			      twittering-mode
-			      
-			      undo-tree
+                             color-theme-sanityinc-tomorrow
 
-			      web-beautify
+                             smart-mode-line
+                             smart-mode-line-powerline-theme
 
-			      window-number
-			      )))
+                             smartparens
+
+                             smooth-scrolling
+
+                             solarized-theme
+
+                             string-edit
+
+                             twittering-mode
+
+                             undo-tree
+
+                             web-beautify
+
+                             window-number
+                             )))
+
     (dolist (p required-packages)
       (when (not (package-installed-p p))
-	(package-install p)))))
-
-;;(gimme-my-packages)
+        (package-install p)))))
 
 (provide 'setup-package)
