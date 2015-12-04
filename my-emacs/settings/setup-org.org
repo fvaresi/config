@@ -1,0 +1,315 @@
+* Org Mode
+
+This one of my favorite modes, since it can accomplish lots of stuff like handling TODO lists, tracking time, keeping an agenda, and much more.
+** General Settings
+
+   This makes headings look prettier.
+
+   #+BEGIN_SRC emacs-lisp
+   (require 'org-bullets)
+   #+END_SRC
+
+   Enable collapsing of headings in most parts.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq org-cycle-emulate-tab 'whitestart)
+   #+END_SRC
+
+   Some path and files...
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-directory "~/org")
+     (setq org-mobile-directory "~/Dropbox/org-mobile")
+     (setq org-default-notes-file (concat org-directory "/notes.org"))
+     (setq default-journal-file (concat org-directory "/journal.org"))
+   #+END_SRC
+
+   # Enable declaring tasks inline. These behave as a regular heading except for visibility cycling.
+
+   # #+BEGIN_SRC emacs-lisp
+   # (require 'org-inlinetask)
+   # #+END_SRC
+
+   Enable exporting org files to confluence.
+
+   #+BEGIN_SRC emacs-lisp
+   (require 'ox-confluence)
+   #+END_SRC
+
+   Some configuration for logging.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-log-into-drawer nil)
+     (setq org-log-state-notes-insert-after-drawers t)
+   #+END_SRC
+
+   Code to run when orgmode is loaded.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun fvaresi/setup-org ()
+       (org-bullets-mode 1))
+     (add-hook 'org-mode-hook 'fvaresi/setup-org)
+   #+END_SRC
+
+
+** Org Agenda
+   #+BEGIN_SRC emacs-lisp
+     (setq org-agenda-files `(,org-default-notes-file
+                              ,default-journal-file
+                              "~/autocomm/docs/sprints.org"
+                              "~/life/docs/life.org"
+                              "~/infuy/docs/infuy.org"
+                              "~/org/gcal-eventos.org"
+                              "~/org/gcal-personal.org"))
+     (setq org-agenda-include-diary t)
+     
+     (define-key global-map "\C-ca" 'org-agenda)
+   #+END_SRC
+** Org Babel
+
+   This library is very useful for literate programming. Excellent examples of this are the [[http://www.howardism.org/Technical/Emacs/literate-devops.html][blog post]] and the [[https://youtu.be/dljNabciEGg][screencast]] by Howard Abrams.
+
+   First load desired languages.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'ob-http)
+     (require 'ob-shell)
+     (setq org-babel-load-languages '((emacs-lisp . t)
+                                      (http . t)
+                                      (sql . t)))
+   #+END_SRC
+
+   Don't ask for confirmation before evaluating and don't do it automatically while exporting.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-confirm-babel-evaluate nil)
+     (setq org-export-babel-evaluate nil)
+   #+END_SRC
+
+   It's possible to define default headers per-language/buffer if required.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-babel-default-header-args
+           (cons '(:exports . "none")
+                 (assq-delete-all :exports org-babel-default-header-args)))
+   #+END_SRC
+
+   There's this practical function from this [[http://pragmaticemacs.com/emacs/wrap-text-in-an-org-mode-block/][blog post]] that wraps selected code in text blocks. There are some interesting improvements suggested in the comments (e.g. using org-structure-template-alist for choices).
+
+#+BEGIN_COMMENT   
+Have org-begin-template use org-structure-template-alist for choices
+Add behavior for when no region is selected
+#+END_COMMENT   
+
+   #+BEGIN_SRC emacs-lisp
+     (defun fvaresi/org-begin-template ()
+       "Make a template at point."
+       (interactive)
+       (if (org-at-table-p)
+           (call-interactively 'org-table-rotate-recalc-marks)
+         (let* ((choices '(("s" . "SRC")
+                           ("e" . "EXAMPLE")
+                           ("q" . "QUOTE")
+                           ("v" . "VERSE")
+                           ("c" . "CENTER")
+                           ("l" . "LaTeX")
+                           ("h" . "HTML")
+                           ("a" . "ASCII")))
+                (key
+                 (key-description
+                  (vector
+                   (read-key
+                    (concat (propertize "Template type: " 'face 'minibuffer-prompt)
+                            (mapconcat (lambda (choice)
+                                         (concat (propertize (car choice) 'face 'font-lock-type-face)
+                                                 ": "
+                                                 (cdr choice)))
+                                       choices
+                                       ", ")))))))
+           (let ((result (assoc key choices)))
+             (when result
+               (let ((choice (cdr result)))
+                 (cond
+                  ((region-active-p)
+                   (let ((start (region-beginning))
+                         (end (region-end)))
+                     (goto-char end)
+                     (insert "#+END_" choice "\n")
+                     (goto-char start)
+                     (insert "#+BEGIN_" choice "\n")))
+                  (t
+                   (insert "#+BEGIN_" choice "\n")
+                   (save-excursion (insert "#+END_" choice))))))))))
+   #+END_SRC
+
+** Org Capture
+
+   #+BEGIN_SRC emacs-lisp
+      (setq org-capture-templates
+            `(("t" "Todo" entry
+               (file+headline org-default-notes-file "Tasks")
+               "* TODO %?"
+               :kill-buffer t)
+
+              ("b" "Bookmark" entry
+               (file+headline org-default-notes-file "Bookmarks")
+               "* %c\n:CREATED: %U\n:END:\n\n"
+               :empty-lines 1)
+
+              ("e" "Event" entry
+               (file+datetree+prompt ,default-journal-file)
+               "* %^T - %?"
+               :kill-buffer t)
+              ))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-refile-targets `((org-agenda-files :maxlevel . 3)))
+     (setq org-refile-use-outline-path t)
+     (setq org-outline-path-complete-in-steps t)
+     (setq org-refile-allow-creating-parent-nodes 'confirm)  
+   #+END_SRC
+   
+   #+BEGIN_SRC emacs-lisp
+     (define-key global-map "\C-cl" 'org-store-link)
+     (define-key global-map "\C-cc" 'org-capture)
+   #+END_SRC
+
+** Org Clock
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-clock-out-remove-zero-time-clocks t)
+     (setq org-clock-modeline-total 'today)
+   #+END_SRC
+
+** Org Export
+   Don't add the html validation link when exporting.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq org-html-validation-link nil)
+   #+END_SRC
+
+
+** Org Jira
+   
+   [[https://github.com/baohaojun/org-jira][Org-jira]] is useful library for manipulating JIRA tickets in org-mode. It's not updated since 2011 and it is using the [[https://github.com/baohaojun/org-jira/issues/9][deprecated xml-rpc API]] but still works.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'org-jira)
+     ;;(setq org-jira-serv-alist `(("Autocomm" (:url "http://jira.internetbrands.com/rpc/soap/jirasoapservice-v2?wsdl" :user "fvaresi" :host "http://jira.internetbrands.com"))))
+     (setq jiralib-url "http://jira.internetbrands.com")
+     (setq org-jira-use-status-as-todo t)
+  #+END_SRC
+
+   Added this functions to create links for scrum daily updates
+
+   #+BEGIN_SRC emacs-lisp
+     (defun org-jira-link-current-issue ()
+       "Create link to JIRA issue and store it"
+       (interactive)
+       (let* ((org-jira-id (org-jira-get-issue-val-from-org "key"))
+              (summary (org-jira-get-issue-val-from-org 'summary))
+              (link (format "jira:%s" org-jira-id))
+              (desc (format "%s: %s" org-jira-id summary)))
+         (setq org-stored-links (cons (list link desc) org-stored-links))))
+
+     (define-key org-jira-entry-mode-map (kbd "C-c i l") 'org-jira-link-current-issue)
+   #+END_SRC
+
+** Org Mobile
+
+   These files will be exported to [[https://github.com/matburt/mobileorg-android][MobileOrg]].
+
+   #+BEGIN_SRC emacs-lisp
+   (setq org-mobile-files `("~/org/notes.org"
+			   "~/org/journal.org"
+			   "~/autocomm/docs/sprints.org"
+			   "~/life/docs/life.org"
+			   "~/infuy/docs/infuy.org"))
+   #+END_SRC
+
+   Captures from MobileOrg are stored here.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
+   #+END_SRC
+
+   The following code provides [[https://github.com/matburt/mobileorg-android/wiki/FAQ#How_do_I_get_orgmode_to_execute_orgmobilepush_automatically][autopush]].
+
+   #+BEGIN_SRC emacs-lisp
+     (defvar fvaresi/org-mobile-push-timer nil
+       "Timer that `fvaresi/org-mobile-push-timer' used to reschedule itself, or nil.")
+
+     (defun org-mobile-push-with-delay (secs)
+       (when fvaresi/org-mobile-push-timer
+         (cancel-timer fvaresi/org-mobile-push-timer))
+       (setq fvaresi/org-mobile-push-timer
+             (run-with-idle-timer
+              (* 1 secs) nil 'org-mobile-push)))
+
+     (defun fvaresi/org-mobile-autopush ()
+       (when (eq major-mode 'org-mode)
+         (dolist (file (org-mobile-files-alist))
+           (if (string= (file-truename (expand-file-name (car file)))
+                        (file-truename (buffer-file-name)))
+               (org-mobile-push-with-delay 30)))))
+
+     (add-hook 'after-save-hook 'fvaresi/org-mobile-autopush)
+   #+END_SRC
+
+** Org Notmuch
+   
+   #+BEGIN_SRC emacs-lisp
+     (require 'org-notmuch)
+   #+END_SRC
+
+** Org Protocol
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'org-protocol)
+     (defadvice org-capture
+         (after make-full-window-frame activate)
+       "Advise capture to be the only window when used as a popup"
+       (if (equal "emacs-capture" (frame-parameter nil 'name))
+           (delete-other-windows)))
+
+     (defadvice org-capture-finalize
+         (after delete-capture-frame activate)
+       "Advise capture-finalize to close the frame"
+       (if (equal "emacs-capture" (frame-parameter nil 'name))
+           (delete-frame)))
+   #+END_SRC
+
+** Org Todo
+   Custom keywords.
+
+   #+BEGIN_COMMENT
+   Need to add link to todo-keywords syntax.
+   #+END_COMMENT
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-todo-keywords `((sequence "TODO(t)" "IN_PROGRESS(p)" "|" "DONE(d)")))
+   #+END_SRC
+
+  Don't allow to complete a task if there are pending subtasks.
+
+  #+BEGIN_SRC emacs-lisp
+  (setq org-enforce-todo-dependencies t)
+  (setq org-enforce-todo-checkbox-dependencies t)  
+  #+END_SRC
+
+  =M-S-down= and =M-S-up= do not behave as documented, so I added these hooks to have the desired behavior.
+
+  #+BEGIN_SRC emacs-lisp
+    (defun fvaresi/org-shiftmetadown-move ()
+      (cond
+       ((org-at-heading-p) (org-move-subtree-down))
+       ((org-at-item-bullet-p) (org-move-item-down))))
+    (add-hook 'org-shiftmetadown-hook 'fvaresi/org-shiftmetadown-move)
+
+    (defun fvaresi/org-shiftmetaup-move ()
+      (cond
+       ((org-at-heading-p) (org-move-subtree-up))
+       ((org-at-item-bullet-p) (org-move-item-up))))
+    (add-hook 'org-shiftmetaup-hook 'fvaresi/org-shiftmetaup-move)
+  #+END_SRC

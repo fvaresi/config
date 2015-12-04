@@ -1,0 +1,310 @@
+* Email
+** General Settings
+   Put signature before forwarded message.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq message-forward-before-signature nil)
+   #+END_SRC
+
+   #+BEGIN_COMMENT
+
+   Sign messages by default.
+
+   #+BEGIN_SRC emacs-lisp
+   ;;(add-hook 'message-setup-hook 'mml-secure-message-sign)
+   #+END_SRC
+
+   #+END_COMMENT
+
+   Kill buffer after sending the message.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq message-kill-buffer-on-exit t)
+   #+END_SRC
+
+** Msmtp
+
+   Use msmtp for sending mails.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq sendmail-program "/usr/bin/msmtp")
+     (setq message-send-mail-function 'message-send-mail-with-sendmail)
+     (setq message-fill-column nil)
+     (setq mail-specify-envelope-from t
+           ;; needed for debians message.el cf. README.Debian.gz
+           message-sendmail-f-is-evil nil
+           mail-envelope-from 'header
+           message-sendmail-envelope-from 'header)
+   #+END_SRC
+ 
+** Flyspell
+
+   Use flyspell for spell checking.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun fvaresi/setup-message-mode ()
+       (flyspell-mode t))
+
+     (add-hook 'message-mode-hook 'fvaresi/setup-message-mode)
+   #+END_SRC
+
+** Gnus-alias
+
+   Use gnus-alias for having multiple identities.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'gnus-alias)
+     (setq gnus-alias-identity-alist
+           '(("personal"
+              nil
+              "Fernando Varesi <fvaresi@gmail.com>"
+              nil
+              nil
+              nil
+              "~/.signature")
+             ("infuy"
+              nil
+              "Fernando Varesi <fernando@infuy.com>"
+              "Infuy"
+              nil
+              nil
+              nil)
+             ("internetbrands"
+              nil
+              "Fernando Varesi <fernando.varesi@vbulletin.com"
+              "Internet Brands (Autocomm)"
+              nil
+              nil
+              nil)))
+     (setq gnus-alias-default-identity "personal")
+     (setq gnus-alias-identity-rules
+           '(("internetbrands" ("any" "internetbrands\.com" both) "internetbrands")
+             ("vbulletin" ("any" "vbulletin\.com" both) "internetbrands")
+             ("infuy" ("any" "infuy\.com" both) "infuy")))
+
+      (defun my-message-load-hook ()
+        (gnus-alias-init))
+
+      (add-hook 'message-load-hook 'my-message-load-hook)
+      (add-hook 'message-setup-hook 'gnus-alias-determine-identity)
+   #+END_SRC
+
+** Address completion
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'notmuch-address)
+     (setq notmuch-address-command "/home/fvaresi/bin/goobook-notmuch")
+     (notmuch-address-message-insinuate)
+   #+END_SRC
+
+** Notmuch
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'notmuch)
+
+     (setq notmuch-always-prompt-for-sender t)
+     (setq notmuch-crypto-process-mime t)
+     (setq notmuch-search-oldest-first nil)
+   #+END_SRC
+
+   This gives preference to text/html over text/plain.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq notmuch-multipart/alternative-discouraged '("text/plain" "text/html"))
+   #+END_SRC
+
+   Several convenience functions.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun search-toggle-message-delete ()
+       "toggle deleted tag for message"
+       (interactive)
+       (notmuch-search-tag
+        (list
+         (if (member "deleted" (notmuch-search-get-tags))
+             "-deleted" "+deleted"))))
+
+     (define-key notmuch-search-mode-map "d" 'search-toggle-message-delete)
+
+     (defun search-toggle-delete-all()
+       "toggle deleted tag for all message"
+       (interactive)
+       (notmuch-search-tag-all
+        (list
+         (if (member "deleted" (notmuch-search-get-tags))
+             "-deleted" "+deleted"))))
+
+     (define-key notmuch-search-mode-map "D" 'search-toggle-delete-all)
+
+     (defun show-toggle-message-delete ()
+       "toggle deleted tag for message"
+       (interactive)
+       (notmuch-show-tag
+        (list
+         (if (member "deleted" (notmuch-show-get-tags))
+             "-deleted" "+deleted"))))
+
+     (define-key notmuch-show-mode-map "d" 'show-toggle-message-delete)
+
+     (defun show-toggle-thread-delete ()
+       "toggle deleted tag for message"
+       (interactive)
+       (notmuch-show-tag-all
+        (list
+         (if (member "deleted" (notmuch-show-get-tags))
+             "-deleted" "+deleted"))))
+
+     (define-key notmuch-show-mode-map "D" 'show-toggle-thread-delete)
+
+     (defun tree-toggle-message-delete ()
+       "toggle deleted tag for message"
+       (interactive)
+       (notmuch-tree-tag
+        (list
+         (if (member "deleted" (notmuch-tree-get-tags))
+             "-deleted" "+deleted"))))
+
+     (define-key notmuch-tree-mode-map "d" 'tree-toggle-message-delete)
+
+     (defun tree-toggle-thread-delete ()
+       "toggle deleted tag for thread"
+       (interactive)
+       (notmuch-tree-tag-thread
+        (list
+         (if (member "deleted" (notmuch-tree-get-tags))
+             "-deleted" "+deleted"))))
+
+     (define-key notmuch-tree-mode-map "D" 'tree-toggle-thread-delete)
+
+     (defun search-toggle-message-fav ()
+       "toggle deleted tag for message"
+       (interactive)
+       (notmuch-search-tag
+        (list
+         (if (member "flagged" (notmuch-search-get-tags))
+             "-flagged" "+flagged"))))
+
+     (define-key notmuch-search-mode-map "F" 'search-toggle-message-fav)
+
+     (defun show-toggle-message-fav ()
+       "toggle deleted tag for message"
+       (interactive)
+       (notmuch-show-tag
+        (list
+         (if (member "flagged" (notmuch-show-get-tags))
+             "-flagged" "+flagged"))))
+
+     (define-key notmuch-show-mode-map "F" 'show-toggle-message-fav)
+
+     (defun tree-toggle-message-fav ()
+       "toggle deleted tag for message"
+       (interactive)
+       (notmuch-tree-tag
+        (list
+         (if (member "flagged" (notmuch-tree-get-tags))
+             "-flagged" "+flagged"))))
+
+     (define-key notmuch-tree-mode-map "F" 'tree-toggle-message-fav)
+
+     (defun search-toggle-message-inbox ()
+       "toggle inbox tag for message"
+       (interactive)
+       (notmuch-search-tag
+        (list
+         (if (member "inbox" (notmuch-search-get-tags))
+             "-inbox" "+inbox"))))
+
+     (define-key notmuch-search-mode-map "y" 'search-toggle-message-inbox)
+
+     (defun show-toggle-message-inbox ()
+       "toggle inbox tag for message"
+       (interactive)
+       (notmuch-show-tag
+        (list
+         (if (member "inbox" (notmuch-show-get-tags))
+             "-inbox" "+inbox"))))
+
+     (define-key notmuch-show-mode-map "y" 'show-toggle-message-inbox)
+
+     (defun tree-toggle-thread-inbox ()
+       "toggle inbox tag for thread"
+       (interactive)
+       (notmuch-tree-tag-thread
+        (list
+         (if (member "inbox" (notmuch-tree-get-tags))
+             "-inbox" "+inbox"))))
+
+     (define-key notmuch-tree-mode-map "y" 'tree-toggle-thread-inbox)
+
+     (defun show-toggle-message-unread ()
+       "toggle unread tag for message"
+       (interactive)
+       (notmuch-show-tag
+        (list
+         (if (member "unread" (notmuch-show-get-tags))
+             "-unread" "+unread"))))
+
+     (define-key notmuch-show-mode-map "u" 'show-toggle-message-unread)
+
+     (defun search-toggle-message-unread ()
+       "toggle unread tag for message"
+       (interactive)
+       (notmuch-search-tag
+        (list
+         (if (member "unread" (notmuch-search-get-tags))
+             "-unread" "+unread"))))
+
+     (define-key notmuch-search-mode-map "u" 'search-toggle-message-unread)
+
+     (defun reply-to-thread-show ()
+       (interactive)
+       (notmuch-show-reply 't))
+
+     (define-key notmuch-show-mode-map "R" 'reply-to-thread-show)
+
+     (defun reply-to-thread-sender-show ()
+       (interactive)
+       (notmuch-show-reply-sender 't))
+
+     (define-key notmuch-show-mode-map "r" 'reply-to-thread-sender-show)
+
+     (defun reply-to-thread-search ()
+       (interactive)
+       (notmuch-search-reply-to-thread 't))
+
+     (define-key notmuch-search-mode-map "R" 'reply-to-thread-search)
+
+     (defun reply-to-thread-sender-search ()
+       (interactive)
+       (notmuch-search-reply-to-thread-sender 't))
+
+     (define-key notmuch-search-mode-map "r" 'reply-to-thread-sender-search)
+
+     
+     (defun notmuch-jump-to-tag ()
+       (interactive)
+       (let ((selected-tag (helm :sources `((name . "Tags")
+                                            (candidates . ,(notmuch-tag-completions))
+                                            (pattern-transformer . (lambda (pattern) (regexp-quote pattern)))
+                                            (action . identity))
+                                 :buffer "*email tags*"
+                                 :keymap helm-buffer-map)))
+         (notmuch-search (concat "tag:" selected-tag))))
+
+     (define-key notmuch-search-mode-map "T" 'notmuch-jump-to-tag)
+   #+END_SRC
+
+   Quickly switch to email perspective.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun notmuch-search-unread ()
+       (interactive)
+       (notmuch-search "tag:inbox"))
+
+     (defun switch-to-mail-persp ()
+       (interactive)
+       (persp-switch "mail")
+       (notmuch-search-unread))
+
+     (define-key global-map (kbd "C-x x m") 'switch-to-mail-persp)
+   #+END_SRC

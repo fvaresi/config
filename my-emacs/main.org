@@ -1,0 +1,800 @@
+* My Emacs Configuration
+
+This is my org-mode based configuration for emacs. It's based on the [[http://orgmode.org/worg/org-contrib/babel/intro.html#literate-emacs-init][Literate Emacs Initialization example]] and [[https://github.com/eschulte/emacs24-starter-kit/][emacs24-starter-kit]].
+
+Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-ruby]].
+
+** Smooth startup
+
+   First of all, there are a few thinks I want to turn off during startup.
+
+   #+BEGIN_SRC emacs-lisp
+   ;; Turn off mouse interface early in startup to avoid momentary display
+   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+   ;; No splash screen
+   (setq inhibit-startup-screen t)
+
+   ;; No scratch message
+   (setq initial-scratch-message nil)
+   #+END_SRC
+
+   The custom configuration file only contains a few settings that are not in the repo.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq custom-file (expand-file-name "custom-configuration.el" user-emacs-directory))
+   (load custom-file)
+   #+END_SRC
+
+** Transitioning to org files
+   I'm still deciding what should go to a separate file.
+
+   While transitioning to org files, let's keep around some of the legacy code
+
+   #+BEGIN_SRC emacs-lisp
+     ;; Set path to dependencies
+     (setq settings-dir
+           (expand-file-name "settings" user-emacs-directory))
+
+     ;; Set up load path
+     (add-to-list 'load-path settings-dir)
+   #+END_SRC
+
+** Emacs packages.
+
+   See [[file:settings/setup-package.org][setup-package.org]].
+
+   #+BEGIN_SRC emacs-lisp
+   (org-babel-load-file (expand-file-name "setup-package.org" settings-dir))
+   #+END_SRC
+
+** Appearance
+
+   See [[file:settings/appearance.org][appearance.org]].
+
+   #+BEGIN_SRC emacs-lisp
+   (org-babel-load-file (expand-file-name "appearance.org" settings-dir))
+   #+END_SRC
+
+** Convenience
+   
+*** Easy-kill and easy-mark
+    These functions let users [[https://github.com/leoliu/easy-kill][kill or mark things easily]].
+    
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key [remap kill-ring-save] 'easy-kill)
+      (global-set-key [remap mark-sexp] 'easy-mark)
+    #+END_SRC
+
+*** Expand Region
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "C-.") 'er/expand-region)
+      (global-set-key (kbd "C-,") 'er/contract-region)
+    #+END_SRC
+*** Guide-key
+    [[https://github.com/kai2nenobu/guide-key][guide-key]] gives a hint on available comands for certain prefixes. I have a hard time remembering key bindings for rectangle, register and version control.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'guide-key)
+      (setq guide-key/guide-key-sequence '("C-x r" "C-x v"))
+      (guide-key-mode 1)
+    #+END_SRC
+
+*** Helm
+    [[https://github.com/emacs-helm/helm][Helm]] is an incremental completion and selection narrowing framework for Emacs.
+
+    #+BEGIN_SRC emacs-lisp
+    (require 'helm)
+    (helm-mode t)
+    #+END_SRC
+
+    IIRC, this was required to avoid having a duplicate buffer in helm
+
+    #+BEGIN_SRC emacs-lisp
+      (setq helm-split-window-preferred-function 'ignore)
+    #+END_SRC
+
+    Some more configuration...
+
+    #+BEGIN_SRC emacs-lisp
+      (setq helm-mode-fuzzy-match t)
+      (setq helm-swoop-split-direction 'split-window-horizontally)
+      (setq helm-swoop-speed-or-color nil)
+    #+END_SRC
+
+    Bindings
+
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "C-x C-f") 'helm-find-files)
+      (global-set-key (kbd "C-x b") 'helm-mini)
+      (global-set-key (kbd "M-x") 'helm-M-x)
+      (global-set-key (kbd "C-S-l") 'helm-locate)
+      (global-set-key (kbd "C-S-g") 'helm-projectile-grep)
+      (global-set-key (kbd "C-S-h") 'helm-projectile)
+    #+END_SRC
+
+*** Hydra
+    
+    [[https://github.com/abo-abo/hydra][Hydra]] is a package that can be used to tie related commands into a family of short bindings with a common prefix.
+
+    #+BEGIN_SRC emacs-lisp
+    (require 'hydra)
+    #+END_SRC
+
+    Hydra for diff-hl
+
+    #+BEGIN_SRC emacs-lisp
+      (defhydra hydra-diff-hl (global-map "<f12>")
+        "diff-hl"
+        ("n" diff-hl-next-hunk)
+        ("p" diff-hl-previous-hunk)
+        ("v" diff-hl-diff-goto-hunk))
+    #+END_SRC
+    
+*** Multiple Cursors
+
+    #+BEGIN_SRC emacs-lisp
+      (global-unset-key (kbd "M-<down-mouse-1>"))
+      (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
+      (global-set-key (kbd "C-|") 'mc/mark-next-like-this)
+    #+END_SRC
+*** Paredit
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "M-(") 'paredit-wrap-sexp)
+      (global-set-key (kbd "M-U") 'paredit-splice-sexp-killing-backward)
+    #+END_SRC
+*** Perspective
+    [[https://github.com/nex3/perspective-el][Perspective]] provides tagged workspaces in Emacs. It integrates very well with Projectile.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'perspective)
+      (persp-mode)
+      (setq persp-show-modestring t)
+    #+END_SRC
+
+    This function enables me to quickly switch between the last two perspectives.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun switch-to-last-persp ()
+        "Switches back to the last perspective"
+        (interactive)
+        (persp-switch (persp-name persp-last)))
+
+      (define-key global-map (kbd "M-O") 'switch-to-last-persp)
+    #+END_SRC
+
+*** Popwin
+    [[https://github.com/m2ym/popwin-el][Popwin]] is a popup window manager for Emacs.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'popwin)
+
+      (popwin-mode t)
+
+      (push '(" *undo-tree*" :width 0.3 :position right) popwin:special-display-config)
+      (push '("*Helm Find Files*" :height 0.5) popwin:special-display-config)
+      (push '("*helm mini*" :height 0.5) popwin:special-display-config)
+      (push '("*helm grep*" :height 0.5) popwin:special-display-config)
+      (push '("*helm locate*" :height 0.5) popwin:special-display-config)
+      (push '("*helm M-x*" :height 0.5) popwin:special-display-config)
+      (push '("*helm projectile*" :height 0.5) popwin:special-display-config)
+      (push '("*helm etags*" :height 0.5) popwin:special-display-config)
+      (push '("*Ack-and-a-half*" :height 0.5 :stick t) popwin:special-display-config)
+    #+END_SRC
+
+*** Projectile
+    [[https://github.com/bbatsov/projectile][Projectile]] is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies(when feasible).
+
+    #+BEGIN_SRC emacs-lisp
+      (projectile-global-mode)
+      (setq projectile-enable-caching t)
+      (setq projectile-svn-command "find . -type f -print0")
+      (setq projectile-switch-project-action 'projectile-dired)
+    #+END_SRC
+
+    Perspective and Projectile can be integrated to have one perspective per project.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'persp-projectile)
+      (projectile-persp-bridge helm-projectile)
+    #+END_SRC
+
+*** Rainbow Delimiters
+    [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]] is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'rainbow-delimiters)
+      (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+    #+END_SRC
+
+*** Smartparens
+    [[https://github.com/Fuco1/smartparens][Smartparens]] is minor mode for Emacs that deals with parens pairs and tries to be smart about it. It started as a unification effort to combine functionality of several existing packages in a single, compatible and extensible way to deal with parentheses, delimiters, tags and the like. 
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'smartparens-config)
+      (smartparens-global-strict-mode t)
+      (show-smartparens-global-mode t)
+      (sp-use-paredit-bindings)
+    #+END_SRC
+
+*** Smooth Scrolling
+    Make emacs scroll smoothly, keeping the point away from the top and bottom of the current buffer's window in order to keep lines of context around the point visible as much as possible, whilst avoiding sudden scroll jumps which are visually confusing.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'smooth-scrolling)
+    #+END_SRC
+
+*** Window Number
+    Enables selection of windows according to numbers
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'window-number)
+
+      (window-number-mode 1)
+      (window-number-meta-mode 1)
+    #+END_SRC
+
+*** Winner mode
+** Backup & autosave customizations
+   All backup and autosave files are written to /tmp/
+
+   #+BEGIN_SRC emacs-lisp
+   (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+   (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+   (setq tramp-backup-directory-alist backup-directory-alist)
+   (setq tramp-auto-save-directory temporary-file-directory)
+   #+END_SRC
+
+** Browser
+   [[http://conkeror.org/][Conkeror]] is currently my favourite browser.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq browse-url-generic-program (executable-find "conkeror"))
+   (setq browse-url-browser-function 'browse-url-generic)
+   #+END_SRC
+
+** Coding
+*** Android
+    #+BEGIN_SRC emacs-lisp
+      (require 'android-mode)
+      (setq android-mode-sdk-dir "~/opt/android-sdk-linux")
+      (setq android-mode-builder 'gradle)
+    #+END_SRC
+
+*** Clojure
+
+    [[https://github.com/clojure-emacs/cider/][CIDER]] extends Emacs with support for interactive programming in Clojure.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'cider)
+
+      (setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
+    #+END_SRC
+
+    Boot takes some time to load, so we must increase timeout in cider.
+   
+    #+BEGIN_SRC emacs-lisp
+      (setq nrepl-sync-request-timeout 40)
+    #+END_SRC
+
+    #+BEGIN_COMMENT
+
+    [[https://github.com/clojure-emacs/clj-refactor.el][clj-refactor]] provides refactoring support for clojure projects. The latest version requires Clojure 1.7+, so I have it disabled until I can migrate all projects.
+
+    #+BEGIN_SRC emacs-lisp
+      ;;(require 'clj-refactor)
+    #+END_SRC
+
+    #+END_COMMENT
+
+    This is the generic hook for clojure.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun my-clojure-mode-hook ()
+        (eldoc-mode 1)
+
+        (setq cider-repl-display-in-current-window t)
+  
+        ;;(clj-refactor-mode 1)
+        (yas-minor-mode 1)
+        (cljr-add-keybindings-with-prefix "C-c C-m")
+
+        (turn-on-diff-hl-mode))
+
+      (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+    #+END_SRC
+
+    #+BEGIN_COMMENT
+    Some bindings for navigating lisp code
+
+    #+BEGIN_SRC emacs-lisp
+      ;; (define-key clojure-mode-map (kbd "M-n") 'sp-next-sexp)
+      ;; (define-key clojure-mode-map (kbd "M-p") 'sp-backward-sexp)
+      ;; (define-key clojure-mode-map (kbd "M-u") 'sp-backward-up-sexp)
+
+      ;; (define-key emacs-lisp-mode-map (kbd "M-n") 'sp-next-sexp)
+      ;; (define-key emacs-lisp-mode-map (kbd "M-p") 'sp-backward-sexp)
+      ;; (define-key emacs-lisp-mode-map (kbd "M-u") 'sp-backward-up-sexp)
+    #+END_SRC
+
+    #+END_COMMENT
+
+*** HTML
+
+    [[https://github.com/emacsmirror/emmet-mode][Emmet]] enables us to produce HTML from CSS-like selectors. 
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'emmet-mode)
+
+      (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+      (add-hook 'html-mode-hook 'emmet-mode)
+      (setq emmet-move-cursor-between-quotes t)
+    #+END_SRC
+
+*** PHP
+    This is to check offline documentation
+
+    #+BEGIN_SRC emacs-lisp
+    (setq php-manual-path "~/php-chunked-xhtml")
+    #+END_SRC
+
+    Most of the configuration is defined in this hook.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/setup-php ()
+        (yas-minor-mode 1)
+
+        (turn-on-diff-hl-mode)
+
+        ;; (whitespace-mode t)
+        ;; (setq whitespace-style '(face tabs spaces trailing identation))
+
+        (flycheck-mode t)
+  
+        (define-key php-mode-map (kbd "C-.") 'er/expand-region)
+        (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
+        (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
+        (define-key php-mode-map (kbd "M-j") 'fvaresi/join-line)
+
+        (c-set-style "bsd" t)
+        (setq c-basic-offset 4)
+        (setq indent-tabs-mode t)
+        (setq tab-width 4)
+
+        (setq comment-multi-line nil ;; maybe
+              comment-start "// "
+              comment-end ""
+              comment-style 'indent
+              comment-use-syntax t))
+      (add-hook 'php-mode-hook 'fvaresi/setup-php)
+    #+END_SRC
+
+    Geben is an interface to DBGp protocol, which is implemented by Xdebug.
+
+    #+BEGIN_SRC emacs-lisp
+      (setq geben-display-window-function 'switch-to-buffer)
+      (setq geben-pause-at-entry-line nil)
+      (setq geben-show-breakpoints-debugging-only nil)
+      (setq geben-source-coding-system 'iso-8859-1)
+    #+END_SRC
+
+    Autocompletion for PHP.
+    
+    #+BEGIN_SRC emacs-lisp
+      (require 'php-auto-yasnippets)
+      (setq php-auto-yasnippet-php-program "~/.emacs.d/elpa/php-auto-yasnippets-20141128.1411/Create-PHP-YASnippet.php")
+    #+END_SRC
+
+    #+BEGIN_COMMENT
+
+    Am I still interested in this mode?
+
+    #+BEGIN_SRC emacs-lisp
+      ;; (require 'php-refactor-mode)
+      ;; (add-hook 'php-mode-hook 'php-refactor-mode)
+      ;; (setq php-refactor-command "refactor.phar")
+    #+END_SRC
+
+    #+END_COMMENT
+
+*** SQL
+
+    Configuration for sql-mysql.
+
+    #+BEGIN_SRC emacs-lisp
+      (setq sql-mysql-login-params
+            '((user :default "forum")
+              (password)
+              (database)
+              (server :default "localhost")))
+    #+END_SRC
+** Diary
+   This variable enables me to set the interval for notifications before the event.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq diary-comment-start "##")
+   #+END_SRC
+
+*** APT notifications
+    Currently I'm activation notifications manually, to make sure I only receive it once. It would be nice to have some way of checking if another instance of emacs has already activated them.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'notifications)
+
+      (defun my-desktop-notification (min-to-app msg)
+	(notifications-notify :title (format "In %s minutes" min-to-app)
+                              :body msg
+                              ;; :actions '("appt-dismiss" "Dismiss" "default" "Snooze")
+                              ;; :on-action (lambda (notification-id action-key)
+                              ;;           (if (string= action-key "appt-dismiss")
+                              ;;               (appt-delete)))
+                              ))
+
+      (defun my-appt-window-function (min-to-app new-time msg)
+	(if (atom min-to-app)
+            (my-desktop-notification min-to-app msg)
+          (dolist (i (number-sequence 0 (1- (length min-to-app))))
+            (my-desktop-notification (nth i min-to-app) (nth i msg)))))
+
+      ;; (appt-activate t)
+      (setq appt-disp-window-function 'my-appt-window-function)
+      (setq appt-delete-window-function nil)
+
+    #+END_SRC
+   
+** Email
+   See [[file:settings/setup-email.org][setup-email.org]]
+
+   #+BEGIN_SRC emacs-lisp
+     (org-babel-load-file (expand-file-name "setup-email.org" settings-dir))
+   #+END_SRC
+
+** General editing
+   Use [[http://company-mode.github.io/][company-mode]] for autocompletion
+
+   #+BEGIN_SRC emacs-lisp
+     (global-company-mode)
+   #+END_SRC
+
+   Use [[https://github.com/T-J-Teru/browse-kill-ring][browse-kill-ring]] for exploring the kill ring.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'browse-kill-ring)
+     (browse-kill-ring-default-keybindings)
+   #+END_SRC
+
+   Selections behave as in other editors: text is replaced when typing.
+
+   #+BEGIN_SRC emacs-lisp
+     (delete-selection-mode t)
+   #+END_SRC
+
+   Save emacs desktop (buffers, major modes, positions, etc) between sessions.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq desktop-save-mode t)
+   #+END_SRC
+
+   Split window horizontally for ediff.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq ediff-split-window-function 'split-window-horizontally)
+   #+END_SRC
+
+   Ignore case for file name completion.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq read-file-name-completion-ignore-case t)
+   #+END_SRC
+
+   Enable undo-tree-mode in all buffers.
+
+   #+BEGIN_SRC emacs-lisp
+     (global-undo-tree-mode t)
+   #+END_SRC
+
+   Enable undo-redo of window configuration.
+   
+   #+BEGIN_SRC emacs-lisp
+     (winner-mode 1)
+   #+END_SRC
+
+   Enable downcase/upcase of regions.
+
+   #+BEGIN_SRC emacs-lisp
+     (put 'downcase-region 'disabled nil)
+     (put 'upcase-region 'disabled nil)
+   #+END_SRC
+
+   Enabling reusing buffer while navigating in dired.
+
+   #+BEGIN_SRC emacs-lisp
+     (put 'dired-find-alternate-file 'disabled nil)
+   #+END_SRC
+
+   Add lines before and after the current line.
+
+   Transpose bindings.
+
+   #+BEGIN_SRC emacs-lisp
+      (global-unset-key (kbd "M-t")) ;; which used to be transpose-words
+      (global-set-key (kbd "M-t l") 'transpose-lines)
+      (global-set-key (kbd "M-t s") 'transpose-sexps)
+      (global-set-key (kbd "M-t w") 'transpose-words)
+   #+END_SRC
+
+   Binding for yasnippet.
+
+   #+BEGIN_SRC emacs-lisp
+    (define-key global-map (kbd "<C-tab>") 'yas-expand-from-trigger-key)
+   #+END_SRC
+
+   Binding for toggling comment in regions.
+
+   # TODO: improve this binding to handle both regions and current line
+   
+   #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
+   #+END_SRC
+
+   Modifying text scale using different bindings, since I frequently switch between Spanish and English keyboard layouts.
+
+   #+BEGIN_SRC emacs-lisp
+      (define-key global-map (kbd "C-+") 'text-scale-increase)
+      (define-key global-map (kbd "C-*") 'text-scale-decrease)
+      (define-key global-map (kbd "C-=") 'text-scale-decrease)
+   #+END_SRC
+
+*** Editing defuns
+
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/add-empty-line-after ()
+	"Add empty line after current one"
+	(interactive)
+	(end-of-line)
+	(newline)
+	(indent-for-tab-command))
+
+      (global-set-key (kbd "<C-return>") 'fvaresi/add-empty-line-after)
+
+      (defun fvaresi/add-empty-line-before ()
+	"Add empty line before current one"
+	(interactive)
+	(beginning-of-line)
+	(newline)
+	(forward-line -1)
+	(indent-for-tab-command))
+
+      (global-set-key (kbd "<C-S-return>") 'fvaresi/add-empty-line-before)
+    #+END_SRC
+
+    Join and expand lines.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/join-line ()
+	"Join lines"
+	(interactive)
+	(join-line -1))
+
+      (global-set-key (kbd "M-j") 'fvaresi/join-line)
+      (global-set-key (kbd "C-j") 'emmet-expand-line)
+    #+END_SRC
+
+    Duplicate selected region.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/duplicate-region (&optional num start end)
+	"Duplicates the region bounded by START and END NUM times.
+      If no START and END is provided, the current region-beginning and
+      region-end is used."
+	(interactive "p")
+	(save-excursion
+          (let* ((start (or start (region-beginning)))
+                 (end (or end (region-end)))
+                 (region (buffer-substring start end)))
+            (goto-char end)
+            (dotimes (i num)
+              (insert region)))))
+
+      (defun fvaresi/duplicate-current-line (&optional num)
+	"Duplicate the current line NUM times."
+	(interactive "p")
+	(save-excursion
+          (when (eq (point-at-eol) (point-max))
+            (goto-char (point-max))
+            (newline)
+            (forward-char -1))
+          (fvaresi/duplicate-region num (point-at-bol) (1+ (point-at-eol)))))
+
+      (defun fvaresi/duplicate-current-line-or-region (arg)
+	"Duplicates the current line or region ARG times.
+      If there's no region, the current line will be duplicated."
+	(interactive "p")
+	(if (region-active-p)
+            (let ((beg (region-beginning))
+                  (end (region-end)))
+              (fvaresi/duplicate-region arg beg end)
+              (one-shot-keybinding "d" (λ (fvaresi/duplicate-region 1 beg end))))
+          (fvaresi/duplicate-current-line arg)
+          (one-shot-keybinding "d" 'fvaresi/duplicate-current-line)))
+
+      (global-set-key (kbd "C-2") 'fvaresi/duplicate-current-line-or-region)
+    #+END_SRC
+
+*** Window defuns
+
+    Create scratch buffers on demand.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun create-scratch-buffer nil
+        "create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
+        (interactive)
+        (let ((n 0)
+              bufname)
+          (while (progn
+                   (setq bufname (concat "*scratch"
+                                         (if (= n 0) "" (int-to-string n))
+                                         "*"))
+                   (setq n (1+ n))
+                   (get-buffer bufname)))
+          (switch-to-buffer (get-buffer-create bufname))
+          (emacs-lisp-mode)
+          ))
+
+      (global-set-key (kbd "C-c b") 'create-scratch-buffer)
+    #+END_SRC
+
+    Splitting windows
+
+    #+BEGIN_SRC emacs-lisp
+      (defun split-window-right-and-move-there-dammit ()
+        (interactive)
+        (split-window-right)
+        (windmove-right))
+
+      (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+
+      (defun toggle-window-split ()
+        (interactive)
+        (if (= (count-windows) 2)
+            (let* ((this-win-buffer (window-buffer))
+                   (next-win-buffer (window-buffer (next-window)))
+                   (this-win-edges (window-edges (selected-window)))
+                   (next-win-edges (window-edges (next-window)))
+                   (this-win-2nd (not (and (<= (car this-win-edges)
+                                               (car next-win-edges))
+                                           (<= (cadr this-win-edges)
+                                               (cadr next-win-edges)))))
+                   (splitter
+                    (if (= (car this-win-edges)
+                           (car (window-edges (next-window))))
+                        'split-window-horizontally
+                      'split-window-vertically)))
+              (delete-other-windows)
+              (let ((first-win (selected-window)))
+                (funcall splitter)
+                (if this-win-2nd (other-window 1))
+                (set-window-buffer (selected-window) this-win-buffer)
+                (set-window-buffer (next-window) next-win-buffer)
+                (select-window first-win)
+                (if this-win-2nd (other-window 1))))))
+
+      (defun rotate-windows ()
+        "Rotate your windows"
+        (interactive)
+        (cond ((not (> (count-windows)1))
+               (message "You can't rotate a single window!"))
+              (t
+               (setq i 1)
+               (setq numWindows (count-windows))
+               (while  (< i numWindows)
+                 (let* (
+                        (w1 (elt (window-list) i))
+                        (w2 (elt (window-list) (+ (% i numWindows) 1)))
+
+                        (b1 (window-buffer w1))
+                        (b2 (window-buffer w2))
+
+                        (s1 (window-start w1))
+                        (s2 (window-start w2))
+                        )
+                   (set-window-buffer w1  b2)
+                   (set-window-buffer w2 b1)
+                   (set-window-start w1 s2)
+                   (set-window-start w2 s1)
+                   (setq i (1+ i)))))))
+
+      (defun fvaresi/kill-buffer-and-window ()
+        (interactive)
+        (if (< (count-windows) 2)
+            (kill-buffer)
+          (kill-buffer-and-window)))
+
+      (global-set-key (kbd "C-x k") 'fvaresi/kill-buffer-and-window)
+    #+END_SRC
+
+    Navigation bindings
+
+    #+BEGIN_SRC emacs-lisp
+      (define-key global-map (kbd "C-S-n") (lambda () (interactive) (next-line 5)))
+      (define-key global-map (kbd "C-S-p") (lambda () (interactive) (previous-line 5)))
+
+      (global-set-key (kbd "M-o") 'mode-line-other-buffer)
+      ;;(global-set-key (kbd "C-S-w") 'toggle-window-split)
+      (global-set-key (kbd "C-S-r") 'rotate-windows)
+
+      (global-set-key (kbd "C-o") 'ace-jump-word-mode)
+
+      (define-key isearch-mode-map (kbd "C-q") 'helm-swoop-from-isearch)
+
+      (global-set-key (kbd "C-M-g") 'webjump)
+
+      ;; (define-key clojure-mode-map (kbd "M-n") 'sp-next-sexp)
+      ;; (define-key clojure-mode-map (kbd "M-p") 'sp-backward-sexp)
+      ;; (define-key clojure-mode-map (kbd "M-u") 'sp-backward-up-sexp)
+
+      ;; (define-key emacs-lisp-mode-map (kbd "M-n") 'sp-next-sexp)
+      ;; (define-key emacs-lisp-mode-map (kbd "M-p") 'sp-backward-sexp)
+      ;; (define-key emacs-lisp-mode-map (kbd "M-u") 'sp-backward-up-sexp)
+    #+END_SRC
+
+    #+BEGIN_COMMENT
+    #+BEGIN_SRC emacs-lisp
+    ;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+    ;; (define-key dired-mode-map (kbd "h") 'dired-dotfiles-toggle)
+    #+END_SRC
+    #+END_COMMENT
+
+** Org Mode
+   See [[file:settings/setup-org.org][setup-org.org]]
+
+   #+BEGIN_SRC emacs-lisp
+     (org-babel-load-file (expand-file-name "setup-org.org" settings-dir))
+   #+END_SRC
+
+** Spelling
+   #+BEGIN_SRC emacs-lisp
+   (setq-default ispell-program-name "aspell")
+   #+END_SRC
+** Tramp
+   Reuse connections for tramp.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq tramp-use-ssh-controlmaster-options nil)
+   #+END_SRC
+** Twitter
+   I use [[https://github.com/hayamiz/twittering-mode][twittering-mode]] to browse twitter.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'twittering-mode)
+     (setq twittering-use-master-password t)
+     (setq twittering-icon-mode t)
+     (setq twittering-edit-skeleton 'inherit-any)
+   #+END_SRC
+
+   Quickly move to twittering perspective.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun switch-to-twitter-persp ()
+       (interactive)
+       (persp-switch "twitter")
+       (twit))
+
+     (define-key global-map (kbd "C-x x t") 'switch-to-twitter-persp)
+
+     (define-key twittering-mode-map (kbd "C-S-f") 'twittering-favorite)
+     (define-key twittering-mode-map (kbd "C-S-r") 'twittering-native-retweet)
+   #+END_SRC
+** Version Control
+   [[https://github.com/magit/magit][Magit]] is a great interface for Git. If you want to see a demo check this [[https://youtu.be/vQO7F2Q9DwA][presentation]] by Howard Abrams.
+   
+   #+BEGIN_SRC emacs-lisp
+     (setq magit-use-overlays nil)
+     (setq magit-last-seen-setup-instructions "1.4.0")
+     (setq magit-push-always-verify nil)
+
+     (global-set-key (kbd "C-c m") 'magit-status)
+   #+END_SRC

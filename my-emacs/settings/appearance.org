@@ -1,0 +1,30 @@
+* Appearance   
+  Set the default font, favorite theme and frame title as early as possible.
+
+  I've also tried =Source Code Pro-10= and =M+ 1mn-11= but decided to stick with =DejaVu Sans Mono-10=.
+
+  #+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
+  (setq frame-title-format "%f")
+  (load-theme 'sanityinc-tomorrow-eighties t)
+  #+END_SRC
+
+  [[https://github.com/Malabarba/smart-mode-line/][Malabarba's Smart Mode Line]] keeps a clean mode-line.
+
+  #+BEGIN_SRC emacs-lisp
+  (require 'smart-mode-line)
+  (sml/setup)
+  (sml/apply-theme 'respectful)	      
+  #+END_SRC
+
+  This package uses [[https://github.com/Malabarba/rich-minority][rich-minority]], which allows me to exclude some modes I don't really need to see. If I need to check with minor modes are activated, I just have to hover over the number in the modes section.
+
+  #+BEGIN_SRC emacs-lisp
+    (add-to-list 'rm-excluded-modes " yas")
+    (add-to-list 'rm-excluded-modes " company")
+    (add-to-list 'rm-excluded-modes " Undo-Tree")
+    (add-to-list 'rm-excluded-modes " FlyC")
+    (add-to-list 'rm-excluded-modes " Guide")
+    (add-to-list 'rm-excluded-modes " Helm")
+    (add-to-list 'rm-excluded-modes " SP/s")
+  #+END_SRC
