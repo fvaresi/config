@@ -13,9 +13,11 @@
 
   AFAIK, the only way to avoid this is to use [[http://stable.melpa.org][melpa stable]]. You can then pin some packages to this repo like this:
 
-  #+BEGIN_SRC emacs-lisp :eval never
-    ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-    ;; (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+  #+BEGIN_SRC emacs-lisp
+    (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+    (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+    (add-to-list 'package-pinned-packages '(clj-refactor . "melpa-stable") t)
   #+END_SRC
 
   I keep a list of the packages I've installed so that a fresh install requires just to eval =gimme-my-packages=. Make sure you re-eval it after adding a package.
