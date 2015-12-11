@@ -1,3 +1,6 @@
+#+PROPERTY: header-args :exports code
+#+PROPERTY: header-args :results output silent
+
 * Email
 ** General Settings
    Put signature before forwarded message.

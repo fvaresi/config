@@ -1,3 +1,6 @@
+#+PROPERTY: header-args :exports code
+#+PROPERTY: header-args :results output silent
+
 * Emacs packages
 
   It seems marmalade repo is not required anymore for most packages, so I stick with melpa. Also added org repo to install org-plus-contrib.

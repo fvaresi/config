@@ -1,3 +1,6 @@
+#+PROPERTY: header-args :exports code
+#+PROPERTY: header-args :results output silent
+
 * My Emacs Configuration
 
 This is my org-mode based configuration for emacs. It's based on the [[http://orgmode.org/worg/org-contrib/babel/intro.html#literate-emacs-init][Literate Emacs Initialization example]] and [[https://github.com/eschulte/emacs24-starter-kit/][emacs24-starter-kit]].

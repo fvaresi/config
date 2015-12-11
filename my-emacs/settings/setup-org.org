@@ -1,3 +1,6 @@
+#+PROPERTY: header-args :exports code
+#+PROPERTY: header-args :results output silent
+
 * Org Mode
 
 This one of my favorite modes, since it can accomplish lots of stuff like handling TODO lists, tracking time, keeping an agenda, and much more.

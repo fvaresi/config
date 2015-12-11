@@ -1,3 +1,6 @@
+#+PROPERTY: header-args :exports code
+#+PROPERTY: header-args :results output silent
+
 * Appearance   
   Set the default font, favorite theme and frame title as early as possible.
 
