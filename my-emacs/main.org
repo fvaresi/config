@@ -191,6 +191,9 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     [[https://github.com/bbatsov/projectile][Projectile]] is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies(when feasible).
 
     #+BEGIN_SRC emacs-lisp
+      ;; Currently testing an improvement
+      (add-to-list 'load-path "~/projects/projectile")
+
       (projectile-global-mode)
       (setq projectile-enable-caching t)
       (setq projectile-svn-command "find . -type f -print0")
@@ -202,6 +205,28 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+BEGIN_SRC emacs-lisp
       (require 'persp-projectile)
       (projectile-persp-bridge helm-projectile)
+    #+END_SRC
+
+    Some of my projects have different version tags and branches, and I want the persp name to be something different.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/projectile-custom-project-name (project-root)
+        (cond
+         ;; vBulletin Product
+         ((string-match "/vBulletinPlugins/\\([^/]+\\)/\\(?:branches\\|tags\\)\\(?:.*\\)/\\([^/]+\\)" project-root)
+          (let* ((product-name (match-string 1 project-root))
+                 (branch-name (match-string 2 project-root)))
+            (concat product-name "/" branch-name))) ;
+
+         ((string-match "/vBulletinPlugins/\\([^/]+\\)/trunk" project-root)
+          (let* ((product-name (match-string 1 project-root)))
+            (concat product-name "/trunk")))
+
+         ;; do the default
+         (t
+          (projectile-default-project-name project-root))))
+
+      (setq projectile-project-name-function 'fvaresi/projectile-custom-project-name)
     #+END_SRC
 
 *** Rainbow Delimiters
