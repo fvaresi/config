@@ -102,6 +102,10 @@
 
 ** Notmuch
 
+   Notmuch takes care of email indexing and searching.
+
+   Most tips were obtained [[https://notmuchmail.org/emacstips/][here]].
+
    #+BEGIN_SRC emacs-lisp
      (require 'notmuch)
 
@@ -110,11 +114,15 @@
      (setq notmuch-search-oldest-first nil)
    #+END_SRC
 
+   #+BEGIN_COMMENT
+   
    This gives preference to text/html over text/plain.
 
    #+BEGIN_SRC emacs-lisp
      (setq notmuch-multipart/alternative-discouraged '("text/plain" "text/html"))
    #+END_SRC
+
+   #+END_COMMENT
 
    Several convenience functions.
 
@@ -296,6 +304,8 @@
 
      (define-key notmuch-search-mode-map "T" 'notmuch-jump-to-tag)
    #+END_SRC
+
+** Email perspective
 
    Quickly switch to email perspective.
 

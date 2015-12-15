@@ -286,6 +286,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
 ** Coding
 *** Android
+    Most tips were obtained [[http://blog.refu.co/?p=1242][here]].
+
     #+BEGIN_SRC emacs-lisp
       (require 'android-mode)
       (setq android-mode-sdk-dir "~/opt/android-sdk-linux")
