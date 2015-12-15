@@ -81,6 +81,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export ALTERNATE_EDITOR=""
 export EDITOR=vim
 export SVN_EDITOR=vim
 export SUDO_EDITOR="emacsclient -nw"

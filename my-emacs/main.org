@@ -185,6 +185,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (push '("*helm projectile*" :height 0.5) popwin:special-display-config)
       (push '("*helm etags*" :height 0.5) popwin:special-display-config)
       (push '("*Ack-and-a-half*" :height 0.5 :stick t) popwin:special-display-config)
+      (push '("*vc-diff*" :height 0.5 :stick t) popwin:special-display-config)
     #+END_SRC
 
 *** Projectile
@@ -193,6 +194,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+BEGIN_SRC emacs-lisp
       ;; Currently testing an improvement
       (add-to-list 'load-path "~/projects/projectile")
+      (add-to-list 'load-path "~/projects/persp-projectile")
 
       (projectile-global-mode)
       (setq projectile-enable-caching t)
@@ -328,11 +330,9 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
         (setq cider-repl-display-in-current-window t)
   
-        ;;(clj-refactor-mode 1)
+        (clj-refactor-mode 1)
         (yas-minor-mode 1)
-        (cljr-add-keybindings-with-prefix "C-c C-m")
-
-        (turn-on-diff-hl-mode))
+        (cljr-add-keybindings-with-prefix "C-c C-m"))
 
       (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
     #+END_SRC
@@ -377,13 +377,11 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (defun fvaresi/setup-php ()
         (yas-minor-mode 1)
 
-        (turn-on-diff-hl-mode)
-
         ;; (whitespace-mode t)
         ;; (setq whitespace-style '(face tabs spaces trailing identation))
 
         (flycheck-mode t)
-  
+
         (define-key php-mode-map (kbd "C-.") 'er/expand-region)
         (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
         (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
@@ -576,6 +574,17 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (define-key global-map (kbd "C-+") 'text-scale-increase)
       (define-key global-map (kbd "C-*") 'text-scale-decrease)
       (define-key global-map (kbd "C-=") 'text-scale-decrease)
+   #+END_SRC
+
+   Improve pop-to-mark.
+
+   #+BEGIN_SRC emacs-lisp
+     (defadvice pop-to-mark-command (around ensure-new-position activate)
+       (let ((p (point)))
+         (dotimes (i 10)
+           (when (= p (point)) ad-do-it))))
+
+     (setq set-mark-command-repeat-pop t)
    #+END_SRC
 
 *** Editing defuns
@@ -828,3 +837,13 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
      (global-set-key (kbd "C-c m") 'magit-status)
    #+END_SRC
+
+   Use [[https://github.com/dgutov/diff-hl][diff-hl]] to highlight changes in version control.
+
+   #+BEGIN_SRC emacs-lisp
+     (global-diff-hl-mode)
+   #+END_SRC
+
+   #+BEGIN_COMMENT
+   I prefer vc-ediff to vc-diff, so add a binding for it in vc-dir.
+   #+END_COMMENT

@@ -52,6 +52,9 @@ define_webjump("php", "http://www.php.net/%s");
 // youtube
 define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
 
+// shorter duckduckgo
+define_webjump("d", "https://duckduckgo.com/?q=%s");
+
 ////////////////
 // Instapaper //
 ////////////////

@@ -86,10 +86,16 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
      (setq org-agenda-todo-list-sublevels nil)
    #+END_SRC
 
-   Add key binding.
+   Add key binding...
 
    #+BEGIN_SRC emacs-lisp
      (define-key global-map "\C-ca" 'org-agenda)
+   #+END_SRC
+
+   ... and remove annoying ones
+
+   #+BEGIN_SRC emacs-lisp
+     (define-key org-mode-map (kbd "C-,") nil)
    #+END_SRC
 ** Org Babel
 
