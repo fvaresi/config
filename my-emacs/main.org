@@ -312,15 +312,11 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (setq nrepl-sync-request-timeout 40)
     #+END_SRC
 
-    #+BEGIN_COMMENT
-
     [[https://github.com/clojure-emacs/clj-refactor.el][clj-refactor]] provides refactoring support for clojure projects. The latest version requires Clojure 1.7+, so I have it disabled until I can migrate all projects.
 
     #+BEGIN_SRC emacs-lisp
-      ;;(require 'clj-refactor)
+      (require 'clj-refactor)
     #+END_SRC
-
-    #+END_COMMENT
 
     This is the generic hook for clojure.
 
