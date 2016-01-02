@@ -1,6 +1,7 @@
 [general]
 accounts = Gmail,Infuy,Internetbrands
 maxsyncaccounts = 4
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 ################################################## Gmail ##################################################
 [Account Gmail]
@@ -23,7 +24,6 @@ nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
 			       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
 
 realdelete = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 ################################################## Infuy ##################################################
 [Account Infuy]
@@ -62,4 +62,3 @@ nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
 	    	   	       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
 
 realdelete = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt

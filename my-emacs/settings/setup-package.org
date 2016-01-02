@@ -141,5 +141,19 @@
   [[https://github.com/Malabarba/paradox/][Paradox]] is a great interface for package managing.
 
   #+BEGIN_SRC emacs-lisp
-  (setq paradox-automatically-star t)  
+    (setq paradox-automatically-star t)
+    (setq paradox-execute-asynchronously nil)
+  #+END_SRC
+
+  Just to be safe, backup current elpa dir when upgrading
+
+  #+BEGIN_SRC emacs-lisp
+    (defun fvaresi/upgrade-with-bkp ()
+      (interactive)
+
+      (let* ((src (expand-file-name "elpa" user-emacs-directory))
+             (bkp-name (concat "elpa.bkp." (format-time-string "%Y%m%d")))
+             (dest (expand-file-name bkp-name user-emacs-directory)))
+        (progn (copy-directory src dest)
+               (paradox-upgrade-packages))))
   #+END_SRC

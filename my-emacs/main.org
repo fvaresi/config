@@ -197,8 +197,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (add-to-list 'load-path "~/projects/persp-projectile")
 
       (projectile-global-mode)
-      (setq projectile-enable-caching t)
-      (setq projectile-svn-command "find . -type f -print0")
+      (setq projectile-svn-command projectile-generic-command)
       (setq projectile-switch-project-action 'projectile-dired)
     #+END_SRC
 
