@@ -124,174 +124,64 @@
 
    #+END_COMMENT
 
-   Several convenience functions.
+   Create some keybindings for toggling frequently used tags.
 
    #+BEGIN_SRC emacs-lisp
-     (defun search-toggle-message-delete ()
-       "toggle deleted tag for message"
+     (defun fvaresi/notmuch-mode ()
        (interactive)
-       (notmuch-search-tag
-        (list
-         (if (member "deleted" (notmuch-search-get-tags))
-             "-deleted" "+deleted"))))
+  
+       (let* ((str-major-mode (format "%s" major-mode)))
+         (if (string-match "notmuch-\\(.*\\)-mode" str-major-mode)
+                                       (match-string 1 str-major-mode))))
 
-     (define-key notmuch-search-mode-map "d" 'search-toggle-message-delete)
+     (defun fvaresi/notmuch-tag (keybinding tag-name tag-all)
+       (let* ((remove-tag (concat "-" tag-name))
+              (add-tag (concat "+" tag-name)))
+    
+         (define-key
+           notmuch-common-keymap
+           keybinding
+           `(lambda ()
+              (interactive)
+         
+              (let* ((notmuch-mode (fvaresi/notmuch-mode))
+                     (base-tag-cmd (concat "notmuch-" notmuch-mode "-tag"))
+                     (tag-cmd ,(if tag-all
+                                   `(concat base-tag-cmd "-all")
+                                 `base-tag-cmd))
+                     (get-tags-cmd (concat "notmuch-" notmuch-mode "-get-tags")))
+           
+                (funcall (intern tag-cmd)
+                         (list (if (member ,tag-name (funcall (intern get-tags-cmd))) ,remove-tag ,add-tag))))))))
 
-     (defun search-toggle-delete-all()
-       "toggle deleted tag for all message"
+     (defun fvaresi/notmuch-tag-message (keybinding tag-name)
        (interactive)
-       (notmuch-search-tag-all
-        (list
-         (if (member "deleted" (notmuch-search-get-tags))
-             "-deleted" "+deleted"))))
 
-     (define-key notmuch-search-mode-map "D" 'search-toggle-delete-all)
+       (fvaresi/notmuch-tag (downcase keybinding) tag-name nil))
 
-     (defun show-toggle-message-delete ()
-       "toggle deleted tag for message"
+     (defun fvaresi/notmuch-tag-all (keybinding tag-name)
        (interactive)
-       (notmuch-show-tag
-        (list
-         (if (member "deleted" (notmuch-show-get-tags))
-             "-deleted" "+deleted"))))
 
-     (define-key notmuch-show-mode-map "d" 'show-toggle-message-delete)
+       (fvaresi/notmuch-tag (upcase keybinding) tag-name t))
 
-     (defun show-toggle-thread-delete ()
-       "toggle deleted tag for message"
-       (interactive)
-       (notmuch-show-tag-all
-        (list
-         (if (member "deleted" (notmuch-show-get-tags))
-             "-deleted" "+deleted"))))
+     (setq notmuch-keybindings
+           (list (cons "d" "deleted")
+                 (cons "y" "inbox")
+                 (cons "u" "unread")))
 
-     (define-key notmuch-show-mode-map "D" 'show-toggle-thread-delete)
+     (dolist (i notmuch-keybindings)
+       (let* ((keybinding (car i))
+              (tag-name (cdr i)))
 
-     (defun tree-toggle-message-delete ()
-       "toggle deleted tag for message"
-       (interactive)
-       (notmuch-tree-tag
-        (list
-         (if (member "deleted" (notmuch-tree-get-tags))
-             "-deleted" "+deleted"))))
+         (fvaresi/notmuch-tag-message keybinding tag-name)
+         (fvaresi/notmuch-tag-all keybinding tag-name)))
 
-     (define-key notmuch-tree-mode-map "d" 'tree-toggle-message-delete)
+     (fvaresi/notmuch-tag "F" "flagged" nil)
+   #+END_SRC
 
-     (defun tree-toggle-thread-delete ()
-       "toggle deleted tag for thread"
-       (interactive)
-       (notmuch-tree-tag-thread
-        (list
-         (if (member "deleted" (notmuch-tree-get-tags))
-             "-deleted" "+deleted"))))
+   Quick jump to a specific tag.
 
-     (define-key notmuch-tree-mode-map "D" 'tree-toggle-thread-delete)
-
-     (defun search-toggle-message-fav ()
-       "toggle deleted tag for message"
-       (interactive)
-       (notmuch-search-tag
-        (list
-         (if (member "flagged" (notmuch-search-get-tags))
-             "-flagged" "+flagged"))))
-
-     (define-key notmuch-search-mode-map "F" 'search-toggle-message-fav)
-
-     (defun show-toggle-message-fav ()
-       "toggle deleted tag for message"
-       (interactive)
-       (notmuch-show-tag
-        (list
-         (if (member "flagged" (notmuch-show-get-tags))
-             "-flagged" "+flagged"))))
-
-     (define-key notmuch-show-mode-map "F" 'show-toggle-message-fav)
-
-     (defun tree-toggle-message-fav ()
-       "toggle deleted tag for message"
-       (interactive)
-       (notmuch-tree-tag
-        (list
-         (if (member "flagged" (notmuch-tree-get-tags))
-             "-flagged" "+flagged"))))
-
-     (define-key notmuch-tree-mode-map "F" 'tree-toggle-message-fav)
-
-     (defun search-toggle-message-inbox ()
-       "toggle inbox tag for message"
-       (interactive)
-       (notmuch-search-tag
-        (list
-         (if (member "inbox" (notmuch-search-get-tags))
-             "-inbox" "+inbox"))))
-
-     (define-key notmuch-search-mode-map "y" 'search-toggle-message-inbox)
-
-     (defun show-toggle-message-inbox ()
-       "toggle inbox tag for message"
-       (interactive)
-       (notmuch-show-tag
-        (list
-         (if (member "inbox" (notmuch-show-get-tags))
-             "-inbox" "+inbox"))))
-
-     (define-key notmuch-show-mode-map "y" 'show-toggle-message-inbox)
-
-     (defun tree-toggle-thread-inbox ()
-       "toggle inbox tag for thread"
-       (interactive)
-       (notmuch-tree-tag-thread
-        (list
-         (if (member "inbox" (notmuch-tree-get-tags))
-             "-inbox" "+inbox"))))
-
-     (define-key notmuch-tree-mode-map "y" 'tree-toggle-thread-inbox)
-
-     (defun show-toggle-message-unread ()
-       "toggle unread tag for message"
-       (interactive)
-       (notmuch-show-tag
-        (list
-         (if (member "unread" (notmuch-show-get-tags))
-             "-unread" "+unread"))))
-
-     (define-key notmuch-show-mode-map "u" 'show-toggle-message-unread)
-
-     (defun search-toggle-message-unread ()
-       "toggle unread tag for message"
-       (interactive)
-       (notmuch-search-tag
-        (list
-         (if (member "unread" (notmuch-search-get-tags))
-             "-unread" "+unread"))))
-
-     (define-key notmuch-search-mode-map "u" 'search-toggle-message-unread)
-
-     (defun reply-to-thread-show ()
-       (interactive)
-       (notmuch-show-reply 't))
-
-     (define-key notmuch-show-mode-map "R" 'reply-to-thread-show)
-
-     (defun reply-to-thread-sender-show ()
-       (interactive)
-       (notmuch-show-reply-sender 't))
-
-     (define-key notmuch-show-mode-map "r" 'reply-to-thread-sender-show)
-
-     (defun reply-to-thread-search ()
-       (interactive)
-       (notmuch-search-reply-to-thread 't))
-
-     (define-key notmuch-search-mode-map "R" 'reply-to-thread-search)
-
-     (defun reply-to-thread-sender-search ()
-       (interactive)
-       (notmuch-search-reply-to-thread-sender 't))
-
-     (define-key notmuch-search-mode-map "r" 'reply-to-thread-sender-search)
-
-     
+   #+BEGIN_SRC emacs-lisp
      (defun notmuch-jump-to-tag ()
        (interactive)
        (let ((selected-tag (helm :sources `((name . "Tags")
