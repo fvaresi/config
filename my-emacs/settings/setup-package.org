@@ -1,6 +1,23 @@
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :results output silent
 
+* Private						     :crypt:noexport:
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+hQEMA1NjmxQGk77XAQgAg2lDawXgH1Opi8M5pxjBTQ+FiaFxhJOo2kaNWubCdwC0
+mFFRtvUL3RZjDJIL348VECrROe0kyHbBoNqBl0NNJfdKNY5cHiMGYlaUQTFrWxlv
+CKsg+qbT3VJUwy0jUhf5r5XG7TeVewUitwAWzo5avqXctfwD5HyPNg/lZirIMmbc
+0hpidm7kwaMtig2CM0XfFFFZK7/yQokHzQ+MN6Chi8vngfjyk0m+GbX3IdnRDdqk
+AZeFD8UO5nJZTfHO7Aaxt/UJJe4XgCna3u8TZ5Vu4sj7xLrgULeL0EV6V/UhDjOA
+9WS1WsRiVGg6DGvXYL7DGVh828rPmiRiPa718HMCudKpAaltNldjhl06M7ES5O4t
+4j6eCkL8dzy//PH8b///DK1+HIvg09zfmUqEnCC5q6SAAQXEm396C/I+jsceVBif
+HXtBWugd/lUFrXU0Vl7+3dT6YNZ9scGXUGG12QwuQTyHE8SHR9daytxQjZ/AzVuL
+boyiNK6G7O6tCSY6ZVdsC5M49LNfe1gdwqEAwxN7HBSt6kLjP+1R0Hug/xW+t2+t
+hv2hby3BAaK2SA==
+=tcLz
+-----END PGP MESSAGE-----
+
 * Emacs packages
 
   It seems marmalade repo is not required anymore for most packages, so I stick with melpa. Also added org repo to install org-plus-contrib.
@@ -88,10 +105,11 @@
 
                                  org-plus-contrib
                                  ob-http
+                                 org-gcal
                                  org-jira
                                  org-beautify-theme
-				 htmlize
-				 ox-reveal
+                                 htmlize
+                                 ox-reveal
 
                                  paradox
 
@@ -157,3 +175,4 @@
         (progn (copy-directory src dest)
                (paradox-upgrade-packages))))
   #+END_SRC
+

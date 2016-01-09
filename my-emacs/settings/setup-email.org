@@ -2,6 +2,23 @@
 #+PROPERTY: header-args :results output silent
 
 * Email
+** Identity						     :crypt:noexport:
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+hQEMA1NjmxQGk77XAQgAw+UFJrPj0a9+XDDyL9b1FnIETCmCGiNHTLSZU5yFPpdj
+PDYgsVjZKIw42cWT/q3eYpWnqWoQlybXGzBb+exBWG0BDoqj/ncZwsFo+i0nGLQ8
+j+n+pUwQqrdfXJJjiVcRKB+Gp+le7es3Cjz2H1uyoXJJF3/ElkxFZVY4eWQy/GNx
+s8gIwysmWp9bzZozdcz+5JnbxPE5ifNsShXuYao1EaNlYX3fd7QmQgWCH5o1zUIL
+wDvjlJbcm698MHjOFxJ3xZPA1H+mVtPwW1WUVFw4Yq7X/MlhfAhRCY5dexR81odt
+wNrT2YbShvyl+zuT6tUkUxlRqsWU7+RKDe0L1zJuxdK2AT8BACjwhI673JB9Uaag
+EuGAdB9/5PLiHKgJIHbrzZ8N7awpa/trXj3p+HfL4Fyok5nJyPoVG2MJo50LlSBh
+gd8Tz6kd73Z4M1j5H5GnCdYOBOqUPK7SK6P7Km8ApSWNZb5LMQr1PFPT+8S1I32t
+lHgAzeYS8194z309tzX/2ikADuM/rzn+ED3Yf581TXz7AvnESFNTwPNBXymkFZmV
+mUpHjWqI99xlGt7PZMQa0e6qU1VVH/g=
+=UUBW
+-----END PGP MESSAGE-----
+
 ** General Settings
    Put signature before forwarded message.
 
@@ -129,7 +146,7 @@
    #+BEGIN_SRC emacs-lisp
      (defun fvaresi/notmuch-mode ()
        (interactive)
-  
+
        (let* ((str-major-mode (format "%s" major-mode)))
          (if (string-match "notmuch-\\(.*\\)-mode" str-major-mode)
                                        (match-string 1 str-major-mode))))
@@ -137,20 +154,20 @@
      (defun fvaresi/notmuch-tag (keybinding tag-name tag-all)
        (let* ((remove-tag (concat "-" tag-name))
               (add-tag (concat "+" tag-name)))
-    
+
          (define-key
            notmuch-common-keymap
            keybinding
            `(lambda ()
               (interactive)
-         
+
               (let* ((notmuch-mode (fvaresi/notmuch-mode))
                      (base-tag-cmd (concat "notmuch-" notmuch-mode "-tag"))
                      (tag-cmd ,(if tag-all
                                    `(concat base-tag-cmd "-all")
                                  `base-tag-cmd))
                      (get-tags-cmd (concat "notmuch-" notmuch-mode "-get-tags")))
-           
+
                 (funcall (intern tag-cmd)
                          (list (if (member ,tag-name (funcall (intern get-tags-cmd))) ,remove-tag ,add-tag))))))))
 

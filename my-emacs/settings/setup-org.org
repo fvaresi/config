@@ -63,40 +63,53 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 
 ** Org Agenda
 
-   # These are the agenda files, no need to publish them in Github
-   #+BEGIN_SRC emacs-lisp :exports none
-     (setq org-agenda-files `(,org-default-notes-file
-                              ,default-journal-file
-                              "~/autocomm/docs/sprints.org"
-                              "~/life/docs/life.org"
-                              "~/infuy/docs/infuy.org"
-                              "~/org/gcal-eventos.org"
-                              "~/org/gcal-personal.org"))
-   #+END_SRC
+*** Sources						     :crypt:noexport:
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
 
-   Show diary entries in org-agenda.
+hQEMA1NjmxQGk77XAQf+MOZ4wuPVpbRbxa7SdQNVtgCguX0YH0cgiN6eQtl2bIXe
+nJcleIULxs+4Ia9D1KmG7Y4f3GXItjJFuP/KqkVEl99XmQM9XIyAv3Vd5JY54DxZ
+EnXRTbs120/xYW8xZeYtirf9wDfFJXHqGVhYSJhZ6lwzXYZF1UCPjAXwuzTKJmra
+oL1pZZ+ppaIk5DA13PpzBI5Outgnl+oFeU70Zg4xSfrFfKg7e6yVRryCZTobEK5+
+BxUcbvbr6g/6jOuQAprrl1Qzdug9zSsAHW/HTd+3f+kkA53q4sx5GeVxu+fWCABV
+b9zJxbdhIm+egnLbWJoKSHeF+9PVa4HaWcxsFkNhw9LBLAHhCP4smQywJfvpN2n5
+LAwrYJCemqqT+mRlUjHfTEmq3CHztWd6oZY/DhbjxKkL7ew3GCcCmpwnHXmkNeOZ
+bvPxf60T7dem2fhaBtEBY3+ngVH3W3/1MhoHq2dQn0UbWXzr6TYEFz2WPWBEAXUT
+ORCFoOmYh3WbEpPglP7oPihvz/iE8TiqrEwgQbQ/t1bHDNQX0qF01/qA0gmwqMAW
+B+c3w1t+ozA9rFDXeFQJLG+UvFVoO1Wmxvg4Me++WMOkDwQ4ny1oudPlQtkCT0Lh
+qji3e7UeLQq4+OP5CF3U3y+4WvDRnQf8SzK3qkZJskZUxUWLjZxYZys/74aPMDbh
+Xw+Jyx8/bEuwhMRiq/uZPBpQo6O/K6OihyP7iuHPthDvnzVXwMb1Uu/VMUQOeL94
+aeBi/OyMap1Bum3+TFG0NUox8cj6AX8zx6APVpISNDmns6NcAMr/ujG6lk+f0hVl
+gcVT6v8mdXG9VJBQnD3QtnJvZHBtts3hX77viEurUmPOIkqOZPeJrhaFZNd2deFo
+yZc7vyXthMqYUz3a942v04syNCEaxtH9EUlRuzyYPBb4/KsmBT4h44+AveqT8E2K
+GQ7auEvoyE2NHsYMGJH2Amgo784mp673+4WuB3b7W/Jjy9QA5TaayZaaT92zxA==
+=IuRv
+-----END PGP MESSAGE-----
 
-   #+BEGIN_SRC emacs-lisp
-     (setq org-agenda-include-diary t)
-   #+END_SRC
+*** General Settings
+    Do not show diary entries in org-agenda.
 
-   Do not show subtasks.
+    #+BEGIN_SRC emacs-lisp
+      (setq org-agenda-include-diary nil)
+    #+END_SRC
 
-   #+BEGIN_SRC emacs-lisp
-     (setq org-agenda-todo-list-sublevels nil)
-   #+END_SRC
+    Do not show subtasks.
 
-   Add key binding...
+    #+BEGIN_SRC emacs-lisp
+      (setq org-agenda-todo-list-sublevels nil)
+    #+END_SRC
 
-   #+BEGIN_SRC emacs-lisp
-     (define-key global-map "\C-ca" 'org-agenda)
-   #+END_SRC
+    Add key binding...
 
-   ... and remove annoying ones
+    #+BEGIN_SRC emacs-lisp
+      (define-key global-map "\C-ca" 'org-agenda)
+    #+END_SRC
 
-   #+BEGIN_SRC emacs-lisp
-     (define-key org-mode-map (kbd "C-,") nil)
-   #+END_SRC
+    ... and remove annoying ones
+
+    #+BEGIN_SRC emacs-lisp
+      (define-key org-mode-map (kbd "C-,") nil)
+    #+END_SRC
 ** Org Babel
 
    This library is very useful for literate programming. Excellent examples of this are the [[http://www.howardism.org/Technical/Emacs/literate-devops.html][blog post]] and the [[https://youtu.be/dljNabciEGg][screencast]] by Howard Abrams.
