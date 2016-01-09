@@ -168,6 +168,19 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (define-key global-map (kbd "M-O") 'switch-to-last-persp)
     #+END_SRC
 
+    By default, kill current perspective unless prefix argument is non-nil.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/persp-kill (arg)
+        (interactive "P")
+
+        (if arg
+            (persp-kill nil)
+          (persp-kill (persp-name persp-curr))))
+
+      (define-key perspective-map (kbd "c") 'fvaresi/persp-kill)
+    #+END_SRC
+
 *** Popwin
     [[https://github.com/m2ym/popwin-el][Popwin]] is a popup window manager for Emacs.
 
@@ -468,11 +481,17 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+END_SRC
    
-** Email
+** Email and News
    See [[file:settings/setup-email.org][setup-email.org]]
 
    #+BEGIN_SRC emacs-lisp
      (org-babel-load-file (expand-file-name "setup-email.org" settings-dir))
+   #+END_SRC
+
+   Most configuration for gnus is in [[file:~/config/gnus.org][gnus.org]].
+
+   #+BEGIN_SRC emacs-lisp
+     (setq gnus-inhibit-startup-message t)
    #+END_SRC
 
 ** General editing
@@ -741,9 +760,10 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
                    (set-window-start w2 s1)
                    (setq i (1+ i)))))))
 
-      (defun fvaresi/kill-buffer-and-window ()
-        (interactive)
-        (if (< (count-windows) 2)
+      (defun fvaresi/kill-buffer-and-window (arg)
+        (interactive "P")
+        (if (or arg
+                (< (count-windows) 2))
             (kill-buffer)
           (kill-buffer-and-window)))
 
