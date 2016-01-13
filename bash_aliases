@@ -21,3 +21,5 @@ alias ttt="tree -L 3"
 alias tttt="tree -L 4"
 
 alias tm="tmux attach"
+
+alias update-org="cd $HOME/projects/org-mode && make update"

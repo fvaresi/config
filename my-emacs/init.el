@@ -1,10 +1,17 @@
-;; This was required to avoid an error with org mode.
-(setq package-enable-at-startup nil)
-(package-initialize)
+;; ;; This was required to avoid an error with org mode.
+;; (setq package-enable-at-startup nil)
+;; (package-initialize)
 
+;; Add org sources to load path.
+(add-to-list 'load-path "~/projects/org-mode/lisp")
+(add-to-list 'load-path "~/projects/org-mode/contrib/lisp" t)
+
+;; Always follow symlinks
 (setq vc-follow-symlinks t)
 
-;; Before tangling files, decrypt as required.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; BEFORE TANGLING FILES, DECRYPT AS REQUIRED. ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'org-crypt)
 
 (org-crypt-use-before-save-magic)
@@ -21,5 +28,9 @@
 (setq auto-save-default nil)
 
 (add-hook 'org-babel-pre-tangle-hook 'org-decrypt-entries t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Launch main config! ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (org-babel-load-file (expand-file-name "main.org" user-emacs-directory))

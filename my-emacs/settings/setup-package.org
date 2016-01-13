@@ -103,7 +103,7 @@ hv2hby3BAaK2SA==
 
                                  notmuch
 
-                                 org-plus-contrib
+                                 ;; org-plus-contrib
                                  ob-http
                                  org-gcal
                                  org-jira
