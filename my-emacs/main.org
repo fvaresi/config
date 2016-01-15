@@ -1,6 +1,8 @@
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :results output silent
 
+#+EXPORT_EXCLUDE_TAGS: noexport crypt
+
 * My Emacs Configuration
 
 This is my org-mode based configuration for emacs. It's based on the [[http://orgmode.org/worg/org-contrib/babel/intro.html#literate-emacs-init][Literate Emacs Initialization example]] and [[https://github.com/eschulte/emacs24-starter-kit/][emacs24-starter-kit]].
@@ -599,6 +601,19 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
            (when (= p (point)) ad-do-it))))
 
      (setq set-mark-command-repeat-pop t)
+   #+END_SRC
+
+   Insert timestamp.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun fvaresi/insert-timestamp (arg)
+       (interactive "P")
+
+       (insert-string (if (and arg fvaresi/last-timestamp)
+                          fvaresi/last-timestamp
+                        (setq fvaresi/last-timestamp (format-time-string "%s")))))
+
+     (define-key global-map (kbd "M-I") 'fvaresi/insert-timestamp)
    #+END_SRC
 
 *** Editing defuns

@@ -1,7 +1,12 @@
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :results output silent
 
+#+EXPORT_EXCLUDE_TAGS: noexport crypt
+
 * Org Mode
+  :PROPERTIES:
+  :VISIBILITY: children
+  :END:
 
 This one of my favorite modes, since it can accomplish lots of stuff like handling TODO lists, tracking time, keeping an agenda, and much more.
 ** General Settings
@@ -63,7 +68,7 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 
 ** Org Agenda
 
-*** Sources						     :crypt:noexport:
+*** Sources							      :crypt:
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v1
 

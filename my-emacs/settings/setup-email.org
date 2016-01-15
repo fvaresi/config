@@ -1,8 +1,10 @@
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :results output silent
 
+#+EXPORT_EXCLUDE_TAGS: noexport crypt
+
 * Email
-** Identity						     :crypt:noexport:
+** Identity							      :crypt:
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v1
 

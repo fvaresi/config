@@ -1,7 +1,9 @@
 #+PROPERTY: header-args :exports code
 #+PROPERTY: header-args :results output silent
 
-* Private						     :crypt:noexport:
+#+EXPORT_EXCLUDE_TAGS: noexport crypt
+
+* Private							      :crypt:
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v1
 
@@ -110,6 +112,7 @@ hv2hby3BAaK2SA==
                                  org-beautify-theme
                                  htmlize
                                  ox-reveal
+                                 orgtbl-aggregate
 
                                  paradox
 
