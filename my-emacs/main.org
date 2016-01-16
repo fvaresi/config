@@ -208,7 +208,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+BEGIN_SRC emacs-lisp
       ;; Currently testing an improvement
-      (add-to-list 'load-path "~/projects/projectile")
+      ;; (add-to-list 'load-path "~/projects/projectile")
       (add-to-list 'load-path "~/projects/persp-projectile")
 
       (projectile-global-mode)

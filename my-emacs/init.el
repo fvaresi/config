@@ -1,10 +1,10 @@
-;; ;; This was required to avoid an error with org mode.
-;; (setq package-enable-at-startup nil)
-;; (package-initialize)
+;; This was required to avoid an error with org mode.
+(setq package-enable-at-startup nil)
+(package-initialize)
 
-;; Add org sources to load path.
-(add-to-list 'load-path "~/projects/org-mode/lisp")
-(add-to-list 'load-path "~/projects/org-mode/contrib/lisp" t)
+;; ;; Add org sources to load path.
+;; (add-to-list 'load-path "~/projects/org-mode/lisp")
+;; (add-to-list 'load-path "~/projects/org-mode/contrib/lisp" t)
 
 ;; Always follow symlinks
 (setq vc-follow-symlinks t)
