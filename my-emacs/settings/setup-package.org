@@ -113,6 +113,7 @@ hv2hby3BAaK2SA==
                                  htmlize
                                  ox-reveal
                                  orgtbl-aggregate
+                                 google-contacts
 
                                  paradox
 
