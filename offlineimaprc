@@ -1,7 +1,6 @@
 [general]
 accounts = Gmail,Infuy,Internetbrands
 maxsyncaccounts = 4
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 ################################################## Gmail ##################################################
 [Account Gmail]
@@ -9,6 +8,7 @@ autorefresh = 1
 postsynchook = ~/bin/offlineimap-postsync-gmail
 localrepository = GmailLocal
 remoterepository = GmailRemote
+# synclabels = yes
 
 [Repository GmailLocal]
 type = Maildir
@@ -16,6 +16,7 @@ localfolders = ~/Mail/Gmail
 
 [Repository GmailRemote]
 type = Gmail
+auth_mechanisms = PLAIN
 remoteuser = fvaresi@gmail.com
 
 folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Sent Mail']
@@ -23,7 +24,7 @@ folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Se
 nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
 			       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
 
-realdelete = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 ################################################## Infuy ##################################################
 [Account Infuy]
@@ -41,12 +42,15 @@ type = IMAP
 remoteuser = fernando@infuy.com
 remotehost = secure.emailsrvr.com
 
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
 ################################################## Internet Brands ##################################################
 [Account Internetbrands]
 autorefresh = 1
 postsynchook = ~/bin/offlineimap-postsync-ib
 localrepository = IBLocal
 remoterepository = IBRemote
+# synclabels = yes
 
 [Repository IBLocal]
 type = Maildir
@@ -54,6 +58,7 @@ localfolders = ~/Mail/Internetbrands
 
 [Repository IBRemote]
 type = Gmail
+auth_mechanisms = PLAIN
 remoteuser = fernando.varesi@vbulletin.com
 
 folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Sent Mail']
@@ -61,4 +66,4 @@ folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Se
 nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
 	    	   	       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
 
-realdelete = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

@@ -72,23 +72,24 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v1
 
-hQEMA1NjmxQGk77XAQf+MOZ4wuPVpbRbxa7SdQNVtgCguX0YH0cgiN6eQtl2bIXe
-nJcleIULxs+4Ia9D1KmG7Y4f3GXItjJFuP/KqkVEl99XmQM9XIyAv3Vd5JY54DxZ
-EnXRTbs120/xYW8xZeYtirf9wDfFJXHqGVhYSJhZ6lwzXYZF1UCPjAXwuzTKJmra
-oL1pZZ+ppaIk5DA13PpzBI5Outgnl+oFeU70Zg4xSfrFfKg7e6yVRryCZTobEK5+
-BxUcbvbr6g/6jOuQAprrl1Qzdug9zSsAHW/HTd+3f+kkA53q4sx5GeVxu+fWCABV
-b9zJxbdhIm+egnLbWJoKSHeF+9PVa4HaWcxsFkNhw9LBLAHhCP4smQywJfvpN2n5
-LAwrYJCemqqT+mRlUjHfTEmq3CHztWd6oZY/DhbjxKkL7ew3GCcCmpwnHXmkNeOZ
-bvPxf60T7dem2fhaBtEBY3+ngVH3W3/1MhoHq2dQn0UbWXzr6TYEFz2WPWBEAXUT
-ORCFoOmYh3WbEpPglP7oPihvz/iE8TiqrEwgQbQ/t1bHDNQX0qF01/qA0gmwqMAW
-B+c3w1t+ozA9rFDXeFQJLG+UvFVoO1Wmxvg4Me++WMOkDwQ4ny1oudPlQtkCT0Lh
-qji3e7UeLQq4+OP5CF3U3y+4WvDRnQf8SzK3qkZJskZUxUWLjZxYZys/74aPMDbh
-Xw+Jyx8/bEuwhMRiq/uZPBpQo6O/K6OihyP7iuHPthDvnzVXwMb1Uu/VMUQOeL94
-aeBi/OyMap1Bum3+TFG0NUox8cj6AX8zx6APVpISNDmns6NcAMr/ujG6lk+f0hVl
-gcVT6v8mdXG9VJBQnD3QtnJvZHBtts3hX77viEurUmPOIkqOZPeJrhaFZNd2deFo
-yZc7vyXthMqYUz3a942v04syNCEaxtH9EUlRuzyYPBb4/KsmBT4h44+AveqT8E2K
-GQ7auEvoyE2NHsYMGJH2Amgo784mp673+4WuB3b7W/Jjy9QA5TaayZaaT92zxA==
-=IuRv
+hQEMA1NjmxQGk77XAQf+IB7bpgigV8KBcHErdGZZjx1fDxqHfzam79BhTxRT8yp6
+FyRxssJOtDDQLNJskZYJaJQX4UP83g2VyHIc+RYlmui235PKOkVxevdK9ZHcyawE
+3ml3V53Wmzp+zil3iWLf1fqcET6r3wA/4rss63Dxx1QakVbL/+cky/02YQPBskCp
+d0l5QwjzZ/sl7lTuaogQ8FjDb/gsiqO1fxKV+rDEefhJZze7u5p/riZmHhOoRiil
+4Bke7d+Sn5NKNfWL3ukxdK+0vYepVYq80wy8bEJH1p9s5QPpAzNS/MW7QGUtGiCy
+RZEJELBU0VUbwc4QI2PDAzvLYQPfa+Uze+F9E2PVm9LpAcZVy9WB3iGjaUdtzImz
+dq45aWV+l4OjUJAbSyGC0SkXifI9QLOCxqVVWc1JROCVC54vIR1+5Iy5zdbx5Hbn
+xhrJNPjJfgkRHfBmqSfgOx0X8b6VxxKUYF0wpC8JVK2+ifZi0/QJHgl/Hx6kC3oj
+JWhhQ1s8QQthicil3fSOpF4LNdhfYmfq6TZxWX2mHlWqIR3xPguNgHPRVOmRvIQd
+HWM/BBFNOaRZnI0sQk354zThFir+5H5TDkRJ17Rf9yTeqVfHqJf49h5bwaA1cVF7
+pDLU5Ys/TWYNZOwzYUfrTrPVmbF0OgUytO+2uodadIqNlJg1oh35JnSPoFumkEoR
+Xtid/CaXZHs4dUa+AiCyq3zePjEUr8coirH5cEw4tJ6haI2dYavW7NKLvOA8o7oF
+igPkB2DMMMoI+AflaEGneNz/MzYUzspZGNwkf5gQ22b4fWhmFlsCmnljGrFg9nDv
+eFAAhWncYBZx8XyHBljzeYHq0etOXljLWIbU+7Bm9p/82P4U6Nfrgz9qxGxCGkTQ
+0YnsyYrFrNiz6PxZw9MyV4YCye0WNTNrtcCXEX+HM2huDYAFSYxJ4QGs+9PrFC7i
+0f/DkdubsvWIP/93PjPhQGoBUjWi0RQLlGV6rxj+VuCxywrIeJLdvaPya5nXIASt
+niv8vWNPD7+A4OrWAz9xGooK3ZRiiYfqaUa4iA==
+=T0Yt
 -----END PGP MESSAGE-----
 
 *** General Settings
@@ -339,6 +340,11 @@ Add behavior for when no region is selected
    (setq org-html-validation-link nil)
    #+END_SRC
 
+   Do not export headlines with tag noexport or crypt
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-export-exclude-tags '("noexport" "crypt"))
+   #+END_SRC
 
 ** Org Jira
    
@@ -407,6 +413,19 @@ Add behavior for when no region is selected
      (add-hook 'after-save-hook 'fvaresi/org-mobile-autopush)
    #+END_SRC
 
+** Org Notify
+   #+BEGIN_SRC emacs-lisp
+     (require 'org-notify)
+
+     ;; do nothing by default
+     (org-notify-add 'default nil)
+
+     (org-notify-add 'short-notice
+                     '(:time "-1s" :duration 600 :actions (-message -ding))
+                     '(:time "10m" :period "5m" :duration 15 :actions -notify))
+
+     (org-notify-start)
+   #+END_SRC
 ** Org Notmuch
    
    #+BEGIN_SRC emacs-lisp
@@ -467,3 +486,30 @@ Add behavior for when no region is selected
        ((org-at-item-bullet-p) (org-move-item-up))))
     (add-hook 'org-shiftmetaup-hook 'fvaresi/org-shiftmetaup-move)
   #+END_SRC
+
+** Special functions						   :noexport:
+   This functions are used by yasnippet to provide values for start/end of sprints.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun fvaresi/sprint-start-values ()
+       (let* ((current (current-time))
+              (current-dow (nth 6 (decode-time current)))
+              (day-shift (- 6 current-dow))
+              (prev-saturday (time-add current (days-to-time (- day-shift 7))))
+              (next-saturday (time-add current (days-to-time day-shift)))
+              (date-format "%Y-%m-%d"))
+
+         (list (format-time-string date-format prev-saturday)
+               (format-time-string date-format next-saturday))))
+
+     (defun fvaresi/sprint-end-values ()
+       (let* ((current (current-time))
+              (current-dow (nth 6 (decode-time current)))
+              (day-shift (mod (- 1 current-dow) 7))
+              (next-monday (time-add current (days-to-time day-shift)))
+              (following-monday (time-add current (days-to-time (+ 7 day-shift))))
+              (date-format "%Y-%m-%d"))
+
+         (list (format-time-string date-format next-monday)
+               (format-time-string date-format following-monday))))
+   #+END_SRC
