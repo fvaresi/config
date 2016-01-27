@@ -1,0 +1,69 @@
+#+PROPERTY: header-args :exports code
+#+PROPERTY: header-args :results output silent
+#+PROPERTY: header-args :tangle ~/.gnus
+
+#+EXPORT_EXCLUDE_TAGS: noexport crypt
+
+Ideas for this setup were extracted from:
+- [[http://roland.entierement.nu/blog/2010/09/08/gnus-dovecot-offlineimap-search-a-howto.html][Gnus, Dovecot, OfflineIMAP, search: a HOWTO]]
+
+* Sources							      :crypt:
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+hQEMA1NjmxQGk77XAQf+J8KylwdB5mb3rhx48/HyvTb9N16Gfegu7oGbGGcqE2VK
+txCZpJhXibr3nMt9eM6KQCVf9cV8rwBvgfNKUFonf91OBvaEDAvxvZUNV9nlPX1S
+grb/46yG/6D9d05JdEc3pNzghNdV9cj2LC+FTgIlafwvBjRQfOF1FiO2RyXUt6qD
+5ZlZGRL3iRpuGi7yrMyinoxB0c6gzpNpoqOTo3lQaGjXjMJByNXGv2/zf8PBA0oZ
+zUSvDyrGOon7K4zgC5zEEJJNpFJTU0IRoUXBUWBySSoumdzVtNnE6tfWbG6bn7Mq
+0UODcXSjbNL4vcZLahcPoXvyH6u0i7aTIhg7Bmf1HtLAhgGOhOx+amgC+Nmg/lf4
+goV0U3dEtJGk/GwbkFc2oAuzdKX70hPRkROQn9KGr+ksrcMEavuO6lZwADRveVsY
+KeJjE2C7OQek9XvMd0oKCtmHqKfB13i0NzaKl7ltE8n5ZZXgf59WJuXn/OMm/3Gw
+tchTgTI85H4YLdo240xVwjbTFjy56HznxylT9wKQX6dtMJ8/UC/m7F+oV3SUJzDF
+SD9PqiPzmFHloI33Pu91EUS8YdXdx43uYpJLO39O4ormdI0km0lwxtjq6SyLujXn
+HAj5OX+7JHff5cK8X4ynTlFdRrmN5Aj6YM4ZgnOEViU80P59bm0dQzr6I7WsZ1kR
+LTJr2ulwwVRL0H0JHPaAiYZi2/z2uAC2SrAUUSkRm7d4ku20LBEmQsAaXrqbi4oa
+C0aK+j1l943cAFh5JPtsYb1sQVnncutX
+=tpta
+-----END PGP MESSAGE-----
+
+* General settings
+
+Do not look for new newsgroups
+
+#+BEGIN_SRC emacs-lisp
+  (setq gnus-check-new-newsgroups nil)
+#+END_SRC
+
+I don't really need =.newsrc=, so we can completely ignore it.
+
+#+BEGIN_SRC emacs-lisp
+  (setq gnus-read-newsrc-file nil)
+  (setq gnus-save-newsrc-file nil)
+#+END_SRC
+
+* Groups Buffer
+
+Use topics from the very beginning.
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+#+END_SRC
+
+* Summary Buffer
+
+#+BEGIN_SRC emacs-lisp
+  (setq gnus-summary-line-format "%U%R%z%I%(%[%f%]%) %s\n")
+
+  (setq gnus-thread-hide-subtree t)
+
+  (setq gnus-thread-sort-functions 'gnus-thread-sort-by-most-recent-number)
+#+END_SRC
+
+* Articles
+
+Keep all headers while saving an article.
+
+#+BEGIN_SRC emacs-lisp
+  (setq gnus-save-all-headers t)
+#+END_SRC

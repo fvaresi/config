@@ -4,6 +4,9 @@
 #+EXPORT_EXCLUDE_TAGS: noexport crypt
 
 * My Emacs Configuration
+  :PROPERTIES:
+  :VISIBILITY: children
+  :END:
 
 This is my org-mode based configuration for emacs. It's based on the [[http://orgmode.org/worg/org-contrib/babel/intro.html#literate-emacs-init][Literate Emacs Initialization example]] and [[https://github.com/eschulte/emacs24-starter-kit/][emacs24-starter-kit]].
 
@@ -362,6 +365,14 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+END_COMMENT
 
+*** Emacs Lisp
+    
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/setup-elisp ()
+        (eldoc-mode))
+
+      (add-hook 'emacs-lisp-mode-hook 'fvaresi/setup-elisp)
+    #+END_SRC
 *** HTML
 
     [[https://github.com/emacsmirror/emmet-mode][Emmet]] enables us to produce HTML from CSS-like selectors. 
@@ -501,6 +512,27 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
    #+BEGIN_SRC emacs-lisp
      (global-company-mode)
+   #+END_SRC
+
+   Use company-emoji
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'company-emoji)
+     (add-to-list 'company-backends 'company-emoji)
+
+     (defun --set-emoji-font (frame)
+       "Adjust the font settings of FRAME so Emacs can display emoji properly."
+       (if (eq system-type 'darwin)
+           ;; For NS/Cocoa
+           (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)
+         ;; For Linux
+         (set-fontset-font t 'symbol (font-spec :family "Symbola") frame 'prepend)))
+
+     ;; For when Emacs is started in GUI mode:
+     (--set-emoji-font nil)
+     ;; Hook for when a frame is created with emacsclient
+     ;; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Creating-Frames.html
+     (add-hook 'after-make-frame-functions '--set-emoji-font)
    #+END_SRC
 
    Use [[https://github.com/T-J-Teru/browse-kill-ring][browse-kill-ring]] for exploring the kill ring.
@@ -690,6 +722,22 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
           (one-shot-keybinding "d" 'fvaresi/duplicate-current-line)))
 
       (global-set-key (kbd "C-2") 'fvaresi/duplicate-current-line-or-region)
+    #+END_SRC
+
+    Improve isearch to [[http://endlessparentheses.com/quickly-search-for-occurrences-of-the-symbol-at-point.html][quickly search for occurrences of the symbol at point]]. According to the commments in this blog post one could also use =M-s .=.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun endless/isearch-symbol-with-prefix (p)
+        "Like isearch, unless prefix argument is provided.
+      With a prefix argument P, isearch for the symbol at point."
+        (interactive "P")
+        (let ((current-prefix-arg nil))
+          (call-interactively
+           (if p #'isearch-forward-symbol-at-point
+             #'isearch-forward))))
+
+      (global-set-key [remap isearch-forward]
+                      #'endless/isearch-symbol-with-prefix)
     #+END_SRC
 
 *** Window defuns

@@ -1,0 +1,15 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: sprint
+# key: sprint
+# binding: direct-keybinding
+# --
+* TODO Sprint $1
+  SCHEDULED: <${2:startdate$(yas-choose-value (fvaresi/sprint-start-values))}> DEADLINE: <${3:enddate$(yas-choose-value (fvaresi/sprint-end-values))} -3d>
+  :PROPERTIES:
+  :VISIBILITY: children
+  :END:
+
+  #+BEGIN: clocktable :maxlevel 2 :scope subtree :tstart "$2" :tend "$3" :link t :step day :stepskip0 t
+  #+END:
+
+  $0

@@ -55,7 +55,8 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 
    #+BEGIN_SRC emacs-lisp
      (defun fvaresi/setup-org ()
-       (org-bullets-mode 1))
+       (org-bullets-mode 1)
+       (visual-line-mode))
      (add-hook 'org-mode-hook 'fvaresi/setup-org)
    #+END_SRC
 
@@ -72,27 +73,33 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v1
 
-hQEMA1NjmxQGk77XAQf+IB7bpgigV8KBcHErdGZZjx1fDxqHfzam79BhTxRT8yp6
-FyRxssJOtDDQLNJskZYJaJQX4UP83g2VyHIc+RYlmui235PKOkVxevdK9ZHcyawE
-3ml3V53Wmzp+zil3iWLf1fqcET6r3wA/4rss63Dxx1QakVbL/+cky/02YQPBskCp
-d0l5QwjzZ/sl7lTuaogQ8FjDb/gsiqO1fxKV+rDEefhJZze7u5p/riZmHhOoRiil
-4Bke7d+Sn5NKNfWL3ukxdK+0vYepVYq80wy8bEJH1p9s5QPpAzNS/MW7QGUtGiCy
-RZEJELBU0VUbwc4QI2PDAzvLYQPfa+Uze+F9E2PVm9LpAcZVy9WB3iGjaUdtzImz
-dq45aWV+l4OjUJAbSyGC0SkXifI9QLOCxqVVWc1JROCVC54vIR1+5Iy5zdbx5Hbn
-xhrJNPjJfgkRHfBmqSfgOx0X8b6VxxKUYF0wpC8JVK2+ifZi0/QJHgl/Hx6kC3oj
-JWhhQ1s8QQthicil3fSOpF4LNdhfYmfq6TZxWX2mHlWqIR3xPguNgHPRVOmRvIQd
-HWM/BBFNOaRZnI0sQk354zThFir+5H5TDkRJ17Rf9yTeqVfHqJf49h5bwaA1cVF7
-pDLU5Ys/TWYNZOwzYUfrTrPVmbF0OgUytO+2uodadIqNlJg1oh35JnSPoFumkEoR
-Xtid/CaXZHs4dUa+AiCyq3zePjEUr8coirH5cEw4tJ6haI2dYavW7NKLvOA8o7oF
-igPkB2DMMMoI+AflaEGneNz/MzYUzspZGNwkf5gQ22b4fWhmFlsCmnljGrFg9nDv
-eFAAhWncYBZx8XyHBljzeYHq0etOXljLWIbU+7Bm9p/82P4U6Nfrgz9qxGxCGkTQ
-0YnsyYrFrNiz6PxZw9MyV4YCye0WNTNrtcCXEX+HM2huDYAFSYxJ4QGs+9PrFC7i
-0f/DkdubsvWIP/93PjPhQGoBUjWi0RQLlGV6rxj+VuCxywrIeJLdvaPya5nXIASt
-niv8vWNPD7+A4OrWAz9xGooK3ZRiiYfqaUa4iA==
-=T0Yt
+hQEMA1NjmxQGk77XAQgAg1AqKYcuhZTys/+zS4OJeieggxlHZMbSLjfruG9enObL
+upftJbL2fNX/QhyI0SgaE+nG6WfbLfjTQsvwtHPtGrx+099uFD46hrI1KerTnTKM
+FA1xp5oItK30J/wJoLetueclyVIu25y3Q7YdOWxcswHiFsmGoODu7kMhBLM04XrK
+5aC4vBNAr3GJpGzQ6ZYBnJzWykuL/YUFpkoQfJe92TiEAh1tmwGBkuvqVL5YqNep
+TWFKcFBXFhpQ0MaZeXr50Aj0RLrvMdNgXui6sRMi7r5x++p8+/3lKLOFgYE38KcZ
+Ic4iEu8dQf3oIj5vFVfbBJgHYs2++az9sp2lNUPV8dLBMwFnwIrsoB6amv1LjN/f
+w/q4QijKCTfjPMdBDHjK0jQ8KbRBWlJsgbreiDifoU8UCMAfVUGQPVmcq4s4XOFQ
+3H4jmHCrCkdA0qySGE2ipYgYp2WbDcitoduBRC0yf/uv8ga4nzGCjfN2Qud0pf3t
+X0MtVjauE8qhZg/PNqbhaEIlDwm71sKmmL9uifdzXQkEa0jYMw16DZsh+kApbY+G
+U3u57dSMvIIf3n4I/nVcJpRyFrHOXaed3WDc7HzHzqVbAM6RHf4SCSUvj0o3Hud2
+E/iu+U+pTXlZL0RxfsS1Ly95zhG54ZAR0d5hjSOWgEkkI7YtdO+nKu5A5jzh5Qpl
+Gl2G9oSKRdPpp/iZJrlkwKxfsEcu03dH+ITp/OWulbPeLlvbDDlOkXPeHZeejnw8
+9cT5gettWh+S2HVL41yInYkVq3HtqFGPFSUXDtFGOrcn1cf2oHkuryqW2Fs56pUt
+EvNQRXRxmqSmrtX5yeyTtUQndTwi/VKq3hAdNnUF/nT2gBznpTnHhrFrnZyObm3l
+zy+h0LkWbQUK8c6r1k57Ma3I0BnEfG2QJs7Ao4uD0TPtAcMyn0dzbUGf72lrMrgq
+7uloSMVIYrjiybzOhm0L65nS5OywZK+yzLiIMLoK8sOcOsQniGbPZTMEAZCVY2VF
+6bJPt8g=
+=S3IP
 -----END PGP MESSAGE-----
 
 *** General Settings
+    Use appt for org-agenda items.
+
+    #+BEGIN_SRC emacs-lisp
+      (org-agenda-to-appt t)
+    #+END_SRC
+
     Do not show diary entries in org-agenda.
 
     #+BEGIN_SRC emacs-lisp
@@ -333,6 +340,12 @@ Add behavior for when no region is selected
      (setq org-clock-modeline-total 'today)
    #+END_SRC
 
+** Org Crypt
+
+   I'm using org-crypt to encrypt sensitive information in my config files that I don't want to be public in github.
+
+   Since I'm using org files for emacs configuration, I need to decrypt these entries while tangling, so org-crypt is configured in the [[file:~/config/my-emacs/init.el][init file]].
+
 ** Org Export
    Don't add the html validation link when exporting.
 
@@ -372,6 +385,14 @@ Add behavior for when no region is selected
      (define-key org-jira-entry-mode-map (kbd "C-c i l") 'org-jira-link-current-issue)
    #+END_SRC
 
+** Org Mime
+
+   Use org-mime as [[https://github.com/howardabrams/dot-files/blob/master/emacs-mail.org#sending-email][suggested]] by Howard Abrams for sending org content via email.
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'org-mime)
+   #+END_SRC
+   
 ** Org Mobile
 
    These files will be exported to [[https://github.com/matburt/mobileorg-android][MobileOrg]].
@@ -413,16 +434,12 @@ Add behavior for when no region is selected
      (add-hook 'after-save-hook 'fvaresi/org-mobile-autopush)
    #+END_SRC
 
-** Org Notify
+** Org Notify							   :noexport:
+
+   The package [[https://github.com/p-m/org-notify][org-notify]] enables to set different types of notifications.
+
    #+BEGIN_SRC emacs-lisp
      (require 'org-notify)
-
-     ;; do nothing by default
-     (org-notify-add 'default nil)
-
-     (org-notify-add 'short-notice
-                     '(:time "-1s" :duration 600 :actions (-message -ding))
-                     '(:time "10m" :period "5m" :duration 15 :actions -notify))
 
      (org-notify-start)
    #+END_SRC
@@ -505,11 +522,13 @@ Add behavior for when no region is selected
      (defun fvaresi/sprint-end-values ()
        (let* ((current (current-time))
               (current-dow (nth 6 (decode-time current)))
-              (day-shift (mod (- 1 current-dow) 7))
-              (next-monday (time-add current (days-to-time day-shift)))
-              (following-monday (time-add current (days-to-time (+ 7 day-shift))))
+              (day-shift (- 6 current-dow))
+              (first-saturday (time-add current (days-to-time day-shift)))
+              (second-saturday (time-add current (days-to-time (+ 7 day-shift))))
+              (third-saturday (time-add current (days-to-time (+ 14 day-shift))))
               (date-format "%Y-%m-%d"))
 
-         (list (format-time-string date-format next-monday)
-               (format-time-string date-format following-monday))))
+         (list (format-time-string date-format first-saturday)
+               (format-time-string date-format second-saturday)
+               (format-time-string date-format third-saturday))))
    #+END_SRC

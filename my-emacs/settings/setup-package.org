@@ -72,6 +72,8 @@ hv2hby3BAaK2SA==
                                  slamhound
                                  4clojure
 
+				 company-emoji
+
                                  diff-hl
 
                                  easy-kill
