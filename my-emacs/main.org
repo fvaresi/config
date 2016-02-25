@@ -148,6 +148,24 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
       (global-set-key (kbd "C-|") 'mc/mark-next-like-this)
     #+END_SRC
+
+    This function is very useful when using mc/insert-numbers
+
+    #+BEGIN_SRC emacs-lisp
+      (defun jpmonettas/change-number-at-point (arg)
+        (interactive "p")
+        (unless (or (looking-at "[0-9]")
+    		(looking-back "[0-9]"))
+          (error "No number to change at point"))
+        (save-excursion
+          (while (looking-back "[0-9]")
+    	(forward-char -1))
+          (re-search-forward "[0-9]+" nil)
+          (replace-match (incs (match-string 0) arg) nil nil)))
+
+      (global-set-key (kbd "M-+") 'jpmonettas/change-number-at-point)
+    #+END_SRC
+
 *** Paredit
     #+BEGIN_SRC emacs-lisp
       (global-set-key (kbd "M-(") 'paredit-wrap-sexp)
@@ -271,6 +289,20 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+BEGIN_SRC emacs-lisp
       (require 'smooth-scrolling)
+    #+END_SRC
+
+*** Web Mode
+    [[http://web-mode.org/][web-mode]] is useful when editing files that contains multiple types
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'web-mode)
+
+      (add-to-list 'auto-mode-alist '("\\.xml?\\'" . web-mode))
+
+      (defun web-mode-setup ()
+        )
+
+      (add-hook 'web-mode-hook 'web-mode-setup)
     #+END_SRC
 
 *** Window Number
@@ -402,6 +434,9 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
         ;; (setq whitespace-style '(face tabs spaces trailing identation))
 
         (flycheck-mode t)
+
+        (hs-minor-mode 1)
+        (setq hs-hide-comments-when-hiding-all nil)
 
         (define-key php-mode-map (kbd "C-.") 'er/expand-region)
         (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
@@ -551,7 +586,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    Save emacs desktop (buffers, major modes, positions, etc) between sessions.
 
    #+BEGIN_SRC emacs-lisp
-     (setq desktop-save-mode t)
+     ;; (desktop-save-mode 1)
    #+END_SRC
 
    Split window horizontally for ediff.
@@ -886,6 +921,9 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    I use [[https://github.com/hayamiz/twittering-mode][twittering-mode]] to browse twitter.
 
    #+BEGIN_SRC emacs-lisp
+     ;; currently testing a fix for HTTP 2.0
+     ;; (add-to-list 'load-path "~/projects/twittering-mode")
+
      (require 'twittering-mode)
      (setq twittering-use-master-password t)
      (setq twittering-icon-mode t)

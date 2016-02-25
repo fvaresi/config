@@ -9,7 +9,7 @@
   :VISIBILITY: children
   :END:
 
-  #+BEGIN: clocktable :maxlevel 2 :scope subtree :tstart "$2" :tend "$3" :link t :step day :stepskip0 t
+  #+BEGIN: clocktable :maxlevel 2 :scope subtree :tstart "$2" :tend "$3" :link t :astep day :stepskip0 t
   #+END:
 
   $0

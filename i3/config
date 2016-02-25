@@ -161,13 +161,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Laptop monitor
 bar {
+	mode dock
 	status_command py3status -c ~/.i3/i3status.conf -i ~/.i3/py3status/
-
+	output LVDS-1
 	position top
-	tray_output primary
+	tray_output LVDS-1
+}
+
+# External monitors
+bar {
+	mode hide
+	output VGA-1
+	position top
+	tray_output none
 }
 
 focus_follows_mouse no

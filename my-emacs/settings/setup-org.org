@@ -224,7 +224,7 @@ Add behavior for when no region is selected
    #+BEGIN_SRC emacs-lisp
      (setq org-refile-targets `((org-agenda-files :maxlevel . 3)))
      (setq org-refile-use-outline-path t)
-     (setq org-outline-path-complete-in-steps t)
+     (setq org-outline-path-complete-in-steps nil)
      (setq org-refile-allow-creating-parent-nodes 'confirm)  
    #+END_SRC
    
@@ -398,11 +398,12 @@ Add behavior for when no region is selected
    These files will be exported to [[https://github.com/matburt/mobileorg-android][MobileOrg]].
 
    #+BEGIN_SRC emacs-lisp
-   (setq org-mobile-files `("~/org/notes.org"
-			   "~/org/journal.org"
-			   "~/autocomm/docs/sprints.org"
-			   "~/life/docs/life.org"
-			   "~/infuy/docs/infuy.org"))
+     (setq org-mobile-files `("~/org/notes.org"
+   			   "~/org/cumple.org"
+   			   "~/org/journal.org"
+   			   "~/autocomm/docs/sprints.org"
+   			   "~/life/docs/life.org"
+   			   "~/infuy/docs/infuy.org"))
    #+END_SRC
 
    Captures from MobileOrg are stored here.

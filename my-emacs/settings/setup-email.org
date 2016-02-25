@@ -25,6 +25,12 @@ mUpHjWqI99xlGt7PZMQa0e6qU1VVH/g=
 -----END PGP MESSAGE-----
 
 ** General Settings
+   Just prepend 'Fwd:' to subject while forwarding
+
+   #+BEGIN_SRC emacs-lisp
+     (setq message-make-forward-subject-function 'message-forward-subject-fwd)
+   #+END_SRC
+
    Put signature before forwarded message.
 
    #+BEGIN_SRC emacs-lisp

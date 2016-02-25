@@ -154,6 +154,8 @@ hv2hby3BAaK2SA==
 
                                  web-beautify
 
+                                 web-mode
+
                                  window-number
                                  )))
 
