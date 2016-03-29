@@ -76,6 +76,14 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (global-set-key [remap mark-sexp] 'easy-mark)
     #+END_SRC
 
+*** Ediff
+    Prompt to remove unmodified buffers at session end.
+
+    #+BEGIN_SRC emacs-lisp
+      (setq ediff-keep-variants nil)
+
+      (add-hook 'ediff-after-quit-hook-internal 'winner-undo)
+    #+END_SRC
 *** Expand Region
     #+BEGIN_SRC emacs-lisp
       (global-set-key (kbd "C-.") 'er/expand-region)
