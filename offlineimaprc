@@ -8,10 +8,10 @@ autorefresh = 1
 postsynchook = ~/bin/offlineimap-postsync-gmail
 localrepository = GmailLocal
 remoterepository = GmailRemote
-# synclabels = yes
+synclabels = yes
 
 [Repository GmailLocal]
-type = Maildir
+type = GmailMaildir
 localfolders = ~/Mail/Gmail
 
 [Repository GmailRemote]
@@ -50,10 +50,10 @@ autorefresh = 1
 postsynchook = ~/bin/offlineimap-postsync-ib
 localrepository = IBLocal
 remoterepository = IBRemote
-# synclabels = yes
+synclabels = yes
 
 [Repository IBLocal]
-type = Maildir
+type = GmailMaildir
 localfolders = ~/Mail/Internetbrands
 
 [Repository IBRemote]
