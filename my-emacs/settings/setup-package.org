@@ -38,8 +38,8 @@ hv2hby3BAaK2SA==
   #+BEGIN_SRC emacs-lisp
     (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-    (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
-    (add-to-list 'package-pinned-packages '(clj-refactor . "melpa-stable") t)
+    ;; (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+    ;; (add-to-list 'package-pinned-packages '(clj-refactor . "melpa-stable") t)
   #+END_SRC
   
   I keep a list of the packages I've installed so that a fresh install requires just to eval =gimme-my-packages=. Make sure you re-eval it after adding a package.
@@ -66,8 +66,6 @@ hv2hby3BAaK2SA==
                                  clojurescript-mode
                                  clj-refactor
                                  cider
-                                 cider-decompile
-                                 cider-spy
                                  company
                                  slamhound
                                  4clojure
