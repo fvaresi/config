@@ -442,6 +442,10 @@ Add behavior for when no region is selected
    #+BEGIN_SRC emacs-lisp
      (require 'org-notify)
 
+     (org-notify-add 'meeting
+   		  '(:time "-1s" :period "20s" :duration 10 :actions (-message -ding))
+   		  '(:time "15m" :period "5m" :duration 100 :actions (-notify/window)))
+
      (org-notify-start)
    #+END_SRC
 ** Org Notmuch
