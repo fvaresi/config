@@ -968,6 +968,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
      (global-diff-hl-mode)
    #+END_SRC
 
-   #+BEGIN_COMMENT
    I prefer vc-ediff to vc-diff, so add a binding for it in vc-dir.
-   #+END_COMMENT
+
+   #+BEGIN_SRC emacs-lisp
+     (define-key vc-dir-mode-map (kbd "e") 'vc-ediff)
+   #+END_SRC

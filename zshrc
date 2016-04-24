@@ -88,3 +88,4 @@ export SUDO_EDITOR="emacsclient -nw"
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
 export CDPATH=.:~:~/autocomm
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=lcd'
+export ANDROID_HOME="/home/fvaresi/opt/android-sdk-linux"

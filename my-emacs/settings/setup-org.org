@@ -483,7 +483,9 @@ Add behavior for when no region is selected
    #+END_COMMENT
 
    #+BEGIN_SRC emacs-lisp
-     (setq org-todo-keywords `((sequence "TODO(t)" "IN_PROGRESS(p)" "|" "DONE(d)")))
+     (setq org-todo-keywords
+   	`((sequence "TODO(t)" "IN_PROGRESS(i)" "|" "DONE(d)")
+   	  (sequence "TODO(t)" "|" "ACCEPTED(a)" "REJECTED(r)")))
    #+END_SRC
 
   Don't allow to complete a task if there are pending subtasks.

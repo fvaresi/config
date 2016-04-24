@@ -11,7 +11,7 @@ alias grep='grep --color=auto --exclude-dir=.svn'
 alias fgrep='fgrep --color=auto --exclude-dir=.svn'
 alias egrep='egrep --color=auto --exclude-dir=.svn'
 
-alias e='emacsclient -nw'
+alias e='emacsclient --no-wait'
 alias E='sudo -e'
 
 alias t="tree -L 1"
