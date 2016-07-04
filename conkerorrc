@@ -141,7 +141,7 @@ user_agent_policy.define_policy(
 // Org Protocol //
 //////////////////
 function org_store_link (url, title, window) {
-    var cmd_str = 'emacsclient \"org-protocol://store-link://'+url+'/'+title+'\"';
+    var cmd_str = 'emacsclient \"org-protocol://store-link?url='+url+'&title='+title+'\"';
     if (window != null) {
         window.minibuffer.message('Issuing ' + cmd_str);
     }
