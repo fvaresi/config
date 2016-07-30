@@ -277,10 +277,10 @@ Add behavior for when no region is selected
        (interactive "p")
        (setq bh/keep-clock-running t)
        (if (equal major-mode 'org-agenda-mode)
-           ;;
-           ;; We're in the agenda
-           ;;
-           (let* ((marker (org-get-at-bol 'org-hd-marker))
+   	;;
+   	;; We're in the agenda
+   	;;
+   	(let* ((marker (org-get-at-bol 'org-hd-marker))
                   (tags (org-with-point-at marker (org-get-tags-at))))
              (when tags
                  (org-agenda-clock-in '(16))))
@@ -288,9 +288,9 @@ Add behavior for when no region is selected
          ;; We are not in the agenda
          ;;
          (save-restriction
-           (widen)
-           ;; Find the tags on the current task
-           (when (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)))
+   	(widen)
+   	;; Find the tags on the current task
+   	(when (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)))
                (org-clock-in '(16))))))
 
      (global-set-key (kbd "<f9> I") 'bh/punch-in)

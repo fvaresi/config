@@ -160,16 +160,24 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     This function is very useful when using mc/insert-numbers
 
     #+BEGIN_SRC emacs-lisp
+      (defun jpmonettas/incs (s &optional num)
+        (let* ((inc (or num 1))
+               (new-number (number-to-string (+ inc (string-to-number s))))
+               (zero-padded? (s-starts-with? "0" s)))
+          (if zero-padded?
+              (s-pad-left (length s) "0" new-number)
+    	new-number)))
+
       (defun jpmonettas/change-number-at-point (arg)
         (interactive "p")
         (unless (or (looking-at "[0-9]")
-    		(looking-back "[0-9]"))
+        	    (looking-back "[0-9]"))
           (error "No number to change at point"))
         (save-excursion
           (while (looking-back "[0-9]")
-    	(forward-char -1))
+        (forward-char -1))
           (re-search-forward "[0-9]+" nil)
-          (replace-match (incs (match-string 0) arg) nil nil)))
+          (replace-match (jpmonettas/incs (match-string 0) arg) nil nil)))
 
       (global-set-key (kbd "M-+") 'jpmonettas/change-number-at-point)
     #+END_SRC
@@ -226,7 +234,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (push '("*helm grep*" :height 0.5) popwin:special-display-config)
       (push '("*helm locate*" :height 0.5) popwin:special-display-config)
       (push '("*helm M-x*" :height 0.5) popwin:special-display-config)
-      (push '("*helm projectile*" :height 0.5) popwin:special-display-config)
+      (push '("*helm projectile*" :height 0.25) popwin:special-display-config)
       (push '("*helm etags*" :height 0.5) popwin:special-display-config)
       (push '("*Ack-and-a-half*" :height 0.5 :stick t) popwin:special-display-config)
       (push '("*vc-diff*" :height 0.5 :stick t) popwin:special-display-config)
@@ -324,6 +332,15 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
 
 *** Winner mode
+
+*** Yasnippet
+
+    #+BEGIN_COMMENT
+    Suppress warning for snippet modifying buffer.
+    #+BEGIN_SRC emacs-lisp
+      ;; (setq warning-suppress-types (cons '(yasnippet backquote-change) warning-suppress-types))
+    #+END_SRC
+    #+END_COMMENT
 ** Backup & autosave customizations
    All backup and autosave files are written to /tmp/
 
@@ -517,7 +534,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (require 'notifications)
 
       (defun my-desktop-notification (min-to-app msg)
-	(notifications-notify :title (format "In %s minutes" min-to-app)
+        (notifications-notify :title (format "In %s minutes" min-to-app)
                               :body msg
                               ;; :actions '("appt-dismiss" "Dismiss" "default" "Snooze")
                               ;; :on-action (lambda (notification-id action-key)
@@ -526,15 +543,15 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
                               ))
 
       (defun my-appt-window-function (min-to-app new-time msg)
-	(if (atom min-to-app)
-            (my-desktop-notification min-to-app msg)
+        (if (atom min-to-app)
+        (my-desktop-notification min-to-app msg)
           (dolist (i (number-sequence 0 (1- (length min-to-app))))
-            (my-desktop-notification (nth i min-to-app) (nth i msg)))))
+        (my-desktop-notification (nth i min-to-app) (nth i msg)))))
 
       ;; (appt-activate t)
+      (appt-activate t)
       (setq appt-disp-window-function 'my-appt-window-function)
       (setq appt-delete-window-function nil)
-
     #+END_SRC
    
 ** Email and News
@@ -632,6 +649,12 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
    #+BEGIN_SRC emacs-lisp
      (put 'dired-find-alternate-file 'disabled nil)
+   #+END_SRC
+
+   Enable modifying permissions in dired
+
+   #+BEGIN_SRC emacs-lisp
+     (setq wdired-allow-to-change-permissions t)
    #+END_SRC
 
    Add lines before and after the current line.
@@ -831,7 +854,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (defun toggle-window-split ()
         (interactive)
         (if (= (count-windows) 2)
-            (let* ((this-win-buffer (window-buffer))
+    	(let* ((this-win-buffer (window-buffer))
                    (next-win-buffer (window-buffer (next-window)))
                    (this-win-edges (window-edges (selected-window)))
                    (next-win-edges (window-edges (next-window)))
@@ -840,7 +863,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
                                            (<= (cadr this-win-edges)
                                                (cadr next-win-edges)))))
                    (splitter
-                    (if (= (car this-win-edges)
+    		(if (= (car this-win-edges)
                            (car (window-edges (next-window))))
                         'split-window-horizontally
                       'split-window-vertically)))
@@ -880,10 +903,10 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
       (defun fvaresi/kill-buffer-and-window (arg)
         (interactive "P")
-        (if (or arg
-                (< (count-windows) 2))
-            (kill-buffer)
-          (kill-buffer-and-window)))
+        (if (and arg
+    	     (> (count-windows) 1))
+    	(kill-buffer-and-window)
+    	(kill-buffer)))
 
       (global-set-key (kbd "C-x k") 'fvaresi/kill-buffer-and-window)
     #+END_SRC
