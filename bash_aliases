@@ -2,7 +2,6 @@ alias info='info --vi-keys'
 alias svndiff='svn diff --diff-cmd=svn-diff-meld'
 alias gitdiff='git diff --ext-diff'
 alias memcache_stat='watch "echo stats | nc 127.0.0.1 11211"'
-alias svn-php-lint="svn stat -q | awk '{print $2}' | xargs -i php -l {}"
 
 alias disable_webcam='sudo modprobe -r uvcvideo'
 alias enable_webcam='sudo modprobe uvcvideo'
