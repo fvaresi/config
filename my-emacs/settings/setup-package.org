@@ -70,7 +70,7 @@ hv2hby3BAaK2SA==
                                  slamhound
                                  4clojure
 
-				 company-emoji
+                                 company-emoji
 
                                  diff-hl
 
@@ -103,9 +103,12 @@ hv2hby3BAaK2SA==
 
                                  multiple-cursors
 
+                                 neotree
+
                                  notmuch
 
                                  org-plus-contrib
+  			       org-download
                                  ob-http
                                  org-gcal
                                  org-jira
@@ -158,7 +161,7 @@ hv2hby3BAaK2SA==
                                  )))
 
         (dolist (p required-packages)
-          (when (not (package-installed-p p))
+        (when (not (package-installed-p p))
             (package-install p)))))
   #+END_SRC
 

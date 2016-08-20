@@ -15,5 +15,5 @@ class Py3status:
         }
 
         unread_emails = int(subprocess.check_output(["/home/fvaresi/bin/unread-emails"]).split()[0])
-        response['full_text'] = ": %d                                                                 " % unread_emails
+        response['full_text'] = ": %d " % unread_emails
         return (0, response)

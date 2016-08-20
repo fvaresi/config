@@ -97,7 +97,7 @@ zy+h0LkWbQUK8c6r1k57Ma3I0BnEfG2QJs7Ao4uD0TPtAcMyn0dzbUGf72lrMrgq
     Use appt for org-agenda items.
 
     #+BEGIN_SRC emacs-lisp
-      (org-agenda-to-appt t)
+      ;; (org-agenda-to-appt t)
     #+END_SRC
 
     Do not show diary entries in org-agenda.
@@ -307,25 +307,25 @@ Add behavior for when no region is selected
      (defun bh/clock-in-default-task ()
        (save-excursion
          (org-with-point-at org-clock-default-task
-           (org-clock-in))))
+   	(org-clock-in))))
 
      (defun bh/clock-in-parent-task ()
        "Move point to the parent (project) task if any and clock in"
        (let ((parent-task))
          (save-excursion
-           (save-restriction
+   	(save-restriction
              (widen)
              (while (and (not parent-task) (org-up-heading-safe))
                (when (member (nth 2 (org-heading-components)) org-todo-keywords-1)
                  (setq parent-task (point))))
              (if parent-task
                  (org-with-point-at parent-task
-                   (org-clock-in))
+   		(org-clock-in))
                (when bh/keep-clock-running
                  (bh/clock-in-default-task)))))))
 
      (defun bh/clock-out-maybe ()
-       (when (and bh/keep-clock-running
+       (when (and (bound-and-true-p bh/keep-clock-running)
                   (not org-clock-clocking-in)
                   (marker-buffer org-clock-default-task)
                   (not org-clock-resolving-clocks-due-to-idleness))
@@ -440,13 +440,21 @@ Add behavior for when no region is selected
    The package [[https://github.com/p-m/org-notify][org-notify]] enables to set different types of notifications.
 
    #+BEGIN_SRC emacs-lisp
-     (require 'org-notify)
+     (if (and (fboundp 'server-running-p) 
+              (not (server-running-p)))
+         (progn
+        (require 'org-notify)
 
-     (org-notify-add 'meeting
-   		  '(:time "-1s" :period "20s" :duration 10 :actions (-message -ding))
-   		  '(:time "15m" :period "5m" :duration 100 :actions (-notify/window)))
+        (org-notify-add 'meeting
+            	       '(:time "-1s" :period "20s" :duration 10 :actions (-message -ding))
+            	       '(:time "15m" :period "5m" :duration 100 :actions (-notify/window)))
 
-     (org-notify-start)
+        (org-notify-add 'payment
+            	       '(:time "15m" :period "5m" :duration 100 :actions (-notify/window)))
+
+        (org-notify-start)))
+
+
    #+END_SRC
 ** Org Notmuch
    

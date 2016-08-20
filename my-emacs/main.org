@@ -66,6 +66,18 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    (org-babel-load-file (expand-file-name "appearance.org" settings-dir))
    #+END_SRC
 
+** Emacs Server
+   
+   Start server only in the first instance of emacs
+
+   TODO: fix this for new instances
+   #+BEGIN_SRC emacs-lisp
+     (load "server")
+
+     (unless (server-running-p)
+       (server-start))
+   #+END_SRC
+
 ** Convenience
    
 *** Easy-kill and easy-mark
@@ -180,6 +192,14 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
           (replace-match (jpmonettas/incs (match-string 0) arg) nil nil)))
 
       (global-set-key (kbd "M-+") 'jpmonettas/change-number-at-point)
+    #+END_SRC
+
+*** Neotree
+    
+    [[https://github.com/jaypei/emacs-neotree][Neotree]] is a mode to displayed a dir tree.
+
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "<f8>") 'neotree-toggle)
     #+END_SRC
 
 *** Paredit
@@ -462,6 +482,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
         (hs-minor-mode 1)
         (setq hs-hide-comments-when-hiding-all nil)
+        (define-key hs-minor-mode-map (kbd "C-h C-h") 'hs-toggle-hiding)
 
         (define-key php-mode-map (kbd "C-.") 'er/expand-region)
         (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
@@ -726,6 +747,10 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
      (define-key global-map (kbd "M-/") 'fvaresi/better-comment)
    #+END_SRC
 
+*** Special characters
+    #+BEGIN_SRC emacs-lisp
+      (define-key message-mode-map (kbd "M-?") (kbd "¿"))
+    #+END_SRC
 *** Editing defuns
 
     #+BEGIN_SRC emacs-lisp
@@ -854,7 +879,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (defun toggle-window-split ()
         (interactive)
         (if (= (count-windows) 2)
-    	(let* ((this-win-buffer (window-buffer))
+        (let* ((this-win-buffer (window-buffer))
                    (next-win-buffer (window-buffer (next-window)))
                    (this-win-edges (window-edges (selected-window)))
                    (next-win-edges (window-edges (next-window)))
@@ -863,7 +888,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
                                            (<= (cadr this-win-edges)
                                                (cadr next-win-edges)))))
                    (splitter
-    		(if (= (car this-win-edges)
+        	    (if (= (car this-win-edges)
                            (car (window-edges (next-window))))
                         'split-window-horizontally
                       'split-window-vertically)))
@@ -875,6 +900,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
                 (set-window-buffer (next-window) next-win-buffer)
                 (select-window first-win)
                 (if this-win-2nd (other-window 1))))))
+
+      (global-set-key (kbd "M-T") 'toggle-window-split)
 
       (defun rotate-windows ()
         "Rotate your windows"
@@ -901,12 +928,14 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
                    (set-window-start w2 s1)
                    (setq i (1+ i)))))))
 
+      (global-set-key (kbd "M-R") 'rotate-windows)
+
       (defun fvaresi/kill-buffer-and-window (arg)
         (interactive "P")
         (if (and arg
-    	     (> (count-windows) 1))
-    	(kill-buffer-and-window)
-    	(kill-buffer)))
+    	 (> (count-windows) 1))
+        (kill-buffer-and-window)
+          (kill-buffer)))
 
       (global-set-key (kbd "C-x k") 'fvaresi/kill-buffer-and-window)
     #+END_SRC
@@ -914,8 +943,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     Navigation bindings
 
     #+BEGIN_SRC emacs-lisp
-      (define-key global-map (kbd "C-S-n") (lambda () (interactive) (next-line 5)))
-      (define-key global-map (kbd "C-S-p") (lambda () (interactive) (previous-line 5)))
+      (define-key global-map (kbd "C-S-n") (lambda () (interactive) (dotimes (i 5) (next-line))))
+      (define-key global-map (kbd "C-S-p") (lambda () (interactive) (dotimes (i 5) (previous-line))))
 
       (global-set-key (kbd "M-o") 'mode-line-other-buffer)
       ;;(global-set-key (kbd "C-S-w") 'toggle-window-split)
@@ -943,6 +972,51 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
     #+END_COMMENT
 
+** Jabber
+
+*** Accounts							      :crypt:
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+hQEMA1NjmxQGk77XAQf/Twpn7i9C2T6oPizjwM5O0A70shv32rfyS4TMwBMWET76
+u4hAic8t4EnSdBIg8dnPJd2TsMuG9g/kb0HvfHsbhyfUOQ0PK+xkHaTSU1HOYC+m
+xA+bJpIAW8nz/uQZ90pSYKFB4dQ6LLRE06KkPTynE1zRuEHGhJ6alMZsOGBbN9O+
+taXxoByP0kidY9Phxj5VQKZhitOOIKxAoDaSxxjfZAdROPwJ8r2+vuws/P7WzCqB
+GP2hcgY4JszpxiV+E5GpTK6UJp9CsYGNP+xpoAjNfxszi/78b7hGA1TX2DJbO3nc
+v/kjX1OAbn1wXDqj5rEPQT3OAnGzGZ4EygyLw3NMLdLAFAHvUGG6MJsUc48mmbV4
+BwU0O4mTxFxofCGDC6A+KlfsIfER7Fgh0bAmXS9Zeg6MlLwNd3SnVOPy5hV4yEW2
+a5obi5xp0g+0IA5e6wNVv6NXbl1/Ktzkc01m6qnf6nNIXxLutWQs6htLdLXYD87U
+7ILZ4fDroASqHMK1m2YIW6L1H5igbUz30sSd4SxAdMGWyHqrxtahXKVoWuXawFcu
+lisRsSwcfrecW/7gmayvw0yoU/sb1AQYgVTywVZ8af/XA9Hv5hHqKQM7X9fX75BF
+z0og9R5F
+=4KVs
+-----END PGP MESSAGE-----
+
+*** Customizations
+    Disable presence alert
+
+    #+BEGIN_SRC emacs-lisp
+      (setq jabber-alert-presence-hooks '())
+    #+END_SRC
+
+    Enable chat history
+
+    #+BEGIN_SRC emacs-lisp
+      (setq jabber-history-enabled t)
+    #+END_SRC
+
+    Quickly move to jabber perspective.
+
+    #+BEGIN_SRC emacs-lisp
+      (defun switch-to-jabber-persp ()
+	(interactive)
+	(persp-switch "jabber")
+	(jabber-display-roster))
+
+      (define-key global-map (kbd "C-x x j") 'switch-to-jabber-persp)
+
+    #+END_SRC
+   
 ** Org Mode
    See [[file:settings/setup-org.org][setup-org.org]]
 
