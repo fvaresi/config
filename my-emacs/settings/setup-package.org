@@ -97,6 +97,8 @@ hv2hby3BAaK2SA==
                                  helm-swoop
                                  helm-projectile
 
+                                 interleave
+
                                  json-mode
 
                                  magit
@@ -108,7 +110,7 @@ hv2hby3BAaK2SA==
                                  notmuch
 
                                  org-plus-contrib
-  			       org-download
+                                 org-download
                                  ob-http
                                  org-gcal
                                  org-jira

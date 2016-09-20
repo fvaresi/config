@@ -103,6 +103,7 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -216,14 +217,14 @@ for_window [window_role="pop-up"] floating enable
 for_window [instance="emacs-capture|Ediff"] floating enable
 
 # Key bindings for favorite apps
-bindsym $mod+Shift+a [class="emulator64-x86"] scratchpad show
+# bindsym $mod+Shift+a [class="emulator64-x86"] scratchpad show
 bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
 bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scratchpad show
 bindsym $mod+i [class="Emacs*"] scratchpad show
 bindsym $mod+m [class="vlc"] scratchpad show
 bindsym $mod+c [class="google-chrome|Chromium-browser"] scratchpad show
 bindsym $mod+n [class="com-sonicwall-NetExtender"] scratchpad show
-bindsym $mod+z [class="Conkeror|Iceweasel"] scratchpad show
+bindsym $mod+z [class="Conkeror|Iceweasel|Tor Browser"] scratchpad show
 bindsym $mod+u exec ~/bin/passmenu
 bindsym $mod+t exec ~/bin/emacs-capture --eval '(org-capture nil "t")'
 
