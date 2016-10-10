@@ -47,8 +47,7 @@ bindsym $mod+Shift+s exec ~/bin/i3_switch_workspace.sh
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec "PATH=$PATH:~/bin:~/opt/android-studio/bin:~/opt/idea-IC-143.1184.17/bin:~/autocomm/forticlientsslvpn rofi -show run"
-bindsym $mod+d exec "PATH=$PATH:~/bin:~/opt/android-studio/bin:~/opt/idea-IC-143.1184.17/bin rofi -show run"
+bindsym $mod+d exec "PATH=$PATH:~/bin:~/opt/android-studio/bin:~/opt/idea-IC-143.1184.17/bin:/opt/forticlient-sslvpn rofi -show run"
 bindsym $mod+period exec rofi -show window
 bindsym $mod+comma exec rofi -show ssh
 
@@ -223,7 +222,7 @@ bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scra
 bindsym $mod+i [class="Emacs*"] scratchpad show
 bindsym $mod+m [class="vlc"] scratchpad show
 bindsym $mod+c [class="google-chrome|Chromium-browser"] scratchpad show
-bindsym $mod+n [class="com-sonicwall-NetExtender"] scratchpad show
+bindsym $mod+n [class="forticlientsslvpn"] scratchpad show
 bindsym $mod+z [class="Conkeror|Iceweasel|Tor Browser"] scratchpad show
 bindsym $mod+u exec ~/bin/passmenu
 bindsym $mod+t exec ~/bin/emacs-capture --eval '(org-capture nil "t")'
