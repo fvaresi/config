@@ -102,6 +102,7 @@ hv2hby3BAaK2SA==
                                  json-mode
 
                                  magit
+                                 magit-svn
 
                                  multiple-cursors
 
