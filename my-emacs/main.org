@@ -333,7 +333,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (require 'smooth-scrolling)
     #+END_SRC
 
-*** Web Mode
+*** Web Mode and Emmet Mode
     [[http://web-mode.org/][web-mode]] is useful when editing files that contains multiple types
 
     #+BEGIN_SRC emacs-lisp
@@ -341,8 +341,9 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
       (add-to-list 'auto-mode-alist '("\\.xml?\\'" . web-mode))
 
+      ;; Use emmet-mode whenever we use web-mode
       (defun web-mode-setup ()
-        )
+        (emmet-mode t))
 
       (add-hook 'web-mode-hook 'web-mode-setup)
     #+END_SRC
