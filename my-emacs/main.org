@@ -745,12 +745,19 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    Insert timestamp.
 
    #+BEGIN_SRC emacs-lisp
+     (setq fvaresi/last-timestamp nil)
+
+     (defun fvaresi/timestamp (arg)
+       (interactive "P")
+
+       (if (and arg fvaresi/last-timestamp)
+   	fvaresi/last-timestamp
+         (setq fvaresi/last-timestamp (format-time-string "%s"))))
+
      (defun fvaresi/insert-timestamp (arg)
        (interactive "P")
 
-       (insert-string (if (and arg fvaresi/last-timestamp)
-                          fvaresi/last-timestamp
-                        (setq fvaresi/last-timestamp (format-time-string "%s")))))
+       (insert-string (fvaresi/timestamp arg)))
 
      (define-key global-map (kbd "M-I") 'fvaresi/insert-timestamp)
    #+END_SRC
