@@ -333,6 +333,19 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (require 'smooth-scrolling)
     #+END_SRC
 
+*** Webjump
+    
+    Add some sites to default webjumps
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'webjump)
+
+      (add-to-list 'webjump-sites '("PHP Documentation" .
+            			[simple-query "php.net" "php.net/" ""]))
+
+      (global-set-key (kbd "C-M-g") 'webjump)
+    #+END_SRC
+
 *** Web Mode and Emmet Mode
     [[http://web-mode.org/][web-mode]] is useful when editing files that contains multiple types
 
@@ -960,8 +973,6 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (global-set-key (kbd "C-o") 'ace-jump-word-mode)
 
       (define-key isearch-mode-map (kbd "C-q") 'helm-swoop-from-isearch)
-
-      (global-set-key (kbd "C-M-g") 'webjump)
 
       ;; (define-key clojure-mode-map (kbd "M-n") 'sp-next-sexp)
       ;; (define-key clojure-mode-map (kbd "M-p") 'sp-backward-sexp)
