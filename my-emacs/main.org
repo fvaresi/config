@@ -270,13 +270,13 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     [[https://github.com/bbatsov/projectile][Projectile]] is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies(when feasible).
 
     #+BEGIN_SRC emacs-lisp
-      ;; Currently testing an improvement
+      ;; Currently testing a fix for persp-projectile
       ;; (add-to-list 'load-path "~/projects/projectile")
       (add-to-list 'load-path "~/projects/persp-projectile")
 
       (projectile-global-mode)
       (setq projectile-svn-command projectile-generic-command)
-      (setq projectile-switch-project-action 'projectile-dired)
+      (setq projectile-switch-project-action 'projectile-vc)
     #+END_SRC
 
     Perspective and Projectile can be integrated to have one perspective per project.
@@ -1092,6 +1092,9 @@ z0og9R5F
      (setq magit-use-overlays nil)
      (setq magit-last-seen-setup-instructions "1.4.0")
      (setq magit-push-always-verify nil)
+
+     ;; display magit buffer in the same window
+     (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
 
      (add-hook 'magit-mode-hook 'magit-load-config-extensions)
 
