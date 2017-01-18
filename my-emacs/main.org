@@ -990,6 +990,15 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       ;; (define-key emacs-lisp-mode-map (kbd "M-u") 'sp-backward-up-sexp)
     #+END_SRC
 
+    Window resizing
+
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "C-S-<left>") 'shrink-window-horizontally)
+      (global-set-key (kbd "C-S-<right>") 'enlarge-window-horizontally)
+      (global-set-key (kbd "C-S-<down>") 'shrink-window)
+      (global-set-key (kbd "C-S-<up>") 'enlarge-window)
+    #+END_SRC
+
     #+BEGIN_COMMENT
     #+BEGIN_SRC emacs-lisp
     ;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
