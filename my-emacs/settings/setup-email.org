@@ -86,8 +86,8 @@ mUpHjWqI99xlGt7PZMQa0e6qU1VVH/g=
    #+BEGIN_SRC emacs-lisp
      (require 'gnus-alias)
      (setq gnus-alias-identity-alist
-           '(("personal"
-              nil
+   	'(("personal"
+   	   nil
               "Fernando Varesi <fvaresi@gmail.com>"
               nil
               nil
@@ -102,22 +102,22 @@ mUpHjWqI99xlGt7PZMQa0e6qU1VVH/g=
               nil)
              ("internetbrands"
               nil
-              "Fernando Varesi <fernando.varesi@vbulletin.com"
+              "Fernando Varesi <fernando.varesi@vbulletin.com>"
               "Internet Brands (Autocomm)"
               nil
               nil
               nil)))
      (setq gnus-alias-default-identity "personal")
      (setq gnus-alias-identity-rules
-           '(("internetbrands" ("any" "internetbrands\.com" both) "internetbrands")
+   	'(("internetbrands" ("any" "internetbrands\.com" both) "internetbrands")
              ("vbulletin" ("any" "vbulletin\.com" both) "internetbrands")
              ("infuy" ("any" "infuy\.com" both) "infuy")))
 
-      (defun my-message-load-hook ()
-        (gnus-alias-init))
+     (defun my-message-load-hook ()
+       (gnus-alias-init))
 
-      (add-hook 'message-load-hook 'my-message-load-hook)
-      (add-hook 'message-setup-hook 'gnus-alias-determine-identity)
+     (add-hook 'message-load-hook 'my-message-load-hook)
+     (add-hook 'message-setup-hook 'gnus-alias-determine-identity)
    #+END_SRC
 
 ** Address completion

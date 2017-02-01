@@ -23,7 +23,15 @@
   This package uses [[https://github.com/Malabarba/rich-minority][rich-minority]], which allows me to exclude some modes I don't really need to see. If I need to check with minor modes are activated, I just have to hover over the number in the modes section.
 
   #+BEGIN_SRC emacs-lisp
-    (setq rm-blacklist "")
-    (setq rm-whitelist nil)
-    ;; (add-to-list 'rm-whitelist "Projectile")
+    (add-to-list 'rm-excluded-modes " yas")
+    (add-to-list 'rm-excluded-modes " company")
+    (add-to-list 'rm-excluded-modes " Undo-Tree")
+    (add-to-list 'rm-excluded-modes " FlyC")
+    (add-to-list 'rm-excluded-modes " Guide")
+    (add-to-list 'rm-excluded-modes " Helm")
+    (add-to-list 'rm-excluded-modes " SP/s")
+
+    ;; (setq rm-blacklist "")
+    ;; (setq rm-whitelist nil)
+    ;; ;; (add-to-list 'rm-whitelist "Projectile")
   #+END_SRC

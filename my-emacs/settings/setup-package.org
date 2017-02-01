@@ -79,6 +79,8 @@ hv2hby3BAaK2SA==
 
                                  emmet-mode
 
+  			       evil
+			     
                                  expand-region
 
                                  flycheck

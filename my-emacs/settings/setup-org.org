@@ -132,6 +132,7 @@ zy+h0LkWbQUK8c6r1k57Ma3I0BnEfG2QJs7Ao4uD0TPtAcMyn0dzbUGf72lrMrgq
    #+BEGIN_SRC emacs-lisp
      (require 'ob-http)
      (require 'ob-shell)
+     (require 'ob-sql)
      (setq org-babel-load-languages '((emacs-lisp . t)
                                       (http . t)
                                       (sql . t)))
@@ -346,6 +347,14 @@ Add behavior for when no region is selected
 
    Since I'm using org files for emacs configuration, I need to decrypt these entries while tangling, so org-crypt is configured in the [[file:~/config/my-emacs/init.el][init file]].
 
+** Org Download
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'org-download)
+
+     (setq org-download-screenshot-method "xfce4-screenshooter --region --save %s")
+   #+END_SRC
+   
 ** Org Export
    Don't add the html validation link when exporting.
 
@@ -398,12 +407,14 @@ Add behavior for when no region is selected
    These files will be exported to [[https://github.com/matburt/mobileorg-android][MobileOrg]].
 
    #+BEGIN_SRC emacs-lisp
-     (setq org-mobile-files `("~/org/notes.org"
-   			   "~/org/cumple.org"
-   			   "~/org/journal.org"
-   			   "~/autocomm/docs/sprints.org"
-   			   "~/life/docs/life.org"
-   			   "~/infuy/docs/infuy.org"))
+     (setq org-mobile-files `(,org-default-notes-file
+            		  ,default-journal-file
+   			  "~/Documents/comidas.org"
+            		  ;; "~/org/cumple.org"
+            		  ;; "~/autocomm/docs/sprints.org"
+            		  ;; "~/life/docs/life.org"
+            		  ;; "~/infuy/docs/infuy.org"
+            		  ))
    #+END_SRC
 
    Captures from MobileOrg are stored here.

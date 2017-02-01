@@ -401,6 +401,14 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    #+END_SRC
 
 ** Coding
+*** All languages
+
+    Use helm-semantic for quick searching functions/methods
+
+    #+BEGIN_SRC emacs-lisp
+      (global-set-key (kbd "C-x i") 'helm-semantic-or-imenu)
+    #+END_SRC
+
 *** Android
     Most tips were obtained [[http://blog.refu.co/?p=1242][here]].
 
