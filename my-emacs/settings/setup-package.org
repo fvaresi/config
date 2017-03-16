@@ -5,21 +5,24 @@
 
 * Private							      :crypt:
 -----BEGIN PGP MESSAGE-----
-Version: GnuPG v1
 
-hQEMA1NjmxQGk77XAQgAg2lDawXgH1Opi8M5pxjBTQ+FiaFxhJOo2kaNWubCdwC0
-mFFRtvUL3RZjDJIL348VECrROe0kyHbBoNqBl0NNJfdKNY5cHiMGYlaUQTFrWxlv
-CKsg+qbT3VJUwy0jUhf5r5XG7TeVewUitwAWzo5avqXctfwD5HyPNg/lZirIMmbc
-0hpidm7kwaMtig2CM0XfFFFZK7/yQokHzQ+MN6Chi8vngfjyk0m+GbX3IdnRDdqk
-AZeFD8UO5nJZTfHO7Aaxt/UJJe4XgCna3u8TZ5Vu4sj7xLrgULeL0EV6V/UhDjOA
-9WS1WsRiVGg6DGvXYL7DGVh828rPmiRiPa718HMCudKpAaltNldjhl06M7ES5O4t
-4j6eCkL8dzy//PH8b///DK1+HIvg09zfmUqEnCC5q6SAAQXEm396C/I+jsceVBif
-HXtBWugd/lUFrXU0Vl7+3dT6YNZ9scGXUGG12QwuQTyHE8SHR9daytxQjZ/AzVuL
-boyiNK6G7O6tCSY6ZVdsC5M49LNfe1gdwqEAwxN7HBSt6kLjP+1R0Hug/xW+t2+t
-hv2hby3BAaK2SA==
-=tcLz
+hQIMA2nLYyNk+9h4ARAAhIwFNIgnJWsurCMtw52S9dWqaiCk5/cuKJDSRZb9Bw+E
+qBoDK80dMGAmJiopHidDd84qEhLfNDNhal32ZH9CPJWacaiHjISdiAURTePY85Sx
+Hj+QFy1x/+g8oU8Wh0e2D/tn+F0+2Vy5JDtIn6vlVETAqi7lE+HASnGnRIJMUw4z
+E3QEADN1F3eBpQ9vXKKWCSaFV7WDlNgpl6cdvvB5M8mIJy4jddIUs4uLVn4lPtT5
+b3ihig+c4Ev4sH8ZJLnC4TP9NHGqH21cFE7TC0eg0+VOMB+YFVY+bmLqYd7u3w2E
+nusyXrx/87LWXnZeeq133BLJOO1bkbj5vVAhDW0WN/OsCS7zdorsGm1aENg8s+V5
+o9FKgrZ20Jy9rlph3ocxesYmHu/COqcliOu1u/QrIaHe4ue6VbIe5S5Eh9pDEIJj
+kUCTvxvLi7cBzYr/DcMUy5uztaua4p3Cl2yw7xut1qbn/Z6wZQR4jIAeZVEwja/g
+2fqeUlCn0qP3w//tFY3YCy2olld6NnPAIs/Vf22v0h08bDbKukAWRD35/uCFtaO9
+3GNrdYXpsXNeoDaFMJWsmex+X4252WrPoh1xKFivig0cdAGEhDALIxnSR2DZj9CB
+3fJK3d6rR1iK5iJt8Ed7YR5E6bOr3D8698upUgyE/eJe364jdJpsZoRxccEZ07HS
+qAGmVpMfbda/e5Ao6J2UVF28SuAHbl3xW3mOZ7sLlKJnnqBqtvzrUpArriZIClZG
+F5mo7MQNCHBbvE4VwaZoU4a7/WWyxKq4d1G6hFTqCf2eX+QabQx34qi9Kpkw1+TH
++EFCiCWsgb4ZMRFAP3k1puL78t1bukdyZziXxIMprOBgB5+4HWq6dhkmD9e1IGpT
+jr+790UtAgi/I0ktYwJKuHl3PSBNNvCIWQ==
+=3aGy
 -----END PGP MESSAGE-----
-
 * Emacs packages
 
   It seems marmalade repo is not required anymore for most packages, so I stick with melpa. Also added org repo to install org-plus-contrib.

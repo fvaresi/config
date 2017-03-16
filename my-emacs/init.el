@@ -19,7 +19,7 @@
 ;; Prevent already encrypted text being encrypted again.
 (setq org-tags-exclude-from-inheritance '("crypt"))
 
-(setq org-crypt-key "0693BED7")
+(setq org-crypt-key "fvaresi@gmail.com")
 
 ;; Auto-saving does not cooperate with org-crypt.el: so you need
 ;; to turn it off if you plan to use org-crypt.el quite often.
