@@ -17,6 +17,12 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
    (require 'org-bullets)
    #+END_SRC
 
+   Hide emphasis markers.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-hide-emphasis-markers t)
+   #+END_SRC
+
    Enable collapsing of headings in most parts.
 
    #+BEGIN_SRC emacs-lisp
@@ -411,13 +417,10 @@ Add behavior for when no region is selected
 
    #+BEGIN_SRC emacs-lisp
      (setq org-mobile-files `(,org-default-notes-file
-            		  ,default-journal-file
-   			  "~/Documents/comidas.org"
-            		  ;; "~/org/cumple.org"
-            		  ;; "~/autocomm/docs/sprints.org"
-            		  ;; "~/life/docs/life.org"
-            		  ;; "~/infuy/docs/infuy.org"
-            		  ))
+               	       ,default-journal-file
+      		       "~/Documents/comidas.org"
+               	       "~/org/cumple.org"
+               	       ))
    #+END_SRC
 
    Captures from MobileOrg are stored here.

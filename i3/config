@@ -223,13 +223,12 @@ bindsym $mod+i [class="Emacs*"] scratchpad show
 bindsym $mod+m [class="vlc|Spotify"] scratchpad show
 bindsym $mod+c [class="Google-chrome"] scratchpad show
 bindsym $mod+n [class="Forticlientsslvpn"] scratchpad show
-bindsym $mod+z [class="Conkeror|Iceweasel|Tor Browser"] scratchpad show
+bindsym $mod+z [class="Conkeror|Firefox"] scratchpad show
 bindsym $mod+u exec ~/bin/passmenu
 bindsym $mod+t exec ~/bin/emacs-capture --eval '(org-capture nil "t")'
 
 # Automatically start programs
 exec --no-startup-id "redshift-gtk"
-exec --no-startup-id "~/bin/btsync"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "setxkbmap us -variant intl -option 'ctrl:swapcaps'"
 exec --no-startup-id "~/bin/reset-displays"
