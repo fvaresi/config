@@ -292,7 +292,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (defun fvaresi/projectile-custom-project-name (project-root)
         (cond
          ;; vBulletin Product
-         ((string-match "/vBulletinPlugins/\\([^/]+\\)/\\(?:branches\\|tags\\)\\(?:.*\\)/\\([^/]+\\)" project-root)
+         ((string-match "/vBulletinPlugins/\\([^/]+\\)/\\(?:branches\\|tags\\)/\\(.*\\)" project-root)
           (let* ((product-name (match-string 1 project-root))
                  (branch-name (match-string 2 project-root)))
             (concat product-name "/" branch-name))) ;
