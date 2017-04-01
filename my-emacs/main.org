@@ -490,6 +490,22 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (setq emmet-move-cursor-between-quotes t)
     #+END_SRC
 
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/setup-html ()
+        (setq indent-tabs-mode t)
+        (setq tab-width 4))
+
+      (add-hook 'web-mode-hook 'fvaresi/setup-html)
+    #+END_SRC
+
+*** Javascript
+    #+BEGIN_SRC emacs-lisp
+      (defun fvaresi/setup-js ()
+        (setq indent-tabs-mode t)
+        (setq tab-width 4))
+
+      (add-hook 'js-mode-hook 'fvaresi/setup-js)
+    #+END_SRC
 *** PHP
     This is to check offline documentation
 
