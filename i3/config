@@ -41,7 +41,7 @@ bindsym $mod+b exec conkeror
 
 # rename current workspace
 bindsym $mod+Shift+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
-bindsym $mod+Shift+s exec ~/bin/i3_switch_workspace.sh
+bindsym $mod+Shift+w exec ~/bin/i3_switch_workspace.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -93,6 +93,9 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
