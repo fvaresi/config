@@ -416,6 +416,15 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (global-set-key (kbd "C-x i") 'helm-semantic-or-imenu)
     #+END_SRC
 
+    Use [[https://github.com/akicho8/string-inflection][string-inflection]] to convert names using different styles (e.g. camelcase, etc)
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'string-inflection)
+
+      (global-set-key (kbd "C-c i") 'string-inflection-cycle)
+      (global-set-key (kbd "C-c u") 'string-inflection-underscore)
+    #+END_SRC
+
 *** Android
     Most tips were obtained [[http://blog.refu.co/?p=1242][here]].
 
@@ -1107,9 +1116,6 @@ nzp8kXva98QTTiJnqnQfCgY=
    I use [[https://github.com/hayamiz/twittering-mode][twittering-mode]] to browse twitter.
 
    #+BEGIN_SRC emacs-lisp
-     ;; currently testing a fix for HTTP 2.0
-     ;; (add-to-list 'load-path "~/projects/twittering-mode")
-
      (require 'twittering-mode)
      (setq twittering-use-master-password t)
      (setq twittering-icon-mode t)
