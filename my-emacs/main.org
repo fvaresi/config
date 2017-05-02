@@ -130,6 +130,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (setq helm-mode-fuzzy-match t)
       (setq helm-swoop-split-direction 'split-window-horizontally)
       (setq helm-swoop-speed-or-color nil)
+      (setq helm-buffer-max-length nil)
     #+END_SRC
 
     Display relative path for helm-grep results
@@ -594,15 +595,16 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
         (define-key php-mode-map (kbd "M-j") 'fvaresi/join-line)
 
         (c-set-style "bsd" t)
+        (c-set-offset 'case-label '+)
         (setq c-basic-offset 4)
         (setq indent-tabs-mode t)
         (setq tab-width 4)
 
         (setq comment-multi-line nil ;; maybe
-              comment-start "// "
-              comment-end ""
-              comment-style 'indent
-              comment-use-syntax t))
+    	  comment-start "// "
+    	  comment-end ""
+    	  comment-style 'indent
+    	  comment-use-syntax t))
       (add-hook 'php-mode-hook 'fvaresi/setup-php)
     #+END_SRC
 
@@ -619,7 +621,6 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     
     #+BEGIN_SRC emacs-lisp
       (require 'php-auto-yasnippets)
-      (setq php-auto-yasnippet-php-program "~/.emacs.d/elpa/php-auto-yasnippets-20141128.1411/Create-PHP-YASnippet.php")
     #+END_SRC
 
     #+BEGIN_COMMENT
@@ -642,7 +643,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (setq sql-mysql-login-params
             '((user :default "forum")
               (password)
-              (database)
+              (database :default "vbulletin")
               (server :default "localhost")))
     #+END_SRC
 ** Diary
