@@ -106,6 +106,12 @@ jr+790UtAgi/I0ktYwJKuHl3PSBNNvCIWQ==
 
                                  json-mode
 
+                                 js2-mode
+                                 js2-refactor
+                                 ag
+                                 xref-js2
+                                 indium
+
                                  magit
                                  magit-svn
 
