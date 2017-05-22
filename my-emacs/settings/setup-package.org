@@ -53,6 +53,7 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
     (defun gimme-my-packages ()
       (interactive)
 
+      ;; consider using package-selected-packages
       (let ((required-packages '(ace-isearch
                                  ace-jump-mode
 
@@ -131,6 +132,8 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
                                  ox-reveal
                                  orgtbl-aggregate
                                  google-contacts
+
+                                 org-pomodoro
 
                                  paradox
 

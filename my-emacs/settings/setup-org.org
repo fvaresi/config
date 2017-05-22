@@ -78,29 +78,29 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 *** Sources							      :crypt:
 -----BEGIN PGP MESSAGE-----
 
-hQIMA2nLYyNk+9h4AQ/+LXJ/G+ELEl74YAFnjJBFfWM9e7oXlyklsedQX2VzrzVb
-8xHyqXIxx3nn9Urm5nNf1xZNTFSaVLkO8R3h0c5rIvs1/KZMxXELL7WBYj0dUXbx
-SeDHIANuZzIxOYJhOwIGNSf5x4T2Y9jwbS3Upxk6QlL+3ac+6zDYGrmGo2k0EPBY
-ZMfZle0uMM256i3VkU2AN56v8BDJ637/9UqhviWceHNyHxSNQdas9rqt3chMvb8q
-evqk5ANRfh664Y+1URaIKXjPR1iL3TPMMRD7ghdh37x+uh2ESaG3r1ITOo4G0BMK
-4NUNER3tBmLBD8eP6NTsy8YjlbZXAogXLcWJSdUcNWHBo+c5euywh7zIS1/0KnaF
-cwXjvPU1Tpifei0vgZYyNfZynbwzwGlIEPjAi3ND4YftiOIPsmZB2L/IfyfqPE81
-NEqV/PItIMGnZXxGFry7TAT0/acBzJfIp/qUw35/ihH9yv8MCORufGnJrFx7fdRW
-jTAZmwSwhhhI++2u3sgO/hmhIaxtE9fTvlOusQ9NsqM4uaoEeKRgBY1u15/l/0uJ
-XHEqGatPR7fBbXddz5xb+xytQZb33/VcXvJwRZ/SKeg5iaeFT/9IgqW8YNwvpPaw
-s1HujcaS7TRAdvPv4ysY8pjGEweKnDolbm2U/03Pci34NdNaB3tj6jDkG0RX4hTS
-wQEBooXpXelwaDtdXI0EJcKPkMa6izFzh7RbtWuyvyNlKiJvoKW02gRr4BqK0YQZ
-RoQ2kYHcLsClo5DQfMMqQj6WFui2hdhorInRCxLcWTTFTe1v+qg/OTKdCcAFl1M5
-nZbINlbSC7TmRe+VVcYcn4r6a87OW20kKuN2wuNK0ISXGDo+kyZpdwjHQ+N0SFyY
-R8HY1xVGPFsg4DPVcCLw+GjesokLhBd+dQIt8RZ4UkW2X7AS80WDCEAevjeUBDRj
-BQDXub+SBqbFAFkgCk9ltBFTVeySKgn2VKatol8eWRWIdf+4QPWm6sGR9ojCp8iE
-5gofJq00jWozjK6QcCfTfyYCUldkBBuAZbN9tcv1kowhTuNmwnCHvXQ5E7ZsXg5O
-GZO/8hq2EYFNKhvf/I4XTMEYFTBZJ+iNct5acS2rEK9l/S+Fe5GGevBxc/BCw6hI
-bUBTXJZxQIHlLaxqZlaYvMbxg2K/Zjj5dd79Ixn6FBi2KWjLw5bctUjhrqtVGFDq
-JwZtgx4a9PLT8IdsSDQhVKri5mMFD+lZgZnI+nL9auLKbsNIWmkUhFS6SPORm5Sg
-y8zmY7N0YSZH1pstWEhzjokZ+w==
-=V3SD
+hQIMA2nLYyNk+9h4ARAAl7IhpIi2N1Kd11PSwDb7TDBK5Th2RLF5Wuqr0kXaLeRE
++YwSkveYjYTi1jf9x1rAvNT7TCkQLBGEb0w2mKWEcjTLJp/fpzQd6AFC50onWhoB
+fHmhLybbZOjsCeniszkgHj6m9e+A3HhF1e+jOlLzUUhQ9ssWIOmH+4xjpqnsW91T
+KHXiOby24eGlpXCKn1chIzOjd9TgJA0gKteL4T6JisYVoDfwvqYnzNN+pz+qOfEl
+qYb0ui7dz7P0VsZA4fTUPYmivBu9412eZgU8c3IwdEOl4pvppNpZefthb67v/NLo
+v65J4h51/5QNHVb26VS/hWz5DiKmVOKJfzqrp28n/dlDnPbZqv1oetKpMUXPl71W
+DDqglRgMEbsKfIbn31Db8HlLqWE3N2Aa0YXuJA9xpS+9ve0KKQbIzvfWEg32W0sZ
+P0TEPmUr9HWftaS1cesbPbu+B09qhkiJ8LEI8owLM83OUc0Kf60ZEHm6hXJhTPDN
+TI3RyPK+InJgVNv6DJLwuDviJwdvFmNdO0xhqOS3w423tHOc6oRREcrUTXAOlJzu
+qK4W1KjDl7mQmuJiLyiJpl7ExvzTTR6e4uLEMW9DYQ8aTwPhCRg1srkn63wlKMcb
+upUXKgTecVCHisiYjkx9vYVYw4h1R5l1wlhA4GiQHX1Mf25dhgLyNPe18vC+i1rS
+wNUBHcrg3hIwisCQRj8TuYGLfo8dnq7NgRygWoD4IXcAnCR3Q7NCDi0yO/rPa3TY
+HUwlRDUReF/IqGWkllLcNBNLiDmhXZ0bsRMO7qNYpf2uDY+PL3PH2UBiqKlPXJNz
+zCRuUk/R7WFEmSB+qDzVmwnaJS1bGvUWpvtQMHq2bQIEBhTNcH5Xhz48lptCl4rq
+dQI2kj/BtlmW3myo97T9THb0+Q7erHJnQY75OtJM4/qxZj4aTnUKjFP0q8NvOdJJ
+XlrYDE+qcHpBrApsZEbOSgR1m2mooOMA56MhYuxdTt8qGnHvkEbz+b4S6kPm5k/e
+KEK5BjCrBfKJB6tymbs3LRZ1LsY1is7wHa+sJZc3TBpSbQQ1btW/AopY4Yx0pt0k
+mT0CmFu6b2zp5qlnHOQddWJ8hSL7lvn9lEhtHg294H72guwnj23uxGTtu3/xcW6Y
+HdfA+zFd1vz5gRYnJsW+4Khqf6dKgRf7En3CUQxLZHQ45QYg7SqEShJzU5cBkRsn
+l3BX4pr/xBv8P4WNb/8mML9GNaFxWSc=
+=CCL8
 -----END PGP MESSAGE-----
+
 
 *** General Settings
     Use appt for org-agenda items.
@@ -265,8 +265,8 @@ Add behavior for when no region is selected
      ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
      (setq org-clock-out-remove-zero-time-clocks t)
 
-     ;; Clock out when moving task to a done state
-     (setq org-clock-out-when-done t)
+     ;; Do not clock out when moving task to a done state
+     (setq org-clock-out-when-done nil)
 
      ;; Save the running clock and all clock history when exiting Emacs, load it on startup
      (setq org-clock-persist t)
@@ -279,69 +279,6 @@ Add behavior for when no region is selected
 
      ;; Include current clocking task in clock reports
      (setq org-clock-report-include-clocking-task t)
-
-     (defun bh/punch-in (arg)
-       "Start continuous clocking and set the default task to the
-     selected task.  If no task is selected set the Organization task
-     as the default task."
-       (interactive "p")
-       (setq bh/keep-clock-running t)
-       (if (equal major-mode 'org-agenda-mode)
-   	;;
-   	;; We're in the agenda
-   	;;
-   	(let* ((marker (org-get-at-bol 'org-hd-marker))
-                  (tags (org-with-point-at marker (org-get-tags-at))))
-             (when tags
-                 (org-agenda-clock-in '(16))))
-         ;;
-         ;; We are not in the agenda
-         ;;
-         (save-restriction
-   	(widen)
-   	;; Find the tags on the current task
-   	(when (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)))
-               (org-clock-in '(16))))))
-
-     (global-set-key (kbd "<f9> I") 'bh/punch-in)
-
-     (defun bh/punch-out ()
-       (interactive)
-       (setq bh/keep-clock-running nil)
-       (when (org-clock-is-active)
-         (org-clock-out))
-       (org-agenda-remove-restriction-lock))
-
-     (global-set-key (kbd "<f9> O") 'bh/punch-out)
-
-     (defun bh/clock-in-default-task ()
-       (save-excursion
-         (org-with-point-at org-clock-default-task
-   	(org-clock-in))))
-
-     (defun bh/clock-in-parent-task ()
-       "Move point to the parent (project) task if any and clock in"
-       (let ((parent-task))
-         (save-excursion
-   	(save-restriction
-             (widen)
-             (while (and (not parent-task) (org-up-heading-safe))
-               (when (member (nth 2 (org-heading-components)) org-todo-keywords-1)
-                 (setq parent-task (point))))
-             (if parent-task
-                 (org-with-point-at parent-task
-   		(org-clock-in))
-               (when bh/keep-clock-running
-                 (bh/clock-in-default-task)))))))
-
-     (defun bh/clock-out-maybe ()
-       (when (and (bound-and-true-p bh/keep-clock-running)
-                  (not org-clock-clocking-in)
-                  (marker-buffer org-clock-default-task)
-                  (not org-clock-resolving-clocks-due-to-idleness))
-         (bh/clock-in-parent-task)))
-
-     (add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)
    #+END_SRC
 
    Display time only for today in modeline.
@@ -350,6 +287,78 @@ Add behavior for when no region is selected
      (setq org-clock-modeline-total 'today)
    #+END_SRC
 
+*** Punch In/Out
+
+    #+BEGIN_SRC emacs-lisp
+      (defun bh/punch-in (arg)
+        "Start continuous clocking and set the default task to the
+      selected task.  If no task is selected set the Organization task
+      as the default task."
+        (interactive "p")
+        (setq bh/keep-clock-running t)
+        (if (equal major-mode 'org-agenda-mode)
+         ;;
+         ;; We're in the agenda
+         ;;
+         (let* ((marker (org-get-at-bol 'org-hd-marker))
+                   (tags (org-with-point-at marker (org-get-tags-at))))
+              (when tags
+                  (org-agenda-clock-in '(16))))
+          ;;
+          ;; We are not in the agenda
+          ;;
+          (save-restriction
+         (widen)
+         ;; Find the tags on the current task
+         (when (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)))
+                (org-clock-in '(16))))))
+
+      (global-set-key (kbd "<f9> I") 'bh/punch-in)
+
+      (defun bh/punch-out ()
+        (interactive)
+        (setq bh/keep-clock-running nil)
+        (when (org-clock-is-active)
+          (org-clock-out))
+        (org-agenda-remove-restriction-lock))
+
+      (global-set-key (kbd "<f9> O") 'bh/punch-out)
+
+      (defun bh/clock-in-default-task ()
+        (save-excursion
+          (org-with-point-at org-clock-default-task
+         (org-clock-in))))
+
+      (defun bh/clock-in-parent-task ()
+        "Move point to the parent (project) task if any and clock in"
+        (let ((parent-task))
+          (save-excursion
+         (save-restriction
+              (widen)
+              (while (and (not parent-task) (org-up-heading-safe))
+                (when (member (nth 2 (org-heading-components)) org-todo-keywords-1)
+                  (setq parent-task (point))))
+              (if parent-task
+                  (org-with-point-at parent-task
+          	  (org-clock-in))
+                (when bh/keep-clock-running
+                  (bh/clock-in-default-task)))))))
+
+      (defun bh/clock-out-maybe ()
+        (when (and (bound-and-true-p bh/keep-clock-running)
+                   (not org-clock-clocking-in)
+                   (marker-buffer org-clock-default-task)
+                   (not org-clock-resolving-clocks-due-to-idleness))
+          (bh/clock-in-parent-task)))
+
+      (add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)
+    #+END_SRC
+
+*** Pomodoro
+
+    #+BEGIN_SRC emacs-lisp
+      (define-key org-mode-map (kbd "C-c C-x C-p") 'org-pomodoro)
+    #+END_SRC
 ** Org Crypt
 
    I'm using org-crypt to encrypt sensitive information in my config files that I don't want to be public in github.
