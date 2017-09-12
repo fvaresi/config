@@ -123,6 +123,8 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
                                  notmuch
 
                                  org-plus-contrib
+				 org-bullets
+				 org-mime
                                  org-download
                                  ob-http
                                  org-gcal
