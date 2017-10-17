@@ -362,8 +362,13 @@ Add behavior for when no region is selected
 *** Pomodoro
 
     #+BEGIN_SRC emacs-lisp
+      (setq org-pomodoro-clock-break t)
+      (setq org-pomodoro-keep-killed-pomodoro-time t)
+      ;; (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil))
+
       (define-key org-mode-map (kbd "C-c C-x C-p") 'org-pomodoro)
     #+END_SRC
+
 ** Org Crypt
 
    I'm using org-crypt to encrypt sensitive information in my config files that I don't want to be public in github.
