@@ -1207,3 +1207,9 @@ nzp8kXva98QTTiJnqnQfCgY=
    #+BEGIN_SRC emacs-lisp
      (define-key vc-dir-mode-map (kbd "e") 'vc-ediff)
    #+END_SRC
+
+** Ledger
+   #+BEGIN_SRC emacs-lisp
+     (autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
+     (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+   #+END_SRC
