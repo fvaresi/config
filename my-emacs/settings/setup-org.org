@@ -145,10 +145,12 @@ l3BX4pr/xBv8P4WNb/8mML9GNaFxWSc=
 
    #+BEGIN_SRC emacs-lisp
      (require 'ob-http)
+     (require 'ob-scheme)
      (require 'ob-shell)
      (require 'ob-sql)
      (setq org-babel-load-languages '((emacs-lisp . t)
                                       (http . t)
+				      (scheme . t)
                                       (sql . t)))
    #+END_SRC
 
