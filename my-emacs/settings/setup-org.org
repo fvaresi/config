@@ -33,7 +33,7 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 
    #+BEGIN_SRC emacs-lisp
      (setq org-directory "~/org")
-     (setq org-mobile-directory "~/Dropbox/org-mobile")
+     ;; (setq org-mobile-directory "~/Dropbox/org-mobile")
      (setq org-default-notes-file (concat org-directory "/notes.org"))
      (setq default-journal-file (concat org-directory "/journal.org"))
    #+END_SRC
@@ -430,7 +430,10 @@ Add behavior for when no region is selected
      (require 'org-mime)
    #+END_SRC
    
-** Org Mobile
+** Org Mobile                                                      :noexport:
+   :PROPERTIES:
+   :header-args: :tangle no
+   :END:
 
    These files will be exported to [[https://github.com/matburt/mobileorg-android][MobileOrg]].
 
