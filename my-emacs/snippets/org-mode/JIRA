@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: JIRA Link
+# key: plat
+# type: snippet
+# --
+[[http://jira.mindresearch.org/browse/${1:$(concat "PLAT-" yas-text)}][PLAT-$1${2: ${3:title}}]]$0

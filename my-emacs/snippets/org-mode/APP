@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: APP Link
+# key: app
+# type: snippet
+# --
+[[http://jira.mindresearch.org/browse/${1:$(concat "APP-" yas-text)}][APP-$1${2: ${3:title}}]]$0

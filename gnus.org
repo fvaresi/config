@@ -7,29 +7,7 @@
 Ideas for this setup were extracted from:
 - [[http://roland.entierement.nu/blog/2010/09/08/gnus-dovecot-offlineimap-search-a-howto.html][Gnus, Dovecot, OfflineIMAP, search: a HOWTO]]
 
-* Sources							      :crypt:
------BEGIN PGP MESSAGE-----
-
-hQIMA2nLYyNk+9h4ARAAgFzA9ngzhCirisZ+nyAi7aRh6Oesw01E4a9vgmUOhrZI
-4Ao/BhYuwH0vnqEXBQAtS9wjYHwBplwXAW1j08rL3VMsf474Rdrl1rFusWxXQ9zG
-uiOTcjtDEActZ1ow14LBvIwZixY8sV+SA+t3RzOk0bs6tIbhZx84HfrzV16CIvVd
-VktJMWXCd40VUDIO7LS2FqVj5xkSTPyVVfLtohmTSzsBhp5lX2Hk4X2ZkSBmrpF6
-V5aaNBKakELb+V8k129iZrolMHRqtastEhOVcXvS8uYaAcCC8DNEkuA4B6E9D/GH
-vRJLyWLqofI+meHcsvvA2JEwd7ehqSjg88GzmFXoxCT3V1prDqdsDQKWHWhOS+sL
-veJdUNN4eWs1l1mN8J/eO4EmiVpmr7ZTZ9LDrdtKmFYTkYyGezhKpoczkxObDJ2n
-qAvV4jxrO4N5/k75AeXZ6PkTq8YEFgEk8PGDYHtBt8Wvju1GkYlRz14Ai936ZaF3
-458ZcGNwbeVSJaMwlzpgQhJ7vKRMONQOrhOuSzu+lR9hf9EhP4dnaoi4QovQ833F
-Sd2Sjc9qFuQPTnEb70n9c/RxACD/9HH9wmboDLAoACq8dFc9Wq2qSOzwMqmkW4q8
-KnJz5HbkLWwOAxzCh4tkqjHIG/No2docahhmx+JukASNoYD5dIiGt1AJeBApWhXS
-wI4BmOzMEHpMHuMnmF9cLr7q4QUnLLfOIIZtk3+4UPSXJybFqhg4r5Uee71y7XKW
-yb7/xWRsYByvDDMPqFI0BHqTUhDvlTxCov5R+00QCDFHhrrLVbndDOp/yUzGq7c2
-DplDIGKF4+mTcW8ggK+Jzdn/RyH86oNkDvLV/MYzQ6x5CwE83noKTZniJDQI7H1i
-fWcM5QN5UNBoupL78ZlwBGs/QgfOa/BHZ+PsuNRITWR+Ivj6WM8Jd/Qx65xPG9qF
-FHqHDZGuwiGmWPLkDLy/XcgwVvZZio9W+v9E2TZpomV32VJvhVyE095Tf8vR9iCz
-BpSBoXmjUx2UIBP1MXx1Io47jU/xRpaulbeh73KCgW4+bQ4TSVWA4aDqCbTb0Ym8
-5ZOWT0PmUseK5/j6keZAr0Nm3XYNzVik7RI6DFOTc13iKfGK/z23TpE+Z5MmFTVv
-=qYDc
------END PGP MESSAGE-----
+* Sources
 
 * General settings
 

@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: GWA Link
+# key: gwa
+# type: snippet
+# --
+[[http://jira.mindresearch.org/browse/${1:$(concat "GWA-" yas-text)}][GWA-$1${2: ${3:title}}]]$0

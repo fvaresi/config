@@ -3,26 +3,6 @@
 
 #+EXPORT_EXCLUDE_TAGS: noexport crypt
 
-* Private							      :crypt:
------BEGIN PGP MESSAGE-----
-
-hQIMA2nLYyNk+9h4ARAAmHJBZLhDLdUiPLr4HukSx7jw0jFVYOrJOyJa/IXsBAb6
-XNuaxUekDHa6LZ3rXaVVbd4Y8+T+KQCUDVU4rqM4qqBrc3hyrhxiXDSBMO1Ox5q2
-3QF08LLfAJu1fZEr6RDsJ+dXw3p3SOYay1BzKsBA9C2plpzH02YMvb+t7e0E/kyW
-0jqGzRTDvlJqisbCKC4KdtbBku0K2VAjy6dYq+KfLMEFAlfJxZIT7qi+jrTZl56C
-J/PZol5Gyya1zL+OivmyV59S9k57dqDszi9KRj98GGV2Wm05DMTxxTX8wVkJmapI
-uL9R75oBkInzXZ+SAO/ddWBb/QhQ3sDbKraRsw3C0AbbBNMDsb/sfywrjcP8ZmKX
-L3PJNzS8C1oIx1HYOENByWm9+dXiwJoo82oCr8JsN4mD5VD94191N1kuh6Qt/jIS
-FGcnQtmg3fzhqFh91sjvHUm6HjZeRoVQWawLsl4xr4I3cyJubmf2ZGK7c2eVRfeG
-N3OycouUKfsmZ6IvcUOyv2O5MCDE8EKGyDhlNlv8oI+kxawd17qvSdb9CPDXImWL
-ahNkkw84CgG8WiekZkirzaM2j/tkj2sQD4uoSa0XaasxuMMN82ELhKK6xARXh09L
-Aoqp9a2bP7MtXFPQ9Oqgyq49Iq8Dwqb3NrTxpxPDLe6tRcHZztQ4m/i+z9MqNUrS
-pwEWzIQZmRixW9youj2b1sXT/sUZ6/vz+9cvufaUcW3D3fa2sXBcTJsyU5uB5KgE
-CI/8hXk8t/jfL32iStwkDs3y77iQREKLnROOOjE5X+ic7KAqnfiTB6nsHhbOTrAg
-1gK+JF3Ixtr9D7OwtOvHsEMYoSakWDi+bCvOuWvoUa0OCYEJLtzbBFylesCeszvh
-NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
-=+D+9
------END PGP MESSAGE-----
 * Emacs packages
 
   It seems marmalade repo is not required anymore for most packages, so I stick with melpa. Also added org repo to install org-plus-contrib.
@@ -66,13 +46,13 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
 
                                  conkeror-minor-mode
 
-                                 clojure-mode
-                                 clojure-snippets
-                                 clojurescript-mode
-                                 clj-refactor
-                                 cider
-                                 slamhound
-                                 4clojure
+				 clojure-mode
+				 clojure-snippets
+				 ;; clojurescript-mode
+				 clj-refactor
+				 cider
+				 ;; slamhound
+				 4clojure
 
                                  company-emoji
 

@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.config/composer/vendor/bin:$HOME/.local/bin:/usr/local/bin:/opt/cisco/anyconnect/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -8,6 +8,13 @@ export ZSH=$HOME/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -59,7 +66,6 @@ source $HOME/.bash_aliases
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:$HOME/opt/android-sdk-linux/tools:$HOME/opt/android-sdk-linux/platform-tools:$HOME/opt/android-studio/bin:$HOME/.cask/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -92,10 +98,10 @@ export EDITOR=vim
 export SVN_EDITOR=vim
 export SUDO_EDITOR="emacsclient -nw"
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
-export CDPATH=.:~
+export CDPATH=.:~:~/projects
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=lcd'
 export ANDROID_HOME="$HOME/opt/android-sdk-linux"
-export QUBES_GPG_DOMAIN=gpg
+# export QUBES_GPG_DOMAIN=gpg
 export REPORTTIME=5
 
 # Remove alias so that git-run becomes visible

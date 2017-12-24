@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ADMIN Link
+# key: admin
+# type: snippet
+# --
+[[http://jira.mindresearch.org/browse/${1:$(concat "ADMIN-" yas-text)}][ADMIN-$1${2: ${3:title}}]]$0

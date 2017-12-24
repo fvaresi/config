@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: with email
+# key: api-auth-email
+# contributor: Fernando Varesi <fvaresi@mindresearch.org>
+# --
+#+BEGIN_SRC http :pretty json
+POST http://`(let-alist backend-systems .api.host)`/api/auth
+
+email=${1:liam.brown.315784@example.com}&password=${0:mind}&local=1
+#+END_SRC

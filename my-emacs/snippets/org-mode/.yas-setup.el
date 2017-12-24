@@ -1,0 +1,10 @@
+(setq backend-systems
+      '((api . ((host . "api.mind")
+                (auth-client-id . 2)))
+        (entity . ((host . "entity.mind")
+                   (auth-client-id . 2)
+                   (auth-client-secret . "tO3QeaXm4Y20cJDPE3yo8rIraLUmNcDHrOZWGfMP")
+                   (auth-username . "user@example.com")
+                   (auth-password . "asdf1234")
+                   ))))
+;;(let-alist backend-systems .api.host)

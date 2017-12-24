@@ -1,69 +1,31 @@
 [general]
-accounts = Gmail,Infuy,Internetbrands
+accounts = Mind
 maxsyncaccounts = 4
 
+# Path to file with arbitrary Python code to be loaded
+pythonfile = ~/bin/offlineimap.py
+
 ################################################## Gmail ##################################################
-[Account Gmail]
+[Account Mind]
 autorefresh = 1
-postsynchook = ~/bin/offlineimap-postsync-gmail
-localrepository = GmailLocal
-remoterepository = GmailRemote
+postsynchook = ~/bin/offlineimap-postsync-mind
+localrepository = MindLocal
+remoterepository = MindRemote
 synclabels = yes
 
-[Repository GmailLocal]
-type = GmailMaildir
-localfolders = ~/Mail/Gmail
-
-[Repository GmailRemote]
-type = Gmail
-auth_mechanisms = PLAIN
-remoteuser = fvaresi@gmail.com
-
-folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Sent Mail']
-
-nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
-			       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
-
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-
-################################################## Infuy ##################################################
-[Account Infuy]
-autorefresh = 1
-postsynchook = ~/bin/offlineimap-postsync-infuy
-localrepository = InfuyLocal
-remoterepository = InfuyRemote
-
-[Repository InfuyLocal]
+[Repository MindLocal]
 type = Maildir
-localfolders = ~/Mail/Infuy
+localfolders = ~/Mail/Mind
 
-[Repository InfuyRemote]
+[Repository MindRemote]
 type = IMAP
-remoteuser = fernando@infuy.com
-remotehost = secure.emailsrvr.com
+auth_mechanisms = GSSAPI, CRAM-MD5, PLAIN, LOGIN
+remoteuser = fvaresi@mindresearch.org
+remotepasseval = get_pass("offlineimap")
+remotehost = outlook.office365.com
+remoteport = 993
+realdelete = no
 
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-
-################################################## Internet Brands ##################################################
-[Account Internetbrands]
-autorefresh = 1
-postsynchook = ~/bin/offlineimap-postsync-ib
-localrepository = IBLocal
-remoterepository = IBRemote
-synclabels = yes
-
-[Repository IBLocal]
-type = GmailMaildir
-localfolders = ~/Mail/Internetbrands
-
-[Repository IBRemote]
-type = Gmail
-auth_mechanisms = PLAIN
-remoteuser = fernando.varesi@vbulletin.com
-
-folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Sent Mail']
-
-nametrans = lambda foldername: re.sub('^\[Gmail\]/All Mail$', 'all',
-	    	   	       re.sub('^\[Gmail\]/Sent Mail$', 'sent', foldername))
+folderfilter = lambda folder: folder not in ['Calendar', 'Calendar/Birthdays', 'Calendar/Sub Folder 1', 'Calendar/Sub Folder 2', 'Calendar/United States holidays', 'Contacts', 'Contacts/Sub Folder 1', 'Contacts/Sub Folder 2', 'Contacts/Skype for Business Contacts', 'Deleted Items', 'Drafts', 'Journal', 'Junk Email', 'Notes', 'Outbox', 'Sync Issues', 'Sync Issues/Conflicts', 'Sync Issues/Local Failures', 'Sync Issues/Server Failures', 'Tasks', 'Tasks/Sub Folder 1', 'Tasks/Sub Folder 2']
 
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt

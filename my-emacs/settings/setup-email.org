@@ -7,26 +7,12 @@
   :PROPERTIES:
   :VISIBILITY: children
   :END:
-** Identity							      :crypt:
------BEGIN PGP MESSAGE-----
+** Identity
 
-hQIMA2nLYyNk+9h4AQ//SWcbezpQIbwMExwPThDxHvtoOrpCdvFRSsRmR25eLBe9
-fzreaXdRl1j6zTM/r8VYJ5HsP4kUENDM3N4PK1ejPAXvTOCevCRewFLco/Y3iYXK
-bzOO2TpKQwmOsLI0ASdmQwKZglNk92H7ZwsbWKSdRBagjeIGQ5JbxHclsrG3SICL
-BngdkOx8ny0IQo/LTAy5QEflOBk1JthqDWeZF7xuis3iuuVF+bh1kapXDX1tU1uL
-h2UEmCPGQXxbpihUCpPWUTqNpzFmiBomu59s8CW+lzQs7Kc8MK0jrQ7Dw2Q5WB1I
-qP5LaVRmutj2/hoDu0Mauv/6ALaUIPbMLWIQc2rCI6Y4PH+3Z8oI5D58fqhSIcdW
-MfwJXo9nPChujEm9soFVzz/XkIdU+2G8TqpPbhy4tdRxc8duZpqFfhIF8yMceJYT
-MsYBhg3Ifw6ObHQp0DOEWzNKRKnC42n6hZUhsNNZ+TAKtaqA3u8SzrQ01PbS9BRQ
-9sLZsFIaFVu2lelMxzYR592LCkbFWmg/fXZap3vr1KNQU1+hZ1lR49we50We3STz
-6K94cJTNArF9vhe30PRtMHGYbjyrXGT/yuQ2dix7oxKqzywPTpTwv1Dy3hFT2fcD
-a1NSpHo5SnyHBk7/hsvovYCxt6d9fF9HntjyeRcVwgFtiSpnp/Fy3MHUwtY/aQnS
-uAEK6ce9JoSzJa3aPzvyqyl2TiJpxHsCXwcw19eJPbibeLpUwVbAYdNDLoyBtc94
-/IsW+aTjgM+IbVYjFUcOUpUyY0F6LnQp3ZiIAos5GvedCdAX3oQpQzCIwFxv9fAL
-RztW9CRHp84hOwqPRzJsqw0ppYOos/+dodH5NhowLNSJyGOpfUQGa+nF+hgxgy+f
-LX76qNbXyF3+frFh71c259UY7rrrBe2NuUUUnZ0WHc1ZrAXpwQPC/wg=
-=Qmm3
------END PGP MESSAGE-----
+   #+BEGIN_SRC emacs-lisp
+     (setq user-mail-address "fvaresi@mindresearch.org"
+	   user-full-name "Fernando Varesi")
+   #+END_SRC
 
 ** General Settings
    Just prepend 'Fwd:' to subject while forwarding
@@ -90,32 +76,14 @@ LX76qNbXyF3+frFh71c259UY7rrrBe2NuUUUnZ0WHc1ZrAXpwQPC/wg=
    #+BEGIN_SRC emacs-lisp
      (require 'gnus-alias)
      (setq gnus-alias-identity-alist
-   	'(("personal"
-   	   nil
-              "Fernando Varesi <fvaresi@gmail.com>"
-              nil
-              nil
-              nil
-              "~/.signature")
-             ("infuy"
-              nil
-              "Fernando Varesi <fernando@infuy.com>"
-              "Infuy"
-              nil
-              nil
-              nil)
-             ("internetbrands"
-              nil
-              "Fernando Varesi <fernando.varesi@vbulletin.com>"
-              "Internet Brands (Autocomm)"
-              nil
-              nil
-              nil)))
-     (setq gnus-alias-default-identity "personal")
-     (setq gnus-alias-identity-rules
-   	'(("internetbrands" ("any" "internetbrands\.com" both) "internetbrands")
-             ("vbulletin" ("any" "vbulletin\.com" both) "internetbrands")
-             ("infuy" ("any" "infuy\.com" both) "infuy")))
+	   '(("mind"
+	      nil
+	      "Fernando Varesi <fvaresi@mindresearch.org>"
+	      "Mind Research"
+	      nil
+	      nil
+	      nil)))
+     (setq gnus-alias-default-identity "mind")
 
      (defun my-message-load-hook ()
        (gnus-alias-init))

@@ -32,7 +32,7 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
    Some path and files...
 
    #+BEGIN_SRC emacs-lisp
-     (setq org-directory "~/org")
+     (setq org-directory "~/Documents")
      ;; (setq org-mobile-directory "~/Dropbox/org-mobile")
      (setq org-default-notes-file (concat org-directory "/notes.org"))
      (setq default-journal-file (concat org-directory "/journal.org"))
@@ -74,32 +74,13 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 
 ** Org Agenda
 
-*** Sources							      :crypt:
------BEGIN PGP MESSAGE-----
+*** Sources
 
-hQIMA2nLYyNk+9h4ARAAl7IhpIi2N1Kd11PSwDb7TDBK5Th2RLF5Wuqr0kXaLeRE
-+YwSkveYjYTi1jf9x1rAvNT7TCkQLBGEb0w2mKWEcjTLJp/fpzQd6AFC50onWhoB
-fHmhLybbZOjsCeniszkgHj6m9e+A3HhF1e+jOlLzUUhQ9ssWIOmH+4xjpqnsW91T
-KHXiOby24eGlpXCKn1chIzOjd9TgJA0gKteL4T6JisYVoDfwvqYnzNN+pz+qOfEl
-qYb0ui7dz7P0VsZA4fTUPYmivBu9412eZgU8c3IwdEOl4pvppNpZefthb67v/NLo
-v65J4h51/5QNHVb26VS/hWz5DiKmVOKJfzqrp28n/dlDnPbZqv1oetKpMUXPl71W
-DDqglRgMEbsKfIbn31Db8HlLqWE3N2Aa0YXuJA9xpS+9ve0KKQbIzvfWEg32W0sZ
-P0TEPmUr9HWftaS1cesbPbu+B09qhkiJ8LEI8owLM83OUc0Kf60ZEHm6hXJhTPDN
-TI3RyPK+InJgVNv6DJLwuDviJwdvFmNdO0xhqOS3w423tHOc6oRREcrUTXAOlJzu
-qK4W1KjDl7mQmuJiLyiJpl7ExvzTTR6e4uLEMW9DYQ8aTwPhCRg1srkn63wlKMcb
-upUXKgTecVCHisiYjkx9vYVYw4h1R5l1wlhA4GiQHX1Mf25dhgLyNPe18vC+i1rS
-wNUBHcrg3hIwisCQRj8TuYGLfo8dnq7NgRygWoD4IXcAnCR3Q7NCDi0yO/rPa3TY
-HUwlRDUReF/IqGWkllLcNBNLiDmhXZ0bsRMO7qNYpf2uDY+PL3PH2UBiqKlPXJNz
-zCRuUk/R7WFEmSB+qDzVmwnaJS1bGvUWpvtQMHq2bQIEBhTNcH5Xhz48lptCl4rq
-dQI2kj/BtlmW3myo97T9THb0+Q7erHJnQY75OtJM4/qxZj4aTnUKjFP0q8NvOdJJ
-XlrYDE+qcHpBrApsZEbOSgR1m2mooOMA56MhYuxdTt8qGnHvkEbz+b4S6kPm5k/e
-KEK5BjCrBfKJB6tymbs3LRZ1LsY1is7wHa+sJZc3TBpSbQQ1btW/AopY4Yx0pt0k
-mT0CmFu6b2zp5qlnHOQddWJ8hSL7lvn9lEhtHg294H72guwnj23uxGTtu3/xcW6Y
-HdfA+zFd1vz5gRYnJsW+4Khqf6dKgRf7En3CUQxLZHQ45QYg7SqEShJzU5cBkRsn
-l3BX4pr/xBv8P4WNb/8mML9GNaFxWSc=
-=CCL8
------END PGP MESSAGE-----
-
+    #+BEGIN_SRC emacs-lisp
+      (setq org-agenda-files `(,org-default-notes-file
+			       ,default-journal-file
+			       "~/Documents"))
+    #+END_SRC
 
 *** General Settings
     Use appt for org-agenda items.
@@ -218,26 +199,31 @@ Add behavior for when no region is selected
                    (insert "#+BEGIN_" choice "\n")
                    (save-excursion (insert "#+END_" choice))))))))))
    #+END_SRC
+*** Ob-sql
+
+    #+BEGIN_SRC emacs-lisp
+      (setq org-babel-default-header-args:sql
+	    '((:engine . "mysql")
+	      (:dbhost . "127.0.0.1")
+	      (:dbuser . "user")
+	      (:dbpassword . "mind")))
+    #+END_SRC
 
 ** Org Capture
 
    #+BEGIN_SRC emacs-lisp
-      (setq org-capture-templates
-            `(("t" "Todo" entry
-               (file+headline org-default-notes-file "Tasks")
-               "* TODO %?"
-               :kill-buffer t)
+     (setq org-capture-templates
+	   `(("t" "Task" entry
+	      (file+headline "~/Documents/sprints.org" "Tasks")
+	      "* TODO %?"
+	      :kill-buffer t)
 
-              ("b" "Bookmark" entry
-               (file+headline org-default-notes-file "Bookmarks")
-               "* %c\n:CREATED: %U\n:END:\n\n"
-               :empty-lines 1)
-
-              ("e" "Event" entry
-               (file+datetree+prompt ,default-journal-file)
-               "* %^T - %?"
-               :kill-buffer t)
-              ))
+	     ("m" "Meeting" entry
+	      (file+headline "~/Documents/sprints.org" "Meetings")
+	      "* %?"
+	      :clock-in t
+	      :kill-buffer t)
+	     ))
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp

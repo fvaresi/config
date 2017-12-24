@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: with uuid
+# key: api-auth-uuid
+# contributor: Fernando Varesi <fvaresi@mindresearch.org>
+# --
+#+BEGIN_SRC http :pretty json
+POST http://api.mind/api/auth
+
+uuid=${0:33E0L0D1IFMEH}&local=1
+#+END_SRC

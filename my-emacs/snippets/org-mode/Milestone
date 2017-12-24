@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: Milestone
+# key: milestone
+# --
+* Milestone $1
+  :PROPERTIES:
+  :ARCHIVE:  milestones/${1:$(format "%02d" (string-to-number yas-text))}.org::
+  :END:
+
+** Overview
+
+   #+BEGIN: clocktable :maxlevel 3 :scope tree :tstart "${2:`(format-time-string "%Y-%m-%d")`}" :tend "<tomorrow>" :step day :stepskip0
+   #+END:
+
+** Tasks
+$0
+
+** Meetings
+*** Daily
+*** App standup
+** Other                                                           :noexport:
+   :PROPERTIES:
+   :ID: organization-task
+   :END:
+   :LOGBOOK:
+   :END:

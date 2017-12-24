@@ -1,10 +1,9 @@
 [database]
-path=/home/fvaresi/Mail
+path=/home/user/Mail
 
 [user]
 name=Fernando Varesi
-primary_email=fvaresi@gmail.com
-other_email=fernando@infuy.com;fernando.varesi@vbulletin.com;
+primary_email=fvaresi@mindresearch.org
 
 # Configuration for "notmuch new"
 #
