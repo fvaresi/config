@@ -491,7 +491,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     
     #+BEGIN_SRC emacs-lisp
       (defun fvaresi/setup-elisp ()
-        (eldoc-mode))
+	(setq indent-tabs-mode nil)
+	(eldoc-mode))
 
       (add-hook 'emacs-lisp-mode-hook 'fvaresi/setup-elisp)
     #+END_SRC
