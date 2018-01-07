@@ -119,6 +119,7 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
 
                                  magit
                                  magit-svn
+				 orgit
 
                                  multiple-cursors
 
