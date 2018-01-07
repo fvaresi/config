@@ -291,7 +291,7 @@ Add behavior for when no region is selected
    Display time only for today in modeline.
 
    #+BEGIN_SRC emacs-lisp
-     (setq org-clock-modeline-total 'today)
+     (setq org-clock-mode-line-total 'today)
    #+END_SRC
 
 *** Punch In/Out
