@@ -1205,6 +1205,8 @@ nzp8kXva98QTTiJnqnQfCgY=
      (add-hook 'magit-mode-hook 'magit-load-config-extensions)
 
      (global-set-key (kbd "C-c m") 'magit-status)
+
+     (require 'orgit)
    #+END_SRC
 
    Use [[https://github.com/dgutov/diff-hl][diff-hl]] to highlight changes in version control.
