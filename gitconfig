@@ -3,5 +3,9 @@
 
 [pull]
 	rebase = true
+
+[core]
+	excludesfile = ~/.gitignore_global
+
 [magit]
 	extension = svn
