@@ -44,7 +44,7 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
     ;; (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
     ;; (add-to-list 'package-pinned-packages '(clj-refactor . "melpa-stable") t)
   #+END_SRC
-  
+
   I keep a list of the packages I've installed so that a fresh install requires just to eval =gimme-my-packages=. Make sure you re-eval it after adding a package.
 
   #+BEGIN_SRC emacs-lisp
@@ -91,7 +91,7 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
 
                                  geben
 
-				 geiser
+                                 geiser
 
                                  gh-md
 
@@ -119,7 +119,7 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
 
                                  magit
                                  magit-svn
-				 orgit
+                                 orgit
 
                                  multiple-cursors
 
@@ -186,14 +186,14 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
                                  )))
 
         (dolist (p required-packages)
-        (when (not (package-installed-p p))
+          (when (not (package-installed-p p))
             (package-install p)))))
   #+END_SRC
 
   [[https://github.com/Malabarba/paradox/][Paradox]] is a great interface for package managing.
 
   #+BEGIN_SRC emacs-lisp
-    (setq paradox-automatically-star t)
+    ;;(setq paradox-automatically-star t)
     (setq paradox-execute-asynchronously nil)
   #+END_SRC
 

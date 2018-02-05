@@ -636,6 +636,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+END_COMMENT
 
+*** Scheme
+
 *** SQL
 
     Configuration for sql-mysql.
