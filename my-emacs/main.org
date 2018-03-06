@@ -67,7 +67,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    #+END_SRC
 
 ** Emacs Server
-   
+
    Start server only in the first instance of emacs
 
    TODO: fix this for new instances
@@ -79,10 +79,10 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    #+END_SRC
 
 ** Convenience
-   
+
 *** Easy-kill and easy-mark
     These functions let users [[https://github.com/leoliu/easy-kill][kill or mark things easily]].
-    
+
     #+BEGIN_SRC emacs-lisp
       (global-set-key [remap kill-ring-save] 'easy-kill)
       (global-set-key [remap mark-sexp] 'easy-mark)
@@ -151,7 +151,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
 
 *** Hydra
-    
+
     [[https://github.com/abo-abo/hydra][Hydra]] is a package that can be used to tie related commands into a family of short bindings with a common prefix.
 
     #+BEGIN_SRC emacs-lisp
@@ -167,7 +167,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
         ("p" diff-hl-previous-hunk)
         ("v" diff-hl-diff-goto-hunk))
     #+END_SRC
-    
+
 *** Multiple Cursors
 
     #+BEGIN_SRC emacs-lisp
@@ -202,7 +202,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
 
 *** Neotree
-    
+
     [[https://github.com/jaypei/emacs-neotree][Neotree]] is a mode to displayed a dir tree.
 
     #+BEGIN_SRC emacs-lisp
@@ -307,11 +307,10 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
 
 *** Smartparens
-    [[https://github.com/Fuco1/smartparens][Smartparens]] is minor mode for Emacs that deals with parens pairs and tries to be smart about it. It started as a unification effort to combine functionality of several existing packages in a single, compatible and extensible way to deal with parentheses, delimiters, tags and the like. 
+    [[https://github.com/Fuco1/smartparens][Smartparens]] is minor mode for Emacs that deals with parens pairs and tries to be smart about it. It started as a unification effort to combine functionality of several existing packages in a single, compatible and extensible way to deal with parentheses, delimiters, tags and the like.
 
     #+BEGIN_SRC emacs-lisp
       (require 'smartparens-config)
-      ;;(smartparens-global-strict-mode t)
       (show-smartparens-global-mode t)
       (sp-use-paredit-bindings)
 
@@ -333,7 +332,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
 
 *** Webjump
-    
+
     Add some sites to default webjumps
 
     #+BEGIN_SRC emacs-lisp
@@ -444,7 +443,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
 
     Boot takes some time to load, so we must increase timeout in cider.
-   
+
     #+BEGIN_SRC emacs-lisp
       (setq nrepl-sync-request-timeout 40)
     #+END_SRC
@@ -462,7 +461,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
         (eldoc-mode 1)
 
         (setq cider-repl-display-in-current-window t)
-  
+
         (clj-refactor-mode 1)
         (yas-minor-mode 1)
         (cljr-add-keybindings-with-prefix "C-c C-m"))
@@ -486,17 +485,18 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_COMMENT
 
 *** Emacs Lisp
-    
+
     #+BEGIN_SRC emacs-lisp
       (defun fvaresi/setup-elisp ()
 	(setq indent-tabs-mode nil)
+	(smartparens-strict-mode t)
 	(eldoc-mode))
 
       (add-hook 'emacs-lisp-mode-hook 'fvaresi/setup-elisp)
     #+END_SRC
 *** HTML
 
-    [[https://github.com/emacsmirror/emmet-mode][Emmet]] enables us to produce HTML from CSS-like selectors. 
+    [[https://github.com/emacsmirror/emmet-mode][Emmet]] enables us to produce HTML from CSS-like selectors.
 
     #+BEGIN_SRC emacs-lisp
       (require 'emmet-mode)
@@ -551,7 +551,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
 
     [[https://indium.readthedocs.io/][Indium]] is a JavaScript development environment for Emacs
-    
+
     #+BEGIN_SRC emacs-lisp
       (require 'indium)
     #+END_SRC
@@ -560,6 +560,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+BEGIN_SRC emacs-lisp
       (defun fvaresi/setup-js ()
+        (smartparens-strict-mode t)
+
         (setq indent-tabs-mode t)
         (setq tab-width 4))
 
@@ -577,6 +579,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+BEGIN_SRC emacs-lisp
       (defun fvaresi/setup-php ()
+        (smartparens-strict-mode t)
+
         (yas-minor-mode 1)
 
         ;; (whitespace-mode t)
@@ -600,10 +604,10 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
         (setq tab-width 4)
 
         (setq comment-multi-line nil ;; maybe
-    	  comment-start "// "
-    	  comment-end ""
-    	  comment-style 'indent
-    	  comment-use-syntax t))
+          comment-start "// "
+          comment-end ""
+          comment-style 'indent
+          comment-use-syntax t))
       (add-hook 'php-mode-hook 'fvaresi/setup-php)
     #+END_SRC
 
@@ -617,7 +621,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+END_SRC
 
     Autocompletion for PHP.
-    
+
     #+BEGIN_SRC emacs-lisp
       (require 'php-auto-yasnippets)
     #+END_SRC
@@ -680,7 +684,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (setq appt-disp-window-function 'my-appt-window-function)
       (setq appt-delete-window-function nil)
     #+END_SRC
-   
+
 ** Email and News
    See [[file:settings/setup-email.org][setup-email.org]]
 
@@ -766,7 +770,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    #+END_SRC
 
    Enable undo-redo of window configuration.
-   
+
    #+BEGIN_SRC emacs-lisp
      (winner-mode 1)
    #+END_SRC
@@ -810,7 +814,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    Binding for toggling comment in regions.
 
    # TODO: improve this binding to handle both regions and current line
-   
+
    #+BEGIN_SRC emacs-lisp
       (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
    #+END_SRC
@@ -859,7 +863,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    #+BEGIN_SRC emacs-lisp
      (defun fvaresi/better-comment ()
        (interactive)
-       (if mark-active 
+       (if mark-active
    	(comment-or-uncomment-region (region-beginning) (region-end))
         (comment-or-uncomment-region (point-at-bol) (point-at-eol))))
 
@@ -1146,7 +1150,7 @@ nzp8kXva98QTTiJnqnQfCgY=
       (define-key global-map (kbd "C-x x j") 'switch-to-jabber-persp)
 
     #+END_SRC
-   
+
 ** Org Mode
    See [[file:settings/setup-org.org][setup-org.org]]
 
@@ -1189,7 +1193,7 @@ nzp8kXva98QTTiJnqnQfCgY=
    #+END_SRC
 ** Version Control
    [[https://github.com/magit/magit][Magit]] is a great interface for Git. If you want to see a demo check this [[https://youtu.be/vQO7F2Q9DwA][presentation]] by Howard Abrams.
-   
+
    #+BEGIN_SRC emacs-lisp
      (setq magit-use-overlays nil)
      (setq magit-last-seen-setup-instructions "1.4.0")
