@@ -311,9 +311,18 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+BEGIN_SRC emacs-lisp
       (require 'smartparens-config)
-      (smartparens-global-strict-mode t)
+      ;;(smartparens-global-strict-mode t)
       (show-smartparens-global-mode t)
       (sp-use-paredit-bindings)
+
+      ;; issue https://github.com/Fuco1/smartparens/issues/827
+      (delete-selection-mode 1)
+    #+END_SRC
+
+    Always kill whole line
+
+    #+BEGIN_SRC emacs-lisp
+      (setq kill-whole-line t)
     #+END_SRC
 
 *** Smooth Scrolling
