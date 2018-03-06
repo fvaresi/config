@@ -287,26 +287,15 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (projectile-persp-bridge helm-projectile)
     #+END_SRC
 
-    Some of my projects have different version tags and branches, and I want the persp name to be something different.
+    Use suggestion from [[https://github.com/bbatsov/projectile/issues/218][issue #218]] to fix ANSI colors
 
     #+BEGIN_SRC emacs-lisp
-      (defun fvaresi/projectile-custom-project-name (project-root)
-        (cond
-         ;; vBulletin Product
-         ((string-match "/vBulletinPlugins/\\([^/]+\\)/\\(?:branches\\|tags\\)/\\(.*\\)" project-root)
-          (let* ((product-name (match-string 1 project-root))
-                 (branch-name (match-string 2 project-root)))
-            (concat product-name "/" branch-name))) ;
-
-         ((string-match "/vBulletinPlugins/\\([^/]+\\)/trunk" project-root)
-          (let* ((product-name (match-string 1 project-root)))
-            (concat product-name "/trunk")))
-
-         ;; do the default
-         (t
-          (projectile-default-project-name project-root))))
-
-      (setq projectile-project-name-function 'fvaresi/projectile-custom-project-name)
+      (require 'ansi-color)
+      (defun colorize-compilation-buffer ()
+        (toggle-read-only)
+        (ansi-color-apply-on-region (point-min) (point-max))
+        (toggle-read-only))
+      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
     #+END_SRC
 
 *** Rainbow Delimiters
