@@ -57,11 +57,11 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
       (let ((required-packages '(ace-isearch
                                  ace-jump-mode
 
-                                 ack-and-a-half
-
                                  android-mode
 
                                  browse-kill-ring
+
+                                 company
 
                                  conkeror-minor-mode
 
@@ -70,7 +70,6 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
                                  clojurescript-mode
                                  clj-refactor
                                  cider
-                                 company
                                  slamhound
                                  4clojure
 
