@@ -701,6 +701,12 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
      (global-company-mode)
    #+END_SRC
 
+   Do not downcase candidates
+
+   #+BEGIN_SRC emacs-lisp
+     (setq company-dabbrev-downcase nil)
+   #+END_SRC
+
    Use company-emoji
 
    #+BEGIN_SRC emacs-lisp
