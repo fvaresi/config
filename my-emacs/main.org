@@ -282,6 +282,13 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (setq kill-whole-line t)
     #+END_SRC
 
+    In PHP add spaces in some cases...
+    #+BEGIN_SRC emacs-lisp
+      (sp-with-modes  '(php-mode)
+	(sp-local-pair "(" nil :post-handlers '(:add ("| " "SPC")))
+	(sp-local-pair "[" nil :post-handlers '(:add ("| " "SPC"))))
+    #+END_SRC
+
 *** Smooth Scrolling
     Make emacs scroll smoothly, keeping the point away from the top and bottom of the current buffer's window in order to keep lines of context around the point visible as much as possible, whilst avoiding sudden scroll jumps which are visually confusing.
 
