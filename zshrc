@@ -95,3 +95,6 @@ export XDEBUG_CONFIG="idekey=netbeans-xdebug"
 export CDPATH=.:~:~/autocomm/vBulletinPlugins
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=lcd'
 export ANDROID_HOME="$HOME/opt/android-sdk-linux"
+
+# Remove alias so that git-run becomes visible
+unalias gr
