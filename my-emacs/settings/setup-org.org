@@ -267,7 +267,8 @@ Add behavior for when no region is selected
      (setq org-clock-in-resume t)
 
      ;; Change tasks to NEXT when clocking in (this could be a function of the current state)
-     (setq org-clock-in-switch-to-state "IN_PROGRESS")
+     ;; (setq org-clock-in-switch-to-state "IN_PROGRESS")
+     (setq org-clock-in-switch-to-state nil)
 
      ;; Separate drawers for clocking and logs
      (setq org-drawers '("PROPERTIES" "LOGBOOK"))
