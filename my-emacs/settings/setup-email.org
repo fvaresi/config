@@ -236,19 +236,14 @@ LX76qNbXyF3+frFh71c259UY7rrrBe2NuUUUnZ0WHc1ZrAXpwQPC/wg=
      (define-key notmuch-search-mode-map "T" 'notmuch-jump-to-tag)
    #+END_SRC
 
-** Email perspective
+** Email
 
-   Quickly switch to email perspective.
+   Quickly switch to email.
 
    #+BEGIN_SRC emacs-lisp
      (defun notmuch-search-unread ()
        (interactive)
        (notmuch-search "tag:inbox"))
 
-     (defun switch-to-mail-persp ()
-       (interactive)
-       (persp-switch "mail")
-       (notmuch-search-unread))
-
-     (define-key global-map (kbd "C-x x m") 'switch-to-mail-persp)
+     (define-key global-map (kbd "C-x x m") 'notmuch-search-unread)
    #+END_SRC

@@ -151,9 +151,7 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
 
                                  popwin
 
-                                 perspective
                                  projectile
-                                 persp-projectile
 
                                  rainbow-delimiters
 

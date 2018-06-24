@@ -214,39 +214,6 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (global-set-key (kbd "M-(") 'paredit-wrap-sexp)
       (global-set-key (kbd "M-U") 'paredit-splice-sexp-killing-backward)
     #+END_SRC
-*** Perspective
-    [[https://github.com/nex3/perspective-el][Perspective]] provides tagged workspaces in Emacs. It integrates very well with Projectile.
-
-    #+BEGIN_SRC emacs-lisp
-      (require 'perspective)
-      (persp-mode)
-      (setq persp-show-modestring t)
-    #+END_SRC
-
-    This function enables me to quickly switch between the last two perspectives.
-
-    #+BEGIN_SRC emacs-lisp
-      (defun switch-to-last-persp ()
-        "Switches back to the last perspective"
-        (interactive)
-        (persp-switch (persp-name persp-last)))
-
-      (define-key global-map (kbd "M-O") 'switch-to-last-persp)
-    #+END_SRC
-
-    By default, kill current perspective unless prefix argument is non-nil.
-
-    #+BEGIN_SRC emacs-lisp
-      (defun fvaresi/persp-kill (arg)
-        (interactive "P")
-
-        (if arg
-            (persp-kill nil)
-          (persp-kill (persp-name persp-curr))))
-
-      (define-key perspective-map (kbd "c") 'fvaresi/persp-kill)
-    #+END_SRC
-
 *** Popwin
     [[https://github.com/m2ym/popwin-el][Popwin]] is a popup window manager for Emacs.
 
@@ -271,20 +238,11 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     [[https://github.com/bbatsov/projectile][Projectile]] is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies(when feasible).
 
     #+BEGIN_SRC emacs-lisp
-      ;; Currently testing a fix for persp-projectile
       ;; (add-to-list 'load-path "~/projects/projectile")
-      ;; (add-to-list 'load-path "~/projects/persp-projectile")
 
       (projectile-global-mode)
       (setq projectile-svn-command projectile-generic-command)
       (setq projectile-switch-project-action 'projectile-vc)
-    #+END_SRC
-
-    Perspective and Projectile can be integrated to have one perspective per project.
-
-    #+BEGIN_SRC emacs-lisp
-      (require 'persp-projectile)
-      (projectile-persp-bridge helm-projectile)
     #+END_SRC
 
     Use suggestion from [[https://github.com/bbatsov/projectile/issues/218][issue #218]] to fix ANSI colors
@@ -1139,18 +1097,6 @@ nzp8kXva98QTTiJnqnQfCgY=
       (setq jabber-history-enabled t)
     #+END_SRC
 
-    Quickly move to jabber perspective.
-
-    #+BEGIN_SRC emacs-lisp
-      (defun switch-to-jabber-persp ()
-	(interactive)
-	(persp-switch "jabber")
-	(jabber-display-roster))
-
-      (define-key global-map (kbd "C-x x j") 'switch-to-jabber-persp)
-
-    #+END_SRC
-
 ** Org Mode
    See [[file:settings/setup-org.org][setup-org.org]]
 
@@ -1167,29 +1113,6 @@ nzp8kXva98QTTiJnqnQfCgY=
 
    #+BEGIN_SRC emacs-lisp
    (setq tramp-use-ssh-controlmaster-options nil)
-   #+END_SRC
-** Twitter
-   I use [[https://github.com/hayamiz/twittering-mode][twittering-mode]] to browse twitter.
-
-   #+BEGIN_SRC emacs-lisp
-     (require 'twittering-mode)
-     (setq twittering-use-master-password t)
-     (setq twittering-icon-mode t)
-     (setq twittering-edit-skeleton 'inherit-any)
-   #+END_SRC
-
-   Quickly move to twittering perspective.
-
-   #+BEGIN_SRC emacs-lisp
-     (defun switch-to-twitter-persp ()
-       (interactive)
-       (persp-switch "twitter")
-       (twit))
-
-     (define-key global-map (kbd "C-x x t") 'switch-to-twitter-persp)
-
-     (define-key twittering-mode-map (kbd "C-S-f") 'twittering-favorite)
-     (define-key twittering-mode-map (kbd "C-S-r") 'twittering-native-retweet)
    #+END_SRC
 ** Version Control
    [[https://github.com/magit/magit][Magit]] is a great interface for Git. If you want to see a demo check this [[https://youtu.be/vQO7F2Q9DwA][presentation]] by Howard Abrams.
