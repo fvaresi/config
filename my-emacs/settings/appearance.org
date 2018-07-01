@@ -7,9 +7,10 @@
   I've also tried =Source Code Pro-10= and =M+ 1mn-11= but decided to stick with =DejaVu Sans Mono-10=.
 
   #+BEGIN_SRC emacs-lisp
-  (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
-  (setq frame-title-format "%f")
-  (load-theme 'sanityinc-tomorrow-eighties t)
+    (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
+    (setq frame-title-format "%f")
+    ;; (load-theme 'sanityinc-tomorrow-eighties t)
+    (load-theme 'solarized-light t)
   #+END_SRC
 
   [[https://github.com/Malabarba/smart-mode-line/][Malabarba's Smart Mode Line]] keeps a clean mode-line.
