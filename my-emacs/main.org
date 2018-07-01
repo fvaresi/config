@@ -473,10 +473,12 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+BEGIN_SRC emacs-lisp
       (defun fvaresi/setup-html ()
-        (setq indent-tabs-mode t)
-        (setq tab-width 4))
+	(setq indent-tabs-mode t)
+	(setq sgml-basic-offset 4)
+	(setq tab-width 4))
 
       (add-hook 'web-mode-hook 'fvaresi/setup-html)
+      (add-hook 'html-mode-hook 'fvaresi/setup-html)
     #+END_SRC
 
 *** Javascript
