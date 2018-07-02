@@ -6,22 +6,22 @@
 * Private							      :crypt:
 -----BEGIN PGP MESSAGE-----
 
-hQIMA2nLYyNk+9h4AQ/9Gmeo/+/Y7eIQWYbRR1TwOSe7UjQyWKv2SXZVxYSB5gt6
-dOqpHppeAd5TuhwRzA0GHDVmeZKf3gVQPGQnT7zgTrVJNhxUArcBpn3R1L9RCKYu
-3K7K33XHhqn0r68wxTKMpuKenOdtqNop3Gs+Xl6fu+DWQvIi/2o/jB45xli4+Zym
-p05ajQdweNolG+ILoyUSzzmYC+5KHHZQR4HJ9zTQSUTrEUkdvh5yHQLSutcQf6SB
-M9gQC27D4kXrWm7HDnA4TEA+zqd8rCc1YsiboHrdwPMnQ9uClQuJ1yeF8V8bTYUg
-ZLsY2JKG6QgsJ1JkonRmnrBMCQzehkA79HMyN5BrphSDH56Sy/MbXVQ47N/jCBSR
-KZ0/o1hsB+U/Gg0OwZO+lXyUeI9H/2zMjzmPUPFWSokQn7icGcbBY/v8oLU6RPvT
-xH9tpkGxgrzESs0nY46WNSJVlzxgHEDA0Jvq3bqYE/1Ima2ed6XR2dHCTQE/yeI/
-xljuZhewZZA2F+bX7sVw7xL2fVCNYCkravVPio5/tLQ9iDZQJ7WLDlI4AMbYl3Ve
-PyGw3Zx+bAfixn1s31Ik2jRJ+vkCFGDscErpnaSeCqz4VE1TPbGCHP962UtQ240b
-zliflC/Jt1NEh8RL+fai7YSt9PZglI6WpQvTvZbjr2xkPBILVniPLZWEPc+wG8nS
-qgHlAlegm+EBGTUp9gyMxVt1ITWHZuqp0SvuEe5c6wgfE0HlIbXxN5Nwfdp2S0CK
-LZfQF3u4R1Wq44xmouKmyqbx3sEhB1m+DP6kd9GNUMsF1/KBh/VJ2FIRbMRQSXmI
-4e1QkKvpoXgLlhEk7Fi2tQ2f3IjF/1xUSNc+Nxjh+VmaajHdKn1Lfom//04kCKeA
-FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
-=LrAx
+hQIMA2nLYyNk+9h4ARAAmHJBZLhDLdUiPLr4HukSx7jw0jFVYOrJOyJa/IXsBAb6
+XNuaxUekDHa6LZ3rXaVVbd4Y8+T+KQCUDVU4rqM4qqBrc3hyrhxiXDSBMO1Ox5q2
+3QF08LLfAJu1fZEr6RDsJ+dXw3p3SOYay1BzKsBA9C2plpzH02YMvb+t7e0E/kyW
+0jqGzRTDvlJqisbCKC4KdtbBku0K2VAjy6dYq+KfLMEFAlfJxZIT7qi+jrTZl56C
+J/PZol5Gyya1zL+OivmyV59S9k57dqDszi9KRj98GGV2Wm05DMTxxTX8wVkJmapI
+uL9R75oBkInzXZ+SAO/ddWBb/QhQ3sDbKraRsw3C0AbbBNMDsb/sfywrjcP8ZmKX
+L3PJNzS8C1oIx1HYOENByWm9+dXiwJoo82oCr8JsN4mD5VD94191N1kuh6Qt/jIS
+FGcnQtmg3fzhqFh91sjvHUm6HjZeRoVQWawLsl4xr4I3cyJubmf2ZGK7c2eVRfeG
+N3OycouUKfsmZ6IvcUOyv2O5MCDE8EKGyDhlNlv8oI+kxawd17qvSdb9CPDXImWL
+ahNkkw84CgG8WiekZkirzaM2j/tkj2sQD4uoSa0XaasxuMMN82ELhKK6xARXh09L
+Aoqp9a2bP7MtXFPQ9Oqgyq49Iq8Dwqb3NrTxpxPDLe6tRcHZztQ4m/i+z9MqNUrS
+pwEWzIQZmRixW9youj2b1sXT/sUZ6/vz+9cvufaUcW3D3fa2sXBcTJsyU5uB5KgE
+CI/8hXk8t/jfL32iStwkDs3y77iQREKLnROOOjE5X+ic7KAqnfiTB6nsHhbOTrAg
+1gK+JF3Ixtr9D7OwtOvHsEMYoSakWDi+bCvOuWvoUa0OCYEJLtzbBFylesCeszvh
+NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
+=+D+9
 -----END PGP MESSAGE-----
 * Emacs packages
 
@@ -192,7 +192,7 @@ FgBm8ydRC5QwLy7FIry8TQzDLfuyJ7H+Dp+l
   [[https://github.com/Malabarba/paradox/][Paradox]] is a great interface for package managing.
 
   #+BEGIN_SRC emacs-lisp
-    ;;(setq paradox-automatically-star t)
+    (setq paradox-automatically-star t)
     (setq paradox-execute-asynchronously nil)
   #+END_SRC
 
