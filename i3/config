@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono, Awesome 10
+font pango:DejaVu Sans Mono 8
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -23,40 +23,84 @@ font pango:DejaVu Sans Mono, Awesome 10
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-new_window pixel 2
+client.background	dom0		#121212
+client.focused		dom0	#522702 #522702 #ffffff #a6907d
+client.focused_inactive	dom0	#522702 #361a01 #ffffff #a6907d
+client.unfocused	dom0	#522702 #361a01 #999999 #a6907d
+client.urgent		dom0	#666666 #a6907d #ce0000 #a6907d
+
+client.background	red		#121212
+client.focused		red	#e53b27 #e53b27 #ffffff #f19b90
+client.focused_inactive	red	#e53b27 #902519 #ffffff #f19b90
+client.unfocused	red	#e53b27 #902519 #999999 #f19b90
+client.urgent		red	#e53b27 #f19b90 #ce0000 #f19b90
+
+client.background	orange		#121212
+client.focused		orange	#d05f03 #d05f03 #ffffff #daa67e
+client.focused_inactive	orange	#d05f03 #7b3702 #ffffff #daa67e
+client.unfocused	orange	#d05f03 #7b3702 #999999 #daa67e
+client.urgent		orange	#d05f03 #daa67e #ce0000 #daa67e
+
+client.background	yellow		#121212
+client.focused		yellow	#999b00 #999b00 #ffffff #cacb7c
+client.focused_inactive	yellow	#999b00 #666700 #ffffff #cacb7c
+client.unfocused	yellow	#999b00 #666700 #999999 #cacb7c
+client.urgent		yellow	#999b00 #cacb7c #ce0000 #cacb7c
+
+client.background	green		#121212
+client.focused		green	#04af5b #04af5b #ffffff #7dd5aa
+client.focused_inactive	green	#04af5b #02713b #ffffff #7dd5aa
+client.unfocused	green	#04af5b #02713b #999999 #7dd5aa
+client.urgent		green	#04af5b #7dd5aa #ce0000 #7dd5aa
+
+client.background	gray		#121212
+client.focused		gray 	#8c959f #8c959f #ffffff #c3c8cd
+client.focused_inactive	gray	#8c959f #676d75 #ffffff #c3c8cd
+client.unfocused	gray	#8c959f #676d75 #999999 #c3c8cd
+client.urgent		gray	#8c959f #c3c8cd #ce0000 #c3c8cd
+
+client.background	blue		#121212
+client.focused		blue 	#3384d6 #3384d6 #ffffff #95bee8
+client.focused_inactive	blue	#3384d6 #1f5082 #ffffff #95bee8
+client.unfocused	blue	#3384d6 #1f5082 #999999 #95bee8
+client.urgent		blue	#3384d6 #95bee8 #ce0000 #95bee8
+
+client.background	purple		#121212
+client.focused		purple	#8f5cbe #8f5cbe #ffffff #c6abdd
+client.focused_inactive	purple	#8f5cbe #5c3e78 #ffffff #c6abdd
+client.unfocused	purple	#8f5cbe #5c3e78 #999999 #c6abdd
+client.urgent		purple	#8f5cbe #c6abdd #ce0000 #c6abdd
+
+client.background	black		#121212
+client.focused		black	#595959 #595959 #ffffff #a3a3a3
+client.focused_inactive	black	#595959 #3a3a3a #ffffff #a3a3a3
+client.unfocused	black	#595959 #3a3a3a #999999 #a3a3a3
+client.urgent		black	#595959 #a3a3a3 #ce0000 #a3a3a3
+
+#default_border pixel 1
+bindsym $mod+Shift+t border toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-workspace_layout stacking
-
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
-# start an emacs
-bindsym $mod+Shift+Return exec "emacsclient -c"
+# start a terminal in the domain of the currently active window
+bindsym $mod+Return exec qubes-i3-sensible-terminal
+bindsym $mod+Shift+Return exec "xfce4-terminal"
 
 # start a conkeror
-bindsym $mod+b exec conkeror
+bindsym $mod+b exec qvm-run -a untrusted conkeror
 
 # rename current workspace
-bindsym $mod+Shift+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+bindsym $mod+Shift+n exec i3-input -F 'rename worspace to "%s"' -P 'New name: '
 bindsym $mod+Shift+w exec ~/bin/i3_switch_workspace.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "PATH=$PATH:~/bin:~/opt/android-studio/bin:~/opt/idea-IC-143.1184.17/bin:/opt/forticlient-sslvpn rofi -show run"
-bindsym $mod+period exec rofi -show window
-bindsym $mod+comma exec rofi -show ssh
-
-
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb #d2d2d2 -nf #000000 -sb #63a0ff"
+bindsym $mod+d exec --no-startup-id "~/bin/qubes-i3-rofi -show run"
+bindsym $mod+comma exec --no-startup-id "~/bin/qubes-i3-rofi -show ssh"
 
 # change focus
 bindsym $mod+h focus left
@@ -70,10 +114,7 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# bindsym $mod+Shift+Left move container to workspace prev
-# bindsym $mod+Shift+Right move container to worspace next
-
-# change worskpace
+# change workspace
 bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
 
@@ -104,7 +145,6 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
 bindsym $mod+Shift+a focus child
 
 # switch to workspace
@@ -146,16 +186,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 1 px or 1 ppt
-        bindsym k resize grow height 1 px or 1 ppt
-        bindsym j resize shrink height 1 px or 1 ppt
-        bindsym l resize grow width 1 px or 1 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 1 px or 1 ppt
-        bindsym Down resize grow height 1 px or 1 ppt
-        bindsym Up resize shrink height 1 px or 1 ppt
-        bindsym Right resize grow width 1 px or 1 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -164,21 +204,85 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
 # Laptop monitor
+# (Integrated graphics)
 bar {
 	mode dock
-	status_command py3status -c ~/.i3/i3status.conf -i ~/.i3/py3status/
-	output LVDS-1
-	position top
-	tray_output LVDS-1
+        status_command qubes-i3status
+	output LVDS1
+	position bottom
+	tray_output LVDS1
+        colors {
+            background #d2d2d2
+            statusline #00000
+
+            #class               #border #backgr #text
+            focused_workspace    #4c7899 #63a0ff #000000
+            active_workspace     #333333 #5f676a #ffffff
+            inactive_workspace   #222222 #333333 #888888
+            urgent_workspace     #BD2727 #E79E27 #000000
+        }
 }
 
-# External monitors
+# (Optimus)
+bar {
+	mode dock
+        status_command qubes-i3status
+	output LVDS2
+	position bottom
+	tray_output LVDS2
+        colors {
+            background #d2d2d2
+            statusline #00000
+
+            #class               #border #backgr #text
+            focused_workspace    #4c7899 #63a0ff #000000
+            active_workspace     #333333 #5f676a #ffffff
+            inactive_workspace   #222222 #333333 #888888
+            urgent_workspace     #BD2727 #E79E27 #000000
+        }
+}
+
+# External monitor
+# (Integrated graphics)
 bar {
 	mode hide
-	output VGA-1
-	position top
+        status_command qubes-i3status
+	output VGA-1-1
+	position bottom
 	tray_output none
+        colors {
+            background #d2d2d2
+            statusline #00000
+
+            #class               #border #backgr #text
+            focused_workspace    #4c7899 #63a0ff #000000
+            active_workspace     #333333 #5f676a #ffffff
+            inactive_workspace   #222222 #333333 #888888
+            urgent_workspace     #BD2727 #E79E27 #000000
+        }
+}
+
+# (Optimus)
+bar {
+	mode hide
+        status_command qubes-i3status
+	output VGA-1-2
+	position bottom
+	tray_output none
+        colors {
+            background #d2d2d2
+            statusline #00000
+
+            #class               #border #backgr #text
+            focused_workspace    #4c7899 #63a0ff #000000
+            active_workspace     #333333 #5f676a #ffffff
+            inactive_workspace   #222222 #333333 #888888
+            urgent_workspace     #BD2727 #E79E27 #000000
+        }
 }
 
 focus_follows_mouse no
@@ -197,14 +301,9 @@ bindsym $mod+Control+h focus output left
 bindsym $mod+Control+k focus output up
 bindsym $mod+Control+l focus output right
 
-# Lock screen as in Unity
-#bindsym Control+Mod1+l exec "gnome-screensaver-command -l"
-bindsym Control+Mod1+l exec "i3lock -i /home/fvaresi/Pictures/wallpapers/325141.png -t"
-
-# pulse audio volume control
-bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
-bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
-bindsym XF86AudioMute exec ~/bin/toggle-mute
+# Use a screen locker
+# exec --no-startup-id "xautolock -detectsleep -time 3 -locker 'i3lock -d -c 000000' -notify 30 -notifier \"notify-send -t 2000 'Locking screen in 30 seconds'\""
+bindsym Control+Mod1+l exec "i3lock -d -c 000000"
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -215,24 +314,31 @@ bindsym $mod+minus scratchpad show
 # Default commands for windows
 for_window [class="Meld"] fullscreen enable
 for_window [class="Pidgin|Skype"] floating enable
+for_window [class="Qvm-mru-entry|:Zenity$"] floating enable
+#for_window [class="social:Signal|social:Google-chrome"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [instance="emacs-capture|Ediff"] floating enable
 
 # Key bindings for favorite apps
-# bindsym $mod+Shift+a [class="emulator64-x86"] scratchpad show
-bindsym $mod+p [class="Pidgin" window_role="conversation"] scratchpad show
-bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scratchpad show
-bindsym $mod+i [class="Emacs*"] scratchpad show
-bindsym $mod+m [class="vlc|Spotify"] scratchpad show
+#bindsym $mod+p [class="Pidgin"] scratchpad show
+bindsym $mod+p [class="mind:Slack"] focus
+#bindsym $mod+o [class="Skype" window_role="ConversationsWindow|CallWindow"] scratchpad show
+bindsym $mod+o [class="social:Google-chrome"] focus
+bindsym $mod+i [class="mind:Emacs*"] focus
+bindsym $mod+m [class="vlc"] scratchpad show
 bindsym $mod+c [class="Google-chrome"] scratchpad show
-bindsym $mod+n [class="Forticlientsslvpn"] scratchpad show
-bindsym $mod+z [class="Conkeror|Firefox"] scratchpad show
-bindsym $mod+u exec ~/bin/passmenu
-bindsym $mod+t exec ~/bin/emacs-capture --eval '(org-capture nil "t")'
+bindsym $mod+z [class="social:Signal"] focus
+bindsym $mod+u exec qvm-run -a mind "~/bin/passmenu"
+bindsym $mod+t exec qvm-run -a personal "~/bin/emacs-capture"
 
-# Automatically start programs
-exec --no-startup-id "redshift-gtk"
-exec --no-startup-id "nm-applet"
-exec --no-startup-id "setxkbmap us -variant intl -option 'ctrl:swapcaps'"
-exec --no-startup-id "~/bin/reset-displays"
-exec --no-startup-id "/usr/bin/dropbox start"
+# Make sure all xdg autostart entries are started, this is (among other things)
+# necessary to make sure transient vm's come up
+exec --no-startup-id qubes-i3-xdg-autostart
+
+# exec --no-startup-id qubes-qube-manager
+
+exec --no-startup-id setxkbmap us -variant intl -option "ctrl:swapcaps"
+exec --no-startup-id xrandr --output VGA-1-1 --auto --right-of LVDS2
+exec --no-startup-id xrandr --output VGA-1-2 --auto --right-of LVDS1
+exec --no-startup-id qvm-run -a sys-net "pkill nm-applet && nm-applet"
+exec --no-startup-id redshift-gtk
