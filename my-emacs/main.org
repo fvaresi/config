@@ -1224,3 +1224,55 @@ nzp8kXva98QTTiJnqnQfCgY=
      (autoload 'ledger-mode "ledger-mode" "A major mode for Ledger" t)
      (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
    #+END_SRC
+
+** Qubes
+
+   Allow to open files in a disposable VM.
+
+   #+BEGIN_SRC emacs-lisp
+     (mailcap-parse-mailcaps)
+   #+END_SRC
+
+   Use [[https://blogs.fsfe.org/jens.lechtenboerger/2017/04/12/gnu-emacs-under-qubes-os/][package]] by Jens Lechtenbörger.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path "~/projects/qubes.el")
+
+     (require 'qubes)
+
+     ;; ;; this configuration is for function read-multiple-choice (not available in 25)
+     ;; (setq qubes-vms '((?a "anon-whonix" "VM with torified network traffic")
+     ;; 		  (?c "current" "The VM in which Emacs is running")
+     ;; 		  (?d "disp-vm" "Disposable VM, reverting changes")
+     ;; 		  (?u "untrusted" "Untrusted")
+     ;; 		  (?m "mind" "Mind Research Institute")))
+
+     (setq qubes-vms '("current"
+		       "untrusted"
+		       "mind"
+		       "disp-vm"))
+
+     (setq qubes-browser browse-url-generic-program)
+     (setq browse-url-browser-function 'qubes-browse)
+
+     (setq qubes-url-vm-mapping
+       '(("^https:.*[.]mindresearch[.]org.*" . "mind")
+	 ("^file:.*" . "current")))
+
+     (setq qubes-qvm-untrusted-image-dir nil)
+   #+END_SRC
+
+
+   Define key bindings for dired.
+
+   #+BEGIN_SRC emacs-lisp
+     (define-key dired-mode-map (kbd "M-C") 'jl-dired-copy-to-qvm)
+     (define-key dired-mode-map (kbd "M-A") 'jl-dired-open-in-dvm)
+   #+END_SRC
+
+
+   Do not display output buffer for ~async-shell-command~.
+
+   #+BEGIN_SRC emacs-lisp
+   
+   #+END_SRC
