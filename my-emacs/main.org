@@ -272,6 +272,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (show-smartparens-global-mode t)
       (sp-use-paredit-bindings)
 
+      (define-key smartparens-strict-mode-map (kbd "M-j") 'fvaresi/join-line)
+
       ;; issue https://github.com/Fuco1/smartparens/issues/827
       (delete-selection-mode 1)
     #+END_SRC
@@ -562,7 +564,6 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
         (define-key php-mode-map (kbd "C-.") 'er/expand-region)
         (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
         (define-key php-mode-map (kbd "C-<tab>") 'yas/create-php-snippet)
-        (define-key php-mode-map (kbd "M-j") 'fvaresi/join-line)
 
         (c-set-style "bsd" t)
         (c-set-offset 'case-label '+)
