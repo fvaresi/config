@@ -531,6 +531,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (defun fvaresi/setup-js ()
         (smartparens-strict-mode t)
 
+	(flycheck-mode t)
+
         (setq indent-tabs-mode t)
         (setq tab-width 4))
 
