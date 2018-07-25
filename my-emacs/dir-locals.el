@@ -14,8 +14,8 @@
 
  ;;  ;; use vbulletin.el
  ;;  (eval . (load-file "~/projects/config/emacs/vbulletin.el")))
- 
- (js-mode
+
+ (js2-mode
   ;; indentation settings
   (indent-tabs-mode . t)
   (js-indent-level . 4))
@@ -27,6 +27,8 @@
  ;;  (sgml-basic-offset . 4))
 
  (php-mode
+  (flycheck-php-phpcs-executable . "/home/user/.config/composer/vendor/bin/phpcs")
+
   ;; indentation settings
   (indent-tabs-mode . t)
   (c-basic-offset . 4))

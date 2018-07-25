@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<rule-set name="Mind Standard">
+	<arg name="extensions" value="php" />
+
+	<file>app</file>
+	<file>bootstrap</file>
+	<file>config</file>
+	<file>database</file>
+	<file>public</file>
+	<file>routes</file>
+	<file>tests</file>
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<!-- Use tab indentation -->
+	<arg name="tab-width" value="4" />
+	<rule ref="PEAR">
+		<exclude name="PEAR.WhiteSpace.ObjectOperatorIndent.Incorrect" />
+		<exclude name="PEAR.WhiteSpace.ScopeIndent.IncorrectExact" />
+	</rule>
+	<rule ref="PEAR.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="indent" value="4" />
+			<property name="exact" value="false" />
+			<property name="tabIndent" value="true" />
+		</properties>
+	</rule>
+	<rule ref="PSR2">
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent" />
+	</rule>
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent" />
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="indent" value="4" />
+			<property name="exact" value="false" />
+			<property name="tabIndent" value="true" />
+		</properties>
+	</rule>
+	<rule ref="Squiz">
+		<exclude name="Squiz.ControlStructures.SwitchDeclaration.BreakIndent" />
+	</rule>
+
+	<!-- Arrays -->
+	<rule ref="Squiz">
+		<exclude name="Squiz.Arrays.ArrayDeclaration.CommaAfterLast" />
+	</rule>
+
+	<!-- Blank lines -->
+	<rule ref="PSR2">
+		<exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" />
+		<exclude name="PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose" />
+	</rule>
+	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+			<property name="spacingBeforeFirst" value="1" />
+			<property name="spacingAfterLast" value="1" />
+		</properties>
+	</rule>
+	<!-- <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+		 <properties>
+		 <property name="ignoreBlankLines" value="false"/>
+		 </properties>
+		 </rule> -->
+
+	<!-- Brace alignments -->
+	<rule ref="Generic">
+		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine" />
+	</rule>
+	<rule ref="PEAR">
+		<exclude name="PEAR.Classes.ClassDeclaration.OpenBraceNewLine" />
+		<exclude name="PEAR.Functions.FunctionDeclaration.BraceOnSameLine" />
+	</rule>
+	<rule ref="PSR2">
+		<exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine" />
+	</rule>
+	<rule ref="Squiz">
+		<exclude name="Squiz.Classes.ClassDeclaration.OpenBraceNewLine" />
+		<exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace.SpacingBeforeClose" />
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
+	</rule>
+	<rule ref="Generic.Classes.OpeningBraceSameLine" />
+	<rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+
+	<!-- Comments -->
+	<rule ref="Squiz">
+		<exclude name="Squiz.Commenting.ClosingDeclarationComment.Missing" />
+		<exclude name="Squiz.Commenting.LongConditionClosingComment.Missing" />
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
+	</rule>
+
+	<!-- Tests -->
+	<rule ref="Generic.Commenting.DocComment">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+
+	<rule ref="PEAR.Commenting.FunctionComment">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+
+	<rule ref="Squiz.Commenting.FunctionComment">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+
+	<rule ref="Squiz.Commenting.VariableComment">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+
+	<!-- Migrations -->
+	<rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+		<exclude-pattern>*/migrations/*</exclude-pattern>
+	</rule>
+	<rule ref="Squiz.Classes.ClassFileName.NoMatch">
+		<exclude-pattern>*/migrations/*</exclude-pattern>
+	</rule>
+
+	<!-- Spacing -->
+	<rule ref="Generic">
+		<exclude name="Generic.Commenting.DocComment.TagValueIndent" />
+		<exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine" />
+		<exclude name="Generic.Formatting.NoSpaceAfterCast" />
+		<exclude name="Generic.Formatting.SpaceAfterCast" />
+	</rule>
+	<rule ref="PEAR">
+		<exclude name="PEAR.Commenting.FunctionComment.SpacingAfterParamName"/>
+		<exclude name="PEAR.Commenting.FunctionComment.SpacingAfterParamType"/>
+		<exclude name="PEAR.ControlStructures.MultiLineCondition.SpacingAfterOpenBrace"/>
+		<exclude name="PEAR.Functions.FunctionDeclaration.ContentAfterBrace"/>
+		<exclude name="PEAR.WhiteSpace.ScopeClosingBrace.Line"/>
+	</rule>
+	<rule ref="Squiz">
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamName"/>
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.ContentAfterBrace"/>
+		<exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace.ContentBeforeClose"/>
+		<exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore"/>
+	</rule>
+	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+		</properties>
+	</rule>
+	<rule ref="PEAR.Functions.FunctionCallSignature">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1" />
+			<property name="requiredSpacesBeforeClose" value="1" />
+		</properties>
+	</rule>
+	<rule ref="PSR2.ControlStructures.ControlStructureSpacing">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1" />
+			<property name="requiredSpacesBeforeClose" value="1" />
+		</properties>
+	</rule>
+	<rule ref="PSR2.Methods.FunctionCallSignature">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1" />
+			<property name="requiredSpacesBeforeClose" value="1" />
+		</properties>
+	</rule>
+	<rule ref="Squiz">
+		<exclude name="Squiz.Arrays.ArrayBracketSpacing"/>
+		<exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed"/>
+		<exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound"/>
+		<exclude name="Squiz.WhiteSpace.FunctionOpeningBraceSpace.SpacingAfter"/>
+	</rule>
+	<rule ref="Squiz.ControlStructures.ForEachLoopDeclaration">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1" />
+			<property name="requiredSpacesBeforeClose" value="1" />
+		</properties>
+	</rule>
+	<rule ref="Squiz.ControlStructures.ForLoopDeclaration">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1" />
+			<property name="requiredSpacesBeforeClose" value="1" />
+		</properties>
+	</rule>
+	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1" />
+			<property name="requiredSpacesBeforeClose" value="1" />
+		</properties>
+	</rule>
+	<rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing">
+		<properties>
+			<property name="ignoreNewLines" value="true" />
+		</properties>
+	</rule>
+
+	<!-- Treat these as warnings for now so they can easily be ignored -->
+	<rule ref="Generic">
+		<type>warning</type>
+	</rule>
+	<rule ref="PEAR">
+		<type>warning</type>
+	</rule>
+	<rule ref="PSR2">
+		<type>warning</type>
+	</rule>
+	<rule ref="Squiz">
+		<type>warning</type>
+	</rule>
+
+	<!-- Ignored rules -->
+	<rule ref="Generic">
+		<!-- allow short array syntax -->
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
+		<exclude name="Generic.ControlStructures.InlineControlStructure.Discouraged" />
+		<exclude name="Generic.Files.EndFileNoNewline.Found" />
+		<!-- file name does not have to be lower cased -->
+		<exclude name="Generic.Files.LowercasedFilename.NotFound" />
+		<!-- assignments don't have to be aligned -->
+		<exclude name="Generic.Formatting.MultipleStatementAlignment.NotSame" />
+		<exclude name="Generic.Formatting.SpaceAfterNot.Incorrect" />
+		<!-- Do not require closing php tag -->
+		<exclude name="Generic.PHP.ClosingPHPTag.NotFound" />
+		<!-- User upper case constants (can be easily modified to do the opposite) -->
+		<exclude name="Generic.PHP.LowerCaseConstant.Found" />
+		<exclude name="Generic.PHP.LowerCaseKeyword.Found" />
+	</rule>
+	<rule ref="PEAR">
+		<exclude name="PEAR.Commenting.ClassComment" />
+		<exclude name="PEAR.Commenting.FileComment" />
+		<exclude name="PEAR.ControlStructures.MultiLineCondition.CloseBracketNewLine" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments" />
+		<exclude name="PEAR.NamingConventions.ValidFunctionName.PublicUnderscore" />
+		<exclude name="PEAR.NamingConventions.ValidVariableName.PublicUnderscore" />
+	</rule>
+	<rule ref="PSR2">
+		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
+		<exclude name="PSR2.ControlStructures.ElseIfDeclaration.NotAllowed" />
+		<exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
+	</rule>
+	<rule ref="Squiz">
+		<exclude name="Squiz.Arrays.ArrayDeclaration.DoubleArrowNotAligned" />
+		<exclude name="Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed" />
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Squiz.Commenting.FileComment.Missing" />
+		<exclude name="Squiz.Commenting.FunctionCommentThrowTag.Missing" />
+		<!-- <exclude name="Squiz.ControlStructures.InlineIfDeclaration.NoBrackets" />
+			 <exclude name="Squiz.ControlStructures.InlineIfDeclaration.NotSingleLine" /> -->
+		<exclude name="Squiz.ControlStructures.SwitchDeclaration.MissingDefault" />
+		<!-- do not check file extension -->
+		<exclude name="Squiz.Files.FileExtension.ClassFound" />
+		<!-- do not require brackets around operators -->
+		<exclude name="Squiz.Formatting.OperatorBracket.MissingBrackets" />
+		<exclude name="Squiz.NamingConventions.ValidFunctionName.PublicUnderscore" />
+		<!-- allow snake case -->
+		<exclude name="Squiz.NamingConventions.ValidVariableName" />
+		<exclude name="Squiz.WhiteSpace.ObjectOperatorSpacing.Before" />
+		<exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue" />
+		<!-- allow ! operator -->
+		<exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed" />
+		<exclude name="Squiz.Operators.ValidLogicalOperators.NotAllowed" />
+		<exclude name="Squiz.PHP.DisallowBooleanStatement.Found" />
+		<exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedBool" />
+		<exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedComparison" />
+		<exclude name="Squiz.PHP.DisallowInlineIf.Found" />
+		<exclude name="Squiz.PHP.Heredoc.NotAllowed" />
+		<!-- allow variables inside double quotes -->
+		<exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar" />
+	</rule>
+</rule-set>

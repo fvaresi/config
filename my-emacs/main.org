@@ -580,7 +580,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
         ;; (whitespace-mode t)
         ;; (setq whitespace-style '(face tabs spaces trailing identation))
 
-        ;; (flycheck-mode t)
+        (flycheck-mode t)
+	(setq flycheck-php-phpcs-executable "~/.config/composer/vendor/bin/phpcs")
 
         (ggtags-mode 1)
 
