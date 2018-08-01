@@ -1,2 +1,5 @@
 .dir-locals.el
 .projectile
+GPATH
+GRTAGS
+GTAGS

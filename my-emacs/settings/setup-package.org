@@ -92,6 +92,8 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
 
                                  geiser
 
+                                 ggtags
+
                                  gh-md
 
                                  gnus-alias
