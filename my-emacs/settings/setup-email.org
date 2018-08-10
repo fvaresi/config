@@ -124,23 +124,6 @@ LX76qNbXyF3+frFh71c259UY7rrrBe2NuUUUnZ0WHc1ZrAXpwQPC/wg=
      (add-hook 'message-setup-hook 'gnus-alias-determine-identity)
    #+END_SRC
 
-** Address completion
-
-   #+BEGIN_COMMENT
-   #+BEGIN_SRC emacs-lisp
-     (require 'notmuch-address)
-     (setq notmuch-address-command "/home/fvaresi/bin/goobook-notmuch")
-     (notmuch-address-message-insinuate)
-   #+END_SRC
-   #+END_COMMENT
-
-   Using [[https://julien.danjou.info/projects/emacs-packages#google-contacts][google-contacts]] for address completion.
-
-   #+BEGIN_SRC emacs-lisp
-     (require 'google-contacts)
-     (require 'google-contacts-message)
-   #+END_SRC
-
 ** Notmuch
 
    Notmuch takes care of email indexing and searching.
