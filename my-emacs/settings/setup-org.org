@@ -301,6 +301,12 @@ Add behavior for when no region is selected
      (setq org-clock-mode-line-total 'today)
    #+END_SRC
 
+   Use 8h for day [[https://lists.gnu.org/archive/html/emacs-orgmode/2017-02/msg00270.html][durations]].
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-duration-units org-effort-durations)
+   #+END_SRC
+
 *** Punch In/Out
 
     #+BEGIN_SRC emacs-lisp
