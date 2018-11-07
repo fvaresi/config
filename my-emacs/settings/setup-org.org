@@ -365,10 +365,22 @@ Add behavior for when no region is selected
 *** Pomodoro
 
     #+BEGIN_SRC emacs-lisp
-      (setq org-pomodoro-clock-break t)
+      (setq org-pomodoro-audio-player (executable-find "paplay"))
       (setq org-pomodoro-keep-killed-pomodoro-time t)
-      ;; (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil))
+      (setq alert-user-configuration (quote ((((:category . "org-pomodoro")) libnotify nil))))
 
+      (defun fvaresi/turn-on-pomodoro-clock-break ()
+	(setq org-pomodoro-clock-break t))
+
+      (defun fvaresi/turn-off-pomodoro-clock-break ()
+	(setq org-pomodoro-clock-break nil))
+
+      ;; toggle org-pomodoro-clock-break so that it never clocks out
+      (add-hook 'org-pomodoro-started-hook 'fvaresi/turn-on-pomodoro-clock-break)
+      (add-hook 'org-pomodoro-finished-hook 'fvaresi/turn-off-pomodoro-clock-break)
+      (add-hook 'org-pomodoro-break-finished-hook 'fvaresi/turn-on-pomodoro-clock-break)
+
+      (define-key global-map (kbd "C-c C-x C-p") 'org-pomodoro)
       (define-key org-mode-map (kbd "C-c C-x C-p") 'org-pomodoro)
     #+END_SRC
 
