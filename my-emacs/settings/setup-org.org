@@ -114,6 +114,11 @@ l3BX4pr/xBv8P4WNb/8mML9GNaFxWSc=
       ;; (org-agenda-to-appt t)
     #+END_SRC
 
+    #+BEGIN_SRC emacs-lisp
+      (setq org-agenda-span 'day)
+      (setq org-agenda-start-with-log-mode t)
+    #+END_SRC
+
     Do not show diary entries in org-agenda.
 
     #+BEGIN_SRC emacs-lisp
