@@ -243,6 +243,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (projectile-global-mode)
       (setq projectile-svn-command projectile-generic-command)
       (setq projectile-switch-project-action 'projectile-vc)
+      (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
     #+END_SRC
 
     Use suggestion from [[https://github.com/bbatsov/projectile/issues/218][issue #218]] to fix ANSI colors
@@ -275,7 +276,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (define-key smartparens-strict-mode-map (kbd "M-j") 'fvaresi/join-line)
 
       ;; issue https://github.com/Fuco1/smartparens/issues/827
-      (delete-selection-mode 1)
+      (delete-selection-mode)
     #+END_SRC
 
     Always kill whole line
@@ -368,7 +369,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    [[http://conkeror.org/][Conkeror]] is currently my favourite browser.
 
    #+BEGIN_SRC emacs-lisp
-   (setq browse-url-generic-program (executable-find "conkeror"))
+   (setq browse-url-generic-program (executable-find "firefox"))
    (setq browse-url-browser-function 'browse-url-generic)
    #+END_SRC
 
@@ -559,7 +560,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
         ;; (whitespace-mode t)
         ;; (setq whitespace-style '(face tabs spaces trailing identation))
 
-        (flycheck-mode t)
+        ;; (flycheck-mode t)
 
         (ggtags-mode 1)
 
@@ -716,7 +717,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    Selections behave as in other editors: text is replaced when typing.
 
    #+BEGIN_SRC emacs-lisp
-     (delete-selection-mode t)
+     (delete-selection-mode)
    #+END_SRC
 
    Save emacs desktop (buffers, major modes, positions, etc) between sessions.
