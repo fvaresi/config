@@ -66,12 +66,6 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
      (add-hook 'org-mode-hook 'fvaresi/setup-org)
    #+END_SRC
 
-   Add some templates
-
-   #+BEGIN_SRC emacs-lisp
-     (add-to-list 'org-structure-template-alist '("u" "#+BEGIN_COMMENT\n?\n#+END_COMMENT"))
-   #+END_SRC
-
    Edit code blocks in current window
 
    #+BEGIN_SRC emacs-lisp
