@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git bgnotify custom)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,9 +92,11 @@ export EDITOR=vim
 export SVN_EDITOR=vim
 export SUDO_EDITOR="emacsclient -nw"
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
-export CDPATH=.:~:~/autocomm/vBulletinPlugins
+export CDPATH=.:~
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=lcd'
 export ANDROID_HOME="$HOME/opt/android-sdk-linux"
+export QUBES_GPG_DOMAIN=gpg
+export REPORTTIME=5
 
 # Remove alias so that git-run becomes visible
 unalias gr
