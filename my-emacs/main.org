@@ -299,6 +299,12 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (require 'smooth-scrolling)
     #+END_SRC
 
+    Always scroll to the end of compilation buffer.
+
+    #+begin_src emacs-lisp
+      (setq compilation-scroll-output t)
+    #+end_src
+
 *** Webjump
 
     Add some sites to default webjumps
