@@ -307,6 +307,12 @@ Add behavior for when no region is selected
 				("y" . ,(* 60 8 5 4 12))))
    #+END_SRC
 
+   Set org-log-out combo as global.
+
+   #+begin_src emacs-lisp
+     (global-set-key (kbd "C-c C-x C-o") 'org-clock-out)
+   #+end_src
+
 *** Punch In/Out
 
     #+BEGIN_SRC emacs-lisp
