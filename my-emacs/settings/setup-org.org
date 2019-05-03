@@ -212,8 +212,23 @@ Add behavior for when no region is selected
 ** Org Capture
 
    #+BEGIN_SRC emacs-lisp
+     (defun transform-square-brackets-to-round-ones(string-to-transform)
+       "Transforms [ into ( and ] into ), other chars left unchanged."
+       (concat
+	(mapcar #'(lambda (c) (if (equal c ?[) ?\( (if (equal c ?]) ?\) c))) string-to-transform)))
+
+     (defun strip-square-brackets(string-to-transform)
+       "Transforms [ into ( and ] into ), other chars left unchanged."
+       (concat
+	(delq nil
+	      (mapcar #'(lambda (c) (if (equal c ?[) nil (if (equal c ?]) nil c))) string-to-transform))))
+
      (setq org-capture-templates
-	   `(("t" "Task" entry
+	   `(("L" "JIRA" entry
+	      (file+headline "~/Documents/sprints.org" "Tasks")
+	      "* TODO [[%:link][%(strip-square-brackets \"%:description\")]]")
+
+	     ("t" "Task" entry
 	      (file+headline "~/Documents/sprints.org" "Tasks")
 	      "* TODO %?"
 	      :kill-buffer t)
