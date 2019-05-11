@@ -103,6 +103,7 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
                                  hydra
 
                                  helm
+                                 helm-ag
                                  helm-swoop
                                  helm-projectile
 
@@ -112,7 +113,6 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
 
                                  js2-mode
                                  js2-refactor
-                                 ag
                                  xref-js2
                                  indium
 

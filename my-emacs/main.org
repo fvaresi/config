@@ -146,7 +146,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (global-set-key (kbd "C-x b") 'helm-mini)
       (global-set-key (kbd "M-x") 'helm-M-x)
       (global-set-key (kbd "C-S-l") 'helm-locate)
-      (global-set-key (kbd "C-S-g") 'helm-projectile-grep)
+      (global-set-key (kbd "C-S-g") 'helm-projectile-ag)
       (global-set-key (kbd "C-S-h") 'helm-projectile)
     #+END_SRC
 
@@ -241,6 +241,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       ;; (add-to-list 'load-path "~/projects/projectile")
 
       (projectile-global-mode)
+      (setq projectile-indexing-method 'hybrid)
       (setq projectile-svn-command projectile-generic-command)
       (setq projectile-switch-project-action 'projectile-vc)
       (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
