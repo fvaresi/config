@@ -524,7 +524,9 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (define-key js-mode-map (kbd "M-.") nil)
 
       (add-hook 'js2-mode-hook (lambda ()
-                                 (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+				 (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
+      (add-to-list 'xref-js2-ignored-dirs "dist")
     #+END_SRC
 
     [[https://indium.readthedocs.io/][Indium]] is a JavaScript development environment for Emacs
@@ -541,10 +543,14 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
 	(flycheck-mode t)
 
-	(ggtags-mode 1)
-
         (setq indent-tabs-mode t)
         (setq tab-width 4))
+	(tern-mode)
+
+	;; Disable completion keybindings, as we use xref-js2 instead
+	(define-key tern-mode-keymap (kbd "M-.") nil)
+	(define-key tern-mode-keymap (kbd "M-,") nil)
+
 
       (add-hook 'js-mode-hook 'fvaresi/setup-js)
       (add-hook 'js2-mode-hook 'fvaresi/setup-js)
@@ -692,6 +698,13 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    #+BEGIN_SRC emacs-lisp
      (setq company-dabbrev-downcase nil)
    #+END_SRC
+
+   Use company-tern
+
+   #+begin_src emacs-lisp
+     (require 'company-tern)
+     (add-to-list 'company-backends 'company-tern)
+   #+end_src
 
    Use company-emoji
 

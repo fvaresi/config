@@ -62,6 +62,7 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
                                  browse-kill-ring
 
                                  company
+                                 company-tern
 
                                  conkeror-minor-mode
 
