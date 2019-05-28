@@ -373,11 +373,10 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    #+END_SRC
 
 ** Browser
-   [[http://conkeror.org/][Conkeror]] is currently my favourite browser.
-
    #+BEGIN_SRC emacs-lisp
-   (setq browse-url-generic-program (executable-find "firefox"))
-   (setq browse-url-browser-function 'browse-url-generic)
+     ;; (setq browse-url-generic-program (executable-find "firefox"))
+     (setq browse-url-generic-program (executable-find "google-chrome"))
+     (setq browse-url-browser-function 'browse-url-generic)
    #+END_SRC
 
 ** Coding
