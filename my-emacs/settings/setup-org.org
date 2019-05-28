@@ -239,7 +239,7 @@ Add behavior for when no region is selected
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-     (setq org-refile-targets `((org-agenda-files :maxlevel . 3)))
+     (setq org-refile-targets `((nil :maxlevel . 3)))
      (setq org-refile-use-outline-path t)
      (setq org-outline-path-complete-in-steps nil)
      (setq org-refile-allow-creating-parent-nodes 'confirm)  
@@ -310,6 +310,7 @@ Add behavior for when no region is selected
    Set org-log-out combo as global.
 
    #+begin_src emacs-lisp
+     (global-set-key (kbd "C-c C-x C-i") 'org-clock-in)
      (global-set-key (kbd "C-c C-x C-o") 'org-clock-out)
    #+end_src
 
@@ -324,24 +325,8 @@ Add behavior for when no region is selected
       as the default task."
 	(interactive "p")
 	(setq bh/keep-clock-running t)
-	(if (equal major-mode 'org-agenda-mode)
-	    ;;
-	    ;; We're in the agenda
-	    ;;
-	    (let* ((marker (org-get-at-bol 'org-hd-marker))
-		   (tags (org-with-point-at marker (org-get-tags-at))))
-	      (if (and nil (eq arg 4) tags)
-		  (org-agenda-clock-in '(16))
-		(bh/clock-in-organization-task-as-default)))
-	  ;;
-	  ;; We are not in the agenda
-	  ;;
-	  (save-restriction
-	    (widen)
-	    ;; Find the tags on the current task
-	    (if (and nil (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
-		(org-clock-in '(16))
-	      (bh/clock-in-organization-task-as-default)))))
+
+	(bh/clock-in-organization-task-as-default))
 
       (global-set-key (kbd "<f9> I") 'bh/punch-in)
 
