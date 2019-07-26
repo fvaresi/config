@@ -176,6 +176,8 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
 
                                  twittering-mode
 
+                                 use-package
+
                                  undo-tree
 
                                  web-beautify
@@ -197,7 +199,7 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
     (setq paradox-execute-asynchronously nil)
   #+END_SRC
 
-  Just to be safe, backup current elpa dir when upgrading
+  Just to be safe, backup current elpa dir when upgrading.
 
   #+BEGIN_SRC emacs-lisp
     (defun fvaresi/upgrade-with-bkp ()
@@ -210,3 +212,9 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
                (paradox-upgrade-packages))))
   #+END_SRC
 
+  Use John Wiegley's [[https://github.com/jwiegley/use-package][use-package]] for handling package configuration.
+
+  #+begin_src emacs-lisp
+    (eval-when-compile
+      (require 'use-package))
+  #+end_src

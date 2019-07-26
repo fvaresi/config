@@ -105,9 +105,11 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     [[https://github.com/kai2nenobu/guide-key][guide-key]] gives a hint on available comands for certain prefixes. I have a hard time remembering key bindings for rectangle, register and version control.
 
     #+BEGIN_SRC emacs-lisp
-      (require 'guide-key)
-      (setq guide-key/guide-key-sequence '("C-x r" "C-x v"))
-      (guide-key-mode 1)
+      (use-package guide-key
+	:init
+	(setq guide-key/guide-key-sequence '("C-x r" "C-x v"))
+	:config
+	(guide-key-mode 1))
     #+END_SRC
 
 *** Helm
