@@ -1161,7 +1161,7 @@ nzp8kXva98QTTiJnqnQfCgY=
      (setq magit-push-always-verify nil)
 
      ;; display magit buffer in the same window
-     (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+     (setq magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1)
 
      (add-hook 'magit-mode-hook 'magit-load-config-extensions)
 
