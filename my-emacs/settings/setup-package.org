@@ -119,6 +119,8 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
 
                                  ledger-mode
 
+                                 logview
+
                                  magit
                                  magit-svn
                                  orgit
@@ -177,6 +179,8 @@ NP2vkAUnecRy86iOzFmDmo9fSvTXdSav
                                  twittering-mode
 
                                  use-package
+
+                                 vlf
 
                                  undo-tree
 

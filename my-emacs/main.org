@@ -556,6 +556,20 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (add-hook 'js-mode-hook 'fvaresi/setup-js)
       (add-hook 'js2-mode-hook 'fvaresi/setup-js)
     #+END_SRC
+*** Log
+    Used many ideas from this [[https://writequit.org/articles/working-with-logs-in-emacs.html][blog post]].
+
+    #+begin_src emacs-lisp
+      (use-package vlf
+	:config (progn
+		  (require 'vlf-setup)
+		  (setq logview-additional-submodes
+		  '(("MIND" . ((format . "[TIMESTAMP] THREAD.LEVEL: [NAME] MESSAGE")
+			       (levels . "SLF4J")
+			       ;; (timestamp . ("ISO 8601 datetime"))
+			       ))))))
+    #+end_src
+
 *** PHP
     This is to check offline documentation
 
