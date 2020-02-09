@@ -147,11 +147,13 @@ l3BX4pr/xBv8P4WNb/8mML9GNaFxWSc=
      (require 'ob-scheme)
      (require 'ob-shell)
      (require 'ob-sql)
+     (require 'ob-sqlite)
      (setq org-babel-load-languages '((clojure . t)
-                                      (emacs-lisp . t)
-                                      (http . t)
-                                      (scheme . t)
-                                      (sql . t)))
+				      (emacs-lisp . t)
+				      (http . t)
+				      (scheme . t)
+				      (sql . t)
+				      (sqlite . t)))
    #+END_SRC
 
    Don't ask for confirmation before evaluating and don't do it automatically while exporting.

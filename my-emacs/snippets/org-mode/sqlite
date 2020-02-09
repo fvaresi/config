@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: sqlite
+# key: sqlite
+# --
+#+header: :dir /home/user/projects/${1:mind-entity}/storage/app
+#+header: :db testing.sqlite
+#+header: :colnames yes
+#+begin_src sqlite$0
+#+end_src
