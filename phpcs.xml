@@ -208,6 +208,7 @@
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
 		<exclude name="Generic.ControlStructures.InlineControlStructure.Discouraged" />
 		<exclude name="Generic.Files.EndFileNoNewline.Found" />
+		<exclude name="Generic.Files.LineLength.TooLong" />
 		<!-- file name does not have to be lower cased -->
 		<exclude name="Generic.Files.LowercasedFilename.NotFound" />
 		<!-- assignments don't have to be aligned -->
@@ -216,12 +217,13 @@
 		<!-- Do not require closing php tag -->
 		<exclude name="Generic.PHP.ClosingPHPTag.NotFound" />
 		<!-- User upper case constants (can be easily modified to do the opposite) -->
-		<exclude name="Generic.PHP.LowerCaseConstant.Found" />
+		<exclude name="Generic.PHP.UpperCaseConstant.Found" />
 		<exclude name="Generic.PHP.LowerCaseKeyword.Found" />
 	</rule>
 	<rule ref="PEAR">
 		<exclude name="PEAR.Commenting.ClassComment" />
 		<exclude name="PEAR.Commenting.FileComment" />
+		<exclude name="PEAR.Commenting.FunctionComment.MissingParamComment" />
 		<exclude name="PEAR.ControlStructures.MultiLineCondition.CloseBracketNewLine" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
@@ -239,9 +241,11 @@
 		<exclude name="Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed" />
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
+		<exclude name="Squiz.Commenting.FunctionComment.EmptyThrows" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
 		<exclude name="Squiz.Commenting.FunctionCommentThrowTag.Missing" />
-		<!-- <exclude name="Squiz.ControlStructures.InlineIfDeclaration.NoBrackets" />
-			 <exclude name="Squiz.ControlStructures.InlineIfDeclaration.NotSingleLine" /> -->
+		<exclude name="Squiz.ControlStructures.InlineIfDeclaration.NoBrackets" />
+		<exclude name="Squiz.ControlStructures.InlineIfDeclaration.NotSingleLine" />
 		<exclude name="Squiz.ControlStructures.SwitchDeclaration.MissingDefault" />
 		<!-- do not check file extension -->
 		<exclude name="Squiz.Files.FileExtension.ClassFound" />
@@ -251,6 +255,7 @@
 		<!-- allow snake case -->
 		<exclude name="Squiz.NamingConventions.ValidVariableName" />
 		<exclude name="Squiz.WhiteSpace.ObjectOperatorSpacing.Before" />
+		<exclude name="Squiz.Objects.ObjectInstantiation.NotAssigned" />
 		<exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue" />
 		<!-- allow ! operator -->
 		<exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed" />
@@ -259,6 +264,7 @@
 		<exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedBool" />
 		<exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedComparison" />
 		<exclude name="Squiz.PHP.DisallowInlineIf.Found" />
+		<exclude name="Squiz.PHP.DisallowMultipleAssignments.Found" />
 		<exclude name="Squiz.PHP.Heredoc.NotAllowed" />
 		<!-- allow variables inside double quotes -->
 		<exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar" />
