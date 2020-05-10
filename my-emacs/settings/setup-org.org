@@ -50,6 +50,12 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
    (require 'ox-confluence)
    #+END_SRC
 
+   Enable exporting org files to slack.
+
+   #+BEGIN_SRC emacs-lisp
+   (require 'ox-slack)
+   #+END_SRC
+
    Some configuration for logging.
 
    #+BEGIN_SRC emacs-lisp
@@ -314,6 +320,7 @@ Add behavior for when no region is selected
 
    #+begin_src emacs-lisp
      (global-set-key (kbd "C-c C-x C-i") 'org-clock-in)
+     (global-set-key (kbd "C-c C-x C-j") 'org-clock-goto)
      (global-set-key (kbd "C-c C-x C-o") 'org-clock-out)
    #+end_src
 
