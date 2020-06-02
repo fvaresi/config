@@ -30,6 +30,9 @@
   #+BEGIN_SRC emacs-lisp
     (package-initialize)
 
+    (when (memq window-system '(mac ns x))
+      (exec-path-from-shell-initialize))
+
     (defun gimme-my-packages ()
       (interactive)
 
@@ -64,6 +67,7 @@
                                  emmet-mode
 
                                  evil
+				 exec-path-from-shell
 
                                  expand-region
 
