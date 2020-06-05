@@ -1,0 +1,8 @@
+# Need to run: update-desktop-database ~/.local/share/applications
+[Desktop Entry]
+Name=org-protocol
+Exec=emacsclient -c -F "((name . \"emacs-capture\") (height . 20) (width . 80))" %u
+Type=Application
+Terminal=false
+Categories=System;
+MimeType=x-scheme-handler/org-protocol;
