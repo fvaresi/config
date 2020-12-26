@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dblog
+# key: dblog
+# --
+\Config::set( 'mind_test.database.debug', true );
