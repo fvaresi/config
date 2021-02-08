@@ -514,7 +514,7 @@ Add behavior for when no region is selected
 ** Org Notmuch
    
    #+BEGIN_SRC emacs-lisp
-     (require 'org-notmuch)
+     (require 'ol-notmuch)
    #+END_SRC
 
 ** Org Protocol
