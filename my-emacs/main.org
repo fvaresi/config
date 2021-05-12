@@ -1246,3 +1246,32 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    #+BEGIN_SRC emacs-lisp
    
    #+END_SRC
+
+** Mind
+
+   Visit ticket in current line or region.
+
+   #+begin_src emacs-lisp
+     (defun mind/open-jira-ticket ()
+       "Visit JIRA ticket in line"
+       (interactive)
+
+       (let* ((regex "\\(?:ADMIN\\|APP\\|ED\\|PLAT\\)-[[:digit:]]+")
+	      (current (if (use-region-p)
+			   (buffer-substring-no-properties (region-beginning) (region-end))
+			   (thing-at-point 'line t)))
+	      (matches (delete-dups (sort (mapcar 'car
+						  (s-match-strings-all regex current))
+					  'string-lessp))))
+	 (when matches
+	   (let ((tickets (if (> (length matches) 1)
+			      (let ((selected (completing-read "Which ticket?" (cons "All" matches))))
+				(if (string-equal "All" selected)
+				    matches
+				  `(,selected)))
+			    matches)))
+	     (dolist (ticket tickets)
+	       (browse-url (concat "https://jira.mindresearch.org/browse/" ticket)))))
+	 ))
+     (global-set-key (kbd "C-S-j") 'mind/open-jira-ticket)
+   #+end_src
