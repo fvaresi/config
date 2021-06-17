@@ -620,7 +620,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
         (hs-minor-mode 1)
         (setq hs-hide-comments-when-hiding-all nil)
-        (define-key hs-minor-mode-map (kbd "C-h C-h") 'hs-toggle-hiding)
+        (define-key hs-minor-mode-map (kbd "C-c C-o") 'hs-toggle-hiding)
 
         (define-key php-mode-map (kbd "C-.") 'er/expand-region)
         (define-key php-mode-map (kbd "C-|") 'mc/mark-next-like-this)
