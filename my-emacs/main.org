@@ -596,12 +596,6 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     #+end_src
 
 *** PHP
-    This is to check offline documentation
-
-    #+BEGIN_SRC emacs-lisp
-    (setq php-manual-path "~/php-chunked-xhtml")
-    #+END_SRC
-
     Most of the configuration is defined in this hook.
 
     #+BEGIN_SRC emacs-lisp
