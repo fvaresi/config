@@ -565,19 +565,17 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
 
     #+BEGIN_SRC emacs-lisp
       (defun fvaresi/setup-js ()
-        (smartparens-strict-mode t)
-
-	(flycheck-mode t)
-
-        (setq indent-tabs-mode t)
-        (setq tab-width 4))
-	(tern-mode)
-
+	(smartparens-strict-mode t)
+      
+	(flycheck-mode t))
+      
+      (tern-mode)
+      
 	;; Disable completion keybindings, as we use xref-js2 instead
 	(define-key tern-mode-keymap (kbd "M-.") nil)
 	(define-key tern-mode-keymap (kbd "M-,") nil)
-
-
+      
+      
       (add-hook 'js-mode-hook 'fvaresi/setup-js)
       (add-hook 'js2-mode-hook 'fvaresi/setup-js)
     #+END_SRC
