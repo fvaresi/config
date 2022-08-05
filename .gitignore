@@ -1,3 +1,4 @@
 /my-emacs/custom-configuration.el
 /my-emacs/settings/*.el
 /gnus.el
+*.~undo-tree~
