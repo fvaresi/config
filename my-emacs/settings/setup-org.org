@@ -83,9 +83,11 @@ This one of my favorite modes, since it can accomplish lots of stuff like handli
 *** Sources
 
     #+BEGIN_SRC emacs-lisp
-      (setq org-agenda-files `(,org-default-notes-file
-			       ,default-journal-file
-			       "~/Documents"))
+      (setq org-agenda-files `(
+			       ;; ,org-default-notes-file
+			       ;; ,default-journal-file
+			       "~/Documents"
+			       ))
     #+END_SRC
 
 *** General Settings
