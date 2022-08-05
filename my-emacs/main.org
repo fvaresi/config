@@ -432,6 +432,12 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (global-set-key (kbd "C-c u") 'string-inflection-underscore)
     #+END_SRC
 
+    Do not use truncate lines by default.
+
+    #+begin_src emacs-lisp
+       (set-default 'truncate-lines nil)
+    #+end_src
+
 *** Clojure
 
     [[https://github.com/clojure-emacs/cider/][CIDER]] extends Emacs with support for interactive programming in Clojure.
