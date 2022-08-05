@@ -29,8 +29,6 @@
   I keep a list of the packages I've installed so that a fresh install requires just to eval =gimme-my-packages=. Make sure you re-eval it after adding a package.
 
   #+BEGIN_SRC emacs-lisp
-    (package-initialize)
-
     (when (memq window-system '(mac ns x))
       (exec-path-from-shell-initialize))
 
