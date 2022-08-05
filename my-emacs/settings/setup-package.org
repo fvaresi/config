@@ -12,7 +12,7 @@
 
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("org-contrib" . "https://elpa.nongnu.org/nongnu/") t)
   #+END_SRC
 
   One problem of melpa repository is that it receives updates as soon as their published, so it's up to the maintainer to keep the package stable. The upside of this is that bugs are detected and fixed early. The downside is that you may have unexpected bugs.
@@ -116,7 +116,6 @@
 
                                  notmuch
 
-                                 org-plus-contrib
                                  org-bullets
                                  org-mime
                                  org-download
