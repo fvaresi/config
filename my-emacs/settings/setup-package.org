@@ -131,6 +131,8 @@
 
                                  org-pomodoro
 
+                                 org-tree-slide
+
                                  paradox
 
                                  paredit

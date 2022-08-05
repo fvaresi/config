@@ -582,6 +582,11 @@ Add behavior for when no region is selected
     (add-hook 'org-shiftmetaup-hook 'fvaresi/org-shiftmetaup-move)
   #+END_SRC
 
+** Org Tree Slide
+   #+begin_src emacs-lisp
+     (require 'org-tree-slide)
+   #+end_src
+
 ** Special functions						   :noexport:
    This functions are used by yasnippet to provide values for start/end of sprints.
 
