@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: login
+# key: login
+# --
+$this->login( [
+	'email' => ${1:$$(yas-choose-value '("'NandoAxiomTeacher@mindqa.org'" "'nandoaxiomsschool@mindqa.org'" "'nandoaxiomsdistrict@mindqa.org'"))},
+	'password' => '${2:2SlidingPenguins}',
+] )
+	 ->assertOk();$0

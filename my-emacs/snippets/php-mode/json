@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: json
+# key: json
+# --
+$this->json(
+	${1:$$(yas-choose-value '("'GET'" "'POST'"))},
+	action( $2 ),
+	[
+		$3
+	]
+)
+			   ->assertOk()$0;

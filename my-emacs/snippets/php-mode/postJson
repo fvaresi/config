@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: postJson
+# key: postJson
+# --
+$this->postJson(
+	action( $1 ),
+	compact( $2 )
+)
+	->assertOk()$0;

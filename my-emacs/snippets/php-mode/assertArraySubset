@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: assertArraySubset
+# key: assertArraySubset
+# --
+PHPUnit::assertArraySubset(
+	[
+		$1
+	],
+	array_keys( $2 )
+)$0;

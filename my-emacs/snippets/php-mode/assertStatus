@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: assertStatus
+# key: assertStatus
+# --
+assertStatus( Response::HTTP_${2:$$(yas-choose-value '("OK" "UNPROCESSABLE_ENTITY"))} )$0

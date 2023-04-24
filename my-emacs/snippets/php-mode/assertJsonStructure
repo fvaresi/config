@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: assertJsonStructure
+# key: assertJsonStructure
+# --
+assertJsonStructure( [
+	'data' => [ $1 ]
+] )$0

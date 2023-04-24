@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: getJson
+# key: getJson
+# --
+$this->getJson(
+	action( $1 )
+)
+	->assertOk()$0;
