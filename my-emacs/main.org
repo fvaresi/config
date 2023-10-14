@@ -636,6 +636,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
           comment-style 'indent
           comment-use-syntax t))
       (add-hook 'php-mode-hook 'fvaresi/setup-php)
+      (add-hook 'php-mode-hook 'subword-mode)
     #+END_SRC
 
     Geben is an interface to DBGp protocol, which is implemented by Xdebug.
