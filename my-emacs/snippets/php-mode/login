@@ -4,6 +4,6 @@
 # --
 $this->login( [
 	'email' => ${1:$$(yas-choose-value '("'NandoAxiomTeacher@mindqa.org'" "'nandoaxiomsschool@mindqa.org'" "'nandoaxiomsdistrict@mindqa.org'"))},
-	'password' => '${2:2SlidingPenguins}',
+	'password' => '${2:PenguinsRFun!}',
 ] )
 	 ->assertOk();$0
