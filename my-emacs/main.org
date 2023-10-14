@@ -1287,7 +1287,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
        "Visit JIRA ticket in line"
        (interactive)
 
-       (let* ((regex "\\(?:ADMIN\\|APP\\|ED\\|ID\\|LEARN\\|PLAT\\|STP\\|TRIAG\\|TUX\\)-[[:digit:]]+")
+       (let* ((regex "\\(?:ADMIN\\|APP\\|CORELSN\\|DBT\\|ED\\|ID\\|LEARN\\|PLAT\\|STP\\|TRIAG\\|TUX\\)-[[:digit:]]+")
 	      (current (if (use-region-p)
 			   (buffer-substring-no-properties (region-beginning) (region-end))
 			   (thing-at-point 'line t)))
