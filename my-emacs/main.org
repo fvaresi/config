@@ -353,8 +353,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     Set up snippet dirs
 
     #+BEGIN_SRC emacs-lisp
-      (setq yas-snippet-dirs '("~/config/my-emacs/snippets"
-    			   "~/autocomm/projects/config/emacs/snippets"))
+      (setq yas-snippet-dirs '("~/config/my-emacs/snippets"))
     #+END_SRC
 
     #+BEGIN_COMMENT
