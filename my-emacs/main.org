@@ -227,6 +227,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       (push '(" *undo-tree*" :width 0.3 :position right) popwin:special-display-config)
       (push '("*Helm Find Files*" :height 0.5) popwin:special-display-config)
       (push '("*helm mini*" :height 0.5) popwin:special-display-config)
+      (push '("*helm ag results*" :height 0.3) popwin:special-display-config)
       (push '("*helm grep*" :height 0.5) popwin:special-display-config)
       (push '("*helm locate*" :height 0.5) popwin:special-display-config)
       (push '("*helm M-x*" :height 0.5) popwin:special-display-config)

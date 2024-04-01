@@ -35,3 +35,4 @@
 
 (org-babel-load-file (expand-file-name "main.org" user-emacs-directory))
 (put 'narrow-to-region 'disabled nil)
+(put 'erase-buffer 'disabled nil)

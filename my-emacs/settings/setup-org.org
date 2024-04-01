@@ -246,6 +246,11 @@ Add behavior for when no region is selected
 	      "* %?"
 	      :clock-in t
 	      :kill-buffer t)
+
+	     ("j" "Journal Entry" entry
+	      (file+datetree default-journal-file)
+	      "* %?"
+	      :empty-lines 1)
 	     ))
    #+END_SRC
 
@@ -453,7 +458,7 @@ Add behavior for when no region is selected
    Use org-mime as [[https://github.com/howardabrams/dot-files/blob/master/emacs-mail.org#sending-email][suggested]] by Howard Abrams for sending org content via email.
 
    #+BEGIN_SRC emacs-lisp
-     (require 'org-mime)
+     ;; (require 'org-mime)
    #+END_SRC
    
 ** Org Mobile                                                      :noexport:
