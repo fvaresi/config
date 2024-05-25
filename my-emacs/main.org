@@ -443,21 +443,22 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
     [[https://github.com/clojure-emacs/cider/][CIDER]] extends Emacs with support for interactive programming in Clojure.
 
     #+BEGIN_SRC emacs-lisp
-      ;;(require 'cider)
-
-      (setq cider-repl-history-file "~/.emacs.d/cider-repl-history")
+      (use-package cider
+	:ensure t
+	:config (setq cider-repl-history-file "~/.emacs.d/cider-repl-history"))
     #+END_SRC
 
-    Boot takes some time to load, so we must increase timeout in cider.
+    # Boot takes some time to load, so we must increase timeout in cider.
 
-    #+BEGIN_SRC emacs-lisp
-      (setq nrepl-sync-request-timeout 40)
-    #+END_SRC
+    # #+BEGIN_SRC emacs-lisp
+    #   (setq nrepl-sync-request-timeout 40)
+    # #+END_SRC
 
     [[https://github.com/clojure-emacs/clj-refactor.el][clj-refactor]] provides refactoring support for clojure projects. The latest version requires Clojure 1.7+, so I have it disabled until I can migrate all projects.
 
     #+BEGIN_SRC emacs-lisp
-      ;;(require 'clj-refactor)
+      (use-package clj-refactor
+	:ensure t)
     #+END_SRC
 
     This is the generic hook for clojure.
