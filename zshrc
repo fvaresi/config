@@ -98,7 +98,7 @@ export EDITOR=vim
 export SVN_EDITOR=vim
 export SUDO_EDITOR="emacsclient -nw"
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
-export CDPATH=.:~:~/projects
+export CDPATH=.:~:~/projects/baxenergy
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=lcd'
 export ANDROID_HOME="$HOME/opt/android-sdk-linux"
 # export QUBES_GPG_DOMAIN=gpg

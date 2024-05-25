@@ -232,25 +232,25 @@ Add behavior for when no region is selected
 	      (mapcar #'(lambda (c) (if (equal c ?[) nil (if (equal c ?]) nil c))) string-to-transform))))
 
      (setq org-capture-templates
-	   `(("L" "JIRA" entry
-	      (file+headline "~/Documents/sprints.org" "Tasks")
-	      "* TODO [[%:link][%(strip-square-brackets \"%:description\")]]")
+	   `(;; ("L" "JIRA" entry
+	     ;;  (file+headline "~/Documents/baxenergy/notes.org" "Tasks")
+	     ;;  "* TODO [[%:link][%(strip-square-brackets \"%:description\")]]")
 
 	     ("t" "Task" entry
-	      (file+headline "~/Documents/sprints.org" "Tasks")
+	      (file+headline "~/Documents/baxenergy/notes.org" "Tasks")
 	      "* TODO %?"
 	      :kill-buffer t)
 
 	     ("m" "Meeting" entry
-	      (file+headline "~/Documents/sprints.org" "Meetings")
+	      (file+headline "~/Documents/baxenergy/notes.org" "Meetings")
 	      "* %?"
 	      :clock-in t
 	      :kill-buffer t)
 
-	     ("j" "Journal Entry" entry
-	      (file+datetree default-journal-file)
-	      "* %?"
-	      :empty-lines 1)
+	     ;; ("j" "Journal Entry" entry
+	     ;;  (file+datetree default-journal-file)
+	     ;;  "* %?"
+	     ;;  :empty-lines 1)
 	     ))
    #+END_SRC
 
