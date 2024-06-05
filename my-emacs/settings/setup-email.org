@@ -8,11 +8,10 @@
   :VISIBILITY: children
   :END:
 ** Identity
-
-   #+BEGIN_SRC emacs-lisp
-     (setq user-mail-address "fvaresi@mindresearch.org"
+   #+begin_src emacs-lisp
+     (setq user-mail-address "fernando.varesi@baxenergy.com"
 	   user-full-name "Fernando Varesi")
-   #+END_SRC
+   #+end_src
 
 ** General Settings
    Just prepend 'Fwd:' to subject while forwarding
