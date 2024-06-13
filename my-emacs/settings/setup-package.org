@@ -37,7 +37,6 @@
 
       ;; consider using package-selected-packages
       (let ((required-packages '(ace-isearch
-                                 ace-jump-mode
 
                                  android-mode
 

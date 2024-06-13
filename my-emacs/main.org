@@ -1109,7 +1109,9 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
       ;;(global-set-key (kbd "C-S-w") 'toggle-window-split)
       (global-set-key (kbd "C-S-r") 'rotate-windows)
 
-      (global-set-key (kbd "C-o") 'ace-jump-word-mode)
+      (use-package avy
+        :ensure t
+        :bind ("C-o" ("Jump to word" . avy-goto-word-or-subword-1)))
 
       (define-key isearch-mode-map (kbd "C-q") 'helm-swoop-from-isearch)
 
