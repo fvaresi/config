@@ -111,7 +111,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export SVN_EDITOR=vim
 export SUDO_EDITOR="emacsclient -nw"
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
 export PATH=$PATH:$HOME/bin

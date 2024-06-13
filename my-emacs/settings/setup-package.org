@@ -102,7 +102,6 @@
                                  logview
 
                                  magit
-                                 magit-svn
                                  orgit
 
                                  multiple-cursors

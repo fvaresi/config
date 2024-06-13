@@ -95,7 +95,6 @@ source $HOME/.bash_aliases
 
 export ALTERNATE_EDITOR=""
 export EDITOR=vim
-export SVN_EDITOR=vim
 export SUDO_EDITOR="emacsclient -nw"
 export XDEBUG_CONFIG="idekey=netbeans-xdebug"
 export CDPATH=.:~:~/projects/baxenergy
