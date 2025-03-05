@@ -1206,21 +1206,8 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    List all repositories
 
    #+begin_src emacs-lisp
-     (setq magit-repository-directories '(("~/projects/web-app" . 0)
-					  ("~/projects/mind-api-client-library" . 0)
-					  ("~/projects/mind-aggregation-tier" . 0)
-					  ("~/projects/mind-entity" . 0)
-					  ("~/projects/mind-experience" . 0)
-					  ("~/projects/mind-experience-progress" . 0)
-					  ("~/projects/mind-reporting" . 0)
-					  ("~/projects/mind-package-api" . 0)
-					  ("~/projects/mind-package-clients" . 0)
-					  ("~/projects/mind-package-identity" . 0)
-					  ("~/projects/mind-package-mcache" . 0)
-					  ("~/projects/mind-package-mlog" . 0)
-					  ("~/projects/mind-package-model" . 0)
-					  ("~/projects/mind-package-build" . 0)
-					  ("~/projects/mind-package-test" . 0)))
+     (setq magit-repository-directories '(("~/projects/baxenergy/farsight" . 0)
+     				     ("~/projects/baxenergy/farsight-local-ops" . 0)))
    #+end_src
 
 ** Ledger
@@ -1281,7 +1268,7 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
    
    #+END_SRC
 
-** Mind
+** Bax
 
    Visit ticket in current line or region.
 
@@ -1290,22 +1277,22 @@ Github now parses org files using [[https://github.com/wallyqs/org-ruby][org-rub
        "Visit JIRA ticket in line"
        (interactive)
 
-       (let* ((regex "\\(?:ADMIN\\|APP\\|CORELSN\\|DBT\\|ED\\|ID\\|LEARN\\|PLAT\\|STP\\|TRIAG\\|TUX\\)-[[:digit:]]+")
-	      (current (if (use-region-p)
-			   (buffer-substring-no-properties (region-beginning) (region-end))
-			   (thing-at-point 'line t)))
-	      (matches (delete-dups (sort (mapcar 'car
-						  (s-match-strings-all regex current))
-					  'string-lessp))))
-	 (when matches
-	   (let ((tickets (if (> (length matches) 1)
-			      (let ((selected (completing-read "Which ticket?" (cons "All" matches))))
-				(if (string-equal "All" selected)
-				    matches
-				  `(,selected)))
-			    matches)))
-	     (dolist (ticket tickets)
-	       (browse-url (concat "https://jira.mindresearch.org/browse/" ticket)))))
-	 ))
+       (let* ((regex "\\(?:REAL\\|OEM\\)-[[:digit:]]+")
+     	      (current (if (use-region-p)
+     			   (buffer-substring-no-properties (region-beginning) (region-end))
+     			   (thing-at-point 'line t)))
+     	      (matches (delete-dups (sort (mapcar 'car
+     						  (s-match-strings-all regex current))
+     					  'string-lessp))))
+     	 (when matches
+     	   (let ((tickets (if (> (length matches) 1)
+     			      (let ((selected (completing-read "Which ticket?" (cons "All" matches))))
+     				(if (string-equal "All" selected)
+     				    matches
+     				  `(,selected)))
+     			    matches)))
+     	     (dolist (ticket tickets)
+     	       (browse-url (concat "https://baxenergy.atlassian.net/browse/" ticket)))))
+     	 ))
      (global-set-key (kbd "C-S-j") 'mind/open-jira-ticket)
    #+end_src
