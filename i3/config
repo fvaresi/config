@@ -327,7 +327,7 @@ bindsym $mod+o [class="social:Google-chrome"] focus
 bindsym $mod+i [class="mind:Emacs*"] focus
 bindsym $mod+m [class="vlc"] scratchpad show
 bindsym $mod+c [class="Google-chrome"] scratchpad show
-bindsym $mod+z [class="social:Signal"] focus
+bindsym $mod+z [title="Huddle*"] focus
 bindsym $mod+u exec qvm-run -a mind "~/bin/passmenu"
 bindsym $mod+t exec qvm-run -a personal "~/bin/emacs-capture"
 
